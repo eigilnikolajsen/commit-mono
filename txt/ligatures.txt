@@ -1,0 +1,91 @@
+LIGATURE        INTENT  FINISH
+
+->              y       f
+-->             y       f
+--->            y       f
+<-              y       f
+<--             y       f
+<---            y       f
+<!--            y       f
+
+=>              y       f
+==>             y       f
+=>>             y       f
+=<<             y       f
+>=>             y       f
+<=<             y       f
+=>=             y       f
+=<=             y       f
+
+
+!=              m       f
+!==             y       f
+
+==              n       f
+===             n       f
+
+..              y       f
+...             y       f
+::              y       f
+;;              y       f
+:::             y       f
+?.              y       f
+!!              y       f
+!.              y       f
+
+..=             m       f
+..<             m       f
+:=              y       f
+=:              y       f
+:#              y       f
+#:              y       f
+
+www             y       f
+
+||              y       f
+//              y       f
+
+####            m       f
+
+<>              y       f
+<~>             y       f
+
+:>              y       f
+:<              y       f
+>:              y       f
+<:              y       f
+::>             y       f
+::<             y       f
+>::             y       f
+<::             y       f
+:<:             y       f
+:>:             y       f
+
+/\              y       f
+\/              y       f
+-|              y       f
+|-              y       f
+_|_             y       f
+
+<|              y       f
+<||             y       f
+<|||            y       f
+|>              y       f
+||>             y       f
+|||>            y       f
+
+|]              y       u
+[|              y       u
+|}              y       u
+{|              y       u
+
+<$              y       f
+$>              y       f
+<$>             y       f
+<+              y       f
++>              y       f
+<+>             y       f
+<*              y       f
+*>              y       f
+<*>             y       f
+

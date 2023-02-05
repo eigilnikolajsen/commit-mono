@@ -1,0 +1,20 @@
+feature c002 {
+# Coding Ligature 001—999
+# Adjust punctuation
+
+#> feature
+
+pos @uppercase_actor @adjust_punctuation' @adjust_punctuation @uppercase_actor <40 0 0 0>;
+pos @uppercase_actor @adjust_punctuation @adjust_punctuation' @uppercase_actor <-40 0 0 0>;
+pos @uppercase_actor @adjust_punctuation' @adjust_punctuation @adjust_punctuation @uppercase_actor <80 0 0 0>;
+pos @uppercase_actor @adjust_punctuation @adjust_punctuation' @adjust_punctuation @uppercase_actor <0 0 0 0>;
+pos @uppercase_actor @adjust_punctuation @adjust_punctuation @adjust_punctuation' @uppercase_actor <-80 0 0 0>;
+
+pos @space_actor @adjust_punctuation' @adjust_punctuation @space_actor <40 0 0 0>;
+pos @space_actor @adjust_punctuation @adjust_punctuation' @space_actor <-40 0 0 0>;
+pos @space_actor @adjust_punctuation' @adjust_punctuation @adjust_punctuation @space_actor <80 0 0 0>;
+pos @space_actor @adjust_punctuation @adjust_punctuation' @adjust_punctuation @space_actor <0 0 0 0>;
+pos @space_actor @adjust_punctuation @adjust_punctuation @adjust_punctuation' @space_actor <-80 0 0 0>;
+
+#< feature
+} c002;
