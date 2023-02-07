@@ -20,80 +20,98 @@ feature c003 {
 @greater_arrow_start_equal = [greater.arrow_start_equal greater.arrow_start_equal.case];
 @exclam = [exclam exclam.square];
 
-	sub @less' @less @less @less @less @hyphen by @less_arrow_start;
-	sub @less' @less @less @less @hyphen by @less_arrow_start;
-	sub @less' @less @less @hyphen by @less_arrow_start;
-	sub @less' @less @hyphen by @less_arrow_start;
+lookup TipStart_1 {
 	sub @less' @hyphen by @less_arrow_start_hyphen;
-	sub @less_arrow_start_hyphen @hyphen' by @hyphen_arrow;
-
-	sub @less' @less @less @less @less @equal by @less_arrow_start;
-	sub @less' @less @less @less @equal by @less_arrow_start;
-	sub @less' @less @less @equal by @less_arrow_start;
-	sub @less' @less @equal by @less_arrow_start;
 	sub @less' @equal by @less_arrow_start_equal;
-	sub @less_arrow_start_equal @equal' by @equal_arrow;
-
-	sub @greater' @greater @greater @greater @greater @hyphen by @greater_arrow_end;
-	sub @greater' @greater @greater @greater @hyphen by @greater_arrow_end;
-	sub @greater' @greater @greater @hyphen by @greater_arrow_end;
-	sub @greater' @greater @hyphen by @greater_arrow_end;
 	sub @greater' @hyphen by @greater_arrow_end;
-	sub @greater_arrow_end @hyphen' by @hyphen_arrow;
-
-	sub @greater' @greater @greater @greater @greater @equal by @greater_arrow_end;
-	sub @greater' @greater @greater @greater @equal by @greater_arrow_end;
-	sub @greater' @greater @greater @equal by @greater_arrow_end;
-	sub @greater' @greater @equal by @greater_arrow_end;
 	sub @greater' @equal by @greater_arrow_end;
-	sub @greater_arrow_end @equal' by @equal_arrow;
-	
-	sub @hyphen' @hyphen @hyphen @hyphen @hyphen @hyphen @hyphen @hyphen @less by @hyphen_arrow;
-	sub @hyphen' @hyphen @hyphen @hyphen @hyphen @hyphen @hyphen @less by @hyphen_arrow;
-	sub @hyphen' @hyphen @hyphen @hyphen @hyphen @hyphen @less by @hyphen_arrow;
-	sub @hyphen' @hyphen @hyphen @hyphen @hyphen @less by @hyphen_arrow;
-	sub @hyphen' @hyphen @hyphen @hyphen @less by @hyphen_arrow;
-	sub @hyphen' @hyphen @hyphen @less by @hyphen_arrow;
-	sub @hyphen' @hyphen @less by @hyphen_arrow;
-	sub @hyphen' @less by @hyphen_arrow;
-	sub @hyphen' @hyphen @hyphen @hyphen @hyphen @hyphen @hyphen @hyphen @greater by @hyphen_arrow;
-	sub @hyphen' @hyphen @hyphen @hyphen @hyphen @hyphen @hyphen @greater by @hyphen_arrow;
-	sub @hyphen' @hyphen @hyphen @hyphen @hyphen @hyphen @greater by @hyphen_arrow;
-	sub @hyphen' @hyphen @hyphen @hyphen @hyphen @greater by @hyphen_arrow;
-	sub @hyphen' @hyphen @hyphen @hyphen @greater by @hyphen_arrow;
-	sub @hyphen' @hyphen @hyphen @greater by @hyphen_arrow;
-	sub @hyphen' @hyphen @greater by @hyphen_arrow;
-	sub @hyphen' @greater by @hyphen_arrow;
-	sub @hyphen_arrow @hyphen' by @hyphen_arrow;
-	sub @hyphen_arrow @less' by @less_arrow_end;
-	sub @hyphen_arrow @greater' by @greater_arrow_start_hyphen;
-	
-	sub @equal' @equal @equal @equal @equal @equal @equal @equal @less by @equal_arrow;
-	sub @equal' @equal @equal @equal @equal @equal @equal @less by @equal_arrow;
-	sub @equal' @equal @equal @equal @equal @equal @less by @equal_arrow;
-	sub @equal' @equal @equal @equal @equal @less by @equal_arrow;
-	sub @equal' @equal @equal @equal @less by @equal_arrow;
-	sub @equal' @equal @equal @less by @equal_arrow;
-	sub @equal' @equal @less by @equal_arrow;
-	sub @equal' @less by @equal_arrow;
-	sub @equal' @equal @equal @equal @equal @equal @equal @equal @greater by @equal_arrow;
-	sub @equal' @equal @equal @equal @equal @equal @equal @greater by @equal_arrow;
-	sub @equal' @equal @equal @equal @equal @equal @greater by @equal_arrow;
-	sub @equal' @equal @equal @equal @equal @greater by @equal_arrow;
-	sub @equal' @equal @equal @equal @greater by @equal_arrow;
-	sub @equal' @equal @equal @greater by @equal_arrow;
-	sub @equal' @equal @greater by @equal_arrow;
-	sub @equal' @greater by @equal_arrow;
-	sub @equal_arrow @equal' by @equal_arrow;
-	sub @equal_arrow @less' by @less_arrow_end;
-	sub @equal_arrow @greater' by @greater_arrow_start_equal;
+} TipStart_1;
 
+lookup TipStart_2 {
+	sub @less' @less_arrow_start_hyphen by @less_arrow_start;
+	sub @less' @less_arrow_start_equal by @less_arrow_start;
+	sub @greater' @greater_arrow_end by @greater_arrow_end;
+	sub @greater' @greater_arrow_end by @greater_arrow_end;
+} TipStart_2;
+
+lookup TipStart_3 {
+	sub @less' @less_arrow_start by @less_arrow_start;
+	sub @greater' @greater_arrow_end by @greater_arrow_end;
+} TipStart_3;
+
+
+
+lookup BodyStartA {
+	sub @less_arrow_start_hyphen @hyphen' by @hyphen_arrow;
+	sub @less_arrow_start_equal @equal' by @equal_arrow;
+	sub @greater_arrow_end @hyphen' by @hyphen_arrow;
+	sub @greater_arrow_end @equal' by @equal_arrow;
+} BodyStartA;
+
+
+
+lookup BodyStartB_1 {
+	sub @hyphen' @less by @hyphen_arrow;
+	sub @equal' @less by @equal_arrow;
+	sub @hyphen' @greater by @hyphen_arrow;
+	sub @equal' @greater by @equal_arrow;
+} BodyStartB_1;
+
+lookup BodyStartB_2 {
+	sub @hyphen' @hyphen_arrow by @hyphen_arrow;
+	sub @equal' @equal_arrow by @equal_arrow;
+} BodyStartB_2;
+
+lookup BodyStartB_3 {
+	sub @hyphen' @hyphen_arrow by @hyphen_arrow;
+	sub @equal' @equal_arrow by @equal_arrow;
+} BodyStartB_3;
+
+lookup BodyStartB_4 {
+	sub @hyphen' @hyphen_arrow by @hyphen_arrow;
+	sub @equal' @equal_arrow by @equal_arrow;
+} BodyStartB_4;
+
+lookup BodyStartB_5 {
+	sub @hyphen' @hyphen_arrow by @hyphen_arrow;
+	sub @equal' @equal_arrow by @equal_arrow;
+} BodyStartB_5;
+
+
+
+lookup BodyEnd {
+	sub @hyphen_arrow @hyphen' by @hyphen_arrow;
+	sub @equal_arrow @equal' by @equal_arrow;
+} BodyEnd;
+
+
+
+lookup TipEnd_1 {
+	sub @hyphen_arrow @less' by @less_arrow_end;
+	sub @equal_arrow @less' by @less_arrow_end;
+	sub @hyphen_arrow @greater' by @greater_arrow_start_hyphen;
+	sub @equal_arrow @greater' by @greater_arrow_start_equal;
+} TipEnd_1;
+
+lookup TipEnd_2 {
+	sub @hyphen_arrow @less_arrow_end' by @less_arrow_end;
+	sub @equal_arrow @less_arrow_end' by @less_arrow_end;
 	sub @greater_arrow_start_hyphen @greater' by @greater_arrow_start;
 	sub @greater_arrow_start_equal @greater' by @greater_arrow_start;
+} TipEnd_2;
 
+lookup TipEnd_3 {
+	sub @less_arrow_end @less' by @less_arrow_end;
+	sub @greater_arrow_start @greater' by @greater_arrow_start;
+} TipEnd_3;
+
+
+
+lookup HTMLcomment {
 	sub @less' @exclam @hyphen @hyphen by @less_arrow_start;
 	sub @less_arrow_start @exclam @hyphen' @hyphen by @hyphen_arrow;
 	sub @less_arrow_start @exclam @hyphen_arrow @hyphen' by @hyphen_arrow;
+} HTMLcomment;
 
 #< feature
 } c003;

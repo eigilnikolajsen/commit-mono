@@ -4,67 +4,41 @@ feature c001 {
 
 #> feature
 
-	ignore sub @case_default' @lowercase_actor;
-	ignore sub @case_default' @case_default @lowercase_actor;
-	ignore sub @case_default' @case_default @case_default @lowercase_actor;
-	ignore sub @case_default' @case_default @case_default @case_default @lowercase_actor;
-	ignore sub @case_default' @case_default @case_default @case_default @case_default @lowercase_actor;
-	ignore sub @case_default' @case_default @case_default @case_default @case_default @case_default @lowercase_actor;
-	ignore sub @case_default' @case_default @case_default @case_default @case_default @case_default @case_default @lowercase_actor;
-	ignore sub @case_default' @case_default @case_default @case_default @case_default @case_default @case_default @case_default @lowercase_actor;
-	
-	ignore sub @lowercase_actor @case_default';
-	ignore sub @lowercase_actor @case_default @case_default';
-	ignore sub @lowercase_actor @case_default @case_default @case_default';
-	ignore sub @lowercase_actor @case_default @case_default @case_default @case_default';
-	ignore sub @lowercase_actor @case_default @case_default @case_default @case_default @case_default';
-	ignore sub @lowercase_actor @case_default @case_default @case_default @case_default @case_default @case_default';
-	ignore sub @lowercase_actor @case_default @case_default @case_default @case_default @case_default @case_default @case_default';
-	ignore sub @lowercase_actor @case_default @case_default @case_default @case_default @case_default @case_default @case_default @case_default';
+lookup NoSpace {
+	sub @uppercase_actor @case_default' @uppercase_actor by @case_top;
+	sub @uppercase_actor @case_default' @case_default @uppercase_actor by @case_top;
+	sub @uppercase_actor @case_default' @case_default @case_default @uppercase_actor by @case_top;
+	sub @uppercase_actor @case_default' @case_default @case_default @case_default @uppercase_actor by @case_top;
+	sub @uppercase_actor @case_default' @case_default @case_default @case_default @case_default @uppercase_actor by @case_top;
+} NoSpace;
 
-	ignore sub @case_default' @space_actor @lowercase_actor;
-	ignore sub @case_default' @case_default @space_actor @lowercase_actor;
-	ignore sub @case_default' @case_default @case_default @space_actor @lowercase_actor;
-	ignore sub @case_default' @case_default @case_default @case_default @space_actor @lowercase_actor;
-	ignore sub @case_default' @case_default @case_default @case_default @case_default @space_actor @lowercase_actor;
-	ignore sub @case_default' @case_default @case_default @case_default @case_default @case_default @space_actor @lowercase_actor;
-	ignore sub @case_default' @case_default @case_default @case_default @case_default @case_default @case_default @space_actor @lowercase_actor;
-	ignore sub @case_default' @case_default @case_default @case_default @case_default @case_default @case_default @case_default @space_actor @lowercase_actor;
+lookup StartSpace {
+	sub @uppercase_actor @space_actor @case_default' @uppercase_actor by @case_top;
+	sub @uppercase_actor @space_actor @case_default' @case_default @uppercase_actor by @case_top;
+	sub @uppercase_actor @space_actor @case_default' @case_default @case_default @uppercase_actor by @case_top;
+	sub @uppercase_actor @space_actor @case_default' @case_default @case_default @case_default @uppercase_actor by @case_top;
+	sub @uppercase_actor @space_actor @case_default' @case_default @case_default @case_default @case_default @uppercase_actor by @case_top;
+} StartSpace;
 
-	ignore sub @lowercase_actor @space_actor @case_default';
-	ignore sub @lowercase_actor @space_actor @case_default @case_default';
-	ignore sub @lowercase_actor @space_actor @case_default @case_default @case_default';
-	ignore sub @lowercase_actor @space_actor @case_default @case_default @case_default @case_default';
-	ignore sub @lowercase_actor @space_actor @case_default @case_default @case_default @case_default @case_default';
-	ignore sub @lowercase_actor @space_actor @case_default @case_default @case_default @case_default @case_default @case_default';
-	ignore sub @lowercase_actor @space_actor @case_default @case_default @case_default @case_default @case_default @case_default @case_default';
-	ignore sub @lowercase_actor @space_actor @case_default @case_default @case_default @case_default @case_default @case_default @case_default @case_default';
-	
-	sub @case_default @case_default' by @case_top;
-	sub @case_default' @case_default by @case_top;
+lookup EndSpace {
+	sub @uppercase_actor @case_default' @space_actor @uppercase_actor by @case_top;
+	sub @uppercase_actor @case_default' @case_default @space_actor @uppercase_actor by @case_top;
+	sub @uppercase_actor @case_default' @case_default @case_default @space_actor @uppercase_actor by @case_top;
+	sub @uppercase_actor @case_default' @case_default @case_default @case_default @space_actor @uppercase_actor by @case_top;
+	sub @uppercase_actor @case_default' @case_default @case_default @case_default @case_default @space_actor @uppercase_actor by @case_top;
+} EndSpace;
 
-	sub @case_default' @case_default @case_default @case_default @case_default @case_default @case_default @case_default @case_default @uppercase_actor by @case_top;
-	sub @case_default' @case_default @case_default @case_default @case_default @case_default @case_default @case_default @uppercase_actor by @case_top;
-	sub @case_default' @case_default @case_default @case_default @case_default @case_default @case_default @uppercase_actor by @case_top;
-	sub @case_default' @case_default @case_default @case_default @case_default @case_default @uppercase_actor by @case_top;
-	sub @case_default' @case_default @case_default @case_default @case_default @uppercase_actor by @case_top;
-	sub @case_default' @case_default @case_default @case_default @uppercase_actor by @case_top;
-	sub @case_default' @case_default @case_default @uppercase_actor by @case_top;
-	sub @case_default' @case_default @uppercase_actor by @case_top;
-	sub @case_default' @uppercase_actor by @case_top;
+lookup StartEndSpace {
+	sub @uppercase_actor @space_actor @case_default' @space_actor @uppercase_actor by @case_top;
+	sub @uppercase_actor @space_actor @case_default' @case_default @space_actor @uppercase_actor by @case_top;
+	sub @uppercase_actor @space_actor @case_default' @case_default @case_default @space_actor @uppercase_actor by @case_top;
+	sub @uppercase_actor @space_actor @case_default' @case_default @case_default @case_default @space_actor @uppercase_actor by @case_top;
+	sub @uppercase_actor @space_actor @case_default' @case_default @case_default @case_default @case_default @space_actor @uppercase_actor by @case_top;
+} StartEndSpace;
 
-	sub @case_default' @case_default @case_default @case_default @case_default @case_default @case_default @case_default @case_default @space_actor @uppercase_actor by @case_top;
-	sub @case_default' @case_default @case_default @case_default @case_default @case_default @case_default @case_default @space_actor @uppercase_actor by @case_top;
-	sub @case_default' @case_default @case_default @case_default @case_default @case_default @case_default @space_actor @uppercase_actor by @case_top;
-	sub @case_default' @case_default @case_default @case_default @case_default @case_default @space_actor @uppercase_actor by @case_top;
-	sub @case_default' @case_default @case_default @case_default @case_default @space_actor @uppercase_actor by @case_top;
-	sub @case_default' @case_default @case_default @case_default @space_actor @uppercase_actor by @case_top;
-	sub @case_default' @case_default @case_default @space_actor @uppercase_actor by @case_top;
-	sub @case_default' @case_default @space_actor @uppercase_actor by @case_top;
-	sub @case_default' @space_actor @uppercase_actor by @case_top;
-
-	sub @uppercase_actor @case_default' by @case_top;
-	sub @uppercase_actor @space_actor @case_default' by @case_top;
+lookup InBetween {
+	sub @case_top @case_default' by @case_top;
+} InBetween;
 
 
 #< feature

@@ -1,0 +1,36 @@
+feature c005 {
+# Coding Ligature 001—999
+# Colon equal/hash substitution
+
+#> feature
+
+@colon = [colon colon.case colon.square colon.case.square];
+@colon_squash = [colon.squash colon.squash.case colon.squash.square colon.squash.case.square];
+@squashers = [equal equal.case equal.arrow equal.arrow.case numbersign];
+@lifters = [less less.case less.arrow_end less.arrow_end.case less.arrow_start less.arrow_start.case less.arrow_start_equal less.arrow_start_equal.case less.arrow_start_hyphen less.arrow_start_hyphen.case less.pipe less.pipe.case greater greater.case greater.arrow_end greater.arrow_end.case greater.arrow_start greater.arrow_start.case greater.arrow_start_equal greater.arrow_start_equal.case greater.arrow_start_hyphen greater.arrow_start_hyphen.case greater.pipe greater.pipe.case];
+
+lookup Squash_1 {
+    sub @colon' @squashers by @colon_squash;
+    sub @squashers @colon' by @colon_squash;
+} Squash_1;
+
+lookup Squash_2 {
+    sub @colon' @colon_squash by @colon_squash;
+    sub @colon_squash @colon' by @colon_squash;
+} Squash_2;
+
+lookup Lift_1 {
+    sub [colon colon.square]' @lifters by [colon.case colon.case.square];
+    sub @lifters [colon colon.square]' by [colon.case colon.case.square];
+} Lift_1;
+
+lookup Lift_2 {
+    sub [colon colon.square]' [colon.case colon.case.square] by [colon.case colon.case.square];
+    sub [colon.case colon.case.square] [colon colon.square]' by [colon.case colon.case.square];
+} Lift_2;
+
+
+#< feature
+
+} c005;
+
