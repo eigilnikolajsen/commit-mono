@@ -4,6 +4,35 @@ feature c001 {
 
 #> feature
 
+lookup CloseUp_1 {
+	ignore sub @case_default' @lowercase_actor;
+	sub @uppercase_actor @case_default' by @case_top;
+	sub @case_top @case_default' by @case_top;
+
+	ignore sub @lowercase_actor @case_default';
+	sub @case_default' @uppercase_actor by @case_top;
+} CloseUp_1;
+
+lookup CloseUp_2 {
+	ignore sub @lowercase_actor @case_default';
+	sub @case_default' @case_top by @case_top;
+} CloseUp_2;
+
+lookup CloseUp_3 {
+	ignore sub @lowercase_actor @case_default';
+	sub @case_default' @case_top by @case_top;
+} CloseUp_3;
+
+lookup CloseUp_4 {
+	ignore sub @lowercase_actor @case_default';
+	sub @case_default' @case_top by @case_top;
+} CloseUp_4;
+
+lookup CloseUp_5 {
+	ignore sub @lowercase_actor @case_default';
+	sub @case_default' @case_top by @case_top;
+} CloseUp_5;
+
 lookup NoSpace {
 	sub @uppercase_actor @case_default' @uppercase_actor by @case_top;
 	sub @uppercase_actor @case_default' @case_default @uppercase_actor by @case_top;
