@@ -8,12 +8,10 @@ feature c003 {
 @hyphen_arrow = [hyphen.arrow hyphen.arrow.case];
 @equal = [equal equal.case];
 @equal_arrow = [equal.arrow equal.arrow.case];
-@less = [less less.case];
 @less_arrow_end = [less.arrow_end less.arrow_end.case];
 @less_arrow_start = [less.arrow_start less.arrow_start.case];
 @less_arrow_start_hyphen = [less.arrow_start_hyphen less.arrow_start_hyphen.case];
 @less_arrow_start_equal = [less.arrow_start_equal less.arrow_start_equal.case];
-@greater = [greater greater.case];
 @greater_arrow_end = [greater.arrow_end greater.arrow_end.case];
 @greater_arrow_start = [greater.arrow_start greater.arrow_start.case];
 @greater_arrow_start_hyphen = [greater.arrow_start_hyphen greater.arrow_start_hyphen.case];

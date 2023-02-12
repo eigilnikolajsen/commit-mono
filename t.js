@@ -1,7 +1,7 @@
 console.log("opentype test")
 
 async function initFont() {
-	const font = await opentype.load("/fonts/CommitMonoV38-450.otf")
+	const font = await opentype.load("/fonts/CommitMonoV41-450.otf")
 
 	console.log(font)
 	// console.log(font.glyphs.glyphs[50].path)
@@ -16,28 +16,28 @@ async function initFont() {
 	const noSups = deleteFeature(font, "sups")
 
 	console.log(noSups)
-	font.download()
+	// font.download()
 }
 
 function deleteFeature(font, delFea) {
-	// const featureIndex = font.tables.gsub.features.find((fea) => fea.tag == delFea)?.feature?.lookupListIndexes[0]
-	// font.tables.gsub.lookups[featureIndex].subtables = [
-	// 	{
-	// 		coverage: {
-	// 			format: 1,
-	// 			glyphs: [17],
-	// 		},
-	// 		subsFormat: 2,
-	// 		substitute: [18],
-	// 	},
-	// ]
-	// const features = font.tables.gsub.features.map((fea) => {
-	// 	if (fea.tag == delFea) return fea
-	// })
-	// console.log(features)
-	// features.forEach((feature, index) => {
-	// 	feature ? (font.tables.gsub.features[index] = feature) : null
-	// })
+	const featureIndex = font.tables.gsub.features.find((fea) => fea.tag == delFea)?.feature?.lookupListIndexes[0]
+	font.tables.gsub.lookups[featureIndex].subtables = [
+		{
+			coverage: {
+				format: 1,
+				glyphs: [17],
+			},
+			subsFormat: 2,
+			substitute: [18],
+		},
+	]
+	const features = font.tables.gsub.features.map((fea) => {
+		if (fea.tag == delFea) return fea
+	})
+	console.log(features)
+	features.forEach((feature, index) => {
+		feature ? (font.tables.gsub.features[index] = feature) : null
+	})
 	return font
 }
 

@@ -4,24 +4,18 @@ feature c004 {
 
 #> feature
 
-@less_ = [less less.case];
 @less_pipe = [less.pipe less.pipe.case];
-@greater_ = [greater greater.case];
 @greater_pipe = [greater.pipe greater.pipe.case];
 @bar_pipe = [bar.pipe bar.case.pipe];
 @bar_c = [bar.c2_1 bar.c2_2 bar bar.c3_1 bar.c3_3 bar.pipe];
 @bar_c_case = [bar.case.c2_1 bar.case.c2_2 bar.case bar.case.c3_1 bar.case.c3_3 bar.case.pipe];
 
 lookup BarFix {
-    sub @less @bar_c' @bar_c @bar_c by bar.pipe;
-    sub @less @bar_c' @bar_c by bar.pipe;
     sub @less @bar_c' by bar.pipe;
     sub @bar_c' @bar_c @bar_c @greater by bar.pipe;
     sub @bar_c' @bar_c @greater by bar.pipe;
     sub @bar_c' @greater by bar.pipe;
 
-    sub @less @bar_c_case' @bar_c_case @bar_c_case by bar.case.pipe;
-    sub @less @bar_c_case' @bar_c_case by bar.case.pipe;
     sub @less @bar_c_case' by bar.case.pipe;
     sub @bar_c_case' @bar_c_case @bar_c_case @greater by bar.case.pipe;
     sub @bar_c_case' @bar_c_case @greater by bar.case.pipe;
@@ -34,11 +28,11 @@ lookup BarToBarPipe {
 } BarToBarPipe;
 
 lookup Start {
-    sub @less_' @bar_pipe by @less_pipe;
+    sub @less' @bar_pipe by @less_pipe;
 } Start;
 
 lookup End {
-    sub @bar_pipe @greater_' by @greater_pipe;
+    sub @bar_pipe @greater' by @greater_pipe;
 } End;
 
 #< feature

@@ -4,11 +4,8 @@ feature c005 {
 
 #> feature
 
-@colon = [colon colon.case colon.square colon.case.square];
 @colon_squash = [colon.squash colon.squash.case colon.squash.square colon.squash.case.square];
-@squashers = [equal equal.case equal.arrow equal.arrow.case numbersign];
-@colon_c = [colon.c2_1 colon.c2_2 colon colon.c3_1 colon.c3_3];
-@colon_c_case = [colon.case.c2_1 colon.case.c2_2 colon.case colon.case.c3_1 colon.case.c3_3];
+@squashers = [equal equal.case numbersign less less.case less.c2_1 less.c2_2 less.c3_1 less.c3_3 less.case.c2_1 less.case.c2_2 less.case.c3_1 less.case.c3_3 greater greater.case greater.c2_1 greater.c2_2 greater.c3_1 greater.c3_3 greater.case.c2_1 greater.case.c2_2 greater.case.c3_1 greater.case.c3_3];
 
 lookup Squash_1 {
     sub @colon' @squashers by @colon_squash;
