@@ -1,7 +1,7 @@
 console.log("opentype test")
 
 async function initFont() {
-	const font = await opentype.load("/fonts/CommitMonoV41-450.otf")
+	const font = await opentype.load("/fonts/CommitMonoV51-450.otf")
 
 	console.log(font)
 	// console.log(font.glyphs.glyphs[50].path)
@@ -13,7 +13,7 @@ async function initFont() {
 	// console.log(newFont.glyphs.glyphs[50].path)
 	// console.log(newFont.glyphs.glyphs[76].path)
 
-	const noSups = deleteFeature(font, "sups")
+	const noSups = deleteFeature(font, "c001")
 
 	console.log(noSups)
 	// font.download()
@@ -25,16 +25,15 @@ function deleteFeature(font, delFea) {
 		{
 			coverage: {
 				format: 1,
-				glyphs: [17],
+				glyphs: [],
 			},
 			subsFormat: 2,
-			substitute: [18],
+			substitute: [],
 		},
 	]
 	const features = font.tables.gsub.features.map((fea) => {
 		if (fea.tag == delFea) return fea
 	})
-	console.log(features)
 	features.forEach((feature, index) => {
 		feature ? (font.tables.gsub.features[index] = feature) : null
 	})
