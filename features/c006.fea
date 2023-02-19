@@ -1,0 +1,42 @@
+feature c006 {
+# Coding Ligature 001—999
+# Progress bar substitution
+
+#> feature
+
+@empty = [period period.c2_1 period.c2_2 period.c3_1 period.c3_3 period.square period.square.c2_1 period.square.c2_2 period.square.c3_1 period.square.c3_3 space];
+@fills = [numbersign equal equal.case equal.arrow equal.arrow.case];
+@indic = [greater greater.case greater.arrow_start_equal greater.arrow_start_equal.case];
+@l_bracket = [bracketleft bracketleft.case];
+@r_bracket = [bracketright bracketright.case];
+
+lookup Progress_start1 {
+    sub @l_bracket' @empty @empty @empty @empty @empty by uniEE00;
+    sub @l_bracket' @fills @empty @empty @empty @empty by uniEE03;
+    sub @l_bracket' @fills @fills @empty @empty @empty by uniEE03;
+    sub @l_bracket' @fills @fills @fills @empty @empty by uniEE03;
+    sub @l_bracket' @fills @fills @fills @fills @empty by uniEE03;
+    sub @l_bracket' @fills @fills @fills @fills @fills by uniEE03;
+    sub @l_bracket' @indic @empty @empty @empty @empty by uniEE03;
+} Progress_start1;
+
+lookup Progress_middle {
+    sub uniEE00 @empty' by uniEE01;
+    sub uniEE01 @empty' by uniEE01;
+    sub uniEE03 @fills' by uniEE04;
+    sub uniEE04 @fills' by uniEE04;
+    sub uniEE04 @empty' by uniEE01;
+    sub uniEE03 @indic' by uniEE04;
+    sub uniEE04 @indic' by uniEE04;
+} Progress_middle;
+
+lookup Progress_end {
+    sub uniEE04 @r_bracket' by uniEE05;
+    sub uniEE01 @r_bracket' by uniEE02;
+} Progress_end;
+
+
+#< feature
+
+} c006;
+
