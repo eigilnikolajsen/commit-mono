@@ -10,7 +10,7 @@ feature c006 {
 @l_bracket = [bracketleft bracketleft.case];
 @r_bracket = [bracketright bracketright.case];
 
-lookup Progress_start1 {
+lookup Progress_start {
     sub @l_bracket' @empty @empty @empty @empty @empty by uniEE00;
     sub @l_bracket' @fills @empty @empty @empty @empty by uniEE03;
     sub @l_bracket' @fills @fills @empty @empty @empty by uniEE03;
@@ -18,7 +18,7 @@ lookup Progress_start1 {
     sub @l_bracket' @fills @fills @fills @fills @empty by uniEE03;
     sub @l_bracket' @fills @fills @fills @fills @fills by uniEE03;
     sub @l_bracket' @indic @empty @empty @empty @empty by uniEE03;
-} Progress_start1;
+} Progress_start;
 
 lookup Progress_middle {
     sub uniEE00 @empty' by uniEE01;
@@ -39,4 +39,3 @@ lookup Progress_end {
 #< feature
 
 } c006;
-
