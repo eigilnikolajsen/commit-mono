@@ -8,7 +8,7 @@ feature c002 {
 @c2_2 = [exclam.c2_2 exclam.square.c2_2 comma.c2_2 period.c2_2 period.square.c2_2 slash.c2_2 slash.case.c2_2 colon.c2_2 colon.square.c2_2 colon.case.c2_2 colon.case.square.c2_2 semicolon.c2_2 semicolon.square.c2_2 semicolon.case.c2_2 semicolon.case.square.c2_2 question.c2_2 question.square.c2_2 backslash.c2_2 backslash.case.c2_2 bar.c2_2 bar.case.c2_2 less.c2_2 less.case.c2_2 greater.c2_2 greater.case.c2_2];
 @c3_1 = [exclam.c3_1 exclam.square.c3_1 comma.c3_1 period.c3_1 period.square.c3_1 slash.c3_1 slash.case.c3_1 colon.c3_1 colon.square.c3_1 colon.case.c3_1 colon.case.square.c3_1 semicolon.c3_1 semicolon.square.c3_1 semicolon.case.c3_1 semicolon.case.square.c3_1 question.c3_1 question.square.c3_1 backslash.c3_1 backslash.case.c3_1 bar.c3_1 bar.case.c3_1 less.c3_1 less.case.c3_1 greater.c3_1 greater.case.c3_1];
 @c3_3 = [exclam.c3_3 exclam.square.c3_3 comma.c3_3 period.c3_3 period.square.c3_3 slash.c3_3 slash.case.c3_3 colon.c3_3 colon.square.c3_3 colon.case.c3_3 colon.case.square.c3_3 semicolon.c3_3 semicolon.square.c3_3 semicolon.case.c3_3 semicolon.case.square.c3_3 question.c3_3 question.square.c3_3 backslash.c3_3 backslash.case.c3_3 bar.c3_3 bar.case.c3_3 less.c3_3 less.case.c3_3 greater.c3_3 greater.case.c3_3];
-@exceptions = [numbersign plus plus.case equal equal.case less less.case greater greater.case];
+@exceptions = [numbersign plus plus.case equal equal.case];
 
     #exceptions
     ignore sub @exceptions @dflt';

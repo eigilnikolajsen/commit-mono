@@ -1,0 +1,13 @@
+feature aalt {
+# Access All Alternates
+
+#> featur
+  feature c001;
+  feature c002;
+  feature c003;
+  feature c004;
+  feature c005;
+  feature c006;
+#< feature
+
+} aalt;

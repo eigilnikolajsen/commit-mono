@@ -74,7 +74,6 @@ lookup InBetween {
 	sub @case_top @case_default' by @case_top;
 } InBetween;
 
-
 #< feature
 
 } c001;
