@@ -1,0 +1,383 @@
+
+feature calt {
+
+#> feature
+
+# Coding Ligature 001—999
+# Case sensitive punctuation
+
+
+lookup _NoSpace {
+	sub @uppercase_actor @case_default' @uppercase_actor by @case_top;
+	sub @uppercase_actor @case_default' @case_default @uppercase_actor by @case_top;
+	sub @uppercase_actor @case_default' @case_default @case_default @uppercase_actor by @case_top;
+	sub @uppercase_actor @case_default' @case_default @case_default @case_default @uppercase_actor by @case_top;
+	sub @uppercase_actor @case_default' @case_default @case_default @case_default @case_default @uppercase_actor by @case_top;
+} _NoSpace;
+
+lookup _StartSpace {
+	sub @uppercase_actor @space_actor @case_default' @uppercase_actor by @case_top;
+	sub @uppercase_actor @space_actor @case_default' @case_default @uppercase_actor by @case_top;
+	sub @uppercase_actor @space_actor @case_default' @case_default @case_default @uppercase_actor by @case_top;
+	sub @uppercase_actor @space_actor @case_default' @case_default @case_default @case_default @uppercase_actor by @case_top;
+	sub @uppercase_actor @space_actor @case_default' @case_default @case_default @case_default @case_default @uppercase_actor by @case_top;
+} _StartSpace;
+
+lookup _EndSpace {
+	sub @uppercase_actor @case_default' @space_actor @uppercase_actor by @case_top;
+	sub @uppercase_actor @case_default' @case_default @space_actor @uppercase_actor by @case_top;
+	sub @uppercase_actor @case_default' @case_default @case_default @space_actor @uppercase_actor by @case_top;
+	sub @uppercase_actor @case_default' @case_default @case_default @case_default @space_actor @uppercase_actor by @case_top;
+	sub @uppercase_actor @case_default' @case_default @case_default @case_default @case_default @space_actor @uppercase_actor by @case_top;
+} _EndSpace;
+
+lookup _StartEndSpace {
+	sub @uppercase_actor @space_actor @case_default' @space_actor @uppercase_actor by @case_top;
+	sub @uppercase_actor @space_actor @case_default' @case_default @space_actor @uppercase_actor by @case_top;
+	sub @uppercase_actor @space_actor @case_default' @case_default @case_default @space_actor @uppercase_actor by @case_top;
+	sub @uppercase_actor @space_actor @case_default' @case_default @case_default @case_default @space_actor @uppercase_actor by @case_top;
+	sub @uppercase_actor @space_actor @case_default' @case_default @case_default @case_default @case_default @space_actor @uppercase_actor by @case_top;
+} _StartEndSpace;
+
+lookup _CloseUp_1 {
+	ignore sub @case_default' @lowercase_actor;
+	ignore sub @case_default' @case_default @lowercase_actor;
+	ignore sub @case_default' @case_default @case_default @lowercase_actor;
+	ignore sub @case_default' @case_default @case_default @case_default @lowercase_actor;
+	ignore sub @case_default' @case_default @case_default @case_default @case_default @lowercase_actor;
+	sub @uppercase_actor @case_default' by @case_top;
+} _CloseUp_1;
+
+lookup _CloseUp_2 {
+	ignore sub @lowercase_actor @case_default';
+	ignore sub @lowercase_actor @case_default @case_default';
+	ignore sub @lowercase_actor @case_default @case_default @case_default';
+	ignore sub @lowercase_actor @case_default @case_default @case_default @case_default';
+	ignore sub @lowercase_actor @case_default @case_default @case_default @case_default @case_default';
+	sub @case_default' @uppercase_actor by @case_top;
+	sub @case_default' @case_default @uppercase_actor by @case_top;
+	sub @case_default' @case_default @case_default @uppercase_actor by @case_top;
+	sub @case_default' @case_default @case_default @case_default @uppercase_actor by @case_top;
+	sub @case_default' @case_default @case_default @case_default @case_default @uppercase_actor by @case_top;
+} _CloseUp_2;
+
+lookup _CloseUp_3 {
+	sub @case_default' @case_top by @case_top;
+} _CloseUp_3;
+
+lookup _CloseUp_4 {
+	sub @case_default' @case_top by @case_top;
+} _CloseUp_4;
+
+lookup _CloseUp_5 {
+	sub @case_default' @case_top by @case_top;
+} _CloseUp_5;
+
+lookup _InBetween {
+	sub @case_top @case_default' by @case_top;
+} _InBetween;
+
+
+# Coding Ligature 001—999
+# Adjust punctuation horizontally
+
+@dflt = [exclam exclam.square comma period period.square slash slash.case colon colon.square colon.case colon.case.square semicolon semicolon.square semicolon.case semicolon.case.square question question.square backslash backslash.case bar bar.case less less.case greater greater.case];
+@c2_1 = [exclam.c2_1 exclam.square.c2_1 comma.c2_1 period.c2_1 period.square.c2_1 slash.c2_1 slash.case.c2_1 colon.c2_1 colon.square.c2_1 colon.case.c2_1 colon.case.square.c2_1 semicolon.c2_1 semicolon.square.c2_1 semicolon.case.c2_1 semicolon.case.square.c2_1 question.c2_1 question.square.c2_1 backslash.c2_1 backslash.case.c2_1 bar.c2_1 bar.case.c2_1 less.c2_1 less.case.c2_1 greater.c2_1 greater.case.c2_1];
+@c2_2 = [exclam.c2_2 exclam.square.c2_2 comma.c2_2 period.c2_2 period.square.c2_2 slash.c2_2 slash.case.c2_2 colon.c2_2 colon.square.c2_2 colon.case.c2_2 colon.case.square.c2_2 semicolon.c2_2 semicolon.square.c2_2 semicolon.case.c2_2 semicolon.case.square.c2_2 question.c2_2 question.square.c2_2 backslash.c2_2 backslash.case.c2_2 bar.c2_2 bar.case.c2_2 less.c2_2 less.case.c2_2 greater.c2_2 greater.case.c2_2];
+@c3_1 = [exclam.c3_1 exclam.square.c3_1 comma.c3_1 period.c3_1 period.square.c3_1 slash.c3_1 slash.case.c3_1 colon.c3_1 colon.square.c3_1 colon.case.c3_1 colon.case.square.c3_1 semicolon.c3_1 semicolon.square.c3_1 semicolon.case.c3_1 semicolon.case.square.c3_1 question.c3_1 question.square.c3_1 backslash.c3_1 backslash.case.c3_1 bar.c3_1 bar.case.c3_1 less.c3_1 less.case.c3_1 greater.c3_1 greater.case.c3_1];
+@c3_3 = [exclam.c3_3 exclam.square.c3_3 comma.c3_3 period.c3_3 period.square.c3_3 slash.c3_3 slash.case.c3_3 colon.c3_3 colon.square.c3_3 colon.case.c3_3 colon.case.square.c3_3 semicolon.c3_3 semicolon.square.c3_3 semicolon.case.c3_3 semicolon.case.square.c3_3 question.c3_3 question.square.c3_3 backslash.c3_3 backslash.case.c3_3 bar.c3_3 bar.case.c3_3 less.c3_3 less.case.c3_3 greater.c3_3 greater.case.c3_3];
+@exceptions = [numbersign plus plus.case equal equal.case];
+
+    #exceptions
+    ignore sub @exceptions @dflt';
+    ignore sub @exceptions @dflt @dflt';
+    ignore sub @dflt' @exceptions;
+    ignore sub @dflt' @dflt @exceptions;
+
+    ignore sub @greater' @less @slash;
+    ignore sub @colon' @slash @slash;
+    ignore sub @colon @slash' @slash;
+
+
+    ignore sub @dflt' @dflt @dflt @dflt;
+    ignore sub @dflt @dflt' @dflt @dflt;
+    ignore sub @dflt @dflt @dflt' @dflt;
+    ignore sub @dflt @dflt @dflt @dflt';
+
+    sub @dflt' @dflt @dflt by @c3_1;
+    sub @c3_1 @dflt @dflt' by @c3_3;
+
+    ignore sub @c3_1 @dflt' @dflt;
+
+    sub @dflt' @dflt by @c2_1;
+    sub @c2_1 @dflt' by @c2_2;
+
+
+
+# Coding Ligature 001—999
+# Arrows
+
+
+@hyphen = [hyphen hyphen.case];
+@hyphen_arrow = [hyphen.arrow hyphen.arrow.case];
+@equal = [equal equal.case];
+@equal_arrow = [equal.arrow equal.arrow.case];
+@less_arrow_end = [less.arrow_end less.arrow_end.case];
+@less_arrow_start = [less.arrow_start less.arrow_start.case];
+@less_arrow_start_hyphen = [less.arrow_start_hyphen less.arrow_start_hyphen.case];
+@less_arrow_start_equal = [less.arrow_start_equal less.arrow_start_equal.case];
+@greater_arrow_end = [greater.arrow_end greater.arrow_end.case];
+@greater_arrow_start = [greater.arrow_start greater.arrow_start.case];
+@greater_arrow_start_hyphen = [greater.arrow_start_hyphen greater.arrow_start_hyphen.case];
+@greater_arrow_start_equal = [greater.arrow_start_equal greater.arrow_start_equal.case];
+@exclam = [exclam exclam.square];
+
+lookup _TipStart_1 {
+	sub @less' @hyphen by @less_arrow_start_hyphen;
+	sub @less' @equal by @less_arrow_start_equal;
+	sub @greater' @hyphen by @greater_arrow_end;
+	sub @greater' @equal by @greater_arrow_end;
+} _TipStart_1;
+
+lookup _TipStart_2 {
+	sub @less' @less_arrow_start_hyphen by @less_arrow_start;
+	sub @less' @less_arrow_start_equal by @less_arrow_start;
+	sub @greater' @greater_arrow_end by @greater_arrow_end;
+	sub @greater' @greater_arrow_end by @greater_arrow_end;
+} _TipStart_2;
+
+lookup _TipStart_3 {
+	sub @less' @less_arrow_start by @less_arrow_start;
+	sub @greater' @greater_arrow_end by @greater_arrow_end;
+} _TipStart_3;
+
+
+
+lookup _BodyStartA {
+	sub @less_arrow_start_hyphen @hyphen' by @hyphen_arrow;
+	sub @less_arrow_start_equal @equal' by @equal_arrow;
+	sub @greater_arrow_end @hyphen' by @hyphen_arrow;
+	sub @greater_arrow_end @equal' by @equal_arrow;
+} _BodyStartA;
+
+
+
+lookup _BodyStartB_1 {
+	sub @hyphen' @less by @hyphen_arrow;
+	sub @equal' @less by @equal_arrow;
+	sub @hyphen' @greater by @hyphen_arrow;
+	sub @equal' @greater by @equal_arrow;
+} _BodyStartB_1;
+
+lookup _BodyStartB_2 {
+	sub @hyphen' @hyphen_arrow by @hyphen_arrow;
+	sub @equal' @equal_arrow by @equal_arrow;
+} _BodyStartB_2;
+
+lookup _BodyStartB_3 {
+	sub @hyphen' @hyphen_arrow by @hyphen_arrow;
+	sub @equal' @equal_arrow by @equal_arrow;
+} _BodyStartB_3;
+
+lookup _BodyStartB_4 {
+	sub @hyphen' @hyphen_arrow by @hyphen_arrow;
+	sub @equal' @equal_arrow by @equal_arrow;
+} _BodyStartB_4;
+
+lookup _BodyStartB_5 {
+	sub @hyphen' @hyphen_arrow by @hyphen_arrow;
+	sub @equal' @equal_arrow by @equal_arrow;
+} _BodyStartB_5;
+
+
+
+lookup _BodyEnd {
+	sub @hyphen_arrow @hyphen' by @hyphen_arrow;
+	sub @equal_arrow @equal' by @equal_arrow;
+} _BodyEnd;
+
+
+
+lookup _TipEnd_1 {
+	sub @hyphen_arrow @less' by @less_arrow_end;
+	sub @equal_arrow @less' by @less_arrow_end;
+	sub @hyphen_arrow @greater' by @greater_arrow_start_hyphen;
+	sub @equal_arrow @greater' by @greater_arrow_start_equal;
+} _TipEnd_1;
+
+lookup _TipEnd_2 {
+	sub @hyphen_arrow @less_arrow_end' by @less_arrow_end;
+	sub @equal_arrow @less_arrow_end' by @less_arrow_end;
+	sub @greater_arrow_start_hyphen @greater' by @greater_arrow_start;
+	sub @greater_arrow_start_equal @greater' by @greater_arrow_start;
+} _TipEnd_2;
+
+lookup _TipEnd_3 {
+	sub @less_arrow_end @less' by @less_arrow_end;
+	sub @greater_arrow_start @greater' by @greater_arrow_start;
+} _TipEnd_3;
+
+
+
+lookup _HTMLcomment {
+	sub @less' @exclam @hyphen @hyphen by @less_arrow_start;
+	sub @less_arrow_start @exclam @hyphen' @hyphen by @hyphen_arrow;
+	sub @less_arrow_start @exclam @hyphen_arrow @hyphen' by @hyphen_arrow;
+} _HTMLcomment;
+
+# Coding Ligature 001—999
+# Pipe substitution
+
+
+@less_ = [less less.c2_1 less.c2_2 less.c3_1 less.c3_3];
+@less_case = [less.case less.case.c2_1 less.case.c2_2 less.case.c3_1 less.case.c3_3];
+@greater_ = [greater greater.c2_1 greater.c2_2 greater.c3_1 greater.c3_3];
+@greater_case = [greater.case greater.case.c2_1 greater.case.c2_2 greater.case.c3_1 greater.case.c3_3];
+@bar_pipe = [bar.pipe bar.case.pipe];
+@bar_c = [bar.c2_1 bar.c2_2 bar bar.c3_1 bar.c3_3 bar.pipe];
+@bar_c_case = [bar.case.c2_1 bar.case.c2_2 bar.case bar.case.c3_1 bar.case.c3_3 bar.case.pipe];
+
+lookup _BarFix {
+    sub @less_ @bar_c' by bar.pipe;
+    sub @bar_c' @bar_c @bar_c @greater_ by bar.pipe;
+    sub @bar_c' @bar_c @greater_ by bar.pipe;
+    sub @bar_c' @greater_ by bar.pipe;
+
+    sub @less_ @bar_c_case' by bar.case.pipe;
+    sub @bar_c_case' @bar_c_case @bar_c_case @greater_ by bar.case.pipe;
+    sub @bar_c_case' @bar_c_case @greater_ by bar.case.pipe;
+    sub @bar_c_case' @greater_ by bar.case.pipe;
+} _BarFix;
+
+lookup _BarToBarPipe {
+    sub @bar_pipe @bar_c' by bar.pipe;
+    sub @bar_pipe @bar_c_case' by bar.case.pipe;
+} _BarToBarPipe;
+
+lookup _Start {
+    sub @less_' @bar_pipe by less.pipe;
+    sub @less_case' @bar_pipe by less.pipe.case;
+} _Start;
+
+lookup _End {
+    sub @bar_pipe @greater_' by greater.pipe;
+    sub @bar_pipe @greater_case' by greater.pipe.case;
+} _End;
+
+
+
+# Coding Ligature 001—999
+# Colon equal/hash substitution
+
+
+@colon_ = [colon colon.c2_1 colon.c2_2 colon.c3_1 colon.c3_3];
+@colon_case = [colon.case colon.case.c2_1 colon.case.c2_2 colon.case.c3_1 colon.case.c3_3];
+@colon_square = [colon.square colon.square.c2_1 colon.square.c2_2 colon.square.c3_1 colon.square.c3_3];
+@colon_case_square = [colon.case.square colon.case.square.c2_1 colon.case.square.c2_2 colon.case.square.c3_1 colon.case.square.c3_3];
+@colon_squashed = [colon.squash colon.squash.case colon.squash.square colon.squash.case.square];
+@squashers = [equal equal.case numbersign less less.case less.c2_1 less.c2_2 less.c3_1 less.c3_3 less.case.c2_1 less.case.c2_2 less.case.c3_1 less.case.c3_3 greater greater.case greater.c2_1 greater.c2_2 greater.c3_1 greater.c3_3 greater.case.c2_1 greater.case.c2_2 greater.case.c3_1 greater.case.c3_3];
+
+lookup _Squash_1 {
+    sub @colon_' @squashers by colon.squash;
+    sub @colon_case' @squashers by colon.squash.case;
+    sub @colon_square' @squashers by colon.squash.square;
+    sub @colon_case_square' @squashers by colon.squash.case.square;
+    sub @squashers @colon' by colon.squash;
+    sub @squashers @colon_case' by colon.squash.case;
+    sub @squashers @colon_square' by colon.squash.square;
+    sub @squashers @colon_case_square' by colon.squash.case.square;
+} _Squash_1;
+
+lookup _Squash_2 {
+    sub @colon_' @colon_squashed by colon.squash;
+    sub @colon_case' @colon_squashed by colon.squash.case;
+    sub @colon_square' @colon_squashed by colon.squash.square;
+    sub @colon_case_square' @colon_squashed by colon.squash.case.square;
+    sub @colon_squashed @colon_' by colon.squash;
+    sub @colon_squashed @colon_case' by colon.squash.case;
+    sub @colon_squashed @colon_square' by colon.squash.square;
+    sub @colon_squashed @colon_case_square' by colon.squash.case.square;
+} _Squash_2;
+
+
+
+
+# Coding Ligature 001—999
+# Progress bar substitution
+
+
+@empty = [period period.c2_1 period.c2_2 period.c3_1 period.c3_3 period.square period.square.c2_1 period.square.c2_2 period.square.c3_1 period.square.c3_3 @space_actor];
+@fills = [numbersign equal equal.case equal.arrow equal.arrow.case];
+@indic = [greater greater.case greater.arrow_start_equal greater.arrow_start_equal.case];
+@l_bracket = [bracketleft bracketleft.case parenleft parenleft.case];
+@r_bracket = [bracketright bracketright.case parenright parenright.case];
+
+lookup _Progress_start {
+    sub @l_bracket' @empty @empty @empty @empty @empty by uniEE00;
+    sub @l_bracket' @fills @empty @empty @empty @empty by uniEE03;
+    sub @l_bracket' @fills @fills @empty @empty @empty by uniEE03;
+    sub @l_bracket' @fills @fills @fills @empty @empty by uniEE03;
+    sub @l_bracket' @fills @fills @fills @fills @empty by uniEE03;
+    sub @l_bracket' @fills @fills @fills @fills @fills by uniEE03;
+    sub @l_bracket' @indic @empty @empty @empty @empty by uniEE03;
+} _Progress_start;
+
+lookup _Progress_middle {
+    sub uniEE00 @empty' by uniEE01;
+    sub uniEE01 @empty' by uniEE01;
+    sub uniEE03 @fills' by uniEE04;
+    sub uniEE04 @fills' by uniEE04;
+    sub uniEE04 @empty' by uniEE01;
+    sub uniEE03 @indic' by uniEE04;
+    sub uniEE04 @indic' by uniEE04;
+} _Progress_middle;
+
+lookup _Progress_end {
+    sub uniEE04 @r_bracket' by uniEE05;
+    sub uniEE01 @r_bracket' by uniEE02;
+} _Progress_end;
+
+lookup _Spinner {
+    sub uniEE02 @space_actor hyphen' by uniEE06;
+    sub uniEE02 @space_actor backslash' by uniEE07;
+    sub uniEE02 @space_actor bar' by uniEE08;
+    sub uniEE02 @space_actor slash' by uniEE09;
+    sub uniEE02 hyphen' by uniEE06;
+    sub uniEE02 backslash' by uniEE07;
+    sub uniEE02 bar' by uniEE08;
+    sub uniEE02 slash' by uniEE09;
+
+    sub uniEE05 @space_actor hyphen' by uniEE06;
+    sub uniEE05 @space_actor backslash' by uniEE07;
+    sub uniEE05 @space_actor bar' by uniEE08;
+    sub uniEE05 @space_actor slash' by uniEE09;
+    sub uniEE05 hyphen' by uniEE06;
+    sub uniEE05 backslash' by uniEE07;
+    sub uniEE05 bar' by uniEE08;
+    sub uniEE05 slash' by uniEE09;
+
+    sub hyphen' @space_actor uniEE00 by uniEE06;
+    sub backslash' @space_actor uniEE00 by uniEE07;
+    sub bar' @space_actor uniEE00 by uniEE08;
+    sub slash' @space_actor uniEE00 by uniEE09;
+    sub hyphen' uniEE00 by uniEE06;
+    sub backslash' uniEE00 by uniEE07;
+    sub bar' uniEE00 by uniEE08;
+    sub slash' uniEE00 by uniEE09;
+
+    sub hyphen' @space_actor uniEE03 by uniEE06;
+    sub backslash' @space_actor uniEE03 by uniEE07;
+    sub bar' @space_actor uniEE03 by uniEE08;
+    sub slash' @space_actor uniEE03 by uniEE09;
+    sub hyphen' uniEE03 by uniEE06;
+    sub backslash' uniEE03 by uniEE07;
+    sub bar' uniEE03 by uniEE08;
+    sub slash' uniEE03 by uniEE09;
+} _Spinner;
+
+
+
+
+#< feature
+
+} calt;

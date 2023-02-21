@@ -4,11 +4,11 @@ feature c006 {
 
 #> feature
 
-@empty = [period period.c2_1 period.c2_2 period.c3_1 period.c3_3 period.square period.square.c2_1 period.square.c2_2 period.square.c3_1 period.square.c3_3 space];
+@empty = [period period.c2_1 period.c2_2 period.c3_1 period.c3_3 period.square period.square.c2_1 period.square.c2_2 period.square.c3_1 period.square.c3_3 @space_actor];
 @fills = [numbersign equal equal.case equal.arrow equal.arrow.case];
 @indic = [greater greater.case greater.arrow_start_equal greater.arrow_start_equal.case];
-@l_bracket = [bracketleft bracketleft.case];
-@r_bracket = [bracketright bracketright.case];
+@l_bracket = [bracketleft bracketleft.case parenleft parenleft.case];
+@r_bracket = [bracketright bracketright.case parenright parenright.case];
 
 lookup Progress_start {
     sub @l_bracket' @empty @empty @empty @empty @empty by uniEE00;
@@ -34,6 +34,44 @@ lookup Progress_end {
     sub uniEE04 @r_bracket' by uniEE05;
     sub uniEE01 @r_bracket' by uniEE02;
 } Progress_end;
+
+lookup Spinner {
+    sub uniEE02 @space_actor hyphen' by uniEE06;
+    sub uniEE02 @space_actor backslash' by uniEE07;
+    sub uniEE02 @space_actor bar' by uniEE08;
+    sub uniEE02 @space_actor slash' by uniEE09;
+    sub uniEE02 hyphen' by uniEE06;
+    sub uniEE02 backslash' by uniEE07;
+    sub uniEE02 bar' by uniEE08;
+    sub uniEE02 slash' by uniEE09;
+
+    sub uniEE05 @space_actor hyphen' by uniEE06;
+    sub uniEE05 @space_actor backslash' by uniEE07;
+    sub uniEE05 @space_actor bar' by uniEE08;
+    sub uniEE05 @space_actor slash' by uniEE09;
+    sub uniEE05 hyphen' by uniEE06;
+    sub uniEE05 backslash' by uniEE07;
+    sub uniEE05 bar' by uniEE08;
+    sub uniEE05 slash' by uniEE09;
+
+    sub hyphen' @space_actor uniEE00 by uniEE06;
+    sub backslash' @space_actor uniEE00 by uniEE07;
+    sub bar' @space_actor uniEE00 by uniEE08;
+    sub slash' @space_actor uniEE00 by uniEE09;
+    sub hyphen' uniEE00 by uniEE06;
+    sub backslash' uniEE00 by uniEE07;
+    sub bar' uniEE00 by uniEE08;
+    sub slash' uniEE00 by uniEE09;
+
+    sub hyphen' @space_actor uniEE03 by uniEE06;
+    sub backslash' @space_actor uniEE03 by uniEE07;
+    sub bar' @space_actor uniEE03 by uniEE08;
+    sub slash' @space_actor uniEE03 by uniEE09;
+    sub hyphen' uniEE03 by uniEE06;
+    sub backslash' uniEE03 by uniEE07;
+    sub bar' uniEE03 by uniEE08;
+    sub slash' uniEE03 by uniEE09;
+} Spinner;
 
 
 #< feature
