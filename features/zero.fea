@@ -1,14 +1,14 @@
 feature zero {
-# Slashed Zero
-
-#> featur
-
-  sub [zero zero.square] by zero.zero;
-  sub [zero.dnom zero.dnom.square] by zero.dnom.zero;
-  sub [zero.numr zero.numr.square] by zero.numr.zero;
-  sub [uni2080 uni2080.square] by uni2080.zero;
-  sub [uni2070 uni2070.square] by uni2070.zero;
-  
-#< feature
-
+	# Slashed Zero
+	
+	#> featur
+	
+	sub [zero zero.square] by zero.zero;
+	sub [zero.dnom zero.dnom.square] by zero.dnom.zero;
+	sub [zero.numr zero.numr.square] by zero.numr.zero;
+	sub [uni2080 uni2080.square] by uni2080.zero;
+	sub [uni2070 uni2070.square] by uni2070.zero;
+	
+	#< feature
+	
 } zero;

@@ -1,86 +1,80 @@
 feature frac {
-# Fractions
+	# Fractions
 
-#> featur
+	#> featur
 
-# Arbitrary fractions (based on opentypecookbook.com)
+	# Arbitrary fractions (based on opentypecookbook.com)
 
-lookup frac_bar {
-  ignore sub slash @figs @figs @figs @figs @figs @figs @figs @figs @figs @figs slash';
-  ignore sub slash' @figs @figs @figs @figs @figs @figs @figs @figs @figs @figs slash;
-  ignore sub slash @figs @figs @figs @figs @figs @figs @figs @figs @figs slash';
-  ignore sub slash' @figs @figs @figs @figs @figs @figs @figs @figs @figs slash;
-  ignore sub slash @figs @figs @figs @figs @figs @figs @figs @figs slash';
-  ignore sub slash' @figs @figs @figs @figs @figs @figs @figs @figs slash;
-  ignore sub slash @figs @figs @figs @figs @figs @figs @figs slash';
-  ignore sub slash' @figs @figs @figs @figs @figs @figs @figs slash;
-  ignore sub slash @figs @figs @figs @figs @figs @figs slash';
-  ignore sub slash' @figs @figs @figs @figs @figs @figs slash;
-  ignore sub slash @figs @figs @figs @figs @figs slash';
-  ignore sub slash' @figs @figs @figs @figs @figs slash;
-  ignore sub slash @figs @figs @figs @figs slash';
-  ignore sub slash' @figs @figs @figs @figs slash;
-  ignore sub slash @figs @figs @figs slash';
-  ignore sub slash' @figs @figs @figs slash;
-  ignore sub slash @figs @figs slash';
-  ignore sub slash' @figs @figs slash;
-  ignore sub slash @figs slash';
-  ignore sub slash' @figs slash;
-  ignore sub slash slash';
-  ignore sub slash' slash;
-  sub @figs slash' @figs by fraction;
-} frac_bar;
+	lookup frac_bar {
+		ignore sub slash @figs @figs @figs @figs @figs @figs @figs @figs @figs @figs slash';
+		ignore sub slash' @figs @figs @figs @figs @figs @figs @figs @figs @figs @figs slash;
+		ignore sub slash @figs @figs @figs @figs @figs @figs @figs @figs @figs slash';
+		ignore sub slash' @figs @figs @figs @figs @figs @figs @figs @figs @figs slash;
+		ignore sub slash @figs @figs @figs @figs @figs @figs @figs @figs slash';
+		ignore sub slash' @figs @figs @figs @figs @figs @figs @figs @figs slash;
+		ignore sub slash @figs @figs @figs @figs @figs @figs @figs slash';
+		ignore sub slash' @figs @figs @figs @figs @figs @figs @figs slash;
+		ignore sub slash @figs @figs @figs @figs @figs @figs slash';
+		ignore sub slash' @figs @figs @figs @figs @figs @figs slash;
+		ignore sub slash @figs @figs @figs @figs @figs slash';
+		ignore sub slash' @figs @figs @figs @figs @figs slash;
+		ignore sub slash @figs @figs @figs @figs slash';
+		ignore sub slash' @figs @figs @figs @figs slash;
+		ignore sub slash @figs @figs @figs slash';
+		ignore sub slash' @figs @figs @figs slash;
+		ignore sub slash @figs @figs slash';
+		ignore sub slash' @figs @figs slash;
+		ignore sub slash @figs slash';
+		ignore sub slash' @figs slash;
+		ignore sub slash slash';
+		ignore sub slash' slash;
+		sub @figs slash' @figs by fraction;
+	} frac_bar;
 
-lookup numr1 {
-  sub @figs' fraction by @numr;
-} numr1;
+	lookup numr1 {
+	  sub @figs' fraction by @numr;
+	} numr1;
 
-lookup numr2 {
-  sub @figs' @numr fraction by @numr;
-} numr2;
+	lookup numr2 {
+	  sub @figs' @numr fraction by @numr;
+	} numr2;
 
-lookup numr3 {
-  sub @figs' @numr @numr fraction by @numr;
-} numr3;
+	lookup numr3 {
+	  sub @figs' @numr @numr fraction by @numr;
+	} numr3;
 
-lookup numr4 {
-  sub @figs' @numr @numr @numr fraction by @numr;
-} numr4;
+	lookup numr4 {
+	  sub @figs' @numr @numr @numr fraction by @numr;
+	} numr4;
 
-lookup numr5 {
-  sub @figs' @numr @numr @numr @numr fraction by @numr;
-} numr5;
+	lookup numr5 {
+	  sub @figs' @numr @numr @numr @numr fraction by @numr;
+	} numr5;
 
-lookup numr6 {
-  sub @figs' @numr @numr @numr @numr @numr fraction by @numr;
-} numr6;
+	lookup numr6 {
+	  sub @figs' @numr @numr @numr @numr @numr fraction by @numr;
+	} numr6;
 
-lookup numr7 {
-  sub @figs' @numr @numr @numr @numr @numr @numr fraction by @numr;
-} numr7;
+	lookup numr7 {
+	  sub @figs' @numr @numr @numr @numr @numr @numr fraction by @numr;
+	} numr7;
 
-lookup numr8 {
-  sub @figs' @numr @numr @numr @numr @numr @numr @numr fraction by @numr;
-} numr8;
+	lookup numr8 {
+	  sub @figs' @numr @numr @numr @numr @numr @numr @numr fraction by @numr;
+	} numr8;
 
-lookup numr9 {
-  sub @figs' @numr @numr @numr @numr @numr @numr @numr @numr fraction by @numr;
-} numr9;
+	lookup numr9 {
+	  sub @figs' @numr @numr @numr @numr @numr @numr @numr @numr fraction by @numr;
+	} numr9;
 
-lookup numr10 {
-  sub @figs' @numr @numr @numr @numr @numr @numr @numr @numr @numr fraction by @numr;
-} numr10;
+	lookup numr10 {
+	  sub @figs' @numr @numr @numr @numr @numr @numr @numr @numr @numr fraction by @numr;
+	} numr10;
 
-lookup dnom {
-  sub [fraction @dnom] @figs' by @dnom;
-} dnom;
+	lookup dnom {
+	  sub [fraction @dnom] @figs' by @dnom;
+	} dnom;
 
-#< feature
+	#< feature
+	
 } frac;
-
-
-
-
-
-
-

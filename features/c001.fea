@@ -1,79 +1,79 @@
 feature c001 {
-# Coding Ligature 001—999
-# Case sensitive punctuation
-
-#> feature
-
-lookup NoSpace {
-	sub @uppercase_actor @case_default' @uppercase_actor by @case_top;
-	sub @uppercase_actor @case_default' @case_default @uppercase_actor by @case_top;
-	sub @uppercase_actor @case_default' @case_default @case_default @uppercase_actor by @case_top;
-	sub @uppercase_actor @case_default' @case_default @case_default @case_default @uppercase_actor by @case_top;
-	sub @uppercase_actor @case_default' @case_default @case_default @case_default @case_default @uppercase_actor by @case_top;
-} NoSpace;
-
-lookup StartSpace {
-	sub @uppercase_actor @space_actor @case_default' @uppercase_actor by @case_top;
-	sub @uppercase_actor @space_actor @case_default' @case_default @uppercase_actor by @case_top;
-	sub @uppercase_actor @space_actor @case_default' @case_default @case_default @uppercase_actor by @case_top;
-	sub @uppercase_actor @space_actor @case_default' @case_default @case_default @case_default @uppercase_actor by @case_top;
-	sub @uppercase_actor @space_actor @case_default' @case_default @case_default @case_default @case_default @uppercase_actor by @case_top;
-} StartSpace;
-
-lookup EndSpace {
-	sub @uppercase_actor @case_default' @space_actor @uppercase_actor by @case_top;
-	sub @uppercase_actor @case_default' @case_default @space_actor @uppercase_actor by @case_top;
-	sub @uppercase_actor @case_default' @case_default @case_default @space_actor @uppercase_actor by @case_top;
-	sub @uppercase_actor @case_default' @case_default @case_default @case_default @space_actor @uppercase_actor by @case_top;
-	sub @uppercase_actor @case_default' @case_default @case_default @case_default @case_default @space_actor @uppercase_actor by @case_top;
-} EndSpace;
-
-lookup StartEndSpace {
-	sub @uppercase_actor @space_actor @case_default' @space_actor @uppercase_actor by @case_top;
-	sub @uppercase_actor @space_actor @case_default' @case_default @space_actor @uppercase_actor by @case_top;
-	sub @uppercase_actor @space_actor @case_default' @case_default @case_default @space_actor @uppercase_actor by @case_top;
-	sub @uppercase_actor @space_actor @case_default' @case_default @case_default @case_default @space_actor @uppercase_actor by @case_top;
-	sub @uppercase_actor @space_actor @case_default' @case_default @case_default @case_default @case_default @space_actor @uppercase_actor by @case_top;
-} StartEndSpace;
-
-lookup CloseUp_1 {
-	ignore sub @case_default' @lowercase_actor;
-	ignore sub @case_default' @case_default @lowercase_actor;
-	ignore sub @case_default' @case_default @case_default @lowercase_actor;
-	ignore sub @case_default' @case_default @case_default @case_default @lowercase_actor;
-	ignore sub @case_default' @case_default @case_default @case_default @case_default @lowercase_actor;
-	sub @uppercase_actor @case_default' by @case_top;
-} CloseUp_1;
-
-lookup CloseUp_2 {
-	ignore sub @lowercase_actor @case_default';
-	ignore sub @lowercase_actor @case_default @case_default';
-	ignore sub @lowercase_actor @case_default @case_default @case_default';
-	ignore sub @lowercase_actor @case_default @case_default @case_default @case_default';
-	ignore sub @lowercase_actor @case_default @case_default @case_default @case_default @case_default';
-	sub @case_default' @uppercase_actor by @case_top;
-	sub @case_default' @case_default @uppercase_actor by @case_top;
-	sub @case_default' @case_default @case_default @uppercase_actor by @case_top;
-	sub @case_default' @case_default @case_default @case_default @uppercase_actor by @case_top;
-	sub @case_default' @case_default @case_default @case_default @case_default @uppercase_actor by @case_top;
-} CloseUp_2;
-
-lookup CloseUp_3 {
-	sub @case_default' @case_top by @case_top;
-} CloseUp_3;
-
-lookup CloseUp_4 {
-	sub @case_default' @case_top by @case_top;
-} CloseUp_4;
-
-lookup CloseUp_5 {
-	sub @case_default' @case_top by @case_top;
-} CloseUp_5;
-
-lookup InBetween {
-	sub @case_top @case_default' by @case_top;
-} InBetween;
-
-#< feature
-
+	# Coding Ligature 001—999
+	# Case sensitive punctuation
+	
+	#> feature
+	
+	lookup NoSpace {
+		sub @uppercase_actor @case_default' @uppercase_actor by @case_top;
+		sub @uppercase_actor @case_default' @case_default @uppercase_actor by @case_top;
+		sub @uppercase_actor @case_default' @case_default @case_default @uppercase_actor by @case_top;
+		sub @uppercase_actor @case_default' @case_default @case_default @case_default @uppercase_actor by @case_top;
+		sub @uppercase_actor @case_default' @case_default @case_default @case_default @case_default @uppercase_actor by @case_top;
+	} NoSpace;
+	
+	lookup StartSpace {
+		sub @uppercase_actor @space_actor @case_default' @uppercase_actor by @case_top;
+		sub @uppercase_actor @space_actor @case_default' @case_default @uppercase_actor by @case_top;
+		sub @uppercase_actor @space_actor @case_default' @case_default @case_default @uppercase_actor by @case_top;
+		sub @uppercase_actor @space_actor @case_default' @case_default @case_default @case_default @uppercase_actor by @case_top;
+		sub @uppercase_actor @space_actor @case_default' @case_default @case_default @case_default @case_default @uppercase_actor by @case_top;
+	} StartSpace;
+	
+	lookup EndSpace {
+		sub @uppercase_actor @case_default' @space_actor @uppercase_actor by @case_top;
+		sub @uppercase_actor @case_default' @case_default @space_actor @uppercase_actor by @case_top;
+		sub @uppercase_actor @case_default' @case_default @case_default @space_actor @uppercase_actor by @case_top;
+		sub @uppercase_actor @case_default' @case_default @case_default @case_default @space_actor @uppercase_actor by @case_top;
+		sub @uppercase_actor @case_default' @case_default @case_default @case_default @case_default @space_actor @uppercase_actor by @case_top;
+	} EndSpace;
+	
+	lookup StartEndSpace {
+		sub @uppercase_actor @space_actor @case_default' @space_actor @uppercase_actor by @case_top;
+		sub @uppercase_actor @space_actor @case_default' @case_default @space_actor @uppercase_actor by @case_top;
+		sub @uppercase_actor @space_actor @case_default' @case_default @case_default @space_actor @uppercase_actor by @case_top;
+		sub @uppercase_actor @space_actor @case_default' @case_default @case_default @case_default @space_actor @uppercase_actor by @case_top;
+		sub @uppercase_actor @space_actor @case_default' @case_default @case_default @case_default @case_default @space_actor @uppercase_actor by @case_top;
+	} StartEndSpace;
+	
+	lookup CloseUp_1 {
+		ignore sub @case_default' @lowercase_actor;
+		ignore sub @case_default' @case_default @lowercase_actor;
+		ignore sub @case_default' @case_default @case_default @lowercase_actor;
+		ignore sub @case_default' @case_default @case_default @case_default @lowercase_actor;
+		ignore sub @case_default' @case_default @case_default @case_default @case_default @lowercase_actor;
+		sub @uppercase_actor @case_default' by @case_top;
+	} CloseUp_1;
+	
+	lookup CloseUp_2 {
+		ignore sub @lowercase_actor @case_default';
+		ignore sub @lowercase_actor @case_default @case_default';
+		ignore sub @lowercase_actor @case_default @case_default @case_default';
+		ignore sub @lowercase_actor @case_default @case_default @case_default @case_default';
+		ignore sub @lowercase_actor @case_default @case_default @case_default @case_default @case_default';
+		sub @case_default' @uppercase_actor by @case_top;
+		sub @case_default' @case_default @uppercase_actor by @case_top;
+		sub @case_default' @case_default @case_default @uppercase_actor by @case_top;
+		sub @case_default' @case_default @case_default @case_default @uppercase_actor by @case_top;
+		sub @case_default' @case_default @case_default @case_default @case_default @uppercase_actor by @case_top;
+	} CloseUp_2;
+	
+	lookup CloseUp_3 {
+		sub @case_default' @case_top by @case_top;
+	} CloseUp_3;
+	
+	lookup CloseUp_4 {
+		sub @case_default' @case_top by @case_top;
+	} CloseUp_4;
+	
+	lookup CloseUp_5 {
+		sub @case_default' @case_top by @case_top;
+	} CloseUp_5;
+	
+	lookup InBetween {
+		sub @case_top @case_default' by @case_top;
+	} InBetween;
+	
+	#< feature
+	
 } c001;

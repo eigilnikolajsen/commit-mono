@@ -1,45 +1,45 @@
 feature c004 {
-# Coding Ligature 001—999
-# Pipe substitution
-
-#> feature
-
-@less_ = [less less.c2_1 less.c2_2 less.c3_1 less.c3_3];
-@less_case = [less.case less.case.c2_1 less.case.c2_2 less.case.c3_1 less.case.c3_3];
-@greater_ = [greater greater.c2_1 greater.c2_2 greater.c3_1 greater.c3_3];
-@greater_case = [greater.case greater.case.c2_1 greater.case.c2_2 greater.case.c3_1 greater.case.c3_3];
-@bar_pipe = [bar.pipe bar.case.pipe];
-@bar_c = [bar.c2_1 bar.c2_2 bar bar.c3_1 bar.c3_3 bar.pipe];
-@bar_c_case = [bar.case.c2_1 bar.case.c2_2 bar.case bar.case.c3_1 bar.case.c3_3 bar.case.pipe];
-
-lookup BarFix {
-    sub @less_ @bar_c' by bar.pipe;
-    sub @bar_c' @bar_c @bar_c @greater_ by bar.pipe;
-    sub @bar_c' @bar_c @greater_ by bar.pipe;
-    sub @bar_c' @greater_ by bar.pipe;
-
-    sub @less_ @bar_c_case' by bar.case.pipe;
-    sub @bar_c_case' @bar_c_case @bar_c_case @greater_ by bar.case.pipe;
-    sub @bar_c_case' @bar_c_case @greater_ by bar.case.pipe;
-    sub @bar_c_case' @greater_ by bar.case.pipe;
-} BarFix;
-
-lookup BarToBarPipe {
-    sub @bar_pipe @bar_c' by bar.pipe;
-    sub @bar_pipe @bar_c_case' by bar.case.pipe;
-} BarToBarPipe;
-
-lookup Start {
-    sub @less_' @bar_pipe by less.pipe;
-    sub @less_case' @bar_pipe by less.pipe.case;
-} Start;
-
-lookup End {
-    sub @bar_pipe @greater_' by greater.pipe;
-    sub @bar_pipe @greater_case' by greater.pipe.case;
-} End;
-
-#< feature
-
+    # Coding Ligature 001—999
+    # Pipe substitution
+    
+    #> feature
+    
+    @less_ = [less less.c2_1 less.c2_2 less.c3_1 less.c3_3];
+    @less_case = [less.case less.case.c2_1 less.case.c2_2 less.case.c3_1 less.case.c3_3];
+    @greater_ = [greater greater.c2_1 greater.c2_2 greater.c3_1 greater.c3_3];
+    @greater_case = [greater.case greater.case.c2_1 greater.case.c2_2 greater.case.c3_1 greater.case.c3_3];
+    @bar_pipe = [bar.pipe bar.case.pipe];
+    @bar_c = [bar.c2_1 bar.c2_2 bar bar.c3_1 bar.c3_3 bar.pipe];
+    @bar_c_case = [bar.case.c2_1 bar.case.c2_2 bar.case bar.case.c3_1 bar.case.c3_3 bar.case.pipe];
+    
+    lookup BarFix {
+        sub @less_ @bar_c' by bar.pipe;
+        sub @bar_c' @bar_c @bar_c @greater_ by bar.pipe;
+        sub @bar_c' @bar_c @greater_ by bar.pipe;
+        sub @bar_c' @greater_ by bar.pipe;
+    
+        sub @less_ @bar_c_case' by bar.case.pipe;
+        sub @bar_c_case' @bar_c_case @bar_c_case @greater_ by bar.case.pipe;
+        sub @bar_c_case' @bar_c_case @greater_ by bar.case.pipe;
+        sub @bar_c_case' @greater_ by bar.case.pipe;
+    } BarFix;
+    
+    lookup BarToBarPipe {
+        sub @bar_pipe @bar_c' by bar.pipe;
+        sub @bar_pipe @bar_c_case' by bar.case.pipe;
+    } BarToBarPipe;
+    
+    lookup Start {
+        sub @less_' @bar_pipe by less.pipe;
+        sub @less_case' @bar_pipe by less.pipe.case;
+    } Start;
+    
+    lookup End {
+        sub @bar_pipe @greater_' by greater.pipe;
+        sub @bar_pipe @greater_case' by greater.pipe.case;
+    } End;
+    
+    #< feature
+    
 } c004;
 
