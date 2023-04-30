@@ -2,14 +2,14 @@ feature c006 {
     # Coding Ligature 001—999
     # Progress bar substitution
     
-    #> feature
-    
+    # classes
     @empty = [period period.c2_1 period.c2_2 period.c3_1 period.c3_3 period.square period.square.c2_1 period.square.c2_2 period.square.c3_1 period.square.c3_3 @space_actor];
     @fills = [numbersign equal equal.case equal.arrow equal.arrow.case];
     @indic = [greater greater.case greater.arrow_start_equal greater.arrow_start_equal.case];
     @l_bracket = [bracketleft bracketleft.case parenleft parenleft.case];
     @r_bracket = [bracketright bracketright.case parenright parenright.case];
     
+    # feature
     lookup Progress_start {
         sub @l_bracket' @empty @empty @empty @empty @empty by uniEE00;
         sub @l_bracket' @fills @empty @empty @empty @empty by uniEE03;
@@ -72,8 +72,5 @@ feature c006 {
         sub bar' uniEE03 by uniEE08;
         sub slash' uniEE03 by uniEE09;
     } Spinner;
-    
-    
-    #< feature
     
 } c006;

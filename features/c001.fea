@@ -1,10 +1,15 @@
 feature c001 {
 	# Coding Ligature 001—999
 	# Case sensitive punctuation
+
+	# classes
+	@colon = [colon colon.square];
+	@question_exclam = [question question.square exclam exclam.square];
 	
-	#> feature
-	
+	# feature
 	lookup NoSpace {
+		ignore sub @colon' @question_exclam;
+		ignore sub @question_exclam @colon';
 		sub @uppercase_actor @case_default' @uppercase_actor by @case_top;
 		sub @uppercase_actor @case_default' @case_default @uppercase_actor by @case_top;
 		sub @uppercase_actor @case_default' @case_default @case_default @uppercase_actor by @case_top;
@@ -13,6 +18,8 @@ feature c001 {
 	} NoSpace;
 	
 	lookup StartSpace {
+		ignore sub @colon' @question_exclam;
+		ignore sub @question_exclam @colon';
 		sub @uppercase_actor @space_actor @case_default' @uppercase_actor by @case_top;
 		sub @uppercase_actor @space_actor @case_default' @case_default @uppercase_actor by @case_top;
 		sub @uppercase_actor @space_actor @case_default' @case_default @case_default @uppercase_actor by @case_top;
@@ -21,6 +28,8 @@ feature c001 {
 	} StartSpace;
 	
 	lookup EndSpace {
+		ignore sub @colon' @question_exclam;
+		ignore sub @question_exclam @colon';
 		sub @uppercase_actor @case_default' @space_actor @uppercase_actor by @case_top;
 		sub @uppercase_actor @case_default' @case_default @space_actor @uppercase_actor by @case_top;
 		sub @uppercase_actor @case_default' @case_default @case_default @space_actor @uppercase_actor by @case_top;
@@ -29,6 +38,8 @@ feature c001 {
 	} EndSpace;
 	
 	lookup StartEndSpace {
+		ignore sub @colon' @question_exclam;
+		ignore sub @question_exclam @colon';
 		sub @uppercase_actor @space_actor @case_default' @space_actor @uppercase_actor by @case_top;
 		sub @uppercase_actor @space_actor @case_default' @case_default @space_actor @uppercase_actor by @case_top;
 		sub @uppercase_actor @space_actor @case_default' @case_default @case_default @space_actor @uppercase_actor by @case_top;
@@ -37,6 +48,8 @@ feature c001 {
 	} StartEndSpace;
 	
 	lookup CloseUp_1 {
+		ignore sub @colon' @question_exclam;
+		ignore sub @question_exclam @colon';
 		ignore sub @case_default' @lowercase_actor;
 		ignore sub @case_default' @case_default @lowercase_actor;
 		ignore sub @case_default' @case_default @case_default @lowercase_actor;
@@ -46,6 +59,8 @@ feature c001 {
 	} CloseUp_1;
 	
 	lookup CloseUp_2 {
+		ignore sub @colon' @question_exclam;
+		ignore sub @question_exclam @colon';
 		ignore sub @lowercase_actor @case_default';
 		ignore sub @lowercase_actor @case_default @case_default';
 		ignore sub @lowercase_actor @case_default @case_default @case_default';
@@ -73,7 +88,5 @@ feature c001 {
 	lookup InBetween {
 		sub @case_top @case_default' by @case_top;
 	} InBetween;
-	
-	#< feature
 	
 } c001;

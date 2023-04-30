@@ -1,0 +1,25 @@
+feature c007 {
+    # Coding Ligature 001—999
+    # Letter balancing
+    
+    # feature
+    pos @width_narrow @width_narrow' @width_wide <-30 0 0 0>;
+    pos @width_wide @width_narrow' @width_narrow <30 0 0 0>;
+    pos @width_narrow @width_regular' @width_wide <-30 0 0 0>;
+    pos @width_wide @width_regular' @width_narrow <30 0 0 0>;
+    pos @width_narrow @width_wide' @width_wide <-30 0 0 0>;
+    pos @width_wide @width_wide' @width_narrow <30 0 0 0>;
+    pos @width_regular @width_narrow' @width_wide <-20 0 0 0>;
+    pos @width_wide @width_narrow' @width_regular <20 0 0 0>;
+    pos @width_regular @width_regular' @width_wide <-20 0 0 0>;
+    pos @width_wide @width_regular' @width_regular <20 0 0 0>;
+    pos @width_regular @width_wide' @width_wide <-20 0 0 0>;
+    pos @width_wide @width_wide' @width_regular <20 0 0 0>;
+    pos @width_narrow @width_narrow' @width_regular <-10 0 0 0>;
+    pos @width_regular @width_narrow' @width_narrow <10 0 0 0>;
+    pos @width_narrow @width_regular' @width_regular <-10 0 0 0>;
+    pos @width_regular @width_regular' @width_narrow <10 0 0 0>;
+    pos @width_narrow @width_wide' @width_regular <-10 0 0 0>;
+    pos @width_regular @width_wide' @width_narrow <10 0 0 0>;
+    
+} c007;

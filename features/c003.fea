@@ -1,116 +1,43 @@
 feature c003 {
-	# Coding Ligature 001—999
-	# Arrows
-
-	#> feature
-
-	@hyphen = [hyphen hyphen.case];
-	@hyphen_arrow = [hyphen.arrow hyphen.arrow.case];
-	@equal = [equal equal.case];
-	@equal_arrow = [equal.arrow equal.arrow.case];
-	@less_arrow_end = [less.arrow_end less.arrow_end.case];
-	@less_arrow_start = [less.arrow_start less.arrow_start.case];
-	@less_arrow_start_hyphen = [less.arrow_start_hyphen less.arrow_start_hyphen.case];
-	@less_arrow_start_equal = [less.arrow_start_equal less.arrow_start_equal.case];
-	@greater_arrow_end = [greater.arrow_end greater.arrow_end.case];
-	@greater_arrow_start = [greater.arrow_start greater.arrow_start.case];
-	@greater_arrow_start_hyphen = [greater.arrow_start_hyphen greater.arrow_start_hyphen.case];
-	@greater_arrow_start_equal = [greater.arrow_start_equal greater.arrow_start_equal.case];
-	@exclam = [exclam exclam.square];
-
-	lookup TipStart_1 {
-		sub @less' @hyphen by @less_arrow_start_hyphen;
-		sub @less' @equal by @less_arrow_start_equal;
-		sub @greater' @hyphen by @greater_arrow_end;
-		sub @greater' @equal by @greater_arrow_end;
-	} TipStart_1;
-
-	lookup TipStart_2 {
-		sub @less' @less_arrow_start_hyphen by @less_arrow_start;
-		sub @less' @less_arrow_start_equal by @less_arrow_start;
-		sub @greater' @greater_arrow_end by @greater_arrow_end;
-		sub @greater' @greater_arrow_end by @greater_arrow_end;
-	} TipStart_2;
-
-	lookup TipStart_3 {
-		sub @less' @less_arrow_start by @less_arrow_start;
-		sub @greater' @greater_arrow_end by @greater_arrow_end;
-	} TipStart_3;
-
-
-
-	lookup BodyStartA {
-		sub @less_arrow_start_hyphen @hyphen' by @hyphen_arrow;
-		sub @less_arrow_start_equal @equal' by @equal_arrow;
-		sub @greater_arrow_end @hyphen' by @hyphen_arrow;
-		sub @greater_arrow_end @equal' by @equal_arrow;
-	} BodyStartA;
-
-
-
-	lookup BodyStartB_1 {
-		sub @hyphen' @less by @hyphen_arrow;
-		sub @equal' @less by @equal_arrow;
-		sub @hyphen' @greater by @hyphen_arrow;
-		sub @equal' @greater by @equal_arrow;
-	} BodyStartB_1;
-
-	lookup BodyStartB_2 {
-		sub @hyphen' @hyphen_arrow by @hyphen_arrow;
-		sub @equal' @equal_arrow by @equal_arrow;
-	} BodyStartB_2;
-
-	lookup BodyStartB_3 {
-		sub @hyphen' @hyphen_arrow by @hyphen_arrow;
-		sub @equal' @equal_arrow by @equal_arrow;
-	} BodyStartB_3;
-
-	lookup BodyStartB_4 {
-		sub @hyphen' @hyphen_arrow by @hyphen_arrow;
-		sub @equal' @equal_arrow by @equal_arrow;
-	} BodyStartB_4;
-
-	lookup BodyStartB_5 {
-		sub @hyphen' @hyphen_arrow by @hyphen_arrow;
-		sub @equal' @equal_arrow by @equal_arrow;
-	} BodyStartB_5;
-
-
-
-	lookup BodyEnd {
-		sub @hyphen_arrow @hyphen' by @hyphen_arrow;
-		sub @equal_arrow @equal' by @equal_arrow;
-	} BodyEnd;
-
-
-
-	lookup TipEnd_1 {
-		sub @hyphen_arrow @less' by @less_arrow_end;
-		sub @equal_arrow @less' by @less_arrow_end;
-		sub @hyphen_arrow @greater' by @greater_arrow_start_hyphen;
-		sub @equal_arrow @greater' by @greater_arrow_start_equal;
-	} TipEnd_1;
-
-	lookup TipEnd_2 {
-		sub @hyphen_arrow @less_arrow_end' by @less_arrow_end;
-		sub @equal_arrow @less_arrow_end' by @less_arrow_end;
-		sub @greater_arrow_start_hyphen @greater' by @greater_arrow_start;
-		sub @greater_arrow_start_equal @greater' by @greater_arrow_start;
-	} TipEnd_2;
-
-	lookup TipEnd_3 {
-		sub @less_arrow_end @less' by @less_arrow_end;
-		sub @greater_arrow_start @greater' by @greater_arrow_start;
-	} TipEnd_3;
-
-
-
-	lookup HTMLcomment {
-		sub @less' @exclam @hyphen @hyphen by @less_arrow_start;
-		sub @less_arrow_start @exclam @hyphen' @hyphen by @hyphen_arrow;
-		sub @less_arrow_start @exclam @hyphen_arrow @hyphen' by @hyphen_arrow;
-	} HTMLcomment;
-
-	#< feature
-	
+    # Coding Ligature 001—999
+    # Pipe substitution
+    
+    # classes
+    @less_ = [less less.c2_1 less.c2_2 less.c3_1 less.c3_3];
+    @less_case = [less.case less.case.c2_1 less.case.c2_2 less.case.c3_1 less.case.c3_3];
+    @greater_ = [greater greater.c2_1 greater.c2_2 greater.c3_1 greater.c3_3];
+    @greater_case = [greater.case greater.case.c2_1 greater.case.c2_2 greater.case.c3_1 greater.case.c3_3];
+    @bar_pipe = [bar.pipe bar.case.pipe];
+    @bar_c = [bar.c2_1 bar.c2_2 bar bar.c3_1 bar.c3_3 bar.pipe];
+    @bar_c_case = [bar.case.c2_1 bar.case.c2_2 bar.case bar.case.c3_1 bar.case.c3_3 bar.case.pipe];
+    
+    # feature
+    lookup BarFix {
+        sub @less_ @bar_c' by bar.pipe;
+        sub @bar_c' @bar_c @bar_c @greater_ by bar.pipe;
+        sub @bar_c' @bar_c @greater_ by bar.pipe;
+        sub @bar_c' @greater_ by bar.pipe;
+    
+        sub @less_ @bar_c_case' by bar.case.pipe;
+        sub @bar_c_case' @bar_c_case @bar_c_case @greater_ by bar.case.pipe;
+        sub @bar_c_case' @bar_c_case @greater_ by bar.case.pipe;
+        sub @bar_c_case' @greater_ by bar.case.pipe;
+    } BarFix;
+    
+    lookup BarToBarPipe {
+        sub @bar_pipe @bar_c' by bar.pipe;
+        sub @bar_pipe @bar_c_case' by bar.case.pipe;
+    } BarToBarPipe;
+    
+    lookup Start {
+        sub @less_' @bar_pipe by less.pipe;
+        sub @less_case' @bar_pipe by less.pipe.case;
+    } Start;
+    
+    lookup End {
+        sub @bar_pipe @greater_' by greater.pipe;
+        sub @bar_pipe @greater_case' by greater.pipe.case;
+    } End;
+    
 } c003;
+

@@ -23,9 +23,7 @@
 			const result = document.querySelector("#result")
 			const submit = document.querySelector("#submit")
 			submit.addEventListener("click", () => {
-				result.textContent = [
-					...new Set(classes.value.split(" ")),
-				].join(" ")
+				result.textContent = [...new Set(classes.value.split(" "))].join(" ")
 			})
 		</script>
 	</body>

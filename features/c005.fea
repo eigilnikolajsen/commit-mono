@@ -1,40 +1,22 @@
 feature c005 {
-# Coding Ligature 001—999
-# Colon equal/hash substitution
+    # Coding Ligature 001—999
+    # Bar hyphen, bar equal, bar underscore substitution
 
-#> feature
+    # classes
+    @b_hyphen = [hyphen hyphen.arrow];
+    @b_equal = [equal equal.arrow];
 
-@colon_ = [colon colon.c2_1 colon.c2_2 colon.c3_1 colon.c3_3];
-@colon_case = [colon.case colon.case.c2_1 colon.case.c2_2 colon.case.c3_1 colon.case.c3_3];
-@colon_square = [colon.square colon.square.c2_1 colon.square.c2_2 colon.square.c3_1 colon.square.c3_3];
-@colon_case_square = [colon.case.square colon.case.square.c2_1 colon.case.square.c2_2 colon.case.square.c3_1 colon.case.square.c3_3];
-@colon_squashed = [colon.squash colon.squash.case colon.squash.square colon.squash.case.square];
-@squashers = [equal equal.case numbersign less less.case less.c2_1 less.c2_2 less.c3_1 less.c3_3 less.case.c2_1 less.case.c2_2 less.case.c3_1 less.case.c3_3 greater greater.case greater.c2_1 greater.c2_2 greater.c3_1 greater.c3_3 greater.case.c2_1 greater.case.c2_2 greater.case.c3_1 greater.case.c3_3];
+    # feature 
+    sub @b_hyphen bar' @b_hyphen by bar.hy_start_hy_end;
+    sub @b_hyphen bar' by bar.hy_start;
+    sub bar' @b_hyphen by bar.hy_end;
 
-lookup Squash_1 {
-    sub @colon_' @squashers by colon.squash;
-    sub @colon_case' @squashers by colon.squash.case;
-    sub @colon_square' @squashers by colon.squash.square;
-    sub @colon_case_square' @squashers by colon.squash.case.square;
-    sub @squashers @colon' by colon.squash;
-    sub @squashers @colon_case' by colon.squash.case;
-    sub @squashers @colon_square' by colon.squash.square;
-    sub @squashers @colon_case_square' by colon.squash.case.square;
-} Squash_1;
+    sub @b_equal bar' @b_equal by bar.eq_start_eq_end;
+    sub @b_equal bar' by bar.eq_start;
+    sub bar' @b_equal by bar.eq_end;
 
-lookup Squash_2 {
-    sub @colon_' @colon_squashed by colon.squash;
-    sub @colon_case' @colon_squashed by colon.squash.case;
-    sub @colon_square' @colon_squashed by colon.squash.square;
-    sub @colon_case_square' @colon_squashed by colon.squash.case.square;
-    sub @colon_squashed @colon_' by colon.squash;
-    sub @colon_squashed @colon_case' by colon.squash.case;
-    sub @colon_squashed @colon_square' by colon.squash.square;
-    sub @colon_squashed @colon_case_square' by colon.squash.case.square;
-} Squash_2;
-
-
-#< feature
+    sub underscore bar' underscore by bar.un_start_un_end;
+    sub underscore bar' by bar.un_start;
+    sub bar' underscore by bar.un_end;
 
 } c005;
-
