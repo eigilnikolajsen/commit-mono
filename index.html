@@ -8,9 +8,16 @@
 		<style>
 			@font-face {
 				font-family: "CommitMono";
-				src: url("/fonts/CommitMonoV51-450.otf");
+				src: url("/fonts/CommitMonoV72-450.otf");
 				font-style: normal;
 				font-weight: 400;
+			}
+			*,
+			*::before,
+			*::after {
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
 			}
 			body {
 				display: flex;
@@ -20,18 +27,22 @@
 				overflow: hidden;
 			}
 			p {
+				display: block;
 				font-family: "CommitMono";
 				white-space: nowrap;
 				font-size: 14rem;
 				background-color: hsl(0, 0%, 50%);
-				line-height: 1.1;
-				width: calc(14rem * 0.6 * 1);
+				line-height: 1;
+				width: calc(14rem * 0.6 * 11);
 			}
 		</style>
 		<script src="https://cdn.jsdelivr.net/npm/opentype.js@latest/dist/opentype.min.js" defer></script>
 		<script src="t.js" defer></script>
 	</head>
 	<body>
-		<p>g</p>
+		<div>
+			<p>Commit Mono</p>
+			<p>Commit Mono</p>
+		</div>
 	</body>
 </html>
