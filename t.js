@@ -1,7 +1,24 @@
 console.log("opentype test")
 
+const updateLabel = (input) => {
+	console.log(input)
+	input.parentNode.querySelector("output").textContent = input.value
+}
+
+const updateOptions = (event, form) => {
+	console.log(event)
+
+	const data = new FormData(form)
+	let output = ""
+	for (const entry of data) {
+		output = `${output}${entry[0]}=${entry[1]}\n`
+	}
+	console.log(output)
+	event.preventDefault()
+}
+
 async function initFont() {
-	const font = await opentype.load("/fonts/CommitMonoV51-450.otf")
+	const font = await opentype.load("/fonts/CommitMonoV87-450.otf")
 
 	console.log(font)
 	// console.log(font.glyphs.glyphs[50].path)

@@ -5,44 +5,97 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Commit Webtests</title>
-		<style>
-			@font-face {
-				font-family: "CommitMono";
-				src: url("/fonts/CommitMonoV72-450.otf");
-				font-style: normal;
-				font-weight: 400;
-			}
-			*,
-			*::before,
-			*::after {
-				box-sizing: border-box;
-				margin: 0;
-				padding: 0;
-			}
-			body {
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				height: 90vh;
-				overflow: hidden;
-			}
-			p {
-				display: block;
-				font-family: "CommitMono";
-				white-space: nowrap;
-				font-size: 14rem;
-				background-color: hsl(0, 0%, 50%);
-				line-height: 1;
-				width: calc(14rem * 0.6 * 11);
-			}
-		</style>
+		<link rel="stylesheet" href="style.css" />
 		<script src="https://cdn.jsdelivr.net/npm/opentype.js@latest/dist/opentype.min.js" defer></script>
 		<script src="t.js" defer></script>
 	</head>
 	<body>
-		<div>
-			<p>Commit Mono</p>
-			<p>Commit Mono</p>
+		<div id="app">
+			<!-- select weight -->
+			<section>
+				<form onchange="updateOptions(event, this)">
+					<output id="weight_output" for="weight">450</output>
+					<input
+						type="range"
+						name="weight"
+						id="weight"
+						min="300"
+						max="700"
+						step="25"
+						value="450"
+						oninput="updateLabel(this)"
+					/>
+
+					<!-- select alternates -->
+					<fieldset>
+						<legend>Select @</legend>
+						<div>
+							<input type="radio" id="standard" name="select_at" value="standard" checked />
+							<label for="standard">Standard</label>
+						</div>
+						<div>
+							<input type="radio" id="simplified" name="select_at" value="simplified" />
+							<label for="simplified">Simplified</label>
+						</div>
+					</fieldset>
+					<fieldset>
+						<legend>Select a</legend>
+						<div>
+							<input type="radio" id="two_storey" name="select_a" value="two_storey" checked />
+							<label for="two_storey">Two storey</label>
+						</div>
+						<div>
+							<input type="radio" id="single_storey" name="select_a" value="single_storey" />
+							<label for="single_storey">Single storey</label>
+						</div>
+					</fieldset>
+
+					<!-- select features -->
+					<fieldset>
+						<legend>Select punctuation</legend>
+						<div>
+							<input
+								type="radio"
+								id="smart_punctuation"
+								name="select_punctuation"
+								value="smart_punctuation"
+								checked
+							/>
+							<label for="smart_punctuation">Smart punctuation</label>
+						</div>
+						<div>
+							<input
+								type="radio"
+								id="standard_punctuation"
+								name="select_punctuation"
+								value="standard_punctuation"
+							/>
+							<label for="standard_punctuation">Standard punctuation</label>
+						</div>
+					</fieldset>
+					<fieldset>
+						<legend>Select letter balancing</legend>
+						<div>
+							<input
+								type="radio"
+								id="smart_balancing"
+								name="letter_balancing"
+								value="smart_balancing"
+								checked
+							/>
+							<label for="smart_balancing">Smart balancing</label>
+						</div>
+						<div>
+							<input type="radio" id="no_balancing" name="letter_balancing" value="no_balancing" />
+							<label for="no_balancing">No balancing</label>
+						</div>
+					</fieldset>
+				</form>
+			</section>
+
+			<div class="button_container">
+				<button>Download</button>
+			</div>
 		</div>
 	</body>
 </html>
