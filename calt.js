@@ -8,7 +8,7 @@ function pbcopy(data) {
 }
 
 async function featuresToCalt() {
-	const features = ["c001", "c007", "c008"]
+	const features = ["c001", "c008", "c009"]
 
 	let calt = []
 

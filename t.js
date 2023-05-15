@@ -33,7 +33,7 @@ async function initFont() {
 	// const noSups = deleteFeature(font, "c001")
 
 	// console.log(noSups)
-	font.download()
+	// font.download()
 }
 
 function deleteFeature(font, delFea) {
