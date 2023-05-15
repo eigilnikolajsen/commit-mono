@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Commit Webtests</title>
 		<link rel="stylesheet" href="style.css" />
-		<script src="https://cdn.jsdelivr.net/npm/opentype.js@latest/dist/opentype.min.js" defer></script>
+		<script src="https://cdn.jsdelivr.net/npm/opentype.js" defer></script>
 		<script src="t.js" defer></script>
 	</head>
 	<body>
@@ -15,16 +15,7 @@
 			<section>
 				<form onchange="updateOptions(event, this)">
 					<output id="weight_output" for="weight">450</output>
-					<input
-						type="range"
-						name="weight"
-						id="weight"
-						min="300"
-						max="700"
-						step="25"
-						value="450"
-						oninput="updateLabel(this)"
-					/>
+					<input type="range" name="weight" id="weight" min="300" max="700" step="25" value="450" oninput="updateLabel(this)" />
 
 					<!-- select alternates -->
 					<fieldset>
@@ -54,35 +45,18 @@
 					<fieldset>
 						<legend>Select punctuation</legend>
 						<div>
-							<input
-								type="radio"
-								id="smart_punctuation"
-								name="select_punctuation"
-								value="smart_punctuation"
-								checked
-							/>
+							<input type="radio" id="smart_punctuation" name="select_punctuation" value="smart_punctuation" checked />
 							<label for="smart_punctuation">Smart punctuation</label>
 						</div>
 						<div>
-							<input
-								type="radio"
-								id="standard_punctuation"
-								name="select_punctuation"
-								value="standard_punctuation"
-							/>
+							<input type="radio" id="standard_punctuation" name="select_punctuation" value="standard_punctuation" />
 							<label for="standard_punctuation">Standard punctuation</label>
 						</div>
 					</fieldset>
 					<fieldset>
 						<legend>Select letter balancing</legend>
 						<div>
-							<input
-								type="radio"
-								id="smart_balancing"
-								name="letter_balancing"
-								value="smart_balancing"
-								checked
-							/>
+							<input type="radio" id="smart_balancing" name="letter_balancing" value="smart_balancing" checked />
 							<label for="smart_balancing">Smart balancing</label>
 						</div>
 						<div>

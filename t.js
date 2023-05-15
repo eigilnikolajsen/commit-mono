@@ -18,7 +18,7 @@ const updateOptions = (event, form) => {
 }
 
 async function initFont() {
-	const font = await opentype.load("/fonts/CommitMonoV87-450.otf")
+	const font = await opentype.load("/fonts/CommitMonoV91-450.otf")
 
 	console.log(font)
 	// console.log(font.glyphs.glyphs[50].path)
@@ -30,10 +30,10 @@ async function initFont() {
 	// console.log(newFont.glyphs.glyphs[50].path)
 	// console.log(newFont.glyphs.glyphs[76].path)
 
-	const noSups = deleteFeature(font, "c001")
+	// const noSups = deleteFeature(font, "c001")
 
-	console.log(noSups)
-	// font.download()
+	// console.log(noSups)
+	font.download()
 }
 
 function deleteFeature(font, delFea) {

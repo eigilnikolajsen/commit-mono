@@ -25,25 +25,24 @@ button {
 	position: relative;
 	font-family: CommitMono;
 	font-size: 2rem;
-	text-transform: uppercase;
 	padding: 0.3rem 1rem;
-	line-height: 1.1;
 	background-color: #fb503d;
-	border: 3px solid #000000;
+	border: none;
 	transition: 500ms cubic-bezier(0.3, 1.4, 0.6, 1);
-	top: 0px;
 	cursor: pointer;
-	border-radius: 999rem;
-	box-shadow: 0 0.5rem 0.5rem #0000002c;
+	border-radius: 0rem;
+	box-shadow: inset 1px 1px 4px #ffffff38, inset -1px -1px 4px #00000021;
 }
 
 button:hover {
-	transform: scale(0.99);
+	transform: scale(1.005) translateY(-0px);
+	transition: 300ms cubic-bezier(0.3, 1.4, 0.6, 1);
 }
 
 button:active {
-	transform: scale(0.96) translateY(2px);
-	opacity: 0.9;
-	transition: 70ms cubic-bezier(0.3, 1.4, 0.6, 1);
-	box-shadow: 0 0.3rem 0.4rem #0000004f;
+	transform: scale(0.99) translateY(0);
+	opacity: 1;
+	filter: brightness(1);
+	transition: 50ms cubic-bezier(0.3, 1.4, 0.6, 1);
+	box-shadow: inset 1px 1px 4px #00000021, inset -1px -1px 4px #ffffff38;
 }

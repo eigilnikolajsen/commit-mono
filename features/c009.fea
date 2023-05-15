@@ -1,0 +1,18 @@
+feature c009 {
+    # Coding Ligature 001—999
+    # Letter balancing
+
+    # classes
+    @width_narr = [f f.leftL f.leftM f.leftS f.rightL f.rightM f.rightS i i.leftL i.leftM i.leftS i.rightL i.rightM i.rightS j j.leftL j.leftM j.leftS j.rightL j.rightM j.rightS l l.leftL l.leftM l.leftS l.rightL l.rightM l.rightS r r.leftL r.leftM r.leftS r.rightL r.rightM r.rightS t t.leftL t.leftM t.leftS t.rightL t.rightM t.rightS i.square i.square.leftL i.square.leftM i.square.leftS i.square.rightL i.square.rightM i.square.rightS j.square j.square.leftL j.square.leftM j.square.leftS j.square.rightL j.square.rightM j.square.rightS];
+    @width_regu = [A A.leftL A.leftM A.leftS A.rightL A.rightM A.rightS C C.leftL C.leftM C.leftS C.rightL C.rightM C.rightS E E.leftL E.leftM E.leftS E.rightL E.rightM E.rightS F F.leftL F.leftM F.leftS F.rightL F.rightM F.rightS H H.leftL H.leftM H.leftS H.rightL H.rightM H.rightS I I.leftL I.leftM I.leftS I.rightL I.rightM I.rightS J J.leftL J.leftM J.leftS J.rightL J.rightM J.rightS L L.leftL L.leftM L.leftS L.rightL L.rightM L.rightS O O.leftL O.leftM O.leftS O.rightL O.rightM O.rightS P P.leftL P.leftM P.leftS P.rightL P.rightM P.rightS Q Q.leftL Q.leftM Q.leftS Q.rightL Q.rightM Q.rightS S S.leftL S.leftM S.leftS S.rightL S.rightM S.rightS T T.leftL T.leftM T.leftS T.rightL T.rightM T.rightS U U.leftL U.leftM U.leftS U.rightL U.rightM U.rightS V V.leftL V.leftM V.leftS V.rightL V.rightM V.rightS Y Y.leftL Y.leftM Y.leftS Y.rightL Y.rightM Y.rightS Z Z.leftL Z.leftM Z.leftS Z.rightL Z.rightM Z.rightS a a.leftL a.leftM a.leftS a.rightL a.rightM a.rightS b b.leftL b.leftM b.leftS b.rightL b.rightM b.rightS c c.leftL c.leftM c.leftS c.rightL c.rightM c.rightS d d.leftL d.leftM d.leftS d.rightL d.rightM d.rightS e e.leftL e.leftM e.leftS e.rightL e.rightM e.rightS g g.leftL g.leftM g.leftS g.rightL g.rightM g.rightS h h.leftL h.leftM h.leftS h.rightL h.rightM h.rightS k k.leftL k.leftM k.leftS k.rightL k.rightM k.rightS n n.leftL n.leftM n.leftS n.rightL n.rightM n.rightS o o.leftL o.leftM o.leftS o.rightL o.rightM o.rightS p p.leftL p.leftM p.leftS p.rightL p.rightM p.rightS q q.leftL q.leftM q.leftS q.rightL q.rightM q.rightS s s.leftL s.leftM s.leftS s.rightL s.rightM s.rightS u u.leftL u.leftM u.leftS u.rightL u.rightM u.rightS v v.leftL v.leftM v.leftS v.rightL v.rightM v.rightS x x.leftL x.leftM x.leftS x.rightL x.rightM x.rightS y y.leftL y.leftM y.leftS y.rightL y.rightM y.rightS z z.leftL z.leftM z.leftS z.rightL z.rightM z.rightS];
+    @width_wide = [B B.leftL B.leftM B.leftS B.rightL B.rightM B.rightS D D.leftL D.leftM D.leftS D.rightL D.rightM D.rightS G G.leftL G.leftM G.leftS G.rightL G.rightM G.rightS K K.leftL K.leftM K.leftS K.rightL K.rightM K.rightS M M.leftL M.leftM M.leftS M.rightL M.rightM M.rightS N N.leftL N.leftM N.leftS N.rightL N.rightM N.rightS R R.leftL R.leftM R.leftS R.rightL R.rightM R.rightS W W.leftL W.leftM W.leftS W.rightL W.rightM W.rightS X X.leftL X.leftM X.leftS X.rightL X.rightM X.rightS m m.leftL m.leftM m.leftS m.rightL m.rightM m.rightS w w.leftL w.leftM w.leftS w.rightL w.rightM w.rightS];
+
+    # feature
+    sub @width_narr @center' @width_wide by @leftL;
+    sub @width_wide @center' @width_narr by @rightL;
+    sub @width_regu @center' @width_wide by @leftM;
+    sub @width_wide @center' @width_regu by @rightM;
+    sub @width_narr @center' @width_regu by @leftS;
+    sub @width_regu @center' @width_narr by @rightS;
+    
+} c009;
