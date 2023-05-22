@@ -1,4 +1,4 @@
-let data = {
+const websiteData = {
 	sections: [
 		{
 			name: "home",
