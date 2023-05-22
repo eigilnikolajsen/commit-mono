@@ -4,14 +4,27 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Commit Webtests</title>
-		<link rel="stylesheet" href="style.css" />
+
+		<!-- favicon -->
+		<!-- <link rel="icon" href="/favicon.ico" sizes="any" /> -->
+		<link rel="icon" href="/favicon/icon.svg" type="image/svg+xml" id="dynamic-favicon" />
+		<link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
+		<link rel="manifest" href="/manifest.webmanifest" />
+
+		<!-- title -->
+		<title>Commit Mono | Normal programming font</title>
+
+		<!-- CSS -->
+		<link rel="stylesheet" href="src/css/style.css" />
+
+		<!-- JS -->
 		<script src="https://cdn.jsdelivr.net/npm/opentype.js" defer></script>
-		<script src="t.js" defer></script>
+		<script src="src/js/t.js" defer></script>
+		<script src="src/js/website_data.js" defer></script>
+		<script src="src/js/dynamic_favicon.js" defer></script>
 	</head>
 	<body>
 		<div id="app">
-			<!-- select weight -->
 			<section>
 				<form onchange="updateOptions(event, this)">
 					<output id="weight_output" for="weight">450</output>
@@ -73,7 +86,24 @@
 			<p>Generate static font files with your alternates baked in for ease of use in all editors and terminals.</p>
 			<p>PREVIOUS SECTION, NEXT SECTION</p>
 			<p class="fill">Download</p>
-			<div id="checker"></div>
+			<p class="numtest">0123456789</p>
 		</div>
+		<main>
+			<header>
+				<nav></nav>
+			</header>
+			<div id="section_container">
+				<section id="section_1"></section>
+				<section id="section_2"></section>
+				<section id="section_3"></section>
+				<section id="section_4"></section>
+				<section id="section_5"></section>
+				<section id="section_6"></section>
+				<section id="section_7"></section>
+				<section id="section_8"></section>
+				<section id="section_9"></section>
+				<section id="section_10"></section>
+			</div>
+		</main>
 	</body>
 </html>

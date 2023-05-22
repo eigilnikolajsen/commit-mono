@@ -1,5 +1,4 @@
-feature c002 {
-	# Coding Ligature 001—999
+feature ss02 {
 	# Arrows
 
 	# classes
@@ -113,4 +112,4 @@ feature c002 {
 		sub @less_arrow_start @exclam @hyphen_arrow @hyphen' by @hyphen_arrow;
 	} HTMLcomment;
 	
-} c002;
+} ss02;

@@ -18,7 +18,7 @@ const updateOptions = (event, form) => {
 }
 
 async function initFont() {
-	const font = await opentype.load("/fonts/CommitMonoV91-450.otf")
+	const font = await opentype.load("/fonts/CommitMonoV100-450.otf")
 
 	console.log(font)
 	// console.log(font.glyphs.glyphs[50].path)

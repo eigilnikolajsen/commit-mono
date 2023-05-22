@@ -1,0 +1,21 @@
+feature ss03 {
+	# less_equal, exclam_equal substitution
+
+    # classes
+	@equal = [equal equal.case];
+
+	# feature
+	sub @space_actor @less' @equal @space_actor by less_equal.liga;
+	sub @space_actor less_equal.liga @equal' @space_actor by space;
+
+	sub @space_actor @greater' @equal @space_actor by greater_equal.liga;
+	sub @space_actor greater_equal.liga @equal' @space_actor by space;
+
+	sub @space_actor exclam' @equal @space_actor by exclam_equal.liga;
+	sub @space_actor exclam_equal.liga @equal' @space_actor by space;
+
+	sub @space_actor exclam' @equal @equal @space_actor by exclam_equal_equal.liga;
+	sub @space_actor exclam_equal_equal.liga @equal' @equal @space_actor by space;
+	sub @space_actor exclam_equal_equal.liga space @equal'  @space_actor by space;
+	
+} ss03;
