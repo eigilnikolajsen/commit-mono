@@ -376,4 +376,18 @@
 =j.square@`origin+MOVE_M`,
 =j.square@`origin+MOVE_S`,
 
+=a.cv01@`origin-MOVE_L`,
+=a.cv01@`origin-MOVE_M`,
+=a.cv01@`origin-MOVE_S`,
+=a.cv01@`origin+MOVE_L`,
+=a.cv01@`origin+MOVE_M`,
+=a.cv01@`origin+MOVE_S`,
+
+=g.cv02@`origin-MOVE_L`,
+=g.cv02@`origin-MOVE_M`,
+=g.cv02@`origin-MOVE_S`,
+=g.cv02@`origin+MOVE_L`,
+=g.cv02@`origin+MOVE_M`,
+=g.cv02@`origin+MOVE_S`,
+
 A.leftL/A.leftM/A.leftS/A.rightL/A.rightM/A.rightS/B.leftL/B.leftM/B.leftS/B.rightL/B.rightM/B.rightS/C.leftL/C.leftM/C.leftS/C.rightL/C.rightM/C.rightS/D.leftL/D.leftM/D.leftS/D.rightL/D.rightM/D.rightS/E.leftL/E.leftM/E.leftS/E.rightL/E.rightM/E.rightS/F.leftL/F.leftM/F.leftS/F.rightL/F.rightM/F.rightS/G.leftL/G.leftM/G.leftS/G.rightL/G.rightM/G.rightS/H.leftL/H.leftM/H.leftS/H.rightL/H.rightM/H.rightS/I.leftL/I.leftM/I.leftS/I.rightL/I.rightM/I.rightS/J.leftL/J.leftM/J.leftS/J.rightL/J.rightM/J.rightS/K.leftL/K.leftM/K.leftS/K.rightL/K.rightM/K.rightS/L.leftL/L.leftM/L.leftS/L.rightL/L.rightM/L.rightS/M.leftL/M.leftM/M.leftS/M.rightL/M.rightM/M.rightS/N.leftL/N.leftM/N.leftS/N.rightL/N.rightM/N.rightS/O.leftL/O.leftM/O.leftS/O.rightL/O.rightM/O.rightS/P.leftL/P.leftM/P.leftS/P.rightL/P.rightM/P.rightS/Q.leftL/Q.leftM/Q.leftS/Q.rightL/Q.rightM/Q.rightS/R.leftL/R.leftM/R.leftS/R.rightL/R.rightM/R.rightS/S.leftL/S.leftM/S.leftS/S.rightL/S.rightM/S.rightS/T.leftL/T.leftM/T.leftS/T.rightL/T.rightM/T.rightS/U.leftL/U.leftM/U.leftS/U.rightL/U.rightM/U.rightS/V.leftL/V.leftM/V.leftS/V.rightL/V.rightM/V.rightS/W.leftL/W.leftM/W.leftS/W.rightL/W.rightM/W.rightS/X.leftL/X.leftM/X.leftS/X.rightL/X.rightM/X.rightS/Y.leftL/Y.leftM/Y.leftS/Y.rightL/Y.rightM/Y.rightS/Z.leftL/Z.leftM/Z.leftS/Z.rightL/Z.rightM/Z.rightS/a.leftL/a.leftM/a.leftS/a.rightL/a.rightM/a.rightS/b.leftL/b.leftM/b.leftS/b.rightL/b.rightM/b.rightS/c.leftL/c.leftM/c.leftS/c.rightL/c.rightM/c.rightS/d.leftL/d.leftM/d.leftS/d.rightL/d.rightM/d.rightS/e.leftL/e.leftM/e.leftS/e.rightL/e.rightM/e.rightS/f.leftL/f.leftM/f.leftS/f.rightL/f.rightM/f.rightS/g.leftL/g.leftM/g.leftS/g.rightL/g.rightM/g.rightS/h.leftL/h.leftM/h.leftS/h.rightL/h.rightM/h.rightS/i.leftL/i.leftM/i.leftS/i.rightL/i.rightM/i.rightS/j.leftL/j.leftM/j.leftS/j.rightL/j.rightM/j.rightS/k.leftL/k.leftM/k.leftS/k.rightL/k.rightM/k.rightS/l.leftL/l.leftM/l.leftS/l.rightL/l.rightM/l.rightS/m.leftL/m.leftM/m.leftS/m.rightL/m.rightM/m.rightS/n.leftL/n.leftM/n.leftS/n.rightL/n.rightM/n.rightS/o.leftL/o.leftM/o.leftS/o.rightL/o.rightM/o.rightS/p.leftL/p.leftM/p.leftS/p.rightL/p.rightM/p.rightS/q.leftL/q.leftM/q.leftS/q.rightL/q.rightM/q.rightS/r.leftL/r.leftM/r.leftS/r.rightL/r.rightM/r.rightS/s.leftL/s.leftM/s.leftS/s.rightL/s.rightM/s.rightS/t.leftL/t.leftM/t.leftS/t.rightL/t.rightM/t.rightS/u.leftL/u.leftM/u.leftS/u.rightL/u.rightM/u.rightS/v.leftL/v.leftM/v.leftS/v.rightL/v.rightM/v.rightS/w.leftL/w.leftM/w.leftS/w.rightL/w.rightM/w.rightS/x.leftL/x.leftM/x.leftS/x.rightL/x.rightM/x.rightS/y.leftL/y.leftM/y.leftS/y.rightL/y.rightM/y.rightS/z.leftL/z.leftM/z.leftS/z.rightL/z.rightM/z.rightS/i.square.leftL/i.square.leftM/i.square.leftS/i.square.rightL/i.square.rightM/i.square.rightS/j.square.leftL/j.square.leftM/j.square.leftS/j.square.rightL/j.square.rightM/j.square.rightS
