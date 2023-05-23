@@ -1,6 +1,6 @@
 @font-face {
 	font-family: "CommitMono";
-	src: url("/fonts/CommitMonoV100-450.otf");
+	src: url("/fonts/CommitMonoV101-450.otf");
 	font-style: normal;
 	font-weight: 450;
 }
@@ -37,77 +37,29 @@ body {
 	display: none;
 }
 
-.button_container {
-	margin: 1rem;
-	position: relative;
+#main_scale {
+	inset: 0;
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
 }
 
-button {
-	position: relative;
-	font-family: inherit;
-	font-size: 2rem;
-	line-height: 1.1;
-	background-color: transparent;
-	border: none;
-	color: #000;
-	cursor: pointer;
+main {
+	transform: translate(0);
+	position: fixed;
+	min-width: 100%;
+	min-height: 100%;
+	padding: 1rem 2rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 
-button::before {
-	position: absolute;
-	content: "";
-	bottom: 0;
-	left: 0;
-	right: 0;
-	background-color: #000;
-	height: 2px;
-	z-index: -1;
-}
-
-button:hover {
-	background-color: #000;
-	color: var(--bg);
-	/* animation: 200ms infinite steps(2, jump-none) flicker; */
-}
-
-@keyframes flicker {
-	0% {
-		border: 1px solid #0000;
-	}
-	100% {
-		border: 1px solid #000;
-	}
-}
-
-button:active,
-button:focus-visible:active {
+button:active {
 	background: repeating-conic-gradient(#000 0% 25%, transparent 0% 50%, #000 0% 75%) 50% / 4px 4px;
 }
 
-button:active::before,
-button:focus-visible:active::before {
-	visibility: hidden;
-}
-
-button:focus-visible {
-	outline: none;
-	background-color: var(--text);
-	color: var(--bg);
-}
-
-@keyframes focus_animation {
-	0% {
-		background-color: #0000;
-	}
-	10%,
-	100% {
-		background-color: #000;
-	}
-}
-
 header {
-	position: fixed;
-	inset: 1rem 2rem;
 	display: grid;
 	align-items: end;
 }
@@ -121,9 +73,9 @@ nav {
 }
 
 #section_container {
-	position: fixed;
 	inset: 1rem 2rem;
 	display: grid;
+	flex-grow: 1;
 }
 
 #section_container > section {
