@@ -12,7 +12,10 @@ websiteData.sections.forEach((section, index) => {
 	nav.append(a)
 })
 
-window.addEventListener("keydown", (e) => {})
+window.addEventListener("keydown", (e) => {
+	const activeKey = document.querySelector(`.key[data-key-code="${e.code}"]`)
+	if (activeKey) activeKey.classList.add("active_key")
+})
 
 window.addEventListener("keyup", (e) => {
 	console.log(`keyup: ${e.code}`)
@@ -21,6 +24,8 @@ window.addEventListener("keyup", (e) => {
 			console.log(document.activeElement)
 		}
 	}
+	const activeKey = document.querySelector(`.key[data-key-code="${e.code}"]`)
+	if (activeKey) activeKey.classList.remove("active_key")
 })
 
 let active

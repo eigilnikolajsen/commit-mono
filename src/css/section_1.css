@@ -1,3 +1,89 @@
 #section_1 h1 {
 	margin-top: 4rem;
 }
+
+#section_1 figure {
+	margin-top: 2rem;
+}
+
+#keyboard_section {
+	margin-top: 8rem;
+}
+
+#keyboard_container {
+	display: flex;
+	width: max-content;
+	gap: 2rem;
+	align-items: end;
+	margin-top: 1rem;
+}
+
+.key_group {
+	display: flex;
+	flex-direction: column;
+}
+
+.keys {
+	display: flex;
+	gap: 0.1875rem 0.25rem;
+	margin-bottom: 0.125rem;
+}
+
+.key {
+	font-size: 0.75rem;
+	width: 1.25rem;
+	height: 1.375rem;
+	border: 1px solid var(--text);
+	border-bottom: 3px solid var(--text);
+	display: grid;
+	place-content: center;
+}
+
+.key.active_key {
+	background: var(--text);
+	color: var(--bg);
+	height: 1.25rem;
+	margin-top: 0.125rem;
+}
+
+#navigate .keys {
+	display: grid;
+	grid-template-areas:
+		". up ."
+		"left down right";
+}
+
+#navigate .key:nth-child(1) {
+	grid-area: up;
+}
+#navigate .key:nth-child(2) {
+	grid-area: left;
+}
+#navigate .key:nth-child(3) {
+	grid-area: down;
+}
+#navigate .key:nth-child(4) {
+	grid-area: right;
+}
+#select_element .keys {
+	display: flex;
+}
+
+#select_element .key:nth-child(1) {
+	width: 5rem;
+}
+
+#centered_ellipsis {
+	font-size: 0.75rem;
+	width: 1.25rem;
+	height: 1.25rem;
+	display: grid;
+	place-content: center;
+	letter-spacing: -0.0625rem;
+}
+
+#escape_textfield .key {
+	/* margin-left: -0.0625rem; */
+	letter-spacing: -0.1rem;
+	text-indent: -0.1rem;
+}

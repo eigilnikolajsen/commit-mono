@@ -107,7 +107,7 @@ button:focus-visible {
 
 header {
 	position: fixed;
-	inset: 2rem;
+	inset: 1rem 2rem;
 	display: grid;
 	align-items: end;
 }
@@ -122,7 +122,7 @@ nav {
 
 #section_container {
 	position: fixed;
-	inset: 2rem;
+	inset: 1rem 2rem;
 	display: grid;
 }
 
@@ -134,7 +134,7 @@ nav {
 p {
 	font-size: 0.75rem;
 	line-height: 1rem;
-	max-width: 50ch;
+	max-width: 54ch;
 }
 
 h1 {
