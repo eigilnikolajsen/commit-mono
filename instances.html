@@ -35,10 +35,7 @@
 			const precision = document.querySelector("#precision")
 			const resultButton = document.querySelector("#resultButton")
 			submit.addEventListener("click", () => {
-				const result = generateAxisValue(
-					[+start.value, +end.value],
-					+precision.value
-				)
+				const result = generateAxisValue([+start.value, +end.value], +precision.value)
 				resultButton.textContent = result
 				navigator.clipboard.writeText(result)
 			})

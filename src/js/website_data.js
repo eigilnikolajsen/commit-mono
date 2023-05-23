@@ -31,12 +31,14 @@ const websiteData = {
 		},
 		{
 			name: "distinction",
-			description: "With simple letter constructions Commit Mono emphasises character distinction without compromising style consistency.",
+			description:
+				"With simple letter constructions Commit Mono emphasises character distinction without compromising style consistency.",
 			content: {},
 		},
 		{
 			name: "features",
-			description: "Commit Mono comes without coding ligatures by default. However, it comes with a few helpful features to enhance reading.",
+			description:
+				"Commit Mono comes without coding ligatures by default. However, it comes with a few helpful features to enhance reading.",
 			content: {},
 		},
 		{
@@ -46,7 +48,8 @@ const websiteData = {
 		},
 		{
 			name: "download",
-			description: "Generate static font files with your alternates baked in for ease of use in all editors and terminals.",
+			description:
+				"Generate static font files with your alternates baked in for ease of use in all editors and terminals.",
 			content: {},
 		},
 		{

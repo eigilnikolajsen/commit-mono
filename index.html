@@ -16,20 +16,42 @@
 
 		<!-- CSS -->
 		<link rel="stylesheet" href="src/css/style.css" />
+		<link rel="stylesheet" href="src/css/section_1.css" />
+		<link rel="stylesheet" href="src/css/section_2.css" />
+		<link rel="stylesheet" href="src/css/section_3.css" />
+		<link rel="stylesheet" href="src/css/section_4.css" />
+		<link rel="stylesheet" href="src/css/section_5.css" />
+		<link rel="stylesheet" href="src/css/section_6.css" />
+		<link rel="stylesheet" href="src/css/section_7.css" />
+		<link rel="stylesheet" href="src/css/section_8.css" />
+		<link rel="stylesheet" href="src/css/section_9.css" />
+		<link rel="stylesheet" href="src/css/section_10.css" />
 
 		<!-- JS -->
+		<script src="src/js/utility_functions.js" defer></script>
 		<script src="https://cdn.jsdelivr.net/npm/opentype.js" defer></script>
 		<script src="src/js/t.js" defer></script>
 		<script src="src/js/website_data.js" defer></script>
 		<script src="src/js/dynamic_favicon.js" defer></script>
 		<script src="src/js/nav.js" defer></script>
+		<script src="src/js/section.js" defer></script>
+		<script src="src/js/focus.js" defer></script>
 	</head>
 	<body>
 		<div id="app">
 			<section>
 				<form onchange="updateOptions(event, this)">
 					<output id="weight_output" for="weight">450</output>
-					<input type="range" name="weight" id="weight" min="300" max="700" step="25" value="450" oninput="updateLabel(this)" />
+					<input
+						type="range"
+						name="weight"
+						id="weight"
+						min="300"
+						max="700"
+						step="25"
+						value="450"
+						oninput="updateLabel(this)"
+					/>
 
 					<!-- select alternates -->
 					<fieldset>
@@ -94,16 +116,60 @@
 				<nav></nav>
 			</header>
 			<div id="section_container">
-				<section id="section_1"></section>
-				<section id="section_2"></section>
-				<section id="section_3"></section>
-				<section id="section_4"></section>
-				<section id="section_5"></section>
-				<section id="section_6"></section>
-				<section id="section_7"></section>
-				<section id="section_8"></section>
-				<section id="section_9"></section>
-				<section id="section_10"></section>
+				<section id="section_1">
+					<div class="content_container">
+						<h1>Commit Mono. <br />Neutral programming typeface.</h1>
+						<blockquote></blockquote>
+						<figure>
+							<blockquote cite="https://jaspermorrison.com/publications/essays/super-normal">
+								<p>
+									There are better ways to design than putting a big effort into making something look special. Special
+									is generally less useful than normal, and less rewarding in the long term. Special things demand
+									attention for the wrong reasons, interrupting potentially good atmosphere with their awkward presence.
+								</p>
+							</blockquote>
+							<figcaption>
+								<p>—Jasper Morrison, <cite>Super Normal Manifesto</cite></p>
+							</figcaption>
+						</figure>
+					</div>
+				</section>
+				<section id="section_2">
+					<div class="top_container"></div>
+					<div class="content_container"></div>
+				</section>
+				<section id="section_3">
+					<div class="top_container"></div>
+					<div class="content_container"></div>
+				</section>
+				<section id="section_4">
+					<div class="top_container"></div>
+					<div class="content_container"></div>
+				</section>
+				<section id="section_5">
+					<div class="top_container"></div>
+					<div class="content_container"></div>
+				</section>
+				<section id="section_6">
+					<div class="top_container"></div>
+					<div class="content_container"></div>
+				</section>
+				<section id="section_7">
+					<div class="top_container"></div>
+					<div class="content_container"></div>
+				</section>
+				<section id="section_8">
+					<div class="top_container"></div>
+					<div class="content_container"></div>
+				</section>
+				<section id="section_9">
+					<div class="top_container"></div>
+					<div class="content_container"></div>
+				</section>
+				<section id="section_10">
+					<div class="top_container"></div>
+					<div class="content_container"></div>
+				</section>
 			</div>
 		</main>
 	</body>
