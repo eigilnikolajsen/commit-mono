@@ -16,15 +16,18 @@
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 :root {
 	--text: #111;
+	--middle: #666;
 	--bg: #aaa;
 }
 
 ::selection {
-	color: var(--bg);
-	background-color: var(--text);
+	color: var(--text);
+	background-color: var(--middle);
 }
 
 body {
