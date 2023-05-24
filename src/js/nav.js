@@ -24,7 +24,7 @@ window.addEventListener("keydown", (e) => {
 	// edit textfield
 	if (e.code == "KeyE") {
 		insideTextField = true
-		active.setAttribute("contenteditable", "true")
+		setTimeout(() => active.setAttribute("contenteditable", "true"), 50)
 	}
 
 	if (!insideTextField) {

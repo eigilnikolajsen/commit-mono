@@ -16,8 +16,6 @@
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
 }
 :root {
 	--text: #111;
@@ -34,6 +32,8 @@ body {
 	background-color: var(--bg);
 	font-family: CommitMono;
 	overflow: hidden;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 #app {

@@ -1,0 +1,35 @@
+table {
+	margin: 2rem 0;
+	border-collapse: collapse;
+}
+
+th {
+	padding: 1rem;
+	font-size: 0.5rem;
+	font-weight: normal;
+	text-align: center;
+}
+
+td div {
+	width: 6rem;
+	aspect-ratio: 1 / 1;
+	display: grid;
+}
+
+td p {
+	margin: auto;
+	line-height: 1.1;
+	font-size: 4rem;
+	text-align: center;
+}
+
+/* Baseline */
+/* td::after {
+	content: "";
+	position: absolute;
+	bottom: 18.182%;
+	height: 1px;
+	left: 0;
+	right: 0;
+	background-color: var(--text);
+} */
