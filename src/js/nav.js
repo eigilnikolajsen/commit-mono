@@ -14,6 +14,7 @@ websiteData.sections.forEach((section, index) => {
 	label.textContent = `${index + 1 < 10 ? `0${index + 1}` : index + 1} ${capitalize(section.name)}`
 	label.classList.add("nav_element")
 	label.dataset.sectionIndex = index + 1
+	label.setAttribute("for", section.name)
 	div.append(input, label)
 	navForm.append(div)
 	if (index == 0) {
@@ -65,12 +66,6 @@ window.addEventListener("keydown", (e) => {
 	) {
 		main.style.opacity = 0.04
 		pushPage(e.code)
-	}
-
-	if (e.code == "Tab" && document.activeElement.id.includes("block_tab")) {
-		console.log("active nav section then tab")
-		const checkedMenuInput = document.querySelector("#nav_form input:checked")
-		checkedMenuInput.focus()
 	}
 })
 
@@ -162,6 +157,12 @@ document.addEventListener("focusin", (e) => {
 	if (active.dataset.edit === "true") {
 		active.setAttribute("contenteditable", "true")
 		insideTextField = true
+	}
+
+	if (active.id.includes("block_tab")) {
+		console.log("active nav section then tab")
+		const checkedMenuInput = document.querySelector("#nav_form input:checked")
+		checkedMenuInput.focus()
 	}
 })
 

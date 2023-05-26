@@ -61,7 +61,27 @@ const websiteData = {
 			name: "code",
 			description:
 				"Commit Mono is designed and tested for code first. Characters frequently used in code have been given extra care to look distinct and neat.",
-			content: {},
+			content: {
+				characters: [
+					{ value: "@", name: "at" },
+					{ value: '"', name: "double_quote" },
+					{ value: "+", name: "plus" },
+					{ value: "?", name: "question" },
+					{ value: "*", name: "asterisk" },
+					{ value: "%", name: "percent" },
+					{ value: "-", name: "hyphen" },
+					{ value: ";", name: "semicolon" },
+					{ value: "&", name: "ampersand" },
+					{ value: "`", name: "backtick" },
+					{ value: "$", name: "dollar" },
+					{ value: "#", name: "numbersign" },
+					{ value: "<", name: "less" },
+					{ value: "/", name: "slash" },
+					{ value: "(", name: "parenthesis" },
+					{ value: "[", name: "bracket" },
+					{ value: "{", name: "curly_brace" },
+				],
+			},
 		},
 		{
 			name: "distinction",

@@ -139,7 +139,8 @@ header {
 	grid-row: 1;
 }
 
-p {
+p,
+figcaption {
 	font-size: 0.75rem;
 	line-height: 1rem;
 	max-width: 54ch;

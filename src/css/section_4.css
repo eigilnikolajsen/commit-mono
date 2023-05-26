@@ -1,0 +1,133 @@
+#intelligent_container {
+	margin-top: 1rem;
+}
+
+#original figure > div,
+#smart_kerning figure > div {
+	display: flex;
+}
+
+#original p,
+#smart_kerning p {
+	font-size: 24rem;
+	line-height: 1;
+	position: relative;
+	border-right: 1px solid var(--text);
+	border-left: 1px solid var(--text);
+	margin-left: -1px;
+}
+
+#original p::after,
+#smart_kerning p::after {
+	font-size: 0.75rem;
+	text-align: center;
+	display: block;
+	width: 100%;
+}
+
+#original p:nth-child(1)::after,
+#smart_kerning p:nth-child(1)::after {
+	content: "Wide letter";
+}
+
+#original p:nth-child(2)::after {
+	content: "Smart kerning OFF";
+}
+
+#smart_kerning p:nth-child(2)::after {
+	content: "Smart kerning ON";
+}
+
+#original p:nth-child(3)::after,
+#smart_kerning p:nth-child(3)::after {
+	content: "Narrow letter";
+}
+
+#smart_kerning p:nth-child(2)::before {
+	content: "o";
+	position: absolute;
+	transform: translateX(calc(24rem / 1000 * 40));
+	color: var(--middle);
+	z-index: -1;
+}
+
+#before p,
+#after p {
+	font-size: 8rem;
+	line-height: 1;
+	max-width: none;
+	white-space: nowrap;
+}
+
+#before p {
+	font-feature-settings: "calt" 0;
+}
+
+#intelligent_form {
+	margin-top: 4rem;
+}
+
+#intelligent_form fieldset {
+	border: none;
+	display: flex;
+	gap: 2rem;
+	font-size: 0.75rem;
+	line-height: 1rem;
+	background-color: var(--bg);
+}
+
+#intelligent_form > div {
+	position: relative;
+}
+
+#intelligent_form input {
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: var(--text);
+	margin: 0;
+	padding: 0;
+	border: none;
+
+	color: var(--text);
+	width: 0;
+	height: 0;
+	position: relative;
+	opacity: 1;
+	display: block;
+}
+
+#intelligent_form input + label {
+	position: relative;
+	z-index: 1;
+}
+
+#intelligent_form input + label::before {
+	z-index: -1;
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background-color: var(--bg);
+}
+
+#intelligent_form input:focus:checked + label::before {
+	background-color: var(--text);
+}
+
+#intelligent_form input:focus:checked + label {
+	color: var(--bg);
+}
+
+#intelligent_form input:checked + label::before {
+	background: repeating-conic-gradient(transparent 0% 25%, var(--text) 0% 50%, transparent 0% 75%) 50% / 2px 2px;
+}
+
+#intelligent_form input:checked + label {
+	color: var(--text);
+}
+
+#intelligent_container figcaption {
+	margin-top: 2rem;
+}

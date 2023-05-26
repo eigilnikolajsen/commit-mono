@@ -46,7 +46,7 @@
 }
 
 #familiar_form input[type="radio"]:focus {
-	transform: scale(2);
+	transform: scale(3);
 }
 
 #familiar_form fieldset > div:nth-child(2) {

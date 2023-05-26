@@ -38,6 +38,8 @@
 		<script src="src/js/focus.js" defer></script>
 		<script src="src/js/table_section.js" defer></script>
 		<script src="src/js/familiar_section.js" defer></script>
+		<script src="src/js/intelligent_section.js" defer></script>
+		<script src="src/js/code_section.js" defer></script>
 	</head>
 	<body>
 		<div tabindex="0" id="block_tab_start"></div>
@@ -140,7 +142,6 @@
 						<div class="content_container">
 							<form id="familiar_form" onchange="updateFamiliar(event, this)">
 								<fieldset>
-									<!-- <legend>Select @</legend> -->
 									<div>
 										<input type="radio" id="franklin_gothic" name="select_year" value="franklin_gothic" checked />
 										<label for="franklin_gothic">1896</label>
@@ -168,11 +169,85 @@
 					</section>
 					<section id="section_4">
 						<div class="top_container"></div>
-						<div class="content_container"></div>
+						<div class="content_container">
+							<form id="intelligent_form" onchange="updateIntelligent(event, this)">
+								<fieldset>
+									<div>
+										<input type="radio" id="input_before" name="select_state" value="before" checked />
+										<label for="input_before">Smart kerning OFF</label>
+									</div>
+									<div>
+										<input type="radio" id="input_after" name="select_state" value="after" />
+										<label for="input_after">Smart kerning ON</label>
+									</div>
+									<div>
+										<input type="radio" id="input_original" name="select_state" value="original" />
+										<label for="input_original">How it works OFF</label>
+									</div>
+									<div>
+										<input type="radio" id="input_smart_kerning" name="select_state" value="smart_kerning" />
+										<label for="input_smart_kerning">How it works ON</label>
+									</div>
+								</fieldset>
+							</form>
+							<div id="intelligent_container">
+								<div style="display: block" id="before">
+									<figure>
+										<p>Commit Mono: Normal <br />programming typeface</p>
+										<figcaption>
+											SMART KERNING OFF behaves exactly like your standard monospace font. Letters are centered in their
+											respective boxes.
+										</figcaption>
+									</figure>
+								</div>
+								<div style="display: none" id="after">
+									<figure>
+										<p>Commit Mono: Normal <br />programming typeface</p>
+										<figcaption>
+											SMART KERNING ON improves overall word spacing and makes sublexical units easier to tell apart,
+											therefore improving reading speed and accuracy.
+										</figcaption>
+									</figure>
+								</div>
+								<div style="display: none" id="original">
+									<figure>
+										<div>
+											<p>m</p>
+											<p>o</p>
+											<p>i</p>
+										</div>
+										<figcaption>
+											Smart kerning works by looking at single letter between two other letters. If the other letters
+											are in different width classes, the middle letter will slide closer to the narrow letter.
+										</figcaption>
+									</figure>
+								</div>
+								<div style="display: none" id="smart_kerning">
+									<figure>
+										<div>
+											<p>m</p>
+											<p>o</p>
+											<p>i</p>
+										</div>
+										<figcaption>
+											As you can see here, the 'o' is moved 40 units to the right, which evens out the spacing between
+											itself, 'm' and 'i'. This same process is applied to all letters.
+										</figcaption>
+									</figure>
+								</div>
+							</div>
+						</div>
 					</section>
 					<section id="section_5">
 						<div class="top_container"></div>
-						<div class="content_container"></div>
+						<div class="content_container">
+							<form id="code_form" onchange="updateCode(event, this)">
+								<fieldset></fieldset>
+							</form>
+							<div id="canvas_container">
+								<canvas id="canvas"></canvas>
+							</div>
+						</div>
 					</section>
 					<section id="section_6">
 						<div class="top_container"></div>
