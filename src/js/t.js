@@ -17,10 +17,14 @@ const updateOptions = (event, form) => {
 	event.preventDefault()
 }
 
-async function initFont() {
-	const font = await opentype.load("/fonts/CommitMonoV100-450.otf")
+let commitMonoFont
 
-	console.log(font)
+async function initFont() {
+	commitMonoFont = await opentype.load("/fonts/CommitMonoV100-450.otf")
+
+	updateCode(null, codeForm)
+
+	console.log(commitMonoFont)
 	// console.log(font.glyphs.glyphs[50].path)
 	// console.log(font.glyphs.glyphs[76].path)
 
