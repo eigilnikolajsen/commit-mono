@@ -1,17 +1,45 @@
-const nav = document.querySelector("nav")
+const navForm = document.querySelector("#nav_form")
+const navFieldset = document.querySelector("#nav_form fieldset")
 
-websiteData.sections.forEach((section, index) => {
-	const a = document.createElement("a")
-	a.textContent = `${index + 1 < 10 ? `0${index + 1}` : index + 1} ${capitalize(section.name)}`
-	a.tabIndex = 1000 + index
-	a.classList.add("nav_element")
-	a.dataset.sectionIndex = index + 1
-	a.tabIndex = index + 1
-	a.addEventListener("click", (e) => {
-		// console.log(e)
+// websiteData.sections.forEach((section, index) => {
+// 	const div = document.createElement("div")
+// 	const input = document.createElement("input")
+// 	input.type = "radio"
+// 	input.name = "nav"
+// 	input.id = section.name
+// 	input.value = `section_${index + 1}`
+// 	if (index == 0) input.setAttribute("checked", "true")
+// 	const label = document.createElement("label")
+// 	label.for = section.name
+// 	label.textContent = `${index + 1 < 10 ? `0${index + 1}` : index + 1} ${capitalize(section.name)}`
+// 	label.classList.add("nav_element")
+// 	label.dataset.sectionIndex = index + 1
+// 	label.append(input)
+// 	navFieldset.append(label)
+// 	if (index == 0) {
+// 		setTimeout(() => {
+// 			console.log(input, "input focus")
+// 			input.focus()
+// 		}, 1)
+// 	}
+// })
+
+function updateNav(event, form) {
+	const data = new FormData(form)
+	let output = ""
+	for (const entry of data) {
+		output = `${entry[1]}`
+	}
+	websiteData.sections.forEach((section, index) => {
+		const sectionContainer = document.querySelector(`#section_${index + 1}`)
+		if (sectionContainer.id == output) {
+			sectionContainer.style.display = "block"
+		} else {
+			sectionContainer.style.display = "none"
+		}
 	})
-	nav.append(a)
-})
+	if (event) event.preventDefault()
+}
 
 let currentSection = 1
 let insideTextField = false
@@ -23,7 +51,7 @@ window.addEventListener("keydown", (e) => {
 		active.setAttribute("contenteditable", "false")
 	}
 	// edit textfield
-	if (e.code == "KeyE") {
+	if (e.code == "KeyE" && !insideTextField) {
 		insideTextField = true
 		setTimeout(() => active.setAttribute("contenteditable", "true"), 50)
 	}
@@ -48,11 +76,6 @@ window.addEventListener("keydown", (e) => {
 			main.style.opacity = 0.04
 			pushPage(e.code)
 		}
-
-		// move focus with arrow keys
-		if (e.code == "ArrowUp") {
-			console.log(document.activeElement)
-		}
 	}
 })
 
@@ -66,9 +89,6 @@ window.addEventListener("keyup", (e) => {
 		if (currentSection == 1) {
 			const activeKey = document.querySelector(`.key[data-key-code="${e.code}"]`)
 			activeKey?.classList.remove("active_key")
-		}
-		if (e.code.includes("Digit")) {
-			sectionNavigation(e.code.split("Digit")[1])
 		}
 	}
 	main.style.opacity = 1
@@ -140,11 +160,6 @@ document.addEventListener("focusin", (e) => {
 	clearTimeout(focusTimeOutID)
 	focusTimeOutID = null
 
-	// navigation
-	if (active.classList.contains("nav_element")) {
-		sectionNavigation(active.dataset.sectionIndex)
-	}
-
 	// console.log(active, active.getAttribute("contenteditable"))
 	if (active.dataset.edit === "true") {
 		active.setAttribute("contenteditable", "true")
@@ -160,11 +175,4 @@ function onBlurIn(e) {
 	focusTimeOutID = setTimeout(() => active.focus(), 100)
 }
 
-function sectionNavigation(num) {
-	const activeSection = document.querySelector(`#section_${num}`)
-	if (activeSection) {
-		const sections = document.querySelectorAll("#section_container section")
-		sections.forEach((section) => (section.style.display = "none"))
-		activeSection.style.display = "block"
-	}
-}
+updateNav(null, navForm)

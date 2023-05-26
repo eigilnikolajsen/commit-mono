@@ -40,81 +40,40 @@
 		<script src="src/js/familiar_section.js" defer></script>
 	</head>
 	<body>
-		<div id="app">
-			<section>
-				<form onchange="updateOptions(event, this)">
-					<output id="weight_output" for="weight">450</output>
-					<input
-						type="range"
-						name="weight"
-						id="weight"
-						min="300"
-						max="700"
-						step="25"
-						value="450"
-						oninput="updateLabel(this)"
-					/>
-
-					<!-- select alternates -->
+		<header>
+			<nav>
+				<form id="nav_form" onchange="updateNav(event, this)">
 					<fieldset>
-						<legend>Select @</legend>
-						<div>
-							<input type="radio" id="standard" name="select_at" value="standard" checked />
-							<label for="standard">Standard</label>
-						</div>
-						<div>
-							<input type="radio" id="simplified" name="select_at" value="simplified" />
-							<label for="simplified">Simplified</label>
-						</div>
-					</fieldset>
-					<fieldset>
-						<legend>Select a</legend>
-						<div>
-							<input type="radio" id="two_storey" name="select_a" value="two_storey" checked />
-							<label for="two_storey">Two storey</label>
-						</div>
-						<div>
-							<input type="radio" id="single_storey" name="select_a" value="single_storey" />
-							<label for="single_storey">Single storey</label>
-						</div>
-					</fieldset>
-
-					<!-- select features -->
-					<fieldset>
-						<legend>Select punctuation</legend>
-						<div>
-							<input type="radio" id="smart_punctuation" name="select_punctuation" value="smart_punctuation" checked />
-							<label for="smart_punctuation">Smart punctuation</label>
-						</div>
-						<div>
-							<input type="radio" id="standard_punctuation" name="select_punctuation" value="standard_punctuation" />
-							<label for="standard_punctuation">Standard punctuation</label>
-						</div>
-					</fieldset>
-					<fieldset>
-						<legend>Select letter balancing</legend>
-						<div>
-							<input type="radio" id="smart_balancing" name="letter_balancing" value="smart_balancing" checked />
-							<label for="smart_balancing">Smart balancing</label>
-						</div>
-						<div>
-							<input type="radio" id="no_balancing" name="letter_balancing" value="no_balancing" />
-							<label for="no_balancing">No balancing</label>
-						</div>
+						<label class="nav_element" data-section-index="1">
+							01 Home<input type="radio" name="nav" id="home" value="section_1" checked="true" />
+						</label>
+						<label class="nav_element" data-section-index="2">
+							02 Concept<input type="radio" name="nav" id="concept" value="section_2" />
+						</label>
+						<label class="nav_element" data-section-index="3">
+							03 Familiar<input type="radio" name="nav" id="familiar" value="section_3" />
+						</label>
+						<label class="nav_element" data-section-index="4">
+							04 Intelligent<input type="radio" name="nav" id="intelligent" value="section_4" />
+						</label>
+						<label class="nav_element" data-section-index="5">
+							05 Code<input type="radio" name="nav" id="code" value="section_5" />
+						</label>
+						<label class="nav_element" data-section-index="6">
+							06 Distinction<input type="radio" name="nav" id="distinction" value="section_6" />
+						</label>
+						<label class="nav_element" data-section-index="7">
+							07 Examples<input type="radio" name="nav" id="examples" value="section_7" />
+						</label>
+						<label class="nav_element" data-section-index="8">
+							08 Download<input type="radio" name="nav" id="download" value="section_8" />
+						</label>
+						<label class="nav_element" data-section-index="9">
+							09 About<input type="radio" name="nav" id="about" value="section_9" />
+						</label>
 					</fieldset>
 				</form>
-			</section>
-
-			<div class="button_container">
-				<button>Download plan</button>
-			</div>
-			<p>Generate static font files with your alternates baked in for ease of use in all editors and terminals.</p>
-			<p>PREVIOUS SECTION, NEXT SECTION</p>
-			<p class="fill">Download</p>
-			<p class="numtest">0123456789</p>
-		</div>
-		<header>
-			<nav></nav>
+			</nav>
 		</header>
 		<div id="main_scale">
 			<main>
@@ -124,7 +83,7 @@
 							<h1 tabindex="0" data-edit="true">Commit Mono. <br />Neutral programming typeface.</h1>
 							<figure>
 								<blockquote cite="https://jaspermorrison.com/publications/essays/super-normal">
-									<p>
+									<p tabindex="0">
 										There are better ways to design than putting a big effort into making something look special.
 										Special is generally less useful than normal, and less rewarding in the long term. Special things
 										demand attention for the wrong reasons, interrupting potentially good atmosphere with their awkward
@@ -252,10 +211,6 @@
 						<div class="content_container"></div>
 					</section>
 					<section id="section_9">
-						<div class="top_container"></div>
-						<div class="content_container"></div>
-					</section>
-					<section id="section_10">
 						<div class="top_container"></div>
 						<div class="content_container"></div>
 					</section>

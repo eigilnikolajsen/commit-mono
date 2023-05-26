@@ -14,13 +14,13 @@ const websiteData = {
 		{
 			name: "concept",
 			description:
-				"The most effective font is the one you don't notice. Designed to be normal and anonymous, Commit Mono is quietly useful and effective.",
+				"The most effective font is the one you don’t notice. No super high x-height, no geometric construction, no eye-catching design and no confusing ligatures. Designed to be neutral and anonymous, Commit Mono is quietly useful.",
 			content: {},
 		},
 		{
 			name: "familiar",
 			description:
-				"All research suggests the most familiar fonts are the ones you read fastest and most precisely. Commit Mono is inspired by fonts tested by time.",
+				"All research suggests the most familiar fonts are the ones you read fastest and most precisely. Commit Mono takes inspiration in fonts tested by time.",
 			content: {
 				timeline: [
 					{
@@ -52,9 +52,9 @@ const websiteData = {
 			},
 		},
 		{
-			name: "standard",
+			name: "intelligent",
 			description:
-				"No super high x-height, no geometric construction, no eye-catching design and no confusing ligatures. Commit Mono delivers clarity and efficiency.",
+				"Commit Mono uses an innovated technique to improve kerning. Kerning and spacing is crucial to a good reading experience but it’s not possible in monospaced fonts. Smart kerning combats this by sliding letters to better spacing positions – preserving monospacing. This way, Commit Mono reads more like the proportional fonts you’re used to reading.",
 			content: {},
 		},
 		{
@@ -66,13 +66,7 @@ const websiteData = {
 		{
 			name: "distinction",
 			description:
-				"With simple letter constructions Commit Mono emphasises character distinction without compromising style consistency.",
-			content: {},
-		},
-		{
-			name: "features",
-			description:
-				"Commit Mono comes without coding ligatures by default. However, it comes with a few helpful features to enhance reading.",
+				"With simple letter constructions and confident choices Commit Mono emphasises character distinction without compromising style consistency.",
 			content: {},
 		},
 		{

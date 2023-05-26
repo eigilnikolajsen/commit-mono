@@ -71,13 +71,69 @@ header {
 	z-index: 100;
 }
 
-nav {
+#nav_form {
 	display: flex;
 	gap: 2rem;
-	width: max-content;
 	font-size: 0.75rem;
 	line-height: 1rem;
 	background-color: var(--bg);
+}
+
+#nav_form > div {
+	position: relative;
+}
+
+#nav_form input {
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: var(--text);
+	margin: 0;
+
+	color: var(--text);
+	width: 0.375rem;
+	height: 0.375rem;
+	position: relative;
+}
+
+#nav_form input:checked {
+	background-color: red;
+}
+
+#nav_form input:focus {
+	width: 1rem;
+	height: 1rem;
+}
+
+#nav_form input + label {
+	position: relative;
+	z-index: 1;
+}
+
+#nav_form input + label::before {
+	z-index: -1;
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background-color: var(--bg);
+}
+
+#nav_form input:focus:checked + label::before {
+	background-color: var(--text);
+}
+
+#nav_form input:focus:checked + label {
+	color: var(--bg);
+}
+
+#nav_form input:checked + label::before {
+	background: repeating-conic-gradient(transparent 0% 25%, var(--text) 0% 50%, transparent 0% 75%) 50% / 2px 2px;
+}
+
+#nav_form input:checked + label {
+	color: var(--text);
 }
 
 #section_container {
