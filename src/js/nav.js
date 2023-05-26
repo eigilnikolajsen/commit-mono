@@ -45,27 +45,47 @@ function updateNav(event, form) {
 let currentSection = 1
 let insideTextField = false
 
+function enterTextField() {
+	// console.log("enter text field")
+	active = document.activeElement
+	active.setAttribute("contenteditable", "true")
+	active.blur()
+	active.focus()
+	insideTextField = true
+}
+function exitTextField() {
+	// console.log("exit text field")
+	document.activeElement.setAttribute("contenteditable", "false")
+	insideTextField = false
+}
+
 window.addEventListener("keydown", (e) => {
 	console.log(e.code, e.shiftKey)
 
-	// show keypress on frontpage
-	const activeKey = !e.shiftKey
-		? document.querySelector(`.key[data-key-code="${e.code}"]`)
-		: document.querySelector(`.key[data-key-code="Shift${e.code}"]`)
-	activeKey?.classList.add("active_key")
+	if (e.code == "KeyE" && document.activeElement.dataset.edit == "true") enterTextField()
 
-	// push page
-	if (
-		e.code == "KeyW" ||
-		e.code == "KeyA" ||
-		e.code == "KeyS" ||
-		e.code == "KeyD" ||
-		e.code == "KeyR" ||
-		e.code == "Minus" ||
-		e.code == "Slash"
-	) {
-		main.style.opacity = 0.04
-		pushPage(e.code)
+	if (e.code == "Escape") exitTextField()
+
+	if (!insideTextField) {
+		// show keypress on frontpage
+		const activeKey = !e.shiftKey
+			? document.querySelector(`.key[data-key-code="${e.code}"]`)
+			: document.querySelector(`.key[data-key-code="Shift${e.code}"]`)
+		activeKey?.classList.add("active_key")
+
+		// push page
+		if (
+			e.code == "KeyW" ||
+			e.code == "KeyA" ||
+			e.code == "KeyS" ||
+			e.code == "KeyD" ||
+			e.code == "KeyR" ||
+			e.code == "Minus" ||
+			e.code == "Slash"
+		) {
+			main.style.opacity = 0.04
+			pushPage(e.code)
+		}
 	}
 })
 
@@ -142,7 +162,11 @@ function pushPage(keyCode) {
 let active // saves what DOM element is currently active
 let focusTimeOutID // to be able to use clearTimeout()
 document.addEventListener("focusin", (e) => {
-	console.log(document.activeElement)
+	// console.log(document.activeElement)
+
+	// new focus: exit text field
+	if (document.activeElement != active) exitTextField()
+
 	// save current focused element
 	active = document.activeElement
 
@@ -153,14 +177,8 @@ document.addEventListener("focusin", (e) => {
 	clearTimeout(focusTimeOutID)
 	focusTimeOutID = null
 
-	// console.log(active, active.getAttribute("contenteditable"))
-	if (active.dataset.edit === "true") {
-		active.setAttribute("contenteditable", "true")
-		insideTextField = true
-	}
-
 	if (active.id.includes("block_tab")) {
-		console.log("active nav section then tab")
+		console.log("BLOCK TAB")
 		const checkedMenuInput = document.querySelector("#nav_form input:checked")
 		checkedMenuInput.focus()
 	}

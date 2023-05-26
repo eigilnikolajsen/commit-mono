@@ -2,7 +2,7 @@ const websiteData = {
 	pushPage: {
 		coordinates: { x: 0, y: 0 },
 		scale: 1,
-		distance: 4, // in rem
+		distance: 8, // in rem
 		scaleOffset: 1.25,
 	},
 	sections: [

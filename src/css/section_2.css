@@ -4,6 +4,7 @@ table {
 }
 
 th {
+	width: 6rem;
 	padding: 1rem;
 	font-size: 0.5rem;
 	font-weight: normal;
@@ -16,12 +17,34 @@ td div {
 	display: grid;
 }
 
-td p {
+td div input,
+td div label {
+	grid-row: 1;
+	grid-column: 1;
+}
+
+td label {
 	margin: auto;
 	line-height: 1.1;
 	font-size: 4rem;
 	text-align: center;
 	position: relative;
+}
+
+#section_2 fieldset {
+	border: none;
+}
+
+#section_2 input {
+	width: 0;
+	height: 0;
+}
+
+#section_2 input:focus:checked + label {
+	background-color: var(--text);
+	color: var(--bg);
+	transform: scale(4);
+	z-index: 2;
 }
 
 /* Baseline */
