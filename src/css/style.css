@@ -90,18 +90,10 @@ header {
 	margin: 0;
 
 	color: var(--text);
-	width: 0.375rem;
-	height: 0.375rem;
+	width: 0;
+	height: 0;
 	position: relative;
-}
-
-#nav_form input:checked {
-	background-color: red;
-}
-
-#nav_form input:focus {
-	width: 1rem;
-	height: 1rem;
+	opacity: 0;
 }
 
 #nav_form input + label {

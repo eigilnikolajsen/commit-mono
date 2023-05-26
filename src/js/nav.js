@@ -1,28 +1,28 @@
 const navForm = document.querySelector("#nav_form")
-const navFieldset = document.querySelector("#nav_form fieldset")
 
-// websiteData.sections.forEach((section, index) => {
-// 	const div = document.createElement("div")
-// 	const input = document.createElement("input")
-// 	input.type = "radio"
-// 	input.name = "nav"
-// 	input.id = section.name
-// 	input.value = `section_${index + 1}`
-// 	if (index == 0) input.setAttribute("checked", "true")
-// 	const label = document.createElement("label")
-// 	label.for = section.name
-// 	label.textContent = `${index + 1 < 10 ? `0${index + 1}` : index + 1} ${capitalize(section.name)}`
-// 	label.classList.add("nav_element")
-// 	label.dataset.sectionIndex = index + 1
-// 	label.append(input)
-// 	navFieldset.append(label)
-// 	if (index == 0) {
-// 		setTimeout(() => {
-// 			console.log(input, "input focus")
-// 			input.focus()
-// 		}, 1)
-// 	}
-// })
+websiteData.sections.forEach((section, index) => {
+	const div = document.createElement("div")
+	const input = document.createElement("input")
+	input.type = "radio"
+	input.name = "nav"
+	input.id = section.name
+	input.classList.add("nav_section_input")
+	input.value = `section_${index + 1}`
+	if (index == 0) input.setAttribute("checked", "true")
+	const label = document.createElement("label")
+	label.for = section.name
+	label.textContent = `${index + 1 < 10 ? `0${index + 1}` : index + 1} ${capitalize(section.name)}`
+	label.classList.add("nav_element")
+	label.dataset.sectionIndex = index + 1
+	div.append(input, label)
+	navForm.append(div)
+	if (index == 0) {
+		setTimeout(() => {
+			console.log(input, "input focus")
+			input.focus()
+		}, 1)
+	}
+})
 
 function updateNav(event, form) {
 	const data = new FormData(form)
@@ -45,37 +45,32 @@ let currentSection = 1
 let insideTextField = false
 
 window.addEventListener("keydown", (e) => {
-	// escape textfield
-	if (e.code == "Escape") {
-		insideTextField = false
-		active.setAttribute("contenteditable", "false")
-	}
-	// edit textfield
-	if (e.code == "KeyE" && !insideTextField) {
-		insideTextField = true
-		setTimeout(() => active.setAttribute("contenteditable", "true"), 50)
+	console.log(e.code, e.shiftKey)
+
+	// show keypress on frontpage
+	const activeKey = !e.shiftKey
+		? document.querySelector(`.key[data-key-code="${e.code}"]`)
+		: document.querySelector(`.key[data-key-code="Shift${e.code}"]`)
+	activeKey?.classList.add("active_key")
+
+	// push page
+	if (
+		e.code == "KeyW" ||
+		e.code == "KeyA" ||
+		e.code == "KeyS" ||
+		e.code == "KeyD" ||
+		e.code == "KeyR" ||
+		e.code == "Minus" ||
+		e.code == "Slash"
+	) {
+		main.style.opacity = 0.04
+		pushPage(e.code)
 	}
 
-	if (!insideTextField) {
-		// show keypress on frontpage
-		if (currentSection == 1) {
-			const activeKey = document.querySelector(`.key[data-key-code="${e.code}"]`)
-			activeKey?.classList.add("active_key")
-		}
-
-		// push page
-		if (
-			e.code == "KeyW" ||
-			e.code == "KeyA" ||
-			e.code == "KeyS" ||
-			e.code == "KeyD" ||
-			e.code == "KeyR" ||
-			e.code == "Minus" ||
-			e.code == "Slash"
-		) {
-			main.style.opacity = 0.04
-			pushPage(e.code)
-		}
+	if (e.code == "Tab" && document.activeElement.id.includes("block_tab")) {
+		console.log("active nav section then tab")
+		const checkedMenuInput = document.querySelector("#nav_form input:checked")
+		checkedMenuInput.focus()
 	}
 })
 
@@ -84,14 +79,16 @@ const mainScale = document.querySelector("#main_scale")
 const rem = getComputedStyle(document.documentElement).fontSize.split("px")[0]
 
 window.addEventListener("keyup", (e) => {
-	if (!insideTextField) {
-		// console.log(`keyup: ${e.code}`)
-		if (currentSection == 1) {
-			const activeKey = document.querySelector(`.key[data-key-code="${e.code}"]`)
-			activeKey?.classList.remove("active_key")
-		}
-	}
+	const activeKey = document.querySelector(".active_key")
+	activeKey?.classList.remove("active_key")
+
 	main.style.opacity = 1
+
+	if (e.code == "Tab" && document.activeElement.id.includes("block_tab")) {
+		console.log("active nav section then tab")
+		const checkedMenuInput = document.querySelector("#nav_form input:checked")
+		checkedMenuInput.focus()
+	}
 })
 
 function pushPage(keyCode) {
@@ -150,6 +147,7 @@ function pushPage(keyCode) {
 let active // saves what DOM element is currently active
 let focusTimeOutID // to be able to use clearTimeout()
 document.addEventListener("focusin", (e) => {
+	console.log(document.activeElement)
 	// save current focused element
 	active = document.activeElement
 
@@ -166,6 +164,10 @@ document.addEventListener("focusin", (e) => {
 		insideTextField = true
 	}
 })
+
+document.onvisibilitychange = function () {
+	console.log("onvisibilitychange")
+}
 
 function onBlurIn(e) {
 	// remove event listener from so they don't stack

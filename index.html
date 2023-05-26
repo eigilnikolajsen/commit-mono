@@ -40,39 +40,10 @@
 		<script src="src/js/familiar_section.js" defer></script>
 	</head>
 	<body>
+		<div tabindex="0" id="block_tab_start"></div>
 		<header>
 			<nav>
-				<form id="nav_form" onchange="updateNav(event, this)">
-					<fieldset>
-						<label class="nav_element" data-section-index="1">
-							01 Home<input type="radio" name="nav" id="home" value="section_1" checked="true" />
-						</label>
-						<label class="nav_element" data-section-index="2">
-							02 Concept<input type="radio" name="nav" id="concept" value="section_2" />
-						</label>
-						<label class="nav_element" data-section-index="3">
-							03 Familiar<input type="radio" name="nav" id="familiar" value="section_3" />
-						</label>
-						<label class="nav_element" data-section-index="4">
-							04 Intelligent<input type="radio" name="nav" id="intelligent" value="section_4" />
-						</label>
-						<label class="nav_element" data-section-index="5">
-							05 Code<input type="radio" name="nav" id="code" value="section_5" />
-						</label>
-						<label class="nav_element" data-section-index="6">
-							06 Distinction<input type="radio" name="nav" id="distinction" value="section_6" />
-						</label>
-						<label class="nav_element" data-section-index="7">
-							07 Examples<input type="radio" name="nav" id="examples" value="section_7" />
-						</label>
-						<label class="nav_element" data-section-index="8">
-							08 Download<input type="radio" name="nav" id="download" value="section_8" />
-						</label>
-						<label class="nav_element" data-section-index="9">
-							09 About<input type="radio" name="nav" id="about" value="section_9" />
-						</label>
-					</fieldset>
-				</form>
+				<form id="nav_form" onchange="updateNav(event, this)"></form>
 			</nav>
 		</header>
 		<div id="main_scale">
@@ -83,7 +54,7 @@
 							<h1 tabindex="0" data-edit="true">Commit Mono. <br />Neutral programming typeface.</h1>
 							<figure>
 								<blockquote cite="https://jaspermorrison.com/publications/essays/super-normal">
-									<p tabindex="0">
+									<p tabindex="0" data-edit="true">
 										There are better ways to design than putting a big effort into making something look special.
 										Special is generally less useful than normal, and less rewarding in the long term. Special things
 										demand attention for the wrong reasons, interrupting potentially good atmosphere with their awkward
@@ -98,14 +69,19 @@
 							<div id="keyboard_section">
 								<p>Navigate website using the keyboard.</p>
 								<div id="keyboard_container">
+									<div class="key_group" id="tab">
+										<div class="keys">
+											<p data-key-code="Tab" class="key">Tab</p>
+											<p data-key-code="ShiftTab" class="key">⇧Tab</p>
+										</div>
+										<p>Navigate up and down</p>
+									</div>
 									<div class="key_group" id="navigate">
 										<div class="keys">
-											<p data-key-code="ArrowUp" class="key">↑</p>
 											<p data-key-code="ArrowLeft" class="key">←</p>
-											<p data-key-code="ArrowDown" class="key">↓</p>
 											<p data-key-code="ArrowRight" class="key">→</p>
 										</div>
-										<p>Navigate</p>
+										<p>Navigate left and right</p>
 									</div>
 									<div class="key_group" id="push_page">
 										<div class="keys">
@@ -116,7 +92,7 @@
 										</div>
 										<p>Push page</p>
 									</div>
-									<div class="key_group" id="select_element">
+									<!-- <div class="key_group" id="select_element">
 										<div class="keys">
 											<p data-key-code="Space" class="key">_</p>
 											<p data-key-code="Enter" class="key">⏎</p>
@@ -130,7 +106,7 @@
 											<p id="centered_ellipsis">···</p>
 										</div>
 										<p>Go to section</p>
-									</div>
+									</div> -->
 									<div class="key_group" id="zoom_in_out">
 										<div class="keys">
 											<p data-key-code="Minus" class="key">+</p>
@@ -217,5 +193,6 @@
 				</div>
 			</main>
 		</div>
+		<div tabindex="0" id="block_tab_end"></div>
 	</body>
 </html>
