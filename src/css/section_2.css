@@ -1,5 +1,5 @@
 table {
-	margin: 2rem 0;
+	margin: 4rem 0 2rem 0;
 	border-collapse: collapse;
 }
 
@@ -21,15 +21,16 @@ td p {
 	line-height: 1.1;
 	font-size: 4rem;
 	text-align: center;
+	position: relative;
 }
 
 /* Baseline */
-/* td::after {
+/* td div p::after {
 	content: "";
 	position: absolute;
 	bottom: 18.182%;
 	height: 1px;
-	left: 0;
-	right: 0;
+	left: 0rem;
+	right: 0rem;
 	background-color: var(--text);
 } */

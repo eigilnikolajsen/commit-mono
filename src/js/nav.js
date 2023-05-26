@@ -6,8 +6,9 @@ websiteData.sections.forEach((section, index) => {
 	a.tabIndex = 1000 + index
 	a.classList.add("nav_element")
 	a.dataset.sectionIndex = index + 1
+	a.tabIndex = index + 1
 	a.addEventListener("click", (e) => {
-		console.log(e)
+		// console.log(e)
 	})
 	nav.append(a)
 })
@@ -47,6 +48,11 @@ window.addEventListener("keydown", (e) => {
 			main.style.opacity = 0.04
 			pushPage(e.code)
 		}
+
+		// move focus with arrow keys
+		if (e.code == "ArrowUp") {
+			console.log(document.activeElement)
+		}
 	}
 })
 
@@ -56,7 +62,7 @@ const rem = getComputedStyle(document.documentElement).fontSize.split("px")[0]
 
 window.addEventListener("keyup", (e) => {
 	if (!insideTextField) {
-		console.log(`keyup: ${e.code}`)
+		// console.log(`keyup: ${e.code}`)
 		if (currentSection == 1) {
 			const activeKey = document.querySelector(`.key[data-key-code="${e.code}"]`)
 			activeKey?.classList.remove("active_key")
@@ -139,7 +145,7 @@ document.addEventListener("focusin", (e) => {
 		sectionNavigation(active.dataset.sectionIndex)
 	}
 
-	console.log(active, active.getAttribute("contenteditable"))
+	// console.log(active, active.getAttribute("contenteditable"))
 	if (active.dataset.edit === "true") {
 		active.setAttribute("contenteditable", "true")
 		insideTextField = true
@@ -158,7 +164,7 @@ function sectionNavigation(num) {
 	const activeSection = document.querySelector(`#section_${num}`)
 	if (activeSection) {
 		const sections = document.querySelectorAll("#section_container section")
-		sections.forEach((section) => (section.style.visibility = "hidden"))
-		activeSection.style.visibility = "visible"
+		sections.forEach((section) => (section.style.display = "none"))
+		activeSection.style.display = "block"
 	}
 }

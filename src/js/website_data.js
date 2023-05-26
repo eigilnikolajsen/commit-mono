@@ -21,7 +21,35 @@ const websiteData = {
 			name: "familiar",
 			description:
 				"All research suggests the most familiar fonts are the ones you read fastest and most precisely. Commit Mono is inspired by fonts tested by time.",
-			content: {},
+			content: {
+				timeline: [
+					{
+						name: "franklin_gothic",
+						src: "franklin_gothic.svg",
+						description: ["Fig. 3b: Franklin Gothic.", "Tried-and-true, but overly traditional for code."],
+					},
+					{
+						name: "letter_gothic",
+						src: "letter_gothic.svg",
+						description: ["Fig. 3b: Letter Gothic.", "Clear, simple and monospaced, but too quirky."],
+					},
+					{
+						name: "fira_mono",
+						src: "fira_mono.svg",
+						description: ["Fig. 3b: Fira Mono.", "Great letter distinction, but overly complex and unique."],
+					},
+					{
+						name: "untitled_sans",
+						src: "untitled_sans.svg",
+						description: ["Fig. 3b: Untitled Sans.", "Intentionally neutral, but not optimised for code."],
+					},
+					{
+						name: "commit_mono",
+						src: "commit_mono.svg",
+						description: ["Fig. 3b: Commit Mono.", "Neutral and functional, created and tested for code."],
+					},
+				],
+			},
 		},
 		{
 			name: "standard",

@@ -37,6 +37,7 @@
 		<script src="src/js/section.js" defer></script>
 		<script src="src/js/focus.js" defer></script>
 		<script src="src/js/table_section.js" defer></script>
+		<script src="src/js/familiar_section.js" defer></script>
 	</head>
 	<body>
 		<div id="app">
@@ -112,6 +113,9 @@
 			<p class="fill">Download</p>
 			<p class="numtest">0123456789</p>
 		</div>
+		<header>
+			<nav></nav>
+		</header>
 		<div id="main_scale">
 			<main>
 				<div id="section_container">
@@ -190,15 +194,42 @@
 						<div class="content_container">
 							<table></table>
 							<p>
-								Fig. 2a: Commit Mono 450 – ASCII character table. Since most code is written using ASCII characters
-								these characters are the backbone of every code font. They have been sculpted with particularly great
-								precision and attention to detail.
+								Commit Mono 450 – ASCII character table. <br />
+								Since most code is written using ASCII characters these characters are the backbone of every code font.
+								They have been sculpted with particularly great precision and attention to detail.
 							</p>
 						</div>
 					</section>
 					<section id="section_3">
 						<div class="top_container"></div>
-						<div class="content_container"></div>
+						<div class="content_container">
+							<form id="familiar_form" onchange="updateFamiliar(event, this)">
+								<fieldset>
+									<!-- <legend>Select @</legend> -->
+									<div>
+										<input type="radio" id="franklin_gothic" name="select_year" value="franklin_gothic" checked />
+										<label for="franklin_gothic">1896</label>
+									</div>
+									<div>
+										<input type="radio" id="letter_gothic" name="select_year" value="letter_gothic" />
+										<label for="letter_gothic">1956</label>
+									</div>
+									<div>
+										<input type="radio" id="fira_mono" name="select_year" value="fira_mono" />
+										<label for="fira_mono">2013</label>
+									</div>
+									<div>
+										<input type="radio" id="untitled_sans" name="select_year" value="untitled_sans" />
+										<label for="untitled_sans">2017</label>
+									</div>
+									<div>
+										<input type="radio" id="commit_mono" name="select_year" value="commit_mono" />
+										<label for="commit_mono">2023</label>
+									</div>
+								</fieldset>
+							</form>
+							<div id="familiar_container"></div>
+						</div>
 					</section>
 					<section id="section_4">
 						<div class="top_container"></div>
@@ -229,9 +260,6 @@
 						<div class="content_container"></div>
 					</section>
 				</div>
-				<header>
-					<nav></nav>
-				</header>
 			</main>
 		</div>
 	</body>

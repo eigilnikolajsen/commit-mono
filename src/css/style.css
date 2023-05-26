@@ -52,7 +52,7 @@ main {
 	position: fixed;
 	min-width: 100%;
 	min-height: 100%;
-	padding: 1rem 2rem;
+	padding: 4rem 0 0 2rem;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -63,8 +63,12 @@ button:active {
 }
 
 header {
-	display: grid;
-	align-items: end;
+	display: flex;
+	align-items: start;
+	padding: 0 2rem;
+	border-top: 1rem solid var(--bg);
+	position: fixed;
+	z-index: 100;
 }
 
 nav {
@@ -73,6 +77,7 @@ nav {
 	width: max-content;
 	font-size: 0.75rem;
 	line-height: 1rem;
+	background-color: var(--bg);
 }
 
 #section_container {
@@ -96,6 +101,7 @@ h1 {
 	font-size: 1.5rem;
 	line-height: 2rem;
 	font-weight: normal;
+	width: fit-content;
 }
 
 *:focus {
