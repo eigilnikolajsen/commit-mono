@@ -62,3 +62,7 @@
 #code_form input:checked + label {
 	color: var(--text);
 }
+
+#canvas {
+	transform-origin: top left;
+}

@@ -1,3 +1,5 @@
+document.documentElement.style.fontSize = "16px"
+
 const navForm = document.querySelector("#nav_form")
 
 websiteData.sections.forEach((section, index) => {
@@ -69,14 +71,18 @@ function exitTextField() {
 const keys = document.querySelectorAll(".key")
 keys.forEach((key) => {
 	key.addEventListener("mousedown", () => {
-		key.dataset.keyCode.includes("Shift")
-			? keyDown({ code: key.dataset.keyCode, key: key.dataset.key, shiftKey: true })
-			: keyDown({ code: key.dataset.keyCode, key: key.dataset.key, shiftKey: false })
+		if (key.dataset.noclick != "true") {
+			key.dataset.keyCode.includes("Shift")
+				? keyDown({ code: key.dataset.keyCode, key: key.dataset.key, shiftKey: true })
+				: keyDown({ code: key.dataset.keyCode, key: key.dataset.key, shiftKey: false })
+		}
 	})
 	key.addEventListener("mouseup", () => {
-		key.dataset.keyCode.includes("Shift")
-			? keyUp({ code: key.dataset.keyCode, key: key.dataset.key, shiftKey: true })
-			: keyUp({ code: key.dataset.keyCode, key: key.dataset.key, shiftKey: false })
+		if (key.dataset.noclick != "true") {
+			key.dataset.keyCode.includes("Shift")
+				? keyUp({ code: key.dataset.keyCode, key: key.dataset.key, shiftKey: true })
+				: keyUp({ code: key.dataset.keyCode, key: key.dataset.key, shiftKey: false })
+		}
 	})
 })
 
@@ -132,7 +138,7 @@ window.addEventListener("keyup", (e) => keyUp(e))
 
 const main = document.querySelector("main")
 const mainScale = document.querySelector("#main_scale")
-const rem = getComputedStyle(document.documentElement).fontSize.split("px")[0]
+let rem = +document.documentElement.style.fontSize.split("px")[0]
 
 function pushPage(keyCode) {
 	const x = websiteData.pushPage.coordinates.x
@@ -167,14 +173,16 @@ function pushPage(keyCode) {
 
 	// zoom in ("Minus" is the plus key, very confusing)
 	else if (keyCode == "Minus") {
-		mainScale.style.transform = `scale(${scale * scaleOffset})`
-		websiteData.pushPage.scale *= scaleOffset
+		document.documentElement.style.fontSize = `${rem + 2}px`
+		rem = +rem + 2
+		document.querySelector("#canvas").style.transform = `scale(${rem / 16})`
 	}
 
 	// zoom out
 	else if (keyCode == "Slash") {
-		mainScale.style.transform = `scale(${scale / scaleOffset})`
-		websiteData.pushPage.scale /= scaleOffset
+		document.documentElement.style.fontSize = `${rem - 2}px`
+		rem = +rem - 2
+		document.querySelector("#canvas").style.transform = `scale(${rem / 16})`
 	}
 
 	// reset transforms
@@ -184,6 +192,9 @@ function pushPage(keyCode) {
 		websiteData.pushPage.coordinates.x = 0
 		websiteData.pushPage.coordinates.y = 0
 		websiteData.pushPage.scale = 1
+		rem = 16
+		document.documentElement.style.fontSize = "16px"
+		document.querySelector("#canvas").style.transform = "scale(1)"
 	}
 }
 

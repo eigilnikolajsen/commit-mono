@@ -21,6 +21,7 @@
 	--text: #111;
 	--middle: #666;
 	--bg: #aaa;
+	font-size: 24px;
 }
 
 ::selection {
@@ -31,7 +32,7 @@
 body {
 	background-color: var(--bg);
 	font-family: CommitMono;
-	overflow: hidden;
+	/* overflow: hidden; */
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }

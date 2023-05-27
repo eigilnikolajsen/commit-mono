@@ -43,6 +43,10 @@
 	cursor: pointer;
 }
 
+.key[data-noclick="true"]:hover {
+	cursor: not-allowed;
+}
+
 .key.active_key {
 	background: var(--text);
 	color: var(--bg);

@@ -55,17 +55,7 @@ function updateCode(event, form) {
 	if (event) event.preventDefault()
 }
 
-// initialize canvas
-let CANVAS_SCALE = window.devicePixelRatio
-const canvas = document.querySelector("#canvas")
-let canvasWidth = 60 * rem
-let canvasHeight = 42 * rem
-canvas.style.width = `${canvasWidth}px`
-canvas.style.height = `${canvasHeight}px`
-canvas.width = canvasWidth * CANVAS_SCALE
-canvas.height = canvasHeight * CANVAS_SCALE
-const ctx = canvas.getContext("2d")
-ctx.scale(CANVAS_SCALE, CANVAS_SCALE)
+const canvasScale = 16
 
 const drawFontLine = (GLYPH_SCALE, ctx, upem, width, name, value, yOffset) => {
 	let scaledValue = mapRange(value, 0, upem, 0, width * GLYPH_SCALE)
@@ -73,17 +63,17 @@ const drawFontLine = (GLYPH_SCALE, ctx, upem, width, name, value, yOffset) => {
 
 	ctx.strokeStyle = "#111"
 	ctx.beginPath()
-	ctx.moveTo(7 * rem, scaledValue)
-	ctx.lineTo(width - 7 * rem, scaledValue)
+	ctx.moveTo(7 * canvasScale, scaledValue)
+	ctx.lineTo(width - 7 * canvasScale, scaledValue)
 	ctx.closePath()
 	ctx.stroke()
 
 	ctx.fillStyle = "#111"
-	ctx.font = `${0.75 * rem}px CommitMono`
+	ctx.font = `${0.75 * canvasScale}px CommitMono`
 	ctx.textAlign = "left"
-	ctx.fillText(name, 0, scaledValue + 0.25 * rem)
+	ctx.fillText(name, 0, scaledValue + 0.25 * canvasScale)
 	ctx.textAlign = "left"
-	ctx.fillText(value, width - 4 * rem, scaledValue + 0.25 * rem)
+	ctx.fillText(value, width - 4 * canvasScale, scaledValue + 0.25 * canvasScale)
 }
 
 const drawFontLineVertical = (GLYPH_SCALE, ctx, upem, width, value, yOffset, ascender, descender) => {
@@ -103,15 +93,27 @@ const drawFontLineVertical = (GLYPH_SCALE, ctx, upem, width, value, yOffset, asc
 }
 
 function updateCanvas(selectedGlyphData, selectedFont, displayCharacter, displayName) {
+	// initialize canvas
+	let CANVAS_SCALE = window.devicePixelRatio
+	const canvas = document.querySelector("#canvas")
+	let canvasWidth = 60 * canvasScale
+	let canvasHeight = 42 * canvasScale
+	canvas.style.width = `${canvasWidth}px`
+	canvas.style.height = `${canvasHeight}px`
+	canvas.width = canvasWidth * CANVAS_SCALE
+	canvas.height = canvasHeight * CANVAS_SCALE
+	const ctx = canvas.getContext("2d")
+	ctx.scale(CANVAS_SCALE, CANVAS_SCALE)
+
 	let GLYPH_SCALE = 0.6
 	ctx.clearRect(0, 0, canvasWidth, canvasHeight)
 
 	if (selectedGlyphData.path) {
 		const upem = selectedFont?.unitsPerEm || 1000
-		const width = 60 * rem
+		const width = 60 * canvasScale
 
-		const yOffset = -45 * rem
-		const xOffset = 20 * rem
+		const yOffset = -45 * canvasScale
+		const xOffset = 20 * canvasScale
 		const ascender = selectedFont?.tables.os2?.sTypoAscender || 750
 		const capHeight = selectedFont?.tables.os2?.sCapHeight || 700
 		const xHeight = selectedFont?.tables.os2?.sxHeight
@@ -122,15 +124,15 @@ function updateCanvas(selectedGlyphData, selectedFont, displayCharacter, display
 		drawFontLine(GLYPH_SCALE, ctx, upem, width, "X-height", xHeight || 500, yOffset)
 		drawFontLine(GLYPH_SCALE, ctx, upem, width, "Baseline", baseline, yOffset)
 		drawFontLine(GLYPH_SCALE, ctx, upem, width, "Descender", descender, yOffset)
-		drawFontLineVertical(GLYPH_SCALE, ctx, upem, width, 7 * rem, yOffset, ascender, descender)
-		drawFontLineVertical(GLYPH_SCALE, ctx, upem, width, 30 * rem, yOffset, ascender, descender)
-		drawFontLineVertical(GLYPH_SCALE, ctx, upem, width, 53 * rem, yOffset, ascender, descender)
+		drawFontLineVertical(GLYPH_SCALE, ctx, upem, width, 7 * canvasScale, yOffset, ascender, descender)
+		drawFontLineVertical(GLYPH_SCALE, ctx, upem, width, 30 * canvasScale, yOffset, ascender, descender)
+		drawFontLineVertical(GLYPH_SCALE, ctx, upem, width, 53 * canvasScale, yOffset, ascender, descender)
 
 		ctx.fillStyle = "#111"
-		ctx.font = `${0.75 * rem}px CommitMono`
+		ctx.font = `${0.75 * canvasScale}px CommitMono`
 		ctx.textAlign = "center"
-		ctx.fillText(displayName, (30 - 11.5) * rem, 2.75 * rem)
-		ctx.fillText(displayName, (30 + 11.5) * rem, 2.75 * rem)
+		ctx.fillText(displayName, (30 - 11.5) * canvasScale, 2.75 * canvasScale)
+		ctx.fillText(displayName, (30 + 11.5) * canvasScale, 2.75 * canvasScale)
 
 		// make ready transformation matrixes for manipulating paths
 		let firstMatrix = new DOMMatrix()
