@@ -3,7 +3,7 @@ const websiteData = {
 		coordinates: { x: 0, y: 0 },
 		scale: 1,
 		distance: 8, // in rem
-		scaleOffset: 1.25,
+		scaleOffset: 1.5,
 	},
 	sections: [
 		{
@@ -26,27 +26,47 @@ const websiteData = {
 					{
 						name: "franklin_gothic",
 						src: "franklin_gothic.svg",
-						description: ["Fig. 3b: Franklin Gothic.", "Tried-and-true, but overly traditional for code."],
+						description: [
+							"Franklin Gothic, 1896.",
+							"Tried-and-true, but overly traditional for code.",
+							"Inspiration was taken from most of the letter constructions, such as 'g'.",
+						],
 					},
 					{
 						name: "letter_gothic",
 						src: "letter_gothic.svg",
-						description: ["Fig. 3b: Letter Gothic.", "Clear, simple and monospaced, but too quirky."],
+						description: [
+							"Letter Gothic, 1956.",
+							"Clear, simple and monospaced, but too quirky.",
+							"The first simple monospaced sans-serif. Inspiration was taken in the simple shapes.",
+						],
 					},
 					{
 						name: "fira_mono",
 						src: "fira_mono.svg",
-						description: ["Fig. 3b: Fira Mono.", "Great letter distinction, but overly complex and unique."],
+						description: [
+							"Fira Mono, 2013.",
+							"Great letter distinction, but overly complex and unique.",
+							"Inpiration was taken in the way Fira handles monospace symbols.",
+						],
 					},
 					{
 						name: "untitled_sans",
 						src: "untitled_sans.svg",
-						description: ["Fig. 3b: Untitled Sans.", "Intentionally neutral, but not optimised for code."],
+						description: [
+							"Untitled Sans, 2017.",
+							"Intentionally neutral, but not optimised for code.",
+							"Inspiration was taken in its neutral nature.",
+						],
 					},
 					{
 						name: "commit_mono",
 						src: "commit_mono.svg",
-						description: ["Fig. 3b: Commit Mono.", "Neutral and functional, created and tested for code."],
+						description: [
+							"Commit Mono, 2023.",
+							"Neutral and functional, created and tested for code.",
+							"Commit Mono takes the best of all the fonts before it and merges it into a clean pakage.",
+						],
 					},
 				],
 			},
@@ -99,6 +119,7 @@ const websiteData = {
 			name: "examples",
 			description: "So, how does it look in code? Use the examples below or change the text to anything you like.",
 			content: {
+				weights: [300, 325, 350, 375, 400, 425, 450, 475, 500, 525, 550, 575, 600, 625, 650, 675, 700],
 				languages: [
 					{
 						languageName: "JavaScript",

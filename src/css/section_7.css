@@ -1,8 +1,12 @@
-#examples_form {
-	margin-top: 4rem;
+#section_7 form {
+	margin-top: 2rem;
 }
 
-#examples_form fieldset {
+#section_7 form h2 {
+	margin-top: 1rem;
+}
+
+#section_7 form fieldset {
 	border: none;
 	display: flex;
 	gap: 4ch;
@@ -11,11 +15,15 @@
 	background-color: var(--bg);
 }
 
-#examples_form > div {
+fieldset.alternates > div {
+	width: 4ch;
+}
+
+#section_7 form > div {
 	position: relative;
 }
 
-#examples_form input {
+#section_7 form input {
 	-webkit-appearance: none;
 	appearance: none;
 	background-color: var(--text);
@@ -31,12 +39,12 @@
 	display: block;
 }
 
-#examples_form input + label {
+#section_7 form input[type="radio"] + label {
 	position: relative;
 	z-index: 1;
 }
 
-#examples_form input + label::before {
+#section_7 form input[type="radio"] + label::before {
 	z-index: -1;
 	content: "";
 	position: absolute;
@@ -47,22 +55,61 @@
 	background-color: var(--bg);
 }
 
-#examples_form input:focus:checked + label::before {
+#section_7 form input[type="radio"]:focus:checked + label::before {
 	background-color: var(--text);
 }
 
-#examples_form input:focus:checked + label {
+#section_7 form input[type="radio"]:focus:checked + label {
 	color: var(--bg);
 }
 
-#examples_form input:checked + label::before {
-	background: repeating-conic-gradient(transparent 0% 25%, var(--text) 0% 50%, transparent 0% 75%) 50% / 2px 2px;
+#section_7 form input[type="radio"]:checked + label::before {
+	background: repeating-conic-gradient(var(--text) 0% 25%, transparent 0% 50%, transparent 0% 100%) 50% / 2px 2px;
 }
 
-#examples_form input:checked + label {
+#section_7 form input[type="radio"]:checked + label {
 	color: var(--text);
 }
 
 p#code_example {
 	white-space: pre;
+	max-width: none;
+}
+
+#section_7 form input[type="checkbox"] {
+	opacity: 1;
+	width: 0.5rem;
+	height: 0.5rem;
+	display: inline-block;
+	background-color: transparent;
+	border: 1px solid var(--text);
+}
+
+#section_7 form input[type="checkbox"]:checked {
+	background-color: var(--text);
+}
+
+#section_7 form input[type="checkbox"]:focus + label {
+	background-color: var(--text);
+	color: var(--bg);
+}
+
+label[for="alternate_a1"],
+label[for="alternate_g1"],
+label[for="alternate_six1"],
+label[for="alternate_asterisk1"],
+label[for="alternate_at1"],
+label[for="alternate_zero1"],
+label[for="alternate_round1"] {
+	font-feature-settings: "cv01" off, "cv02" off, "cv06" off, "cv07" off, "cv08" off, "zero" off, "ss01" off;
+}
+
+label[for="alternate_a2"],
+label[for="alternate_g2"],
+label[for="alternate_six2"],
+label[for="alternate_asterisk2"],
+label[for="alternate_at2"],
+label[for="alternate_zero2"],
+label[for="alternate_round2"] {
+	font-feature-settings: "cv01" on, "cv02" on, "cv06" on, "cv07" on, "cv08" on, "zero" on, "ss01" on;
 }

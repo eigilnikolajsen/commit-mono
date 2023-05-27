@@ -12,12 +12,14 @@ familiarContent.forEach((example, index) => {
 	div.dataset.name = example.name
 	const img = document.createElement("img")
 	img.src = `/img/familiar/${example.src}`
-	div.append(img)
 	example.description.forEach((description) => {
 		const p = document.createElement("p")
 		p.textContent = description
+		p.tabIndex = 0
+		p.dataset.edit = "true"
 		div.append(p)
 	})
+	div.append(img)
 	familiarContainer.append(div)
 })
 

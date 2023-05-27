@@ -39,6 +39,13 @@ function updateNav(event, form) {
 			sectionContainer.style.display = "none"
 		}
 	})
+	// reset transforms
+	main.style.transform = `translate(0px, 0px)`
+	mainScale.style.transform = `scale(1)`
+	websiteData.pushPage.coordinates.x = 0
+	websiteData.pushPage.coordinates.y = 0
+	websiteData.pushPage.scale = 1
+
 	if (event) event.preventDefault()
 }
 
@@ -59,8 +66,22 @@ function exitTextField() {
 	insideTextField = false
 }
 
-window.addEventListener("keydown", (e) => {
-	console.log(e.code, e.shiftKey)
+const keys = document.querySelectorAll(".key")
+keys.forEach((key) => {
+	key.addEventListener("mousedown", () => {
+		key.dataset.keyCode.includes("Shift")
+			? keyDown({ code: key.dataset.keyCode, key: key.dataset.key, shiftKey: true })
+			: keyDown({ code: key.dataset.keyCode, key: key.dataset.key, shiftKey: false })
+	})
+	key.addEventListener("mouseup", () => {
+		key.dataset.keyCode.includes("Shift")
+			? keyUp({ code: key.dataset.keyCode, key: key.dataset.key, shiftKey: true })
+			: keyUp({ code: key.dataset.keyCode, key: key.dataset.key, shiftKey: false })
+	})
+})
+
+function keyDown(e) {
+	console.log(e, e.code, e.shiftKey, e.key)
 
 	if (e.code == "KeyE" && document.activeElement.dataset.edit == "true") enterTextField()
 
@@ -83,17 +104,17 @@ window.addEventListener("keydown", (e) => {
 			e.code == "Minus" ||
 			e.code == "Slash"
 		) {
-			main.style.opacity = 0.04
 			pushPage(e.code)
 		}
+
+		if (e.code == "KeyK") {
+			document.querySelector("#keyboard_section").classList.toggle("hidden")
+		}
+		// main.style.opacity = 0.04
+		// setTimeout(() => (main.style.opacity = 1), 40)
 	}
-})
-
-const main = document.querySelector("main")
-const mainScale = document.querySelector("#main_scale")
-const rem = getComputedStyle(document.documentElement).fontSize.split("px")[0]
-
-window.addEventListener("keyup", (e) => {
+}
+function keyUp(e) {
 	const activeKey = document.querySelector(".active_key")
 	activeKey?.classList.remove("active_key")
 
@@ -104,7 +125,14 @@ window.addEventListener("keyup", (e) => {
 		const checkedMenuInput = document.querySelector("#nav_form input:checked")
 		checkedMenuInput.focus()
 	}
-})
+}
+
+window.addEventListener("keydown", (e) => keyDown(e))
+window.addEventListener("keyup", (e) => keyUp(e))
+
+const main = document.querySelector("main")
+const mainScale = document.querySelector("#main_scale")
+const rem = getComputedStyle(document.documentElement).fontSize.split("px")[0]
 
 function pushPage(keyCode) {
 	const x = websiteData.pushPage.coordinates.x
@@ -183,15 +211,15 @@ document.addEventListener("focusin", (e) => {
 		checkedMenuInput.focus()
 	}
 
-	console.log(active.getBoundingClientRect())
-	const bottomBuffer = 100
-	const x = websiteData.pushPage.coordinates.x
-	const y = websiteData.pushPage.coordinates.y
-	if (active.getBoundingClientRect().bottom > window.innerHeight - bottomBuffer) {
-		const difference = window.innerHeight - bottomBuffer - active.getBoundingClientRect().bottom
-		main.style.transform = `translate(${x}px, ${y + difference}px)`
-		websiteData.pushPage.coordinates.y += difference
-	}
+	// console.log(active.getBoundingClientRect())
+	// const bottomBuffer = 100
+	// const x = websiteData.pushPage.coordinates.x
+	// const y = websiteData.pushPage.coordinates.y
+	// if (active.getBoundingClientRect().bottom > window.innerHeight - bottomBuffer) {
+	// 	const difference = window.innerHeight - bottomBuffer - active.getBoundingClientRect().bottom
+	// 	main.style.transform = `translate(${x}px, ${y + difference}px)`
+	// 	websiteData.pushPage.coordinates.y += difference
+	// }
 	// if (active.getBoundingClientRect().top < y + bottomBuffer) {
 	// 	const difference = active.getBoundingClientRect().top - (y + bottomBuffer)
 	// 	main.style.transform = `translate(${x}px, ${y - difference}px)`

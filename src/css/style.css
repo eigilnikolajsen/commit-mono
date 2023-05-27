@@ -43,14 +43,14 @@ body {
 #main_scale {
 	inset: 0;
 	position: fixed;
-	width: 100vw;
+	width: 4rem;
 	height: 100vh;
 }
 
 main {
 	transform: translate(0);
 	position: fixed;
-	min-width: 100%;
+	min-width: 100vw;
 	min-height: 100%;
 	padding: 4rem 0 0 2rem;
 	display: flex;
@@ -59,16 +59,29 @@ main {
 }
 
 button:active {
-	background: repeating-conic-gradient(#000 0% 25%, transparent 0% 50%, #000 0% 75%) 50% / 4px 4px;
+	background: repeating-conic-gradient(var(--text) 0% 25%, transparent 0% 50%, transparent 0% 100%) 50% / 2px 2px;
 }
 
-header {
-	display: flex;
-	align-items: start;
-	padding: 0 2rem;
-	border-top: 1rem solid var(--bg);
-	position: fixed;
+header nav {
+	width: 100%;
+	padding: 1rem 0 0 2rem;
+	background-color: var(--bg);
 	z-index: 100;
+	position: fixed;
+	top: 0;
+}
+
+header #keyboard_section {
+	width: 100%;
+	padding: 0.25rem 0 1rem 2rem;
+	background-color: var(--bg);
+	z-index: 100;
+	position: fixed;
+	bottom: 0;
+}
+
+#keyboard_section.hidden {
+	display: none;
 }
 
 #nav_form {
@@ -76,7 +89,6 @@ header {
 	gap: 2rem;
 	font-size: 0.75rem;
 	line-height: 1rem;
-	background-color: var(--bg);
 }
 
 #nav_form > div {
@@ -121,7 +133,7 @@ header {
 }
 
 #nav_form input:checked + label::before {
-	background: repeating-conic-gradient(transparent 0% 25%, var(--text) 0% 50%, transparent 0% 75%) 50% / 2px 2px;
+	background: repeating-conic-gradient(var(--text) 0% 25%, transparent 0% 50%, transparent 0% 100%) 50% / 2px 2px;
 }
 
 #nav_form input:checked + label {

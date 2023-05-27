@@ -65,6 +65,11 @@
 	margin-top: 2rem;
 }
 
+#familiar_container p {
+	max-width: none;
+}
+
 #familiar_container img {
-	height: 6rem;
+	height: 36rem;
+	margin-top: 1rem;
 }

@@ -56,7 +56,7 @@
 }
 
 #code_form input:checked + label::before {
-	background: repeating-conic-gradient(transparent 0% 25%, var(--text) 0% 50%, transparent 0% 75%) 50% / 2px 2px;
+	background: repeating-conic-gradient(var(--text) 0% 25%, transparent 0% 50%, transparent 0% 100%) 50% / 2px 2px;
 }
 
 #code_form input:checked + label {

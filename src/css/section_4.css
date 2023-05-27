@@ -48,6 +48,7 @@
 	position: absolute;
 	transform: translateX(calc(24rem / 1000 * 40));
 	color: var(--middle);
+	color: repeating-conic-gradient(var(--text) 0% 25%, transparent 0% 50%, transparent 0% 100%) 50% / 2px 2px;
 	z-index: -1;
 }
 
@@ -121,7 +122,7 @@
 }
 
 #intelligent_form input:checked + label::before {
-	background: repeating-conic-gradient(transparent 0% 25%, var(--text) 0% 50%, transparent 0% 75%) 50% / 2px 2px;
+	background: repeating-conic-gradient(var(--text) 0% 25%, transparent 0% 50%, transparent 0% 100%) 50% / 2px 2px;
 }
 
 #intelligent_form input:checked + label {
