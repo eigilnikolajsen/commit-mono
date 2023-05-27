@@ -1,0 +1,44 @@
+#section_9 .content_container {
+	margin-top: 0rem;
+}
+
+h2 {
+	font-size: 0.75rem;
+	line-height: 1rem;
+	font-weight: normal;
+	width: fit-content;
+}
+
+ul {
+	list-style-type: none;
+}
+
+li {
+	font-size: 0.75rem;
+	line-height: 1rem;
+	margin-left: 2ch;
+	max-width: 54ch;
+	width: fit-content;
+}
+
+li::before {
+	content: "• ";
+	position: absolute;
+	margin-left: -2ch;
+}
+
+li:focus::before {
+	background-color: transparent;
+	color: var(--text);
+}
+
+a,
+a:visited {
+	color: var(--text);
+}
+
+a:focus {
+	background-color: var(--text);
+	color: var(--bg);
+	text-decoration: none;
+}

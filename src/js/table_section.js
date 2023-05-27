@@ -27,7 +27,7 @@ function createTable() {
 				input.id = `char_${charCode}`
 				input.name = `row_${i}`
 				input.value = charCode
-				if (j == 1) input.setAttribute("checked", "true")
+				if (j == 2) input.setAttribute("checked", "true")
 				const label = document.createElement("label")
 				label.textContent = i == 6 && j == 16 ? "" : String.fromCharCode(charCode)
 				label.setAttribute("for", `char_${charCode}`)
@@ -42,7 +42,7 @@ function createTable() {
 const createBinaryString = (number, length) => parseInt(number, 10).toString(2).padStart(length, "0")
 createTable()
 
-let previousOutput = [32, 48, 64, 80, 96, 112]
+let previousOutput = [33, 49, 65, 81, 97, 113]
 function updateTable(event, form) {
 	const data = new FormData(form)
 	let output = []
@@ -60,5 +60,3 @@ function updateTable(event, form) {
 	previousOutput = [...output]
 	event.preventDefault()
 }
-
-// console.log(3 >= 0 ? (3 <= 0 ? 0 : 1) : -1)

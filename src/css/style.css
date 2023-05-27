@@ -140,10 +140,12 @@ header {
 }
 
 p,
+a,
 figcaption {
 	font-size: 0.75rem;
 	line-height: 1rem;
 	max-width: 54ch;
+	width: fit-content;
 }
 
 h1 {
