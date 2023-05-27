@@ -21,7 +21,7 @@ function dynamicFavicon() {
 
 		link.id = "dynamic-favicon"
 		link.rel = "icon"
-		link.href = faviconCounter % 2 == 0 ? "/favicon/icon-off.svg" : "/favicon/icon.svg"
+		link.href = faviconCounter % 2 == 0 ? "src/favicon/icon-off.svg" : "src/favicon/icon.svg"
 		if (oldLink) {
 			document.head.removeChild(oldLink)
 		}

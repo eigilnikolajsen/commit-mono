@@ -1,6 +1,6 @@
 @font-face {
 	font-family: "CommitMono";
-	src: url("/fonts/CommitMonoV101-450.otf");
+	src: url("/src/fonts/CommitMonoV101-450.otf");
 	font-style: normal;
 	font-weight: 450;
 }
@@ -62,8 +62,12 @@ button:active {
 	background: repeating-conic-gradient(var(--text) 0% 25%, transparent 0% 50%, transparent 0% 100%) 50% / 2px 2px;
 }
 
+header {
+	position: relative;
+}
+
 header nav {
-	width: 100%;
+	width: max-content;
 	padding: 1rem 0 0 2rem;
 	background-color: var(--bg);
 	z-index: 100;
