@@ -182,6 +182,21 @@ document.addEventListener("focusin", (e) => {
 		const checkedMenuInput = document.querySelector("#nav_form input:checked")
 		checkedMenuInput.focus()
 	}
+
+	console.log(active.getBoundingClientRect())
+	const bottomBuffer = 100
+	const x = websiteData.pushPage.coordinates.x
+	const y = websiteData.pushPage.coordinates.y
+	if (active.getBoundingClientRect().bottom > window.innerHeight - bottomBuffer) {
+		const difference = window.innerHeight - bottomBuffer - active.getBoundingClientRect().bottom
+		main.style.transform = `translate(${x}px, ${y + difference}px)`
+		websiteData.pushPage.coordinates.y += difference
+	}
+	// if (active.getBoundingClientRect().top < y + bottomBuffer) {
+	// 	const difference = active.getBoundingClientRect().top - (y + bottomBuffer)
+	// 	main.style.transform = `translate(${x}px, ${y - difference}px)`
+	// 	websiteData.pushPage.coordinates.y -= difference
+	// }
 })
 
 document.onvisibilitychange = function () {

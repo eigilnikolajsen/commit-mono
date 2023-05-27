@@ -29,6 +29,7 @@ td label {
 	font-size: 4rem;
 	text-align: center;
 	position: relative;
+	white-space: pre;
 }
 
 #section_2 fieldset {
@@ -43,7 +44,7 @@ td label {
 #section_2 input:focus:checked + label {
 	background-color: var(--text);
 	color: var(--bg);
-	transform: scale(4);
+	transform: scale(6);
 	z-index: 2;
 }
 

@@ -40,6 +40,7 @@
 		<script src="src/js/familiar_section.js" defer></script>
 		<script src="src/js/intelligent_section.js" defer></script>
 		<script src="src/js/code_section.js" defer></script>
+		<script src="src/js/example_section.js" defer></script>
 	</head>
 	<body>
 		<div tabindex="0" id="block_tab_start"></div>
@@ -249,7 +250,14 @@
 					</section>
 					<section id="section_7">
 						<div class="top_container"></div>
-						<div class="content_container"></div>
+						<div class="content_container">
+							<form id="examples_form" onchange="updateExamples(event, this)">
+								<fieldset></fieldset>
+							</form>
+							<div id="examples_container">
+								<p id="code_example"></p>
+							</div>
+						</div>
 					</section>
 					<section id="section_8">
 						<div class="top_container"></div>

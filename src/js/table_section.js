@@ -46,23 +46,15 @@ let previousOutput = [32, 48, 64, 80, 96, 112]
 function updateTable(event, form) {
 	const data = new FormData(form)
 	let output = []
-	for (const entry of data) {
-		// output = `${output}${entry[0]}=${entry[1]}\n`
-		output.push(+entry[1])
-	}
-	const rowIndex = output.indexOf(+document.activeElement.value)
-	let offset
+	for (const entry of data) output.push(+entry[1])
+	let indexOfChange = 0
+	let offset = 0
+	output.forEach((row, index) => (row != previousOutput[index] ? (indexOfChange = index) : null))
+	output.forEach((row, index) => (index == indexOfChange ? (offset = row - previousOutput[index]) : null))
 	output.forEach((row, index) => {
-		if (index == rowIndex) {
-			offset = row - previousOutput[index]
-		}
-	})
-	output.forEach((row, index) => {
-		if (index != rowIndex) {
-			console.log(rowIndex, previousOutput, output, offset, `char_${row + offset}`)
-			const newCharID = offset >= 0 ? (offset <= 0 ? 0 : 1) : -1
-			console.log(newCharID)
-			document.forms["table_form"][`char_${row + newCharID}`].checked = true
+		if (index != indexOfChange) {
+			document.forms["table_form"][`char_${row + offset}`].checked = true
+			output[index] += offset
 		}
 	})
 	previousOutput = [...output]

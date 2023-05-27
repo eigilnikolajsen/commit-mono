@@ -1,12 +1,4 @@
-ROMAN_VALUES = {
-  "I": 1,
-  "V": 5,
-  "X": 10,
-  "L": 50,
-  "C": 100,
-  "D": 500,
-  "M": 1000
-}
+ROMAN_VALUES = { "I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000 }
 
 def roman_valid?(roman_numbers)
   return false if roman_numbers.any? { |roman_number| !ROMAN_VALUES.keys.include?(roman_number.to_sym) }  

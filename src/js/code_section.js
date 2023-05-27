@@ -32,22 +32,24 @@ function updateCode(event, form) {
 	}
 
 	let displayCharacter = ""
+	let displayName = ""
 	websiteData.sections.forEach((section) => {
 		if (section.name == "code") {
 			section.content.characters.forEach((character, index) => {
-				if (character.name == output) displayCharacter = character.value
+				if (character.name == output) {
+					displayCharacter = character.value
+					displayName = character.name
+				}
 			})
 		}
 	})
 
-	ctx.font = `40rem CommitMono`
-	// ctx.fillText(displayCharacter, 0, 34 * rem)
 	let selectedGlyphData
 	if (commitMonoFont) {
 		Object.values(commitMonoFont.glyphs.glyphs).forEach((glyph) => {
 			if (glyph.name == output) selectedGlyphData = glyph
 		})
-		updateCanvas(selectedGlyphData, commitMonoFont, true, false)
+		updateCanvas(selectedGlyphData, commitMonoFont, displayCharacter, displayName)
 	}
 
 	if (event) event.preventDefault()
@@ -100,7 +102,7 @@ const drawFontLineVertical = (GLYPH_SCALE, ctx, upem, width, value, yOffset, asc
 	ctx.stroke()
 }
 
-function updateCanvas(selectedGlyphData, selectedFont, bezier) {
+function updateCanvas(selectedGlyphData, selectedFont, displayCharacter, displayName) {
 	let GLYPH_SCALE = 0.6
 	ctx.clearRect(0, 0, canvasWidth, canvasHeight)
 
@@ -120,11 +122,15 @@ function updateCanvas(selectedGlyphData, selectedFont, bezier) {
 		drawFontLine(GLYPH_SCALE, ctx, upem, width, "X-height", xHeight || 500, yOffset)
 		drawFontLine(GLYPH_SCALE, ctx, upem, width, "Baseline", baseline, yOffset)
 		drawFontLine(GLYPH_SCALE, ctx, upem, width, "Descender", descender, yOffset)
-		// drawFontLineVertical(GLYPH_SCALE, ctx, upem, width, 1, yOffset, ascender, descender)
 		drawFontLineVertical(GLYPH_SCALE, ctx, upem, width, 7 * rem, yOffset, ascender, descender)
 		drawFontLineVertical(GLYPH_SCALE, ctx, upem, width, 30 * rem, yOffset, ascender, descender)
 		drawFontLineVertical(GLYPH_SCALE, ctx, upem, width, 53 * rem, yOffset, ascender, descender)
-		// drawFontLineVertical(GLYPH_SCALE, ctx, upem, width, 60 * rem - 1, yOffset, ascender, descender)
+
+		ctx.fillStyle = "#111"
+		ctx.font = `${0.75 * rem}px CommitMono`
+		ctx.textAlign = "center"
+		ctx.fillText(displayName, (30 - 11.5) * rem, 2.75 * rem)
+		ctx.fillText(displayName, (30 + 11.5) * rem, 2.75 * rem)
 
 		// make ready transformation matrixes for manipulating paths
 		let firstMatrix = new DOMMatrix()
@@ -137,7 +143,7 @@ function updateCanvas(selectedGlyphData, selectedFont, bezier) {
 		secondMatrix = secondMatrix.translateSelf((xOffset * width) / upem, 0) // translate xOffset
 
 		// set initial value for glyph composition based on if bezier is switched on or off
-		let canvasGlyphComposition = bezier ? CANVAS_GLYPH_COMPOSITION_BEZIER : CANVAS_GLYPH_COMPOSITION_FILL
+		// let canvasGlyphComposition = bezier ? CANVAS_GLYPH_COMPOSITION_BEZIER : CANVAS_GLYPH_COMPOSITION_FILL
 
 		CANVAS_GLYPH_COMPOSITION_BEZIER.forEach((composite) => {
 			const calcPointsize = composite.pointSize * (upem / 1000)
