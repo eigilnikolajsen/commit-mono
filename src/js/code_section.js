@@ -61,14 +61,14 @@ const drawFontLine = (GLYPH_SCALE, ctx, upem, width, name, value, yOffset) => {
 	let scaledValue = mapRange(value, 0, upem, 0, width * GLYPH_SCALE)
 	scaledValue = width - scaledValue + (yOffset * GLYPH_SCALE * width) / upem
 
-	ctx.strokeStyle = "#111"
+	ctx.strokeStyle = getCssVar("--text")
 	ctx.beginPath()
 	ctx.moveTo(7 * canvasScale, scaledValue)
 	ctx.lineTo(width - 7 * canvasScale, scaledValue)
 	ctx.closePath()
 	ctx.stroke()
 
-	ctx.fillStyle = "#111"
+	ctx.fillStyle = getCssVar("--text")
 	ctx.font = `${0.75 * canvasScale}px CommitMono`
 	ctx.textAlign = "left"
 	ctx.fillText(name, 0, scaledValue + 0.25 * canvasScale)
@@ -82,9 +82,7 @@ const drawFontLineVertical = (GLYPH_SCALE, ctx, upem, width, value, yOffset, asc
 	let scaledValue2 = mapRange(descender, 0, upem, 0, width * GLYPH_SCALE)
 	scaledValue2 = width - scaledValue2 + (yOffset * GLYPH_SCALE * width) / upem
 
-	console.log(scaledValue1, scaledValue2)
-
-	ctx.strokeStyle = "#111"
+	ctx.strokeStyle = getCssVar("--text")
 	ctx.beginPath()
 	ctx.moveTo(value, scaledValue1)
 	ctx.lineTo(value, scaledValue2)
@@ -109,6 +107,47 @@ function updateCanvas(selectedGlyphData, selectedFont, displayCharacter, display
 	ctx.clearRect(0, 0, canvasWidth, canvasHeight)
 
 	if (selectedGlyphData.path) {
+		const CANVAS_GLYPH_COMPOSITION_FILL = [
+			{
+				type: "outline",
+				fill: true,
+				color: getCssVar("--text"),
+				pointSize: undefined,
+			},
+		]
+		const CANVAS_GLYPH_COMPOSITION_BEZIER = [
+			// {
+			// 	type: "outline",
+			// 	fill: true,
+			// 	color: "rgba(0, 0, 0, 0.1)",
+			// 	pointSize: undefined,
+			// },
+			{
+				type: "handles",
+				fill: false,
+				color: getCssVar("--middle"),
+				pointSize: undefined,
+			},
+			{
+				type: "outline",
+				fill: false,
+				color: getCssVar("--text"),
+				pointSize: undefined,
+			},
+			{
+				type: "points",
+				fill: true,
+				color: getCssVar("--text"),
+				pointSize: 10, // size of point on bezier glyph
+			},
+			{
+				type: "handle points",
+				fill: true,
+				color: getCssVar("--middle"),
+				pointSize: 10, // size of handles on bezier glyph
+			},
+		]
+
 		const upem = selectedFont?.unitsPerEm || 1000
 		const width = 60 * canvasScale
 
@@ -128,7 +167,7 @@ function updateCanvas(selectedGlyphData, selectedFont, displayCharacter, display
 		drawFontLineVertical(GLYPH_SCALE, ctx, upem, width, 30 * canvasScale, yOffset, ascender, descender)
 		drawFontLineVertical(GLYPH_SCALE, ctx, upem, width, 53 * canvasScale, yOffset, ascender, descender)
 
-		ctx.fillStyle = "#111"
+		ctx.fillStyle = getCssVar("--text")
 		ctx.font = `${0.75 * canvasScale}px CommitMono`
 		ctx.textAlign = "center"
 		ctx.fillText(displayName, (30 - 11.5) * canvasScale, 2.75 * canvasScale)
@@ -294,55 +333,3 @@ function glyphBezier(glyph, upem, typeOfOutline, pointSize) {
 
 	return path2d
 }
-
-// CANVAS_GLYPH_COMPOSITION_FILL:
-// type: don't change
-// fill: don't change
-// color: changes the fill color of the glyph when x-ray is OFF in LIGHT MODE
-// pointSize: don't change
-const CANVAS_GLYPH_COMPOSITION_FILL = [
-	{
-		type: "outline",
-		fill: true,
-		color: "#111",
-		pointSize: undefined,
-	},
-]
-
-// CANVAS_GLYPH_COMPOSITION_BEZIER:
-// type: don't change
-// fill: don't change
-// color: changes the color of the type when x-ray is OFF in LIGHT MODE
-// pointSize: only change on points and handle points (controls the size of these)
-const CANVAS_GLYPH_COMPOSITION_BEZIER = [
-	// {
-	// 	type: "outline",
-	// 	fill: true,
-	// 	color: "rgba(0, 0, 0, 0.1)",
-	// 	pointSize: undefined,
-	// },
-	{
-		type: "handles",
-		fill: false,
-		color: "#666",
-		pointSize: undefined,
-	},
-	{
-		type: "outline",
-		fill: false,
-		color: "#111",
-		pointSize: undefined,
-	},
-	{
-		type: "points",
-		fill: true,
-		color: "#111",
-		pointSize: 10, // size of point on bezier glyph
-	},
-	{
-		type: "handle points",
-		fill: true,
-		color: "#666",
-		pointSize: 10, // size of handles on bezier glyph
-	},
-]

@@ -44,374 +44,422 @@
 		<script src="src/js/example_section.js" defer></script>
 	</head>
 	<body>
-		<div tabindex="0" id="block_tab_start"></div>
-		<header>
-			<nav>
-				<form id="nav_form" onchange="updateNav(event, this)"></form>
-			</nav>
-			<div id="keyboard_section">
-				<div id="keyboard_container">
-					<div class="key_group" id="tab">
-						<div class="keys">
-							<p data-key-code="Tab" data-key="Tab" class="key" data-noclick="true">Tab</p>
-							<p data-key-code="ShiftTab" data-key="ShiftTab" class="key" data-noclick="true">⇧Tab</p>
+		<div id="app_root">
+			<div tabindex="0" id="block_tab_start"></div>
+			<div id="click_focus"><p>Click to focus page.</p></div>
+			<div id="change_setting"><p></p></div>
+			<div id="content_root">
+				<header>
+					<nav>
+						<form id="nav_form" onchange="updateNav(event, this)"></form>
+					</nav>
+					<div id="keyboard_section">
+						<div id="keyboard_container">
+							<div class="key_group" id="tab">
+								<div class="keys">
+									<p data-key-code="Tab" data-key="Tab" class="key" data-noclick="true">Tab</p>
+									<p data-key-code="ShiftTab" data-key="ShiftTab" class="key" data-noclick="true">⇧Tab</p>
+								</div>
+								<p>Navigate ↓↑</p>
+							</div>
+							<div class="key_group" id="navigate">
+								<div class="keys">
+									<p data-key-code="ArrowLeft" data-key="ArrowLeft" class="key" data-noclick="true">←</p>
+									<p data-key-code="ArrowRight" data-key="ArrowRight" class="key" data-noclick="true">→</p>
+								</div>
+								<p>Navigate ←→</p>
+							</div>
+							<div class="key_group" id="push_page">
+								<div class="keys">
+									<p data-key-code="KeyW" data-key="w" class="key">W</p>
+									<p data-key-code="KeyA" data-key="a" class="key">A</p>
+									<p data-key-code="KeyS" data-key="s" class="key">S</p>
+									<p data-key-code="KeyD" data-key="d" class="key">D</p>
+								</div>
+								<p>Scroll</p>
+							</div>
+							<div class="key_group" id="zoom_in_out">
+								<div class="keys">
+									<p data-key-code="Minus" data-key="+" class="key">+</p>
+									<p data-key-code="Slash" data-key="-" class="key">-</p>
+								</div>
+								<p>Zoom</p>
+							</div>
+							<div class="key_group" id="reset">
+								<div class="keys">
+									<p data-key-code="KeyR" data-key="r" class="key">R</p>
+								</div>
+								<p>Reset</p>
+							</div>
+							<div class="key_group" id="escape_textfield">
+								<div class="keys">
+									<p data-key-code="KeyE" data-key="e" class="key">E</p>
+									<p data-key-code="Escape" data-key="Escape" class="key">Esc</p>
+								</div>
+								<p>Edit text</p>
+							</div>
+							<div class="key_group" id="show_hide_keys">
+								<div class="keys">
+									<p data-key-code="KeyK" data-key="k" class="key">K</p>
+								</div>
+								<p>Hide keys</p>
+							</div>
+							<div class="key_group" id="change_weight">
+								<div class="keys">
+									<p data-key-code="KeyV" data-key="v" class="key">V</p>
+								</div>
+								<p>Change weight</p>
+							</div>
+							<div class="key_group" id="change_weight">
+								<div class="keys">
+									<p data-key-code="KeyI" data-key="i" class="key">I</p>
+								</div>
+								<p>Invert</p>
+							</div>
 						</div>
-						<p>Navigate ↑↓</p>
 					</div>
-					<div class="key_group" id="navigate">
-						<div class="keys">
-							<p data-key-code="ArrowLeft" data-key="ArrowLeft" class="key" data-noclick="true">←</p>
-							<p data-key-code="ArrowRight" data-key="ArrowRight" class="key" data-noclick="true">→</p>
+				</header>
+				<div id="main_scale">
+					<main>
+						<div id="section_container">
+							<section id="section_1">
+								<div class="content_container">
+									<h1 tabindex="0" data-edit="true">Commit Mono. <br />Neutral programming typeface.</h1>
+									<figure>
+										<blockquote cite="https://jaspermorrison.com/publications/essays/super-normal">
+											<p tabindex="0" data-edit="true">
+												There are better ways to design than putting a big effort into making something look special.
+												Special is generally less useful than normal, and less rewarding in the long term. Special
+												things demand attention for the wrong reasons, interrupting potentially good atmosphere with
+												their awkward presence.
+											</p>
+										</blockquote>
+										<br />
+										<figcaption>
+											<p tabindex="0" data-edit="true">–Jasper Morrison, <cite>Super Normal Manifesto</cite></p>
+										</figcaption>
+									</figure>
+									<p id="navigate_description" tabindex="0" data-edit="true">Navigate website using the keyboard.</p>
+									<p id="safari" tabindex="0" data-edit="true">Using Safari?</p>
+									<div>
+										<p id="safari_explanation">
+											Tabbing is disabled by default in Safari. <br />
+											Solve by either:
+										</p>
+										<ul>
+											<li>Use Option+Tab</li>
+											<li>
+												Safari → Settings → Advanced → Check the option: "Press Tab to highlight each item on a web
+												page"
+											</li>
+										</ul>
+									</div>
+								</div>
+							</section>
+							<section id="section_2">
+								<div class="top_container"></div>
+								<div class="content_container">
+									<form id="table_form" onchange="updateTable(event, this)">
+										<table></table>
+									</form>
+									<p tabindex="0" data-edit="true">
+										Commit Mono 450 – ASCII character table. <br />
+										Since most code is written using ASCII characters these characters are the backbone of every code
+										font. They have been sculpted with particularly great precision and attention to detail.
+									</p>
+								</div>
+							</section>
+							<section id="section_3">
+								<div class="top_container"></div>
+								<div class="content_container">
+									<form id="familiar_form" onchange="updateFamiliar(event, this)">
+										<fieldset>
+											<div>
+												<input type="radio" id="franklin_gothic" name="select_year" value="franklin_gothic" checked />
+												<label for="franklin_gothic">1896</label>
+											</div>
+											<div>
+												<input type="radio" id="letter_gothic" name="select_year" value="letter_gothic" />
+												<label for="letter_gothic">1956</label>
+											</div>
+											<div>
+												<input type="radio" id="fira_mono" name="select_year" value="fira_mono" />
+												<label for="fira_mono">2013</label>
+											</div>
+											<div>
+												<input type="radio" id="untitled_sans" name="select_year" value="untitled_sans" />
+												<label for="untitled_sans">2017</label>
+											</div>
+											<div>
+												<input type="radio" id="commit_mono" name="select_year" value="commit_mono" />
+												<label for="commit_mono">2023</label>
+											</div>
+										</fieldset>
+									</form>
+									<div id="familiar_container"></div>
+								</div>
+							</section>
+							<section id="section_4">
+								<div class="top_container"></div>
+								<div class="content_container">
+									<form id="intelligent_form" onchange="updateIntelligent(event, this)">
+										<fieldset>
+											<div>
+												<input type="radio" id="input_before" name="select_state" value="before" checked />
+												<label for="input_before">Smart kerning OFF</label>
+											</div>
+											<div>
+												<input type="radio" id="input_after" name="select_state" value="after" />
+												<label for="input_after">Smart kerning ON</label>
+											</div>
+											<div>
+												<input type="radio" id="input_original" name="select_state" value="original" />
+												<label for="input_original">How it works OFF</label>
+											</div>
+											<div>
+												<input type="radio" id="input_smart_kerning" name="select_state" value="smart_kerning" />
+												<label for="input_smart_kerning">How it works ON</label>
+											</div>
+										</fieldset>
+									</form>
+									<div id="intelligent_container">
+										<div style="display: block" id="before">
+											<figure>
+												<p>Commit Mono: Normal <br />programming typeface</p>
+												<figcaption tabindex="0" data-edit="true">
+													SMART KERNING OFF behaves exactly like your standard monospace font. Letters are centered in
+													their respective boxes.
+												</figcaption>
+											</figure>
+										</div>
+										<div style="display: none" id="after">
+											<figure>
+												<p>Commit Mono: Normal <br />programming typeface</p>
+												<figcaption tabindex="0" data-edit="true">
+													SMART KERNING ON improves overall word spacing and makes sublexical units easier to tell
+													apart, therefore improving reading speed and accuracy.
+												</figcaption>
+											</figure>
+										</div>
+										<div style="display: none" id="original">
+											<figure>
+												<div>
+													<p>m</p>
+													<p>o</p>
+													<p>i</p>
+												</div>
+												<figcaption tabindex="0" data-edit="true">
+													Smart kerning works by looking at single letter between two other letters. If the other
+													letters are in different width classes, the middle letter will slide closer to the narrow
+													letter.
+												</figcaption>
+											</figure>
+										</div>
+										<div style="display: none" id="smart_kerning">
+											<figure>
+												<div>
+													<p>m</p>
+													<p>o</p>
+													<p>i</p>
+												</div>
+												<figcaption tabindex="0" data-edit="true">
+													As you can see here, the 'o' is moved 40 units to the right, which evens out the spacing
+													between itself, 'm' and 'i'. This same process is applied to all letters.
+												</figcaption>
+											</figure>
+										</div>
+									</div>
+								</div>
+							</section>
+							<section id="section_5">
+								<div class="top_container"></div>
+								<div class="content_container">
+									<form id="code_form" onchange="updateCode(event, this)">
+										<fieldset></fieldset>
+									</form>
+									<div id="canvas_container">
+										<canvas id="canvas"></canvas>
+									</div>
+								</div>
+							</section>
+							<section id="section_6">
+								<div class="top_container"></div>
+								<div class="content_container"></div>
+							</section>
+							<section id="section_7">
+								<div class="top_container"></div>
+								<div class="content_container">
+									<form id="examplesettings_form" onchange="updateExamplesettings(event, this)">
+										<fieldset id="weights">
+											<legend><h2>Weights</h2></legend>
+										</fieldset>
+										<h2>Alternates</h2>
+										<fieldset class="alternates">
+											<div>
+												<input type="radio" name="alternate_a" id="alternate_a1" value="'cv01' off" checked="true" />
+												<label for="alternate_a1">a</label>
+											</div>
+											<div>
+												<input type="radio" name="alternate_a" id="alternate_a2" value="'cv01' on" />
+												<label for="alternate_a2">a</label>
+											</div>
+										</fieldset>
+										<fieldset class="alternates">
+											<div>
+												<input type="radio" name="alternate_g" id="alternate_g1" value="'cv02' off" checked="true" />
+												<label for="alternate_g1">g</label>
+											</div>
+											<div>
+												<input type="radio" name="alternate_g" id="alternate_g2" value="'cv02' on" />
+												<label for="alternate_g2">g</label>
+											</div>
+										</fieldset>
+										<fieldset class="alternates">
+											<div>
+												<input
+													type="radio"
+													name="alternate_six"
+													id="alternate_six1"
+													value="'cv06' off"
+													checked="true"
+												/>
+												<label for="alternate_six1">6, 9</label>
+											</div>
+											<div>
+												<input type="radio" name="alternate_six" id="alternate_six2" value="'cv06' on" />
+												<label for="alternate_six2">6, 9</label>
+											</div>
+										</fieldset>
+										<fieldset class="alternates">
+											<div>
+												<input
+													type="radio"
+													name="alternate_asterisk"
+													id="alternate_asterisk1"
+													value="'cv07' off"
+													checked="true"
+												/>
+												<label for="alternate_asterisk1">*</label>
+											</div>
+											<div>
+												<input type="radio" name="alternate_asterisk" id="alternate_asterisk2" value="'cv07' on" />
+												<label for="alternate_asterisk2">*</label>
+											</div>
+										</fieldset>
+										<fieldset class="alternates">
+											<div>
+												<input type="radio" name="alternate_at" id="alternate_at1" value="'cv08' off" checked="true" />
+												<label for="alternate_at1">@</label>
+											</div>
+											<div>
+												<input type="radio" name="alternate_at" id="alternate_at2" value="'cv08' on" />
+												<label for="alternate_at2">@</label>
+											</div>
+										</fieldset>
+										<fieldset class="alternates">
+											<div>
+												<input
+													type="radio"
+													name="alternate_zero"
+													id="alternate_zero1"
+													value="'zero' off"
+													checked="true"
+												/>
+												<label for="alternate_zero1">0</label>
+											</div>
+											<div>
+												<input type="radio" name="alternate_zero" id="alternate_zero2" value="'zero' on" />
+												<label for="alternate_zero2">0</label>
+											</div>
+										</fieldset>
+										<fieldset class="alternates">
+											<div>
+												<input
+													type="radio"
+													name="alternate_round"
+													id="alternate_round1"
+													value="'ss01' off"
+													checked="true"
+												/>
+												<label for="alternate_round1">.:ij</label>
+											</div>
+											<div>
+												<input type="radio" name="alternate_round" id="alternate_round2" value="'ss01' on" />
+												<label for="alternate_round2">.:ij</label>
+											</div>
+										</fieldset>
+										<fieldset>
+											<legend><h2>Features</h2></legend>
+											<div>
+												<input type="radio" name="features" id="smart_kerning1" value="'calt' on" checked="true" />
+												<label for="smart_kerning1">Smart kerning ON</label>
+											</div>
+											<div>
+												<input type="radio" name="features" id="smart_kerning2" value="'calt' off" />
+												<label for="smart_kerning2">Smart kerning OFF</label>
+											</div>
+										</fieldset>
+									</form>
+									<form id="examples_form" onchange="updateExamples(event, this)">
+										<fieldset></fieldset>
+									</form>
+									<div id="examples_container">
+										<p tabindex="0" data-edit="true" id="code_example"></p>
+									</div>
+								</div>
+							</section>
+							<section id="section_8">
+								<div class="top_container"></div>
+								<div class="content_container"></div>
+							</section>
+							<section id="section_9">
+								<div class="top_container"></div>
+								<div class="content_container">
+									<br />
+									<br />
+									<h2>Thank you</h2>
+									<ul>
+										<li tabindex="0">Hakim Mazouz for motivation to pursue the project.</li>
+										<li tabindex="0">Mads Brodt and Philip Johansen for beta testing and interview.</li>
+										<li tabindex="0">Beta testers for great feedback and testing.</li>
+										<li tabindex="0">My teachers at DMJX for support and learning.</li>
+										<li tabindex="0">Everyone who answered my survey.</li>
+									</ul>
+									<br />
+									<br />
+									<h2>Inspiration</h2>
+									<ul>
+										<li>
+											<a href="https://klim.co.nz/collections/untitled/" target="_blank">Untitled Collection</a> by Klim
+											Type Foundry for so much inspiration.
+										</li>
+										<li>
+											<a href="https://sampleprograms.io/" target="_blank">sampleprograms.io</a> for code examples.
+										</li>
+										<li>
+											<a href="https://opentype.js.org/" target="_blank">opentype.js</a> for generating fonts on the
+											web.
+										</li>
+										<li>
+											<a href="https://opentypecookbook.com/" target="_blank">OpenType Cookbook</a> for all things
+											OpenType Features.
+										</li>
+									</ul>
+									<br />
+									<br />
+									<h2>Programs used</h2>
+									<ul>
+										<li tabindex="0">FontLab 8 for font production.</li>
+										<li tabindex="0">Figma for prototyping.</li>
+										<li tabindex="0">Visual Studio Code for development environment.</li>
+									</ul>
+								</div>
+							</section>
 						</div>
-						<p>Navigate ←→</p>
-					</div>
-					<div class="key_group" id="push_page">
-						<div class="keys">
-							<p data-key-code="KeyW" data-key="w" class="key">W</p>
-							<p data-key-code="KeyA" data-key="a" class="key">A</p>
-							<p data-key-code="KeyS" data-key="s" class="key">S</p>
-							<p data-key-code="KeyD" data-key="d" class="key">D</p>
-						</div>
-						<p>Scroll</p>
-					</div>
-					<div class="key_group" id="zoom_in_out">
-						<div class="keys">
-							<p data-key-code="Minus" data-key="+" class="key">+</p>
-							<p data-key-code="Slash" data-key="-" class="key">-</p>
-						</div>
-						<p>Zoom</p>
-					</div>
-					<div class="key_group" id="reset">
-						<div class="keys">
-							<p data-key-code="KeyR" data-key="r" class="key">R</p>
-						</div>
-						<p>Reset</p>
-					</div>
-					<div class="key_group" id="escape_textfield">
-						<div class="keys">
-							<p data-key-code="KeyE" data-key="e" class="key">E</p>
-							<p data-key-code="Escape" data-key="Escape" class="key">Esc</p>
-						</div>
-						<p>Edit text, Escape text</p>
-					</div>
-					<div class="key_group" id="show_hide_keys">
-						<div class="keys">
-							<p data-key-code="KeyK" data-key="k" class="key">K</p>
-						</div>
-						<p>Show/hide keys</p>
-					</div>
+					</main>
 				</div>
 			</div>
-		</header>
-		<div id="main_scale">
-			<main>
-				<div id="section_container">
-					<section id="section_1">
-						<div class="content_container">
-							<h1 tabindex="0" data-edit="true">Commit Mono. <br />Neutral programming typeface.</h1>
-							<figure>
-								<blockquote cite="https://jaspermorrison.com/publications/essays/super-normal">
-									<p tabindex="0" data-edit="true">
-										There are better ways to design than putting a big effort into making something look special.
-										Special is generally less useful than normal, and less rewarding in the long term. Special things
-										demand attention for the wrong reasons, interrupting potentially good atmosphere with their awkward
-										presence.
-									</p>
-								</blockquote>
-								<br />
-								<figcaption>
-									<p>–Jasper Morrison, <cite>Super Normal Manifesto</cite></p>
-								</figcaption>
-							</figure>
-							<p id="navigate_description">Navigate website using the keyboard.</p>
-						</div>
-					</section>
-					<section id="section_2">
-						<div class="top_container"></div>
-						<div class="content_container">
-							<form id="table_form" onchange="updateTable(event, this)">
-								<table></table>
-							</form>
-							<p>
-								Commit Mono 450 – ASCII character table. <br />
-								Since most code is written using ASCII characters these characters are the backbone of every code font.
-								They have been sculpted with particularly great precision and attention to detail.
-							</p>
-						</div>
-					</section>
-					<section id="section_3">
-						<div class="top_container"></div>
-						<div class="content_container">
-							<form id="familiar_form" onchange="updateFamiliar(event, this)">
-								<fieldset>
-									<div>
-										<input type="radio" id="franklin_gothic" name="select_year" value="franklin_gothic" checked />
-										<label for="franklin_gothic">1896</label>
-									</div>
-									<div>
-										<input type="radio" id="letter_gothic" name="select_year" value="letter_gothic" />
-										<label for="letter_gothic">1956</label>
-									</div>
-									<div>
-										<input type="radio" id="fira_mono" name="select_year" value="fira_mono" />
-										<label for="fira_mono">2013</label>
-									</div>
-									<div>
-										<input type="radio" id="untitled_sans" name="select_year" value="untitled_sans" />
-										<label for="untitled_sans">2017</label>
-									</div>
-									<div>
-										<input type="radio" id="commit_mono" name="select_year" value="commit_mono" />
-										<label for="commit_mono">2023</label>
-									</div>
-								</fieldset>
-							</form>
-							<div id="familiar_container"></div>
-						</div>
-					</section>
-					<section id="section_4">
-						<div class="top_container"></div>
-						<div class="content_container">
-							<form id="intelligent_form" onchange="updateIntelligent(event, this)">
-								<fieldset>
-									<div>
-										<input type="radio" id="input_before" name="select_state" value="before" checked />
-										<label for="input_before">Smart kerning OFF</label>
-									</div>
-									<div>
-										<input type="radio" id="input_after" name="select_state" value="after" />
-										<label for="input_after">Smart kerning ON</label>
-									</div>
-									<div>
-										<input type="radio" id="input_original" name="select_state" value="original" />
-										<label for="input_original">How it works OFF</label>
-									</div>
-									<div>
-										<input type="radio" id="input_smart_kerning" name="select_state" value="smart_kerning" />
-										<label for="input_smart_kerning">How it works ON</label>
-									</div>
-								</fieldset>
-							</form>
-							<div id="intelligent_container">
-								<div style="display: block" id="before">
-									<figure>
-										<p>Commit Mono: Normal <br />programming typeface</p>
-										<figcaption tabindex="0" data-edit="true">
-											SMART KERNING OFF behaves exactly like your standard monospace font. Letters are centered in their
-											respective boxes.
-										</figcaption>
-									</figure>
-								</div>
-								<div style="display: none" id="after">
-									<figure>
-										<p>Commit Mono: Normal <br />programming typeface</p>
-										<figcaption tabindex="0" data-edit="true">
-											SMART KERNING ON improves overall word spacing and makes sublexical units easier to tell apart,
-											therefore improving reading speed and accuracy.
-										</figcaption>
-									</figure>
-								</div>
-								<div style="display: none" id="original">
-									<figure>
-										<div>
-											<p>m</p>
-											<p>o</p>
-											<p>i</p>
-										</div>
-										<figcaption tabindex="0" data-edit="true">
-											Smart kerning works by looking at single letter between two other letters. If the other letters
-											are in different width classes, the middle letter will slide closer to the narrow letter.
-										</figcaption>
-									</figure>
-								</div>
-								<div style="display: none" id="smart_kerning">
-									<figure>
-										<div>
-											<p>m</p>
-											<p>o</p>
-											<p>i</p>
-										</div>
-										<figcaption tabindex="0" data-edit="true">
-											As you can see here, the 'o' is moved 40 units to the right, which evens out the spacing between
-											itself, 'm' and 'i'. This same process is applied to all letters.
-										</figcaption>
-									</figure>
-								</div>
-							</div>
-						</div>
-					</section>
-					<section id="section_5">
-						<div class="top_container"></div>
-						<div class="content_container">
-							<form id="code_form" onchange="updateCode(event, this)">
-								<fieldset></fieldset>
-							</form>
-							<div id="canvas_container">
-								<canvas id="canvas"></canvas>
-							</div>
-						</div>
-					</section>
-					<section id="section_6">
-						<div class="top_container"></div>
-						<div class="content_container"></div>
-					</section>
-					<section id="section_7">
-						<div class="top_container"></div>
-						<div class="content_container">
-							<form id="examplesettings_form" onchange="updateExamplesettings(event, this)">
-								<fieldset id="weights">
-									<legend><h2>Weights</h2></legend>
-								</fieldset>
-								<h2>Alternates</h2>
-								<fieldset class="alternates">
-									<div>
-										<input type="radio" name="alternate_a" id="alternate_a1" value="'cv01' off" checked="true" />
-										<label for="alternate_a1">a</label>
-									</div>
-									<div>
-										<input type="radio" name="alternate_a" id="alternate_a2" value="'cv01' on" />
-										<label for="alternate_a2">a</label>
-									</div>
-								</fieldset>
-								<fieldset class="alternates">
-									<div>
-										<input type="radio" name="alternate_g" id="alternate_g1" value="'cv02' off" checked="true" />
-										<label for="alternate_g1">g</label>
-									</div>
-									<div>
-										<input type="radio" name="alternate_g" id="alternate_g2" value="'cv02' on" />
-										<label for="alternate_g2">g</label>
-									</div>
-								</fieldset>
-								<fieldset class="alternates">
-									<div>
-										<input type="radio" name="alternate_six" id="alternate_six1" value="'cv06' off" checked="true" />
-										<label for="alternate_six1">6, 9</label>
-									</div>
-									<div>
-										<input type="radio" name="alternate_six" id="alternate_six2" value="'cv06' on" />
-										<label for="alternate_six2">6, 9</label>
-									</div>
-								</fieldset>
-								<fieldset class="alternates">
-									<div>
-										<input
-											type="radio"
-											name="alternate_asterisk"
-											id="alternate_asterisk1"
-											value="'cv07' off"
-											checked="true"
-										/>
-										<label for="alternate_asterisk1">*</label>
-									</div>
-									<div>
-										<input type="radio" name="alternate_asterisk" id="alternate_asterisk2" value="'cv07' on" />
-										<label for="alternate_asterisk2">*</label>
-									</div>
-								</fieldset>
-								<fieldset class="alternates">
-									<div>
-										<input type="radio" name="alternate_at" id="alternate_at1" value="'cv08' off" checked="true" />
-										<label for="alternate_at1">@</label>
-									</div>
-									<div>
-										<input type="radio" name="alternate_at" id="alternate_at2" value="'cv08' on" />
-										<label for="alternate_at2">@</label>
-									</div>
-								</fieldset>
-								<fieldset class="alternates">
-									<div>
-										<input type="radio" name="alternate_zero" id="alternate_zero1" value="'zero' off" checked="true" />
-										<label for="alternate_zero1">0</label>
-									</div>
-									<div>
-										<input type="radio" name="alternate_zero" id="alternate_zero2" value="'zero' on" />
-										<label for="alternate_zero2">0</label>
-									</div>
-								</fieldset>
-								<fieldset class="alternates">
-									<div>
-										<input
-											type="radio"
-											name="alternate_round"
-											id="alternate_round1"
-											value="'ss01' off"
-											checked="true"
-										/>
-										<label for="alternate_round1">.:ij</label>
-									</div>
-									<div>
-										<input type="radio" name="alternate_round" id="alternate_round2" value="'ss01' on" />
-										<label for="alternate_round2">.:ij</label>
-									</div>
-								</fieldset>
-								<fieldset>
-									<legend><h2>Features</h2></legend>
-									<div>
-										<input type="radio" name="features" id="smart_kerning1" value="'calt' on" checked="true" />
-										<label for="smart_kerning1">Smart kerning ON</label>
-									</div>
-									<div>
-										<input type="radio" name="features" id="smart_kerning2" value="'calt' off" />
-										<label for="smart_kerning2">Smart kerning OFF</label>
-									</div>
-								</fieldset>
-							</form>
-							<form id="examples_form" onchange="updateExamples(event, this)">
-								<fieldset></fieldset>
-							</form>
-							<div id="examples_container">
-								<p tabindex="0" data-edit="true" id="code_example"></p>
-							</div>
-						</div>
-					</section>
-					<section id="section_8">
-						<div class="top_container"></div>
-						<div class="content_container"></div>
-					</section>
-					<section id="section_9">
-						<div class="top_container"></div>
-						<div class="content_container">
-							<br />
-							<br />
-							<h2>Thank you</h2>
-							<ul>
-								<li tabindex="0">Hakim Mazouz for motivation to pursue the project.</li>
-								<li tabindex="0">Mads Brodt and Philip Johansen for beta testing and interview.</li>
-								<li tabindex="0">Beta testers for great feedback and testing.</li>
-								<li tabindex="0">My teachers at DMJX for support and learning.</li>
-								<li tabindex="0">Everyone who answered my survey.</li>
-							</ul>
-							<br />
-							<br />
-							<h2>Inspiration</h2>
-							<ul>
-								<li>
-									<a href="https://klim.co.nz/collections/untitled/" target="_blank">Untitled Collection</a> by Klim
-									Type Foundry for so much inspiration.
-								</li>
-								<li><a href="https://sampleprograms.io/" target="_blank">sampleprograms.io</a> for code examples.</li>
-								<li>
-									<a href="https://opentype.js.org/" target="_blank">opentype.js</a> for generating fonts on the web.
-								</li>
-								<li>
-									<a href="https://opentypecookbook.com/" target="_blank">OpenType Cookbook</a> for all things OpenType
-									Features.
-								</li>
-							</ul>
-							<br />
-							<br />
-							<h2>Programs used</h2>
-							<ul>
-								<li tabindex="0">FontLab 8 for font production.</li>
-								<li tabindex="0">Figma for prototyping.</li>
-								<li tabindex="0">Visual Studio Code for development environment.</li>
-							</ul>
-						</div>
-					</section>
-				</div>
-			</main>
+			<div tabindex="0" id="block_tab_end"></div>
 		</div>
-		<div tabindex="0" id="block_tab_end"></div>
 	</body>
 </html>

@@ -1,6 +1,10 @@
 document.documentElement.style.fontSize = "16px"
 
+const appRoot = document.querySelector("#app_root")
+const contentRoot = document.querySelector("#content_root")
+const clickFocus = document.querySelector("#click_focus")
 const navForm = document.querySelector("#nav_form")
+const changeSetting = document.querySelector("#change_setting p")
 
 websiteData.sections.forEach((section, index) => {
 	const div = document.createElement("div")
@@ -53,9 +57,7 @@ function updateNav(event, form) {
 
 let currentSection = 1
 let insideTextField = false
-
 function enterTextField() {
-	// console.log("enter text field")
 	active = document.activeElement
 	active.setAttribute("contenteditable", "true")
 	active.blur()
@@ -63,7 +65,6 @@ function enterTextField() {
 	insideTextField = true
 }
 function exitTextField() {
-	// console.log("exit text field")
 	document.activeElement.setAttribute("contenteditable", "false")
 	insideTextField = false
 }
@@ -86,6 +87,7 @@ keys.forEach((key) => {
 	})
 })
 
+let changeSettingTimeoutID
 function keyDown(e) {
 	console.log(e, e.code, e.shiftKey, e.key)
 
@@ -116,8 +118,27 @@ function keyDown(e) {
 		if (e.code == "KeyK") {
 			document.querySelector("#keyboard_section").classList.toggle("hidden")
 		}
-		// main.style.opacity = 0.04
-		// setTimeout(() => (main.style.opacity = 1), 40)
+
+		if (e.code == "KeyV") {
+			websiteData.weight = websiteData.weight == 700 ? 300 : websiteData.weight + 25
+			document.querySelector("body").style.fontVariationSettings = `"wght" ${websiteData.weight}`
+			changeSetting.textContent = `Weight: ${websiteData.weight}. Default 450.`
+			changeSetting.style.visibility = "visible"
+			clearTimeout(changeSettingTimeoutID)
+			changeSettingTimeoutID = setTimeout(() => (changeSetting.style.visibility = "hidden"), 500)
+		}
+
+		if (e.code == "KeyI") {
+			if (websiteData.invert) {
+				setCssVar(["--bg", "#aaa"])
+				setCssVar(["--text", "#111"])
+			} else {
+				setCssVar(["--bg", "#111"])
+				setCssVar(["--text", "#aaa"])
+			}
+			updateCode(null, codeForm)
+			websiteData.invert = !websiteData.invert
+		}
 	}
 }
 function keyUp(e) {
@@ -138,6 +159,7 @@ window.addEventListener("keyup", (e) => keyUp(e))
 
 const main = document.querySelector("main")
 const mainScale = document.querySelector("#main_scale")
+const keySection = document.querySelector("#keyboard_section")
 let rem = +document.documentElement.style.fontSize.split("px")[0]
 
 function pushPage(keyCode) {
@@ -145,7 +167,6 @@ function pushPage(keyCode) {
 	const y = websiteData.pushPage.coordinates.y
 	const scale = websiteData.pushPage.scale
 	const dist = (websiteData.pushPage.distance * rem) / scale
-	const scaleOffset = websiteData.pushPage.scaleOffset
 
 	// move left
 	if (keyCode == "KeyW") {
@@ -156,6 +177,7 @@ function pushPage(keyCode) {
 	// move left
 	else if (keyCode == "KeyA") {
 		main.style.transform = `translate(${x + dist}px, ${y}px)`
+		keySection.style.transform = `translate(${x + dist}px, ${y}px)`
 		websiteData.pushPage.coordinates.x += dist
 	}
 
@@ -168,6 +190,7 @@ function pushPage(keyCode) {
 	// move right
 	else if (keyCode == "KeyD") {
 		main.style.transform = `translate(${x - dist}px, ${y}px)`
+		keySection.style.transform = `translate(${x - dist}px, ${y}px)`
 		websiteData.pushPage.coordinates.x -= dist
 	}
 
@@ -187,7 +210,8 @@ function pushPage(keyCode) {
 
 	// reset transforms
 	else if (keyCode == "KeyR") {
-		main.style.transform = `translate(0px, 0px)`
+		main.style.transform = `translate(0)`
+		keySection.style.transform = `translate(0)`
 		mainScale.style.transform = `scale(1)`
 		websiteData.pushPage.coordinates.x = 0
 		websiteData.pushPage.coordinates.y = 0
@@ -195,6 +219,11 @@ function pushPage(keyCode) {
 		rem = 16
 		document.documentElement.style.fontSize = "16px"
 		document.querySelector("#canvas").style.transform = "scale(1)"
+		websiteData.weight = 450
+		document.querySelector("body").style.fontVariationSettings = `"wght" 450`
+		setCssVar(["--bg", "#aaa"])
+		setCssVar(["--text", "#111"])
+		updateCode(null, codeForm)
 	}
 }
 
@@ -221,25 +250,22 @@ document.addEventListener("focusin", (e) => {
 		const checkedMenuInput = document.querySelector("#nav_form input:checked")
 		checkedMenuInput.focus()
 	}
-
-	// console.log(active.getBoundingClientRect())
-	// const bottomBuffer = 100
-	// const x = websiteData.pushPage.coordinates.x
-	// const y = websiteData.pushPage.coordinates.y
-	// if (active.getBoundingClientRect().bottom > window.innerHeight - bottomBuffer) {
-	// 	const difference = window.innerHeight - bottomBuffer - active.getBoundingClientRect().bottom
-	// 	main.style.transform = `translate(${x}px, ${y + difference}px)`
-	// 	websiteData.pushPage.coordinates.y += difference
-	// }
-	// if (active.getBoundingClientRect().top < y + bottomBuffer) {
-	// 	const difference = active.getBoundingClientRect().top - (y + bottomBuffer)
-	// 	main.style.transform = `translate(${x}px, ${y - difference}px)`
-	// 	websiteData.pushPage.coordinates.y -= difference
-	// }
 })
 
-document.onvisibilitychange = function () {
-	console.log("onvisibilitychange")
+let prevHasFocus = true
+function checkDocumentFocus() {
+	if (prevHasFocus != document.hasFocus()) {
+		if (document.hasFocus()) {
+			contentRoot.classList.remove("faded")
+			clickFocus.style.visibility = "hidden"
+			updateCode(null, codeForm)
+		} else {
+			contentRoot.classList.add("faded")
+			clickFocus.style.visibility = "visible"
+			updateCode(null, codeForm)
+		}
+	}
+	prevHasFocus = document.hasFocus()
 }
 
 function onBlurIn(e) {
@@ -247,7 +273,8 @@ function onBlurIn(e) {
 	e.target.removeEventListener("blur", onBlurIn)
 
 	// if this timer runs out before a new element is focused, refocus same element
-	focusTimeOutID = setTimeout(() => active.focus(), 100)
+	focusTimeOutID = setTimeout(() => active.focus(), 50)
 }
 
+setInterval(checkDocumentFocus, 100)
 updateNav(null, navForm)

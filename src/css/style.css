@@ -1,6 +1,6 @@
 @font-face {
 	font-family: "CommitMono";
-	src: url("/src/fonts/CommitMonoV101-450.otf");
+	src: url("/src/fonts/CommitMonoV102-VF.woff2");
 	font-style: normal;
 	font-weight: 450;
 }
@@ -21,7 +21,7 @@
 	--text: #111;
 	--middle: #666;
 	--bg: #aaa;
-	font-size: 24px;
+	font-size: 16px;
 }
 
 ::selection {
@@ -31,14 +31,17 @@
 
 body {
 	background-color: var(--bg);
+	color: var(--text);
 	font-family: CommitMono;
 	/* overflow: hidden; */
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
 
-#app {
-	display: none;
+#block_tab_start,
+#block_tab_end {
+	position: absolute;
+	top: 0;
 }
 
 #main_scale {
@@ -50,7 +53,7 @@ body {
 
 main {
 	transform: translate(0);
-	position: fixed;
+	/* position: fixed; */
 	min-width: 100vw;
 	min-height: 100%;
 	padding: 4rem 0 0 2rem;
@@ -147,13 +150,14 @@ header #keyboard_section {
 
 #section_container {
 	inset: 1rem 2rem;
-	display: grid;
+	/* display: grid; */
 	flex-grow: 1;
 }
 
 #section_container > section {
 	grid-column: 1;
 	grid-row: 1;
+	min-height: 100vh;
 }
 
 p,
@@ -170,6 +174,10 @@ h1 {
 	line-height: 2rem;
 	font-weight: normal;
 	width: fit-content;
+}
+
+#app_root.no_focus {
+	opacity: 0.5;
 }
 
 :focus {
@@ -205,4 +213,18 @@ input:focus + label {
 	49% {
 		opacity: 0;
 	}
+}
+
+#click_focus,
+#change_setting {
+	inset: 0;
+	position: fixed;
+	z-index: 999;
+	display: grid;
+	place-content: center;
+	visibility: hidden;
+}
+
+#content_root.faded {
+	opacity: 0.33;
 }

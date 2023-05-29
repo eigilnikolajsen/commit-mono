@@ -5,6 +5,8 @@ const websiteData = {
 		distance: 8, // in rem
 		scaleOffset: 1.5,
 	},
+	weight: 450,
+	invert: false,
 	sections: [
 		{
 			name: "home",

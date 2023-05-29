@@ -86,3 +86,11 @@
 	text-indent: -0.1rem;
 	padding: 0.25rem;
 }
+
+#safari + div {
+	visibility: hidden;
+}
+
+#safari:focus + div {
+	visibility: visible;
+}
