@@ -6,7 +6,6 @@ let faviconIntervalID
 let faviconCounter = 0
 
 function dynamicFavicon() {
-	console.log(document.visibilityState)
 	if (document.visibilityState === "visible") {
 		faviconIntervalID = setInterval(changeFav, 500)
 	} else {

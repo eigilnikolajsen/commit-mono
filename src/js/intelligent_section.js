@@ -7,7 +7,6 @@ function updateIntelligent(event, form) {
 	const examples = ["original", "smart_kerning", "before", "after"]
 	examples.forEach((example) => {
 		const exampleContainer = document.querySelector(`#${example}`)
-		console.log(exampleContainer)
 		if (exampleContainer.id == output) {
 			exampleContainer.style.display = "block"
 		} else {

@@ -2,7 +2,7 @@ const websiteData = {
 	pushPage: {
 		coordinates: { x: 0, y: 0 },
 		scale: 1,
-		distance: 8, // in rem
+		distance: 48, // in rem
 		scaleOffset: 1.5,
 	},
 	weight: 450,
@@ -122,11 +122,17 @@ const websiteData = {
 			description: "So, how does it look in code? Use the examples below or change the text to anything you like.",
 			content: {
 				weights: [300, 325, 350, 375, 400, 425, 450, 475, 500, 525, 550, 575, 600, 625, 650, 675, 700],
+				alternates: [
+					{
+						name: "a",
+						label: "a",
+						feature: "cv01",
+					},
+				],
 				languages: [
 					{
 						languageName: "JavaScript",
-						codeExample: `
-const isPalindromic = (number) => {
+						codeExample: `const isPalindromic = (number) => {
     if (number <= 1) {
         console.log("Usage: please input a non-negative integer");
         process.exit(1);
@@ -157,8 +163,7 @@ if (input !== '' && Number.isInteger(number) && number >= 0) {
 					},
 					{
 						languageName: "TypeScript",
-						codeExample: `
-function fibonacci(num: number) {
+						codeExample: `function fibonacci(num: number) {
     let n = Number(num)
     let elementOne: number = 0
     let elementTwo: number = 1
@@ -184,8 +189,7 @@ fibonacci(num)
 					},
 					{
 						languageName: "Rust",
-						codeExample: `
-// Requirement     https://sample-programs.therenegadecoder.com/projects/prime-number/
+						codeExample: `// Requirement     https://sample-programs.therenegadecoder.com/projects/prime-number/
 // Accept a number on command line and print if it is Composite or Prime 
 // Works till  39 digits, ...
 
@@ -230,8 +234,7 @@ fn main() {
 					},
 					{
 						languageName: "Python",
-						codeExample: `
-import sys
+						codeExample: `import sys
 from math import sqrt, ceil
 
 
@@ -262,8 +265,7 @@ if __name__ == "__main__":
 					},
 					{
 						languageName: "C++",
-						codeExample: `
-#include <iostream>
+						codeExample: `#include <iostream>
 #include <stdlib.h>
 #include <string.h>
 
@@ -306,8 +308,7 @@ int main(int argc, char **argv)
 					},
 					{
 						languageName: "Kotlin",
-						codeExample: `
-fun main(args: Array<String>) 
+						codeExample: `fun main(args: Array<String>) 
 {
     if (args.isNullOrEmpty() || args[0].isBlank() || args[0].toIntOrNull()?.takeIf { it >= 0 } == null) {
         println("Usage: please input a non-negative integer")
@@ -336,8 +337,7 @@ fun main(args: Array<String>)
 					},
 					{
 						languageName: "Java",
-						codeExample: `
-class PrimeNumberException extends Exception {
+						codeExample: `class PrimeNumberException extends Exception {
 }
 
 public class PrimeNumber {
@@ -380,8 +380,7 @@ public class PrimeNumber {
 					},
 					{
 						languageName: "Ruby",
-						codeExample: `
-ROMAN_VALUES = { "I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000 }
+						codeExample: `ROMAN_VALUES = { "I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000 }
 
 def roman_valid?(roman_numbers)
     return false if roman_numbers.any? { |roman_number| !ROMAN_VALUES.keys.include?(roman_number.to_sym) }    
@@ -423,8 +422,7 @@ print(roman_to_decimal(ARGV[0]))
 					},
 					{
 						languageName: "PHP",
-						codeExample: `
-<?php
+						codeExample: `<?php
 
 /**
  * Function to determine if a number if prime.
@@ -467,8 +465,7 @@ exit(0);
 					},
 					{
 						languageName: "Fortran",
-						codeExample: `
-! upcase and to_upper didn't work, 
+						codeExample: `! upcase and to_upper didn't work, 
 ! had to resort to check ASCII value of first letter & then
 ! subtract 32 from it, ... 
 program capitalize
@@ -503,8 +500,7 @@ end program capitalize
 					},
 					{
 						languageName: "Blank",
-						codeExample: `
-Focus, then press e to edit
+						codeExample: `Focus, then press e to edit
 `,
 					},
 				],
@@ -519,7 +515,7 @@ Focus, then press e to edit
 		{
 			name: "about",
 			description:
-				"Commit Mono is a project by Eigil Nikolajsen. Eigil is a creative developer and designer with a particular interest in type design. He holds a bachelor degree in Interactive Design from the Danish School of Media and Journalism in 2023.",
+				"Commit Mono is a project by Eigil Nikolajsen. Eigil is a creative developer and designer from Denmark with a particular interest in type design. He holds a bachelor degree in Interactive Design from the Danish School of Media and Journalism in 2023.",
 			content: {},
 		},
 	],

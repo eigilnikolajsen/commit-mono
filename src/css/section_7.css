@@ -71,17 +71,34 @@ fieldset.alternates > div {
 	color: var(--text);
 }
 
-p#code_example {
-	white-space: pre;
-	max-width: none;
-	min-width: 102ch;
-	max-height: 20rem;
+#examples_container {
+	width: fit-content;
+	max-height: 20.6rem;
+	margin-top: 1rem;
+	margin-bottom: 2.4rem;
 	overflow-y: scroll;
 	-ms-overflow-style: none; /* Internet Explorer 10+ */
 	scrollbar-width: none; /* Firefox */
 }
-p#code_example::-webkit-scrollbar {
+#examples_container::-webkit-scrollbar {
 	display: none; /* Safari and Chrome */
+}
+
+p#code_example {
+	white-space: pre;
+	max-width: none;
+	min-width: 102ch;
+	padding-left: 5ch;
+	position: relative;
+}
+p#code_example::before {
+	content: attr(data-before);
+	position: absolute;
+	white-space: pre;
+	left: 0;
+	top: 0;
+	height: 100%;
+	overflow: hidden;
 }
 
 #section_7 form input[type="checkbox"] {

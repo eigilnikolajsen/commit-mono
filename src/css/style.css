@@ -19,7 +19,7 @@
 }
 :root {
 	--text: #111;
-	--middle: #666;
+	--middle: #555;
 	--bg: #aaa;
 	font-size: 16px;
 }
@@ -167,6 +167,11 @@ figcaption {
 	line-height: 1rem;
 	max-width: 54ch;
 	width: fit-content;
+}
+
+a {
+	text-decoration-skip-ink: none;
+	text-underline-offset: 0.24ch;
 }
 
 h1 {

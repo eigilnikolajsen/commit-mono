@@ -51,6 +51,13 @@ function updateExamples(event, form) {
 			section.content.languages.forEach((language, index) => {
 				if (language.languageName == output) {
 					codeExample.textContent = language.codeExample
+					// const lines = language.codeExample
+					// 	.split("\n")
+					// 	.map((_, i) => i + 1)
+					// 	.join("\n")
+					let nums = Array.from(new Array(1000), (x, i) => i + 1).join("\n")
+					// console.log(lines, nums)
+					codeExample.setAttribute("data-before", nums)
 				}
 			})
 		}
@@ -65,7 +72,6 @@ function updateExamplesettings(event, form) {
 	for (const entry of data) {
 		if (entry[0] != "nav") output += `${entry[1]}, `
 	}
-	console.log(output.slice(0, -2))
 
 	const codeExample = document.querySelector("#code_example")
 	codeExample.style.fontFeatureSettings = output.slice(0, -2)

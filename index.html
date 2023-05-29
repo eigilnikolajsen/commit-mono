@@ -148,13 +148,13 @@
 											Solve by either:
 										</p>
 										<ul>
-											<li>Use Option+Tab</li>
+											<li>Using Option+Tab instead of Tab</li>
 											<li>
 												Safari → Settings → Advanced → Check the option: "Press Tab to highlight each item on a web
 												page"
 											</li>
 										</ul>
-										<a href="#">You know it's working if can tab me!</a>
+										<a href="#">You know it's working if can focus here.</a>
 										<p id="safari_not_working" tabindex="0">It's not working.</a>
 									</div>
 								</div>
@@ -299,11 +299,10 @@
 										<p tabindex="0" data-edit="true" id="code_example"></p>
 									</div>
 									<form id="examplesettings_form" onchange="updateExamplesettings(event, this)">
-										<fieldset id="weights">
-											<legend><h2>Weights</h2></legend>
-										</fieldset>
+										<h2>Weights</h2>
+										<fieldset id="weights"></fieldset>
+										<h2>Features</h2>
 										<fieldset>
-											<legend><h2>Features</h2></legend>
 											<div>
 												<input type="radio" name="features" id="smart_kerning1" value="'calt' on" checked="true" />
 												<label for="smart_kerning1">Smart kerning ON</label>
@@ -314,7 +313,7 @@
 											</div>
 										</fieldset>
 										<h2>Alternates</h2>
-										<fieldset class="alternates">
+										<!-- <fieldset class="alternates">
 											<div>
 												<input type="radio" name="alternate_a" id="alternate_a1" value="'cv01' off" checked="true" />
 												<label for="alternate_a1">a</label>
@@ -323,7 +322,7 @@
 												<input type="radio" name="alternate_a" id="alternate_a2" value="'cv01' on" />
 												<label for="alternate_a2">a</label>
 											</div>
-										</fieldset>
+										</fieldset> -->
 										<fieldset class="alternates">
 											<div>
 												<input type="radio" name="alternate_g" id="alternate_g1" value="'cv02' off" checked="true" />

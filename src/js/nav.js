@@ -25,7 +25,6 @@ websiteData.sections.forEach((section, index) => {
 	navForm.append(div)
 	if (index == 0) {
 		setTimeout(() => {
-			console.log(input, "input focus")
 			input.focus()
 		}, 1)
 	}
@@ -93,7 +92,7 @@ let changeSettingTimeoutID
 function keyDown(e) {
 	// console.log(e, e.code, e.shiftKey, e.key)
 
-	if (e.code == "KeyE" && document.activeElement.dataset.edit == "true") enterTextField()
+	if (e.code == "KeyE" && document.activeElement.dataset.edit == "true" && !insideTextField) enterTextField()
 
 	if (e.code == "Escape") exitTextField()
 
@@ -168,7 +167,7 @@ function pushPage(keyCode) {
 	const x = websiteData.pushPage.coordinates.x
 	const y = websiteData.pushPage.coordinates.y
 	const scale = websiteData.pushPage.scale
-	const dist = (websiteData.pushPage.distance * rem) / scale
+	const dist = websiteData.pushPage.distance
 
 	// move left
 	if (keyCode == "KeyW") {
@@ -203,6 +202,10 @@ function pushPage(keyCode) {
 		document.documentElement.style.fontSize = `${rem + 2}px`
 		rem = +rem + 2
 		document.querySelector("#canvas").style.transform = `scale(${rem / 16})`
+		changeSetting.textContent = `Base font size: ${rem}px`
+		changeSetting.style.visibility = "visible"
+		clearTimeout(changeSettingTimeoutID)
+		changeSettingTimeoutID = setTimeout(() => (changeSetting.style.visibility = "hidden"), 500)
 	}
 
 	// zoom out
@@ -210,6 +213,10 @@ function pushPage(keyCode) {
 		document.documentElement.style.fontSize = `${rem - 2}px`
 		rem = +rem - 2
 		document.querySelector("#canvas").style.transform = `scale(${rem / 16})`
+		changeSetting.textContent = `Base font size: ${rem}px`
+		changeSetting.style.visibility = "visible"
+		clearTimeout(changeSettingTimeoutID)
+		changeSettingTimeoutID = setTimeout(() => (changeSetting.style.visibility = "hidden"), 500)
 	}
 
 	// reset transforms

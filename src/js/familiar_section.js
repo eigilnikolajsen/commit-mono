@@ -30,10 +30,8 @@ function updateFamiliar(event, form) {
 		// output = `${output}${entry[0]}=${entry[1]}\n`
 		output = `${entry[1]}`
 	}
-	console.log(output)
 	familiarContent.forEach((example) => {
 		const exampleContainer = familiarContainer.querySelector(`#${example.name}`)
-		console.log(exampleContainer)
 		if (exampleContainer.dataset.name == output) {
 			exampleContainer.style.display = "block"
 		} else {
