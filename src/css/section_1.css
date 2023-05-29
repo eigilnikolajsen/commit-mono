@@ -87,10 +87,55 @@
 	padding: 0.25rem;
 }
 
-#safari + div {
-	visibility: hidden;
+#safari:focus p:first-of-type {
+	background-color: var(--text);
+	color: var(--bg);
 }
 
-#safari:focus + div {
-	visibility: visible;
+#safari p,
+#safari ul {
+	background-color: var(--bg);
+	color: var(--text);
+	opacity: 0;
+}
+
+#safari {
+	background-color: var(--bg);
+	color: var(--text);
+}
+
+#safari:focus p,
+#safari:focus ul {
+	opacity: 1;
+}
+
+#safari:focus a,
+#safari a:focus {
+	opacity: 1;
+}
+
+#safari a {
+	opacity: 0;
+}
+
+#safari p:first-of-type {
+	opacity: 1;
+}
+
+#safari:has(*:focus) * {
+	opacity: 1;
+}
+
+#safari #safari_not_working:focus {
+	background-color: var(--text);
+	color: var(--bg);
+	opacity: 1;
+}
+
+#safari #safari_not_working {
+	opacity: 0;
+}
+
+#safari a:focus + #safari_not_working {
+	visibility: hidden;
 }

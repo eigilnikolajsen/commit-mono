@@ -140,8 +140,9 @@
 										</figcaption>
 									</figure>
 									<p id="navigate_description" tabindex="0" data-edit="true">Navigate website using the keyboard.</p>
-									<p id="safari" tabindex="0" data-edit="true">Using Safari?</p>
-									<div>
+									<p id="mobile" tabindex="0" data-edit="true">Use a keyboard for the full experience.</p>
+									<div id="safari" tabindex="0" data-edit="true">
+										<p>Using Safari?</p>
 										<p id="safari_explanation">
 											Tabbing is disabled by default in Safari. <br />
 											Solve by either:
@@ -153,6 +154,8 @@
 												page"
 											</li>
 										</ul>
+										<a href="#">You know it's working if can tab me!</a>
+										<p id="safari_not_working" tabindex="0">It's not working.</a>
 									</div>
 								</div>
 							</section>
@@ -289,9 +292,26 @@
 							<section id="section_7">
 								<div class="top_container"></div>
 								<div class="content_container">
+									<form id="examples_form" onchange="updateExamples(event, this)">
+										<fieldset></fieldset>
+									</form>
+									<div id="examples_container">
+										<p tabindex="0" data-edit="true" id="code_example"></p>
+									</div>
 									<form id="examplesettings_form" onchange="updateExamplesettings(event, this)">
 										<fieldset id="weights">
 											<legend><h2>Weights</h2></legend>
+										</fieldset>
+										<fieldset>
+											<legend><h2>Features</h2></legend>
+											<div>
+												<input type="radio" name="features" id="smart_kerning1" value="'calt' on" checked="true" />
+												<label for="smart_kerning1">Smart kerning ON</label>
+											</div>
+											<div>
+												<input type="radio" name="features" id="smart_kerning2" value="'calt' off" />
+												<label for="smart_kerning2">Smart kerning OFF</label>
+											</div>
 										</fieldset>
 										<h2>Alternates</h2>
 										<fieldset class="alternates">
@@ -388,24 +408,7 @@
 												<label for="alternate_round2">.:ij</label>
 											</div>
 										</fieldset>
-										<fieldset>
-											<legend><h2>Features</h2></legend>
-											<div>
-												<input type="radio" name="features" id="smart_kerning1" value="'calt' on" checked="true" />
-												<label for="smart_kerning1">Smart kerning ON</label>
-											</div>
-											<div>
-												<input type="radio" name="features" id="smart_kerning2" value="'calt' off" />
-												<label for="smart_kerning2">Smart kerning OFF</label>
-											</div>
-										</fieldset>
 									</form>
-									<form id="examples_form" onchange="updateExamples(event, this)">
-										<fieldset></fieldset>
-									</form>
-									<div id="examples_container">
-										<p tabindex="0" data-edit="true" id="code_example"></p>
-									</div>
 								</div>
 							</section>
 							<section id="section_8">

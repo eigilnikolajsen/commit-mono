@@ -11,4 +11,14 @@
 		top: 0;
 		visibility: hidden;
 	}
+	#mobile {
+		visibility: visible;
+	}
+	#safari,
+	#navigate_description {
+		visibility: hidden;
+	}
+	header nav {
+		position: absolute;
+	}
 }

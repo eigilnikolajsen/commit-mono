@@ -3,7 +3,7 @@ const exampleFieldset = document.querySelector("#examples_form fieldset")
 const weightsFieldset = document.querySelector("#weights")
 
 websiteData.sections.forEach((section) => {
-	if (section.name == "examples") {
+	if (section.name == "test") {
 		section.content.languages.forEach((language, index) => {
 			const div = document.createElement("div")
 			const input = document.createElement("input")
@@ -47,7 +47,7 @@ function updateExamples(event, form) {
 	}
 
 	websiteData.sections.forEach((section) => {
-		if (section.name == "examples") {
+		if (section.name == "test") {
 			section.content.languages.forEach((language, index) => {
 				if (language.languageName == output) {
 					codeExample.textContent = language.codeExample
@@ -63,22 +63,12 @@ function updateExamplesettings(event, form) {
 	const data = new FormData(form)
 	let output = ""
 	for (const entry of data) {
-		// console.log(entry[0])
 		if (entry[0] != "nav") output += `${entry[1]}, `
 	}
 	console.log(output.slice(0, -2))
 
 	const codeExample = document.querySelector("#code_example")
 	codeExample.style.fontFeatureSettings = output.slice(0, -2)
-	// websiteData.sections.forEach((section) => {
-	// 	if (section.name == "examples") {
-	// 		section.content.languages.forEach((language, index) => {
-	// 			if (language.languageName == output) {
-	// 				codeExample.textContent = language.codeExample
-	// 			}
-	// 		})
-	// 	}
-	// })
 
 	if (event) event.preventDefault()
 }

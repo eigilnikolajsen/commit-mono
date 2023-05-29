@@ -74,6 +74,9 @@ fieldset.alternates > div {
 p#code_example {
 	white-space: pre;
 	max-width: none;
+	min-width: 102ch;
+	max-height: 20rem;
+	overflow-y: scroll;
 }
 
 #section_7 form input[type="checkbox"] {

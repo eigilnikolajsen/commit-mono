@@ -59,9 +59,11 @@ let currentSection = 1
 let insideTextField = false
 function enterTextField() {
 	active = document.activeElement
-	active.setAttribute("contenteditable", "true")
-	active.blur()
-	active.focus()
+	setTimeout(() => {
+		active.setAttribute("contenteditable", "true")
+		active.blur()
+		active.focus()
+	}, 40)
 	insideTextField = true
 }
 function exitTextField() {
@@ -89,7 +91,7 @@ keys.forEach((key) => {
 
 let changeSettingTimeoutID
 function keyDown(e) {
-	console.log(e, e.code, e.shiftKey, e.key)
+	// console.log(e, e.code, e.shiftKey, e.key)
 
 	if (e.code == "KeyE" && document.activeElement.dataset.edit == "true") enterTextField()
 
@@ -177,6 +179,7 @@ function pushPage(keyCode) {
 	// move left
 	else if (keyCode == "KeyA") {
 		main.style.transform = `translate(${x + dist}px, ${y}px)`
+		navForm.style.transform = `translate(${x + dist}px, ${y}px)`
 		keySection.style.transform = `translate(${x + dist}px, ${y}px)`
 		websiteData.pushPage.coordinates.x += dist
 	}
@@ -190,6 +193,7 @@ function pushPage(keyCode) {
 	// move right
 	else if (keyCode == "KeyD") {
 		main.style.transform = `translate(${x - dist}px, ${y}px)`
+		navForm.style.transform = `translate(${x - dist}px, ${y}px)`
 		keySection.style.transform = `translate(${x - dist}px, ${y}px)`
 		websiteData.pushPage.coordinates.x -= dist
 	}
@@ -211,6 +215,7 @@ function pushPage(keyCode) {
 	// reset transforms
 	else if (keyCode == "KeyR") {
 		main.style.transform = `translate(0)`
+		navForm.style.transform = `translate(0)`
 		keySection.style.transform = `translate(0)`
 		mainScale.style.transform = `scale(1)`
 		websiteData.pushPage.coordinates.x = 0
@@ -221,8 +226,6 @@ function pushPage(keyCode) {
 		document.querySelector("#canvas").style.transform = "scale(1)"
 		websiteData.weight = 450
 		document.querySelector("body").style.fontVariationSettings = `"wght" 450`
-		setCssVar(["--bg", "#aaa"])
-		setCssVar(["--text", "#111"])
 		updateCode(null, codeForm)
 	}
 }

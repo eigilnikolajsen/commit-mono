@@ -72,7 +72,7 @@ header {
 
 header nav {
 	width: max-content;
-	padding: 1rem 0 0 2rem;
+	padding: 1rem 1rem 0 2rem;
 	background-color: var(--bg);
 	z-index: 100;
 	position: fixed;
@@ -227,4 +227,8 @@ input:focus + label {
 
 #content_root.faded {
 	opacity: 0.33;
+}
+
+#mobile {
+	visibility: hidden;
 }
