@@ -8,13 +8,17 @@ function createTable() {
 		for (let j = 0; j <= 16; j++) {
 			if (i == 0 || j == 0) {
 				const th = document.createElement("th")
+				const div = document.createElement("div")
+				const p = document.createElement("p")
 				if (i != 0 && j == 0) {
-					th.textContent = createBinaryString(i + 1, 3)
+					p.textContent = createBinaryString(i + 1, 3)
 				} else if (i == 0 && j != 0) {
-					th.textContent = createBinaryString(j - 1, 4)
+					p.textContent = createBinaryString(j - 1, 4)
 				} else {
-					th.textContent = ""
+					p.textContent = ""
 				}
+				div.append(p)
+				th.append(div)
 				fieldset.append(th)
 			} else {
 				const charCode = (i - 1) * 16 + j + 31

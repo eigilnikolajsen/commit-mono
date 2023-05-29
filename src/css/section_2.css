@@ -3,33 +3,52 @@ table {
 	border-collapse: collapse;
 }
 
-th {
-	width: 6rem;
-	padding: 1rem;
+th > div > p,
+td > div > p {
+	/* width: 6rem; */
 	font-size: 0.5rem;
 	font-weight: normal;
 	text-align: center;
 }
 
-td div {
+th > div,
+td > div {
 	width: 6rem;
 	aspect-ratio: 1 / 1;
 	display: grid;
+	justify-content: center;
 }
 
-td div input,
-td div label {
+tr:first-of-type th > div {
+	width: 6rem;
+	aspect-ratio: 3 / 1;
+}
+
+td > div > input,
+td > div > label,
+td > div > p {
 	grid-row: 1;
 	grid-column: 1;
+	display: inline-block;
+	margin: auto;
+	white-space: pre;
+	text-align: center;
+	line-height: 1.1;
 }
 
-td label {
-	margin: auto;
-	line-height: 1.1;
+tr th:first-of-type > div {
+	font-size: 0.5rem;
+	width: 2rem;
+	justify-content: start;
+}
+
+tr th:first-of-type > div > p {
+	font-size: 0.5rem;
+	text-align: start;
+}
+
+td > div > label {
 	font-size: 4rem;
-	text-align: center;
-	position: relative;
-	white-space: pre;
 }
 
 #section_2 fieldset {
@@ -39,6 +58,7 @@ td label {
 #section_2 input {
 	width: 0;
 	height: 0;
+	opacity: 0;
 }
 
 #section_2 input:focus:checked + label {
@@ -47,14 +67,3 @@ td label {
 	transform: scale(6);
 	z-index: 2;
 }
-
-/* Baseline */
-/* td div p::after {
-	content: "";
-	position: absolute;
-	bottom: 18.182%;
-	height: 1px;
-	left: 0rem;
-	right: 0rem;
-	background-color: var(--text);
-} */

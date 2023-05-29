@@ -172,8 +172,37 @@ h1 {
 	width: fit-content;
 }
 
-*:focus {
+:focus {
 	color: var(--bg);
 	background-color: var(--text);
 	outline: none;
+}
+
+:focus,
+input:focus + label {
+	animation: flicker 50ms 2;
+}
+
+[contenteditable="true"]:focus {
+	animation: flicker 200ms 2;
+}
+
+@keyframes flicker {
+	0%,
+	49% {
+		opacity: 0;
+	}
+	49% {
+		opacity: 0;
+	}
+}
+
+@keyframes flicker_bg {
+	0%,
+	49% {
+		background: repeating-conic-gradient(var(--text) 0% 25%, transparent 0% 50%, transparent 0% 100%) 50% / 2px 2px;
+	}
+	49% {
+		opacity: 0;
+	}
 }

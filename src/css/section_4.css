@@ -48,7 +48,6 @@
 	position: absolute;
 	transform: translateX(calc(24rem / 1000 * 40));
 	color: var(--middle);
-	color: repeating-conic-gradient(var(--text) 0% 25%, transparent 0% 50%, transparent 0% 100%) 50% / 2px 2px;
 	z-index: -1;
 }
 
