@@ -121,7 +121,33 @@ const websiteData = {
 			name: "test",
 			description: "So, how does it look in code? Use the examples below or change the text to anything you like.",
 			content: {
-				weights: [300, 325, 350, 375, 400, 425, 450, 475, 500, 525, 550, 575, 600, 625, 650, 675, 700],
+				fonts: [
+					{
+						name: "Commit Mono",
+						file: "CommitMonoV102-VF.woff2",
+						id: "commit_mono",
+					},
+					{
+						name: "Fira Code",
+						file: "FiraCode.woff2",
+						id: "fira_code",
+					},
+					{
+						name: "JetBrains Mono",
+						file: "JetBrainsMono.woff2",
+						id: "jetbrains_mono",
+					},
+					{
+						name: "Source Code Pro",
+						file: "SourceCodePro.woff2",
+						id: "source_code_pro",
+					},
+					{
+						name: "Consolas",
+						file: "Consolas.woff2",
+						id: "consolas",
+					},
+				],
 				alternates: [
 					{
 						name: "a",
@@ -185,6 +211,37 @@ if (isNaN(num)) {
 }
 
 fibonacci(num)
+`,
+					},
+					{
+						languageName: "HTML/CSS",
+						codeExample: `<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <style>
+            @font-face {
+                font-family: "CommitMono";
+                src: url("/fonts/CommitMono.woff2");
+                font-weight: 450;
+            }
+            :root {
+                --grey: #aaa;
+            }
+            button#grey::before {
+                content: "01";
+                font-style: italic;
+                font-size: 2rem;
+                color: var(--grey);
+            }
+        </style>
+    </head>
+    <body>
+        <button id="grey">Commit Mono</button>
+    </body>
+</html>
 `,
 					},
 					{
