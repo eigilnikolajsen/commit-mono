@@ -77,6 +77,11 @@ p#code_example {
 	min-width: 102ch;
 	max-height: 20rem;
 	overflow-y: scroll;
+	-ms-overflow-style: none; /* Internet Explorer 10+ */
+	scrollbar-width: none; /* Firefox */
+}
+p#code_example::-webkit-scrollbar {
+	display: none; /* Safari and Chrome */
 }
 
 #section_7 form input[type="checkbox"] {

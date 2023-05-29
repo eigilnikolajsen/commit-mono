@@ -74,6 +74,7 @@
 	font-size: 0.75rem;
 	line-height: 1rem;
 	background-color: var(--bg);
+	width: max-content;
 }
 
 #intelligent_form > div {

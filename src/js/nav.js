@@ -276,7 +276,7 @@ function onBlurIn(e) {
 	e.target.removeEventListener("blur", onBlurIn)
 
 	// if this timer runs out before a new element is focused, refocus same element
-	focusTimeOutID = setTimeout(() => active.focus(), 50)
+	if (window.innerWidth < 800) focusTimeOutID = setTimeout(() => active.focus(), 50)
 }
 
 setInterval(checkDocumentFocus, 100)

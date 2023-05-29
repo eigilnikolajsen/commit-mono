@@ -223,6 +223,7 @@ input:focus + label {
 	display: grid;
 	place-content: center;
 	visibility: hidden;
+	pointer-events: none;
 }
 
 #content_root.faded {
