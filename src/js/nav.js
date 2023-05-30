@@ -319,7 +319,6 @@ function onBlurIn(e) {
 	if (window.innerWidth > 800)
 		focusTimeOutID = setTimeout(() => {
 			active.focus()
-			console.log(active)
 		}, 100)
 }
 
