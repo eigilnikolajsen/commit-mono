@@ -46,6 +46,7 @@ a:visited {
 }
 
 a:focus {
+	text-decoration: none;
 	background-color: var(--text);
 	color: var(--bg);
 	text-decoration: none;

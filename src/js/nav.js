@@ -296,10 +296,12 @@ function checkDocumentFocus() {
 	if (prevHasFocus != document.hasFocus()) {
 		if (document.hasFocus()) {
 			active.focus()
+			changeFavicon(true)
 			contentRoot.classList.remove("faded")
 			clickFocus.style.visibility = "hidden"
 			updateCode(null, codeForm)
 		} else {
+			changeFavicon(false)
 			contentRoot.classList.add("faded")
 			clickFocus.style.visibility = "visible"
 			updateCode(null, codeForm)

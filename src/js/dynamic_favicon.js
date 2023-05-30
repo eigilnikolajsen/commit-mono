@@ -1,5 +1,7 @@
 document.onvisibilitychange = () => {
-	dynamicFavicon()
+	// dynamicFavicon()
+	if (document.visibilityState === "visible") changeFavicon(true)
+	else changeFavicon(false)
 }
 
 let faviconIntervalID
@@ -29,4 +31,18 @@ function dynamicFavicon() {
 	}
 }
 
-dynamicFavicon()
+function changeFavicon(hasFocus) {
+	const link = document.createElement("link"),
+		oldLink = document.getElementById("dynamic-favicon")
+
+	link.id = "dynamic-favicon"
+	link.rel = "icon"
+	link.href = hasFocus ? "src/favicon/icon-off.svg" : "src/favicon/icon.svg"
+	if (oldLink) {
+		document.head.removeChild(oldLink)
+	}
+	document.head.appendChild(link)
+}
+
+changeFavicon(true)
+// dynamicFavicon()

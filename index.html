@@ -301,9 +301,7 @@
 								<div class="top_container"></div>
 								<div class="content_container">
 									<br />
-									<button>Download</button>
-									<br />
-									<button>Installation guide</button>
+									<button><a href="#" tabindex="-1">Download</a></button>
 									<form id="examples_form" onchange="updateExamples(event, this)">
 										<fieldset></fieldset>
 									</form>
@@ -314,111 +312,9 @@
 										<h2>Fonts</h2>
 										<fieldset id="fonts"></fieldset>
 										<h2>Features</h2>
-										<fieldset>
-											<div>
-												<input type="radio" name="features" id="smart_kerning1" value="'calt' on" checked="true" />
-												<label for="smart_kerning1">Smart kerning ON</label>
-											</div>
-											<div>
-												<input type="radio" name="features" id="smart_kerning2" value="'calt' off" />
-												<label for="smart_kerning2">Smart kerning OFF</label>
-											</div>
-										</fieldset>
+										<div id="features_container"></div>
 										<h2>Alternates</h2>
-										<!-- <fieldset class="alternates">
-											<div>
-												<input type="radio" name="alternate_a" id="alternate_a1" value="'cv01' off" checked="true" />
-												<label for="alternate_a1">a</label>
-											</div>
-											<div>
-												<input type="radio" name="alternate_a" id="alternate_a2" value="'cv01' on" />
-												<label for="alternate_a2">a</label>
-											</div>
-										</fieldset> -->
-										<fieldset class="alternates">
-											<div>
-												<input type="radio" name="alternate_g" id="alternate_g1" value="'cv02' off" checked="true" />
-												<label for="alternate_g1">g</label>
-											</div>
-											<div>
-												<input type="radio" name="alternate_g" id="alternate_g2" value="'cv02' on" />
-												<label for="alternate_g2">g</label>
-											</div>
-										</fieldset>
-										<fieldset class="alternates">
-											<div>
-												<input
-													type="radio"
-													name="alternate_six"
-													id="alternate_six1"
-													value="'cv06' off"
-													checked="true"
-												/>
-												<label for="alternate_six1">6, 9</label>
-											</div>
-											<div>
-												<input type="radio" name="alternate_six" id="alternate_six2" value="'cv06' on" />
-												<label for="alternate_six2">6, 9</label>
-											</div>
-										</fieldset>
-										<fieldset class="alternates">
-											<div>
-												<input
-													type="radio"
-													name="alternate_asterisk"
-													id="alternate_asterisk1"
-													value="'cv07' off"
-													checked="true"
-												/>
-												<label for="alternate_asterisk1">*</label>
-											</div>
-											<div>
-												<input type="radio" name="alternate_asterisk" id="alternate_asterisk2" value="'cv07' on" />
-												<label for="alternate_asterisk2">*</label>
-											</div>
-										</fieldset>
-										<fieldset class="alternates">
-											<div>
-												<input type="radio" name="alternate_at" id="alternate_at1" value="'cv08' off" checked="true" />
-												<label for="alternate_at1">@</label>
-											</div>
-											<div>
-												<input type="radio" name="alternate_at" id="alternate_at2" value="'cv08' on" />
-												<label for="alternate_at2">@</label>
-											</div>
-										</fieldset>
-										<fieldset class="alternates">
-											<div>
-												<input
-													type="radio"
-													name="alternate_zero"
-													id="alternate_zero1"
-													value="'zero' off"
-													checked="true"
-												/>
-												<label for="alternate_zero1">0</label>
-											</div>
-											<div>
-												<input type="radio" name="alternate_zero" id="alternate_zero2" value="'zero' on" />
-												<label for="alternate_zero2">0</label>
-											</div>
-										</fieldset>
-										<fieldset class="alternates">
-											<div>
-												<input
-													type="radio"
-													name="alternate_round"
-													id="alternate_round1"
-													value="'ss01' off"
-													checked="true"
-												/>
-												<label for="alternate_round1">.:ij</label>
-											</div>
-											<div>
-												<input type="radio" name="alternate_round" id="alternate_round2" value="'ss01' on" />
-												<label for="alternate_round2">.:ij</label>
-											</div>
-										</fieldset>
+										<div id="alternates_container"></div>
 									</form>
 								</div>
 							</section>

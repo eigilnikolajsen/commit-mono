@@ -1,6 +1,6 @@
 @font-face {
 	font-family: "CommitMono";
-	src: url("/src/fonts/CommitMonoV105-VF.woff2");
+	src: url("/src/fonts/CommitMono-cleaned-VF-106.woff2");
 	font-style: normal;
 	font-weight: 450;
 }
@@ -158,7 +158,8 @@ header #keyboard_section {
 
 p,
 a,
-figcaption {
+figcaption,
+button {
 	font-size: 0.75rem;
 	line-height: 1rem;
 	max-width: 54ch;

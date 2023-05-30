@@ -162,12 +162,18 @@ const websiteData = {
 						id: "consolas",
 					},
 				],
-				alternates: [
-					{
-						name: "a",
-						label: "a",
-						feature: "cv01",
-					},
+				features: [
+					{ type: "alternate", name: "a", label: "alt. 'a'", feature: "cv01", on: false },
+					{ type: "alternate", name: "g", label: "alt. 'g'", feature: "cv02", on: false },
+					{ type: "alternate", name: "square", label: "square dots .:ij", feature: "cv03", on: false },
+					{ type: "alternate", name: "asterisk", label: "lifted *", feature: "cv04", on: false },
+					{ type: "alternate", name: "at", label: "standard @", feature: "cv05", on: false },
+					{ type: "alternate", name: "six", label: "alt. '6', '9'", feature: "cv06", on: false },
+					{ type: "feature", name: "arrows", label: "Arrows >-> =>", feature: "ss01", on: false },
+					{ type: "feature", name: "less_equal", label: "Ligatures <= != ", feature: "ss02", on: false },
+					{ type: "feature", name: "case", label: "Smart case (1:1) 2+3", feature: "ss03", on: true },
+					{ type: "feature", name: "ellipsis", label: "Symbol spacing ... <<", feature: "ss04", on: true },
+					{ type: "feature", name: "smartkerning", label: "Smart kerning immi", feature: "ss05", on: true },
 				],
 				languages: [
 					{

@@ -15,6 +15,18 @@
 	background-color: var(--bg);
 }
 
+#section_7 #alternates_container fieldset,
+#section_7 #features_container fieldset {
+	display: grid;
+	grid-template-columns: 21ch 3ch 3ch;
+	gap: 2ch;
+}
+
+#section_7 #examplesettings_form fieldset p {
+	white-space: pre;
+	font-variant-ligatures: none;
+}
+
 fieldset.alternates > div {
 	width: 4ch;
 }
@@ -90,6 +102,7 @@ p#code_example {
 	min-width: 102ch;
 	padding-left: 5ch;
 	position: relative;
+	font-variant-ligatures: none;
 }
 p#code_example::before {
 	content: attr(data-before);
@@ -119,22 +132,7 @@ p#code_example::before {
 	color: var(--bg);
 }
 
-label[for="alternate_a1"],
-label[for="alternate_g1"],
-label[for="alternate_six1"],
-label[for="alternate_asterisk1"],
-label[for="alternate_at1"],
-label[for="alternate_zero1"],
-label[for="alternate_round1"] {
-	font-feature-settings: "cv01" off, "cv02" off, "cv06" off, "cv07" off, "cv08" off, "zero" off, "ss01" off;
-}
-
-label[for="alternate_a2"],
-label[for="alternate_g2"],
-label[for="alternate_six2"],
-label[for="alternate_asterisk2"],
-label[for="alternate_at2"],
-label[for="alternate_zero2"],
-label[for="alternate_round2"] {
-	font-feature-settings: "cv01" on, "cv02" on, "cv06" on, "cv07" on, "cv08" on, "zero" on, "ss01" on;
+button:focus a {
+	color: var(--bg);
+	text-decoration: none;
 }
