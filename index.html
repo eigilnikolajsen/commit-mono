@@ -30,19 +30,18 @@
 
 		<!-- JS -->
 		<script src="src/js/utility_functions.js" defer></script>
-		<script src="https://cdn.jsdelivr.net/npm/opentype.js" defer></script>
-		<script src="src/js/opentype_test.js" defer></script>
 		<script src="src/js/website_data.js" defer></script>
-		<script src="src/js/dynamic_favicon.js" defer></script>
-		<script src="src/js/nav.js" defer></script>
 		<script src="src/js/section.js" defer></script>
-		<script src="src/js/focus.js" defer></script>
+		<script src="src/js/nav.js" defer></script>
 		<script src="src/js/table_section.js" defer></script>
 		<script src="src/js/familiar_section.js" defer></script>
 		<script src="src/js/intelligent_section.js" defer></script>
 		<script src="src/js/code_section.js" defer></script>
 		<script src="src/js/distinction_section.js" defer></script>
 		<script src="src/js/example_section.js" defer></script>
+		<script src="src/js/dynamic_favicon.js" defer></script>
+		<script src="https://cdn.jsdelivr.net/npm/opentype.js" defer></script>
+		<script src="src/js/opentype_test.js" defer></script>
 	</head>
 	<body>
 		<div id="app_root">
@@ -301,6 +300,10 @@
 							<section id="section_7">
 								<div class="top_container"></div>
 								<div class="content_container">
+									<br />
+									<button>Download</button>
+									<br />
+									<button>Installation guide</button>
 									<form id="examples_form" onchange="updateExamples(event, this)">
 										<fieldset></fieldset>
 									</form>
@@ -421,7 +424,22 @@
 							</section>
 							<section id="section_8">
 								<div class="top_container"></div>
-								<div class="content_container"></div>
+								<div class="content_container">
+									<ol>
+										<li><p tabindex="0">Dowload the font from the download section.</p></li>
+										<li><p tabindex="0">Install the font on your system</p>
+											<ul>
+												<li><p tabindex="0">Windows: Right click the font in the folder and click "Install".</p></li>
+												<li><p tabindex="0">Mac: Open fonts with Font Book from the folder and click "Install".</p></li>
+												<li><p tabindex="0">Linux: Unpack fonts to ~/.local/share/fonts (or /usr/share/fonts to install fonts system-wide) then <p tabindex="0" data-edit="true">fc-cache -f -v</p></p></li>
+											</ul>
+										</li>
+										<li><p tabindex="0">Restart your editor/IDE.</p></li>
+										<li><p tabindex="0">Settings/Preferences → Editor → Font: pick Commit Mono from the dropdown.</p></li>
+									</ol>
+									<br>
+									<p tabindex="0">If you have enabled one or more features/ligatures in your download, these are available through the 'calt' OpenType Feature. For a comprehensive guide on how to enable in your specific editor/IDE, refer to:</p><a href="https://github.com/tonsky/FiraCode/wiki#enabling-ligatures" target="_blank">Fira Code wiki</a>
+								</div>
 							</section>
 							<section id="section_9">
 								<div class="top_container"></div>

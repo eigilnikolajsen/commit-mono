@@ -163,6 +163,7 @@ figcaption {
 	line-height: 1rem;
 	max-width: 54ch;
 	width: fit-content;
+	vertical-align: top;
 }
 
 a {

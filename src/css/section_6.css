@@ -68,6 +68,8 @@
 }
 
 button {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 	vertical-align: top;
 	border: none;
 	background: transparent;
@@ -94,21 +96,21 @@ button:active {
 } */
 
 .question_button:focus::before {
-	content: "←―";
+	content: "<-";
 	position: absolute;
 	left: -2ch;
 	color: var(--text);
 }
 
 .question_button.right_button::before {
-	content: "←―";
+	content: "<-";
 	position: absolute;
 	left: -2ch;
 	color: var(--text);
 }
 
 .question_button.wrong_button::before {
-	content: "―→";
+	content: "->";
 	position: absolute;
 	left: auto;
 	right: -2ch;

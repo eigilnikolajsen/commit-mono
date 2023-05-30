@@ -13,7 +13,15 @@ ul {
 	list-style-type: none;
 }
 
-li {
+ol li {
+	font-size: 0.75rem;
+	line-height: 1rem;
+	margin-left: 3ch;
+	max-width: 54ch;
+	width: fit-content;
+}
+
+ul li {
 	font-size: 0.75rem;
 	line-height: 1rem;
 	margin-left: 2ch;
@@ -21,13 +29,13 @@ li {
 	width: fit-content;
 }
 
-li::before {
+ul li::before {
 	content: "• ";
 	position: absolute;
 	margin-left: -2ch;
 }
 
-li:focus::before {
+ul li:focus::before {
 	background-color: transparent;
 	color: var(--text);
 }

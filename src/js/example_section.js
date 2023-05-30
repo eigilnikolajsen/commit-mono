@@ -3,7 +3,7 @@ const exampleFieldset = document.querySelector("#examples_form fieldset")
 const fontsFieldset = document.querySelector("#fonts")
 
 websiteData.sections.forEach((section) => {
-	if (section.name == "test") {
+	if (section.name == "customize") {
 		section.content.languages.forEach((language, index) => {
 			const div = document.createElement("div")
 			const input = document.createElement("input")
@@ -47,7 +47,7 @@ function updateExamples(event, form) {
 	}
 
 	websiteData.sections.forEach((section) => {
-		if (section.name == "test") {
+		if (section.name == "customize") {
 			section.content.languages.forEach((language, index) => {
 				if (language.languageName == output) {
 					codeExample.textContent = language.codeExample

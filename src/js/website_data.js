@@ -131,8 +131,9 @@ const websiteData = {
 			},
 		},
 		{
-			name: "test",
-			description: "So, how does it look in code? Use the examples below or change the text to anything you like.",
+			name: "customize",
+			description:
+				"So, how does it look in code? Change the settings below and download when you're satisfied. Alternate characters will be baked in and features merged, making a single static font that is compatible in all environments.",
 			content: {
 				fonts: [
 					{
@@ -571,16 +572,37 @@ end program capitalize
 					{
 						languageName: "Blank",
 						codeExample: `Focus, then press e to edit
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 `,
 					},
 				],
 			},
 		},
 		{
-			name: "download",
-			description:
-				"Generate static font files with your alternates baked in for ease of use in all editors and terminals.",
-			content: {},
+			name: "install",
+			description: "A short guide for how to install and enable Commit Mono.",
+			content: {
+				steps: ["Download the font from the download section.", "Install the font:"],
+			},
 		},
 		{
 			name: "about",

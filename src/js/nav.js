@@ -243,7 +243,7 @@ function pushPage(keyCode) {
 let active // saves what DOM element is currently active
 let focusTimeOutID // to be able to use clearTimeout()
 document.addEventListener("focusin", (e) => {
-	// console.log(document.activeElement)
+	// console.log("focusin", document.activeElement)
 
 	// new focus: exit text field
 	if (document.activeElement != active) exitTextField()
@@ -269,6 +269,26 @@ document.addEventListener("focusin", (e) => {
 			checkedMenuInput.focus()
 		}
 	}
+
+	// scroll page, if focus reaches bottom or top
+	const bounds = active.getBoundingClientRect()
+	const paddingOffsetBottom = 300
+	if (bounds.top > window.innerHeight - paddingOffsetBottom) {
+		const numberOfMoves = Math.floor(
+			(bounds.top - (window.innerHeight - paddingOffsetBottom)) / websiteData.pushPage.distance
+		)
+		for (let i = 0; i < numberOfMoves; i++) {
+			pushPage("KeyS")
+		}
+	}
+	const paddingOffsetTop = 28
+	if (bounds.top < paddingOffsetTop) {
+		const numberOfMoves = Math.ceil(Math.abs(bounds.top - paddingOffsetTop) / websiteData.pushPage.distance)
+		console.log("num of moves:", numberOfMoves, "bounds.top:", bounds.top)
+		for (let i = 0; i < numberOfMoves; i++) {
+			pushPage("KeyW")
+		}
+	}
 })
 
 let prevHasFocus = true
@@ -289,11 +309,16 @@ function checkDocumentFocus() {
 }
 
 function onBlurIn(e) {
+	// console.log("blurin", window.innerWidth)
 	// remove event listener from so they don't stack
 	e.target.removeEventListener("blur", onBlurIn)
 
 	// if this timer runs out before a new element is focused, refocus same element
-	if (window.innerWidth < 800) focusTimeOutID = setTimeout(() => active.focus(), 100)
+	if (window.innerWidth > 800)
+		focusTimeOutID = setTimeout(() => {
+			active.focus()
+			console.log(active)
+		}, 100)
 }
 
 setInterval(checkDocumentFocus, 100)
