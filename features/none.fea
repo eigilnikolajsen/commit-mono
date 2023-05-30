@@ -2,7 +2,7 @@ feature none {
 	# Character Variant 01—99
 	
 	#> featur
-	  sub uni239C by uni23A2;
+	  sub nbspace by space;
 	#< feature
 	
 } none;

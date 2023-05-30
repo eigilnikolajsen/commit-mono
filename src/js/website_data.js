@@ -115,7 +115,20 @@ const websiteData = {
 			name: "distinction",
 			description:
 				"With simple letter constructions and confident choices Commit Mono emphasises character distinction without compromising style consistency.",
-			content: {},
+			content: {
+				waterfall: {
+					sizes: [4, 2.5, 1.5, 1, 0.75, 0.5],
+					text: `l1I|L!i\nOo0QØøΩ\n:;.,${"`"}‘'`,
+				},
+				gtc: [
+					{ value: ["-", "–"], options: ["hyphen", "endash"] },
+					{ value: ["`", "'"], options: ["backtick", "single quote"] },
+					{ value: ["O", "0"], options: ["uppercase o", "zero"] },
+					{ value: ["‹", "<"], options: ["angle quotation mark", "less"] },
+					{ value: ["⁄", "/"], options: ["fraction", "slash"] },
+					{ value: ["ß", "B"], options: ["german double s", "uppercase b"] },
+				],
+			},
 		},
 		{
 			name: "test",

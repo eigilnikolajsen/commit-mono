@@ -1,4 +1,4 @@
-feature ss02 {
+feature ss01 {
 	# Arrows
 
 	# classes
@@ -112,4 +112,4 @@ feature ss02 {
 		sub @less_arrow_start_hyphen @exclam @hyphen_arrow @hyphen' by @hyphen_arrow;
 	} HTMLcomment;
 	
-} ss02;
+} ss01;

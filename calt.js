@@ -8,7 +8,7 @@ function pbcopy(data) {
 }
 
 async function featuresToCalt() {
-	const features = ["c001", "c008", "c009"]
+	const features = ["ss01_arrows", "ss02_less_equal", "ss03_case", "ss04_ellipsis", "ss05_smartkerning"]
 
 	let calt = []
 
@@ -35,7 +35,7 @@ async function featuresToCalt() {
 		calt.push(lines)
 	}
 
-	calt = calt.flat().filter((ln) => !ln.includes("feature") && !ln.includes("} c0"))
+	calt = calt.flat().filter((ln) => !ln.includes("feature") && !ln.includes("} ss"))
 	calt = calt.map((ln) => {
 		if (ln.includes("lookup")) return ln.split("lookup ").join("lookup _")
 		if (ln.includes("} ")) return ln.split("} ").join("} _")

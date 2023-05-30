@@ -1,6 +1,6 @@
-feature c009 {
+feature ss05 {
     # Coding Ligature 001—999
-    # Letter balancing
+    # Smart kerning
 
     # classes
     @width_narr = [f f.leftL f.leftM f.leftS f.rightL f.rightM f.rightS i i.leftL i.leftM i.leftS i.rightL i.rightM i.rightS j j.leftL j.leftM j.leftS j.rightL j.rightM j.rightS l l.leftL l.leftM l.leftS l.rightL l.rightM l.rightS r r.leftL r.leftM r.leftS r.rightL r.rightM r.rightS t t.leftL t.leftM t.leftS t.rightL t.rightM t.rightS i.square i.square.leftL i.square.leftM i.square.leftS i.square.rightL i.square.rightM i.square.rightS j.square j.square.leftL j.square.leftM j.square.leftS j.square.rightL j.square.rightM j.square.rightS];
@@ -15,4 +15,4 @@ feature c009 {
     sub @width_narr @center' @width_regu by @leftS;
     sub @width_regu @center' @width_narr by @rightS;
     
-} c009;
+} ss05;

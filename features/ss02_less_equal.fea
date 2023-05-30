@@ -1,4 +1,4 @@
-feature ss03 {
+feature ss02 {
 	# less_equal, exclam_equal substitution
 
     # classes
@@ -18,4 +18,4 @@ feature ss03 {
 	sub @space_actor exclam_equal_equal.liga @equal' @equal @space_actor by space;
 	sub @space_actor exclam_equal_equal.liga space @equal'  @space_actor by space;
 	
-} ss03;
+} ss02;

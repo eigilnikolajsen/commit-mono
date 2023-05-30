@@ -1,4 +1,4 @@
-feature c001 {
+feature ss03 {
 	# Coding Ligature 001—999
 	# Case sensitive punctuation
 
@@ -89,4 +89,4 @@ feature c001 {
 		sub @case_top @case_default' by @case_top;
 	} InBetween;
 	
-} c001;
+} ss03;

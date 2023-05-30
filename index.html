@@ -31,7 +31,7 @@
 		<!-- JS -->
 		<script src="src/js/utility_functions.js" defer></script>
 		<script src="https://cdn.jsdelivr.net/npm/opentype.js" defer></script>
-		<script src="src/js/t.js" defer></script>
+		<script src="src/js/opentype_test.js" defer></script>
 		<script src="src/js/website_data.js" defer></script>
 		<script src="src/js/dynamic_favicon.js" defer></script>
 		<script src="src/js/nav.js" defer></script>
@@ -41,6 +41,7 @@
 		<script src="src/js/familiar_section.js" defer></script>
 		<script src="src/js/intelligent_section.js" defer></script>
 		<script src="src/js/code_section.js" defer></script>
+		<script src="src/js/distinction_section.js" defer></script>
 		<script src="src/js/example_section.js" defer></script>
 	</head>
 	<body>
@@ -287,7 +288,15 @@
 							</section>
 							<section id="section_6">
 								<div class="top_container"></div>
-								<div class="content_container"></div>
+								<div class="content_container">
+									<div id="waterfall"></div>
+									<div id="gtc">
+										<h2>Let's play 'Guess the Character'</h2>
+										<div id="gtc_questions_container"></div>
+										<br>
+										<p id="score_tally" tabindex="-1" data-edit="true"></p>
+									</div>
+								</div>
 							</section>
 							<section id="section_7">
 								<div class="top_container"></div>

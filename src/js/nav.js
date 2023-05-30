@@ -201,6 +201,7 @@ function pushPage(keyCode) {
 	else if (keyCode == "Minus") {
 		document.documentElement.style.fontSize = `${rem + 2}px`
 		rem = +rem + 2
+		updateWaterfall()
 		document.querySelector("#canvas").style.transform = `scale(${rem / 16})`
 		changeSetting.textContent = `Base font size: ${rem}px`
 		changeSetting.style.visibility = "visible"
@@ -212,6 +213,7 @@ function pushPage(keyCode) {
 	else if (keyCode == "Slash") {
 		document.documentElement.style.fontSize = `${rem - 2}px`
 		rem = +rem - 2
+		updateWaterfall()
 		document.querySelector("#canvas").style.transform = `scale(${rem / 16})`
 		changeSetting.textContent = `Base font size: ${rem}px`
 		changeSetting.style.visibility = "visible"
@@ -234,6 +236,7 @@ function pushPage(keyCode) {
 		websiteData.weight = 450
 		document.querySelector("body").style.fontVariationSettings = `"wght" 450`
 		updateCode(null, codeForm)
+		updateWaterfall()
 	}
 }
 
@@ -244,6 +247,8 @@ document.addEventListener("focusin", (e) => {
 
 	// new focus: exit text field
 	if (document.activeElement != active) exitTextField()
+
+	const prevActive = active
 
 	// save current focused element
 	active = document.activeElement
@@ -257,8 +262,12 @@ document.addEventListener("focusin", (e) => {
 
 	if (active.id.includes("block_tab")) {
 		console.log("BLOCK TAB")
-		const checkedMenuInput = document.querySelector("#nav_form input:checked")
-		checkedMenuInput.focus()
+		if (prevActive.className.includes("question_button")) {
+			prevActive.parentElement.querySelector(".question_button").focus()
+		} else {
+			const checkedMenuInput = document.querySelector("#nav_form input:checked")
+			checkedMenuInput.focus()
+		}
 	}
 })
 
@@ -266,6 +275,7 @@ let prevHasFocus = true
 function checkDocumentFocus() {
 	if (prevHasFocus != document.hasFocus()) {
 		if (document.hasFocus()) {
+			active.focus()
 			contentRoot.classList.remove("faded")
 			clickFocus.style.visibility = "hidden"
 			updateCode(null, codeForm)
@@ -283,7 +293,7 @@ function onBlurIn(e) {
 	e.target.removeEventListener("blur", onBlurIn)
 
 	// if this timer runs out before a new element is focused, refocus same element
-	if (window.innerWidth < 800) focusTimeOutID = setTimeout(() => active.focus(), 50)
+	if (window.innerWidth < 800) focusTimeOutID = setTimeout(() => active.focus(), 100)
 }
 
 setInterval(checkDocumentFocus, 100)

@@ -1,0 +1,133 @@
+#waterfall {
+	margin-top: 3rem;
+	display: flex;
+	width: min-content;
+	gap: 2rem;
+}
+
+.waterfall_text {
+	line-height: 4rem;
+	white-space: pre;
+}
+
+.waterfall_desc {
+	width: max-content;
+	white-space: pre;
+}
+
+#gtc {
+	margin-top: 3rem;
+}
+
+.question_container {
+	margin-top: 1rem;
+	display: flex;
+	align-items: center;
+	font-size: 0.75rem;
+	gap: 2ch;
+	position: relative;
+}
+
+.question_character.hide_character {
+	opacity: 1;
+	animation: 0ms 0s 3 forwards flicker_reverse;
+}
+
+.question_character.show_character {
+	opacity: 0;
+	animation: 100ms 0s 3 forwards flicker;
+}
+
+.button_container button {
+	display: block;
+}
+
+.question_character {
+	font-size: 6rem;
+	line-height: 6rem;
+	border: 1px solid var(--text);
+	position: relative;
+}
+
+.question_character::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0.9rem;
+	height: 1px;
+	background-color: var(--text);
+}
+
+#score_points {
+	display: none;
+}
+
+#score_points.view_score {
+	display: block;
+}
+
+button {
+	vertical-align: top;
+	border: none;
+	background: transparent;
+	font-family: inherit;
+	font-size: 0.75rem;
+	font-variation-settings: inherit;
+	line-height: 1rem;
+	width: max-content;
+	white-space: nowrap;
+	position: relative;
+	text-align: left;
+}
+
+button:active {
+	background: repeating-conic-gradient(transparent 0% 25%, var(--text) 0% 50%, var(--text) 0% 100%) 50% / 2px 2px;
+}
+
+/* .button_container {
+	width: max-content;
+}
+
+.question_button {
+	width: 100%;
+} */
+
+.question_button:focus::before {
+	content: "←―";
+	position: absolute;
+	left: -2ch;
+	color: var(--text);
+}
+
+.question_button.right_button::before {
+	content: "←―";
+	position: absolute;
+	left: -2ch;
+	color: var(--text);
+}
+
+.question_button.wrong_button::before {
+	content: "―→";
+	position: absolute;
+	left: auto;
+	right: -2ch;
+	color: var(--text);
+}
+
+.question_button.button_choice {
+	background: repeating-conic-gradient(var(--text) 0% 25%, transparent 0% 50%, transparent 0% 100%) 50% / 2px 2px;
+	color: var(--text);
+}
+
+.question_button.button_choice:focus {
+	background: repeating-conic-gradient(transparent 0% 25%, var(--text) 0% 50%, var(--text) 0% 100%) 50% / 2px 2px;
+	color: var(--bg);
+}
+
+.answer_feedback {
+	position: absolute;
+	font-size: 1.5rem;
+	top: -0.5rem;
+	left: 3.5ch;
+}
