@@ -290,7 +290,12 @@
 								<div class="content_container">
 									<div id="waterfall"></div>
 									<div id="gtc">
-										<h2>Let's play 'Guess the Character'</h2>
+										<h2 tabindex="0" data-edit="true">Let's play 'Guess the Character'</h2>
+										<p tabindex="0" data-edit="true">Correctly spot 10 commonly confused characters</p>
+										<h2>Select difficulty</h2>
+										<form id="gtc_form" onchange="updateGTC(event, this)">
+											<fieldset></fieldset>
+										</form>
 										<div id="gtc_questions_container"></div>
 										<br>
 										<p id="score_tally" tabindex="-1" data-edit="true"></p>

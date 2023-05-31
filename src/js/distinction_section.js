@@ -12,20 +12,71 @@ function updateWaterfall() {
 	waterfall.sizes.forEach((size) => {
 		const div = document.createElement("div")
 		div.id = `size_${size}`
-		const p = document.createElement("p")
-		p.classList.add("waterfall_text")
-		p.style.fontSize = `${size * rem}px`
-		p.textContent = waterfall.text
+
 		const desc = document.createElement("p")
 		desc.classList.add("waterfall_desc")
 		desc.textContent = `${size}rem\n${size * rem}px`
 
-		div.append(desc, p)
+		const textsContainer = document.createElement("div")
+		textsContainer.classList.add("waterfall_texts_container")
+		waterfall.texts.forEach((text) => {
+			const div2 = document.createElement("div")
+			const p = document.createElement("p")
+			p.classList.add("waterfall_text")
+			p.style.fontSize = `${size * rem}px`
+			p.textContent = text
+			div2.append(p)
+			textsContainer.append(div2)
+		})
+		div.append(desc, textsContainer)
+
 		waterfallContainer.append(div)
 	})
 }
 
 updateWaterfall()
+
+const gtcForm = document.querySelector("#gtc_form")
+const gtcFieldset = document.querySelector("#gtc_form fieldset")
+
+websiteData.sections.forEach((section) => {
+	if (section.name == "distinction") {
+		section.content.gtcDifficulties.forEach((difficulty, index) => {
+			const div = document.createElement("div")
+			const input = document.createElement("input")
+			input.type = "radio"
+			input.name = "difficulty"
+			input.id = `difficulty_${difficulty.name}`
+			input.classList.add("gtc_difficulty")
+			input.value = difficulty.name
+			if (index == 0) input.setAttribute("checked", "true")
+			const label = document.createElement("label")
+			label.textContent = difficulty.name
+			label.setAttribute("for", `difficulty_${difficulty.name}`)
+			div.append(input, label)
+			gtcFieldset.append(div)
+		})
+	}
+})
+
+function updateGTC(event, form) {
+	const data = new FormData(form)
+	let output = ""
+	for (const entry of data) {
+		output = `${entry[1]}`
+	}
+	websiteData.sections.forEach((section) => {
+		if (section.name == "distinction") {
+			section.content.gtcDifficulties.forEach((difficulty) => {
+				if (difficulty.name == output) {
+					setCssVar(["--question-character-size", `${difficulty.size}rem`])
+				}
+			})
+		}
+	})
+
+	if (event) event.preventDefault()
+}
 
 let answers = []
 let score = -1
@@ -73,7 +124,7 @@ function createGTC() {
 		answerFeedback.classList.add("answer_feedback")
 
 		buttonContainer.append(option0, option1)
-		div.append(p, buttonContainer, pWrong, answerFeedback)
+		div.append(answerFeedback, p, buttonContainer, pWrong)
 		gtcContainer.append(div)
 	})
 	const scorePoints = document.createElement("p")
@@ -84,19 +135,17 @@ function createGTC() {
 }
 
 function nextQuestion(correct, answer, wrongAnswer) {
-	console.log("next question. was correct?", correct)
 	const scoreTally = document.querySelector("#score_tally")
 	const allQuestions = document.querySelectorAll(".question_container")
 	let answerFeedback
 
-	if (correct) {
-		score++
-	}
+	if (correct) score++
 
 	allQuestions.forEach((question, index) => {
 		const wrongCharacter = question.querySelector(".wrong_character")
 
 		if (index == currentQuestion) {
+			question.classList.add("active_question")
 			const rightButton = question.querySelector(`.button_container .question_button:nth-child(${answer + 1})`)
 			const wrongButton = question.querySelector(`.button_container .question_button:nth-child(${wrongAnswer + 1})`)
 			correct ? rightButton.classList.add("button_choice") : wrongButton.classList.add("button_choice")
@@ -108,9 +157,10 @@ function nextQuestion(correct, answer, wrongAnswer) {
 
 			wrongCharacter.classList.remove("hide_character")
 			wrongCharacter.classList.add("show_character")
+		} else if (index == currentQuestion + 1) {
+			question.classList.add("active_question")
 		} else {
-			// wrongCharacter.classList.add("hide_character")
-			// wrongCharacter.classList.remove("show_character")
+			question.classList.remove("active_question")
 		}
 	})
 
@@ -124,10 +174,8 @@ function nextQuestion(correct, answer, wrongAnswer) {
 	scoreTally.textContent = `Score: ${score}/${gtc.length}`
 
 	if (currentQuestion < gtc.length) {
-		console.log("not last")
-		setTimeout(() => firstButtons[currentQuestion]?.focus(), 10)
+		if (!isMobile) setTimeout(() => firstButtons[currentQuestion]?.focus(), 10)
 	} else {
-		console.log("last question")
 		scoreTally.tabIndex = 0
 		setTimeout(() => scoreTally.focus(), 10)
 	}

@@ -53,6 +53,7 @@ td > div > label {
 
 #section_2 fieldset {
 	border: none;
+	display: block;
 }
 
 #section_2 input {
@@ -64,6 +65,10 @@ td > div > label {
 #section_2 input:focus:checked + label {
 	background-color: var(--text);
 	color: var(--bg);
-	transform: scale(6);
+	transform: scale(4);
 	z-index: 2;
+}
+
+#section_2 input:checked + label::before {
+	display: none;
 }

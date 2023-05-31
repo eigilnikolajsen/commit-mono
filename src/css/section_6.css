@@ -5,8 +5,21 @@
 	gap: 2rem;
 }
 
+.waterfall_texts_container {
+	display: flex;
+	flex-direction: column;
+	justify-content: end;
+	height: 10rem;
+}
+
+.waterfall_texts_container > div {
+	height: 2.5rem;
+	display: flex;
+	align-items: end;
+}
+
 .waterfall_text {
-	line-height: 4rem;
+	line-height: 0.6;
 	white-space: pre;
 }
 
@@ -17,6 +30,10 @@
 
 #gtc {
 	margin-top: 3rem;
+}
+
+#gtc h2 {
+	margin-top: 1rem;
 }
 
 .question_container {
@@ -42,27 +59,29 @@
 	display: block;
 }
 
+:root {
+	--question-character-size: 6rem;
+}
+
 .question_character {
-	font-size: 6rem;
-	line-height: 6rem;
+	font-size: var(--question-character-size);
+	line-height: var(--question-character-size);
 	border: 1px solid var(--text);
 	position: relative;
 }
-
 .question_character::after {
 	content: "";
 	position: absolute;
 	left: 0;
 	right: 0;
-	bottom: 0.9rem;
-	height: 1px;
+	bottom: 15%;
+	/* height: 1px; */
 	background-color: var(--text);
 }
 
 #score_points {
 	display: none;
 }
-
 #score_points.view_score {
 	display: block;
 }
@@ -87,28 +106,18 @@ button:active {
 	background: repeating-conic-gradient(transparent 0% 25%, var(--text) 0% 50%, var(--text) 0% 100%) 50% / 2px 2px;
 }
 
-/* .button_container {
-	width: max-content;
-}
-
-.question_button {
-	width: 100%;
-} */
-
 .question_button:focus::before {
 	content: "<-";
 	position: absolute;
 	left: -2ch;
 	color: var(--text);
 }
-
 .question_button.right_button::before {
 	content: "<-";
 	position: absolute;
 	left: -2ch;
 	color: var(--text);
 }
-
 .question_button.wrong_button::before {
 	content: "->";
 	position: absolute;
@@ -121,15 +130,27 @@ button:active {
 	background: repeating-conic-gradient(var(--text) 0% 25%, transparent 0% 50%, transparent 0% 100%) 50% / 2px 2px;
 	color: var(--text);
 }
-
 .question_button.button_choice:focus {
 	background: repeating-conic-gradient(transparent 0% 25%, var(--text) 0% 50%, var(--text) 0% 100%) 50% / 2px 2px;
 	color: var(--bg);
 }
 
 .answer_feedback {
-	position: absolute;
-	font-size: 1.5rem;
-	top: -0.5rem;
-	left: 3.5ch;
+	position: relative;
+	font-size: 0.75rem;
+	top: calc(var(--question-character-size) * 0.5);
+	top: 40%;
+	width: 0;
+	margin-left: -2ch;
+	left: 0;
+}
+
+.question_container.active_question ~ .question_container.active_question {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+.question_container.active_question ~ .question_container {
+	opacity: 0;
+	pointer-events: none;
 }

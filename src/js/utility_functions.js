@@ -8,3 +8,18 @@ const mapRange = (value, x1, y1, x2, y2) => ((value - x1) * (y2 - x2)) / (y1 - x
 
 const getCssVar = (property) => getComputedStyle(document.documentElement).getPropertyValue(property)
 const setCssVar = ([property, value]) => document.documentElement.style.setProperty(property, value)
+
+const isMobileTest = () => {
+	if (window.matchMedia("(pointer: coarse) and (max-width: 1000px").matches) {
+		console.log("(pointer: coarse) and (max-width: 1000px)")
+		return true
+	} else return false
+}
+
+const mobileMediaQuery = "(pointer: coarse) and (max-width: 1000px)"
+const mql = window.matchMedia(mobileMediaQuery)
+let isMobile = mql.matches
+mql.addEventListener("change", (e) => {
+	isMobile = e.matches
+	changedFocus(true)
+})

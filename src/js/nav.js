@@ -272,7 +272,7 @@ document.addEventListener("focusin", (e) => {
 
 	// scroll page, if focus reaches bottom or top
 	const bounds = active.getBoundingClientRect()
-	const paddingOffsetBottom = 300
+	const paddingOffsetBottom = 200
 	if (bounds.top > window.innerHeight - paddingOffsetBottom) {
 		const numberOfMoves = Math.floor(
 			(bounds.top - (window.innerHeight - paddingOffsetBottom)) / websiteData.pushPage.distance
@@ -281,9 +281,9 @@ document.addEventListener("focusin", (e) => {
 			pushPage("KeyS")
 		}
 	}
-	const paddingOffsetTop = 28
+	const paddingOffsetTop = 16
 	if (bounds.top < paddingOffsetTop) {
-		const numberOfMoves = Math.ceil(Math.abs(bounds.top - paddingOffsetTop) / websiteData.pushPage.distance)
+		const numberOfMoves = Math.ceil(Math.abs(bounds.top - paddingOffsetTop - 32) / websiteData.pushPage.distance)
 		console.log("num of moves:", numberOfMoves, "bounds.top:", bounds.top)
 		for (let i = 0; i < numberOfMoves; i++) {
 			pushPage("KeyW")
@@ -293,30 +293,28 @@ document.addEventListener("focusin", (e) => {
 
 let prevHasFocus = true
 function checkDocumentFocus() {
-	if (prevHasFocus != document.hasFocus()) {
-		if (document.hasFocus()) {
-			active.focus()
-			changeFavicon(true)
-			contentRoot.classList.remove("faded")
-			clickFocus.style.visibility = "hidden"
-			updateCode(null, codeForm)
-		} else {
-			changeFavicon(false)
-			contentRoot.classList.add("faded")
-			clickFocus.style.visibility = "visible"
-			updateCode(null, codeForm)
+	if (!isMobile) {
+		if (prevHasFocus != document.hasFocus()) {
+			changedFocus(document.hasFocus())
 		}
+		prevHasFocus = document.hasFocus()
 	}
-	prevHasFocus = document.hasFocus()
+}
+
+function changedFocus(hasFocus) {
+	if (hasFocus) active.focus()
+	changeFavicon(hasFocus)
+	hasFocus ? contentRoot.classList.remove("faded") : contentRoot.classList.add("faded")
+	clickFocus.style.visibility = hasFocus ? "hidden" : "visible"
+	updateCode(null, codeForm)
 }
 
 function onBlurIn(e) {
-	// console.log("blurin", window.innerWidth)
 	// remove event listener from so they don't stack
 	e.target.removeEventListener("blur", onBlurIn)
 
 	// if this timer runs out before a new element is focused, refocus same element
-	if (window.innerWidth > 800)
+	if (!isMobile)
 		focusTimeOutID = setTimeout(() => {
 			active.focus()
 		}, 100)

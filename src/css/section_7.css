@@ -6,16 +6,6 @@
 	margin-top: 1rem;
 }
 
-#section_7 form fieldset {
-	border: none;
-	display: flex;
-	gap: 4ch;
-	font-size: 0.75rem;
-	line-height: 1rem;
-	background-color: var(--bg);
-	width: max-content;
-}
-
 #section_7 #alternates_container fieldset,
 #section_7 #features_container fieldset {
 	display: grid;
@@ -34,22 +24,6 @@ fieldset.alternates > div {
 
 #section_7 form > div {
 	position: relative;
-}
-
-#section_7 form input {
-	-webkit-appearance: none;
-	appearance: none;
-	background-color: var(--text);
-	margin: 0;
-	padding: 0;
-	border: none;
-
-	color: var(--text);
-	width: 0;
-	height: 0;
-	position: relative;
-	opacity: 1;
-	display: block;
 }
 
 #section_7 form input[type="radio"] + label {

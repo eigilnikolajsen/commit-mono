@@ -7,16 +7,13 @@ websiteData.sections.forEach((section) => {
 			const div = document.createElement("div")
 			const input = document.createElement("input")
 			input.type = "radio"
-			input.name = "nav"
+			input.name = "code"
 			input.id = character.name
 			input.classList.add("code_character")
 			input.value = character.name
 			if (index == 0) input.setAttribute("checked", "true")
 			const label = document.createElement("label")
-			label.for = character.value
 			label.textContent = character.value
-			label.classList.add("nav_element")
-			label.dataset.sectionIndex = index + 1
 			label.setAttribute("for", character.name)
 			div.append(input, label)
 			codeFieldset.append(div)

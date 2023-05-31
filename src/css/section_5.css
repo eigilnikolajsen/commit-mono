@@ -3,19 +3,24 @@
 }
 
 #code_form fieldset {
+	font-size: 1.5rem;
+	gap: 1ch;
+}
+
+form fieldset {
 	border: none;
 	display: flex;
-	gap: 1ch;
-	font-size: 1.5rem;
+	gap: 4ch;
+	font-size: 0.75rem;
 	line-height: 1rem;
 	background-color: var(--bg);
 }
 
-#code_form > div {
+form > div {
 	position: relative;
 }
 
-#code_form input {
+form input {
 	-webkit-appearance: none;
 	appearance: none;
 	background-color: var(--text);
@@ -31,12 +36,12 @@
 	display: block;
 }
 
-#code_form input + label {
+form input + label {
 	position: relative;
 	z-index: 1;
 }
 
-#code_form input + label::before {
+form input + label::before {
 	z-index: -1;
 	content: "";
 	position: absolute;
@@ -47,19 +52,19 @@
 	background-color: var(--bg);
 }
 
-#code_form input:focus:checked + label::before {
+form input:focus:checked + label::before {
 	background-color: var(--text);
 }
 
-#code_form input:focus:checked + label {
+form input:focus:checked + label {
 	color: var(--bg);
 }
 
-#code_form input:checked + label::before {
+form input:checked + label::before {
 	background: repeating-conic-gradient(var(--text) 0% 25%, transparent 0% 50%, transparent 0% 100%) 50% / 2px 2px;
 }
 
-#code_form input:checked + label {
+form input:checked + label {
 	color: var(--text);
 }
 
