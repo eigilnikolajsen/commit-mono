@@ -145,6 +145,25 @@ function updateWeight(event, form) {
 }
 
 let fontDownloadSettings = { weight: 450, alternates: {}, features: {} }
+let fontDownloadSettingsDefault = {
+	weight: 450,
+	alternates: {
+		cv01: false,
+		cv02: false,
+		cv03: false,
+		cv04: false,
+		cv05: false,
+		cv06: false,
+		cv07: false,
+	},
+	features: {
+		ss01: false,
+		ss02: false,
+		ss03: true,
+		ss04: true,
+		ss05: true,
+	},
+}
 function updateExampleSettings(event, form) {
 	const data = new FormData(form)
 	let output = ""

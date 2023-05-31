@@ -71,6 +71,68 @@ function switchGlyphs(font, glyphIndexA, glyphIndexB) {
 
 initFont()
 
-function downloadFont() {
-	console.log("download font")
+let downloadStarted = false
+async function downloadFont(button) {
+	if (!downloadStarted) {
+		downloadStarted = true
+		let downloadableFont
+		if (button.dataset.type === "staticDefault") {
+			downloadWithSettings(fontDownloadSettingsDefault, button)
+		}
+		if (button.dataset.type === "staticCurrent") {
+			downloadWithSettings(fontDownloadSettings, button)
+			console.log(button.dataset.type)
+		}
+		if (button.dataset.type === "variableDefault") {
+			downloadWithSettings(fontDownloadSettingsDefault, button)
+			console.log(button.dataset.type)
+		}
+	}
+}
+
+function wait(milliseconds) {
+	return new Promise((resolve) => {
+		setTimeout(resolve, milliseconds)
+	})
+}
+
+async function downloadWithSettings(settings, button) {
+	console.log(settings)
+	button.classList.add("loading")
+
+	opentype
+		.load(`/src/fonts/instances/CommitMonoV108-${settings.weight}.otf`)
+		.then(async (font) => {
+			Object.entries(settings.alternates).forEach(([alternate, active]) => {
+				if (!active) return
+				font.tables.gsub.features.forEach((feature) => {
+					if (feature.tag == alternate) {
+						feature.feature.lookupListIndexes.forEach((lookupIndex) => {
+							font.tables.gsub.lookups[lookupIndex].subtables.forEach((subtable) => {
+								console.log(subtable.substitute)
+							})
+						})
+						console.log(feature.feature.lookupListIndexes)
+					}
+				})
+			})
+			Object.entries(settings.features).forEach(([key, value]) => {
+				console.log(key, value)
+			})
+
+			await wait(1000)
+			button.classList.remove("loading")
+			button.classList.add("loaded")
+
+			downloadStarted = false
+			console.log(font)
+		})
+		.catch(async (err) => {
+			await wait(1000)
+			button.classList.remove("loading")
+			button.classList.add("error")
+
+			downloadStarted = false
+			console.log(err)
+		})
 }

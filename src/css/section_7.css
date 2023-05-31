@@ -128,3 +128,34 @@ button:focus a {
 	background-color: var(--bg);
 	color: var(--text);
 }
+
+.download_button.loading::after {
+	content: ".";
+	position: absolute;
+	color: var(--text);
+	right: -2ch;
+	animation: 800ms 0ms steps(4, jump-none) infinite loading;
+}
+.download_button.loaded::after {
+	content: "✓";
+	position: absolute;
+	color: var(--text);
+	right: -2ch;
+	animation: none;
+}
+.download_button.error::after {
+	content: "✕";
+	position: absolute;
+	color: var(--text);
+	right: -2ch;
+	animation: none;
+}
+
+@keyframes loading {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(2ch);
+	}
+}
