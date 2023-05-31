@@ -111,3 +111,20 @@ button:focus a {
 	color: var(--bg);
 	text-decoration: none;
 }
+
+.download_button {
+	display: block;
+	width: max-content;
+}
+
+.download_button.line-through:focus {
+	text-decoration: line-through;
+}
+
+.download_button.line-through:focus::after {
+	content: "Not possible at the moment.";
+	text-decoration: none;
+	position: absolute;
+	background-color: var(--bg);
+	color: var(--text);
+}

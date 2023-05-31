@@ -20,7 +20,7 @@ const updateOptions = (event, form) => {
 let commitMonoFont
 
 async function initFont() {
-	commitMonoFont = await opentype.load("/src/fonts/CommitMonoV103-450.otf")
+	commitMonoFont = await opentype.load("/src/fonts/instances/CommitMonoV108-450.otf")
 
 	updateCode(null, codeForm)
 

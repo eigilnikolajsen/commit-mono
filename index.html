@@ -314,7 +314,10 @@
 								<div class="top_container"></div>
 								<div class="content_container">
 									<br />
-									<button id="download_button" onclick="downloadFont()">Download</button>
+									<button class="download_button" onclick="downloadFont('staticDefault')">Download static font with default settings</button>
+									<button class="download_button" onclick="downloadFont('staticCurrent')">Download static font with current settings</button>
+									<button class="download_button" onclick="downloadFont('variableDefault')">Download variable font with default settings</button>
+									<button class="download_button line-through" onclick="downloadFont('variableCurrent')">Download variable font with current settings</button>
 									<form id="fonts_form" onchange="updateFont(event, this)">
 										<legend><h2>Font</h2></legend>
 										<fieldset></fieldset>
