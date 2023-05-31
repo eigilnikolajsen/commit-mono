@@ -165,6 +165,7 @@ button {
 	max-width: 54ch;
 	width: fit-content;
 	vertical-align: top;
+	color: var(--text);
 }
 
 a,

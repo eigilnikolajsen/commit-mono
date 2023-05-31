@@ -195,7 +195,7 @@ Press R to reset to default settings.`,
 					"700",
 				],
 				features: [
-					{ type: "alternate", name: "a", label: "alt. 'a'", feature: "cv01", on: false },
+					{ type: "alternate", name: "a", label: "alt. 'a'", feature: "cv01", on: true },
 					{ type: "alternate", name: "g", label: "alt. 'g'", feature: "cv02", on: false },
 					{ type: "alternate", name: "square", label: "square dots .:ij", feature: "cv03", on: false },
 					{ type: "alternate", name: "asterisk", label: "lifted *", feature: "cv04", on: false },
@@ -616,11 +616,12 @@ Hello world:          print("Hello, World!)
 Pangram:              The quick brown fox jumps over a lazy dog
 Confusable chars      ,. ;: |! Il1 2Z 5S 38B 0OQD
 Vertical alignment    H=H x=x += -= <= >= ~= *= ^= |= %= &= ->
-
-
-
-
-
+ASCII                  !"#$%&'()*+,-./
+                      0123456789:;<=>?
+                      @ABCDEFGHIJKLMNO
+                      PQRSTUVWXYZ[\\]^_
+                      ${"`"}abcdefghijklmno
+                      pqrstuvwxyz{|}~
 
 
 

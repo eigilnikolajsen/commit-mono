@@ -1,4 +1,5 @@
 console.log("opentype test")
+const versionOfCommitMono = "V109"
 
 const updateLabel = (input) => {
 	console.log(input)
@@ -19,57 +20,33 @@ const updateOptions = (event, form) => {
 
 let commitMonoFont
 
-async function initFont() {
-	commitMonoFont = await opentype.load("/src/fonts/instances/CommitMonoV108-450.otf")
+// async function initFont() {
+// 	// opentype
+// 	// 	.load("/src/fonts/instances/CommitMonoV109-VF.ttf")
+// 	// 	.then(async (vf) => {
+// 	// 		console.log(vf)
+// 	// 		vf.download()
+// 	// 	})
+// 	// 	.catch((err) => console.log(err))
 
-	updateCode(null, codeForm)
+// 	commitMonoFont = await opentype.load(`/src/fonts/instances/CommitMono${versionOfCommitMono}-450.otf`)
 
-	console.log(commitMonoFont)
-	// console.log(font.glyphs.glyphs[50].path)
-	// console.log(font.glyphs.glyphs[76].path)
+// 	updateCode(null, codeForm)
 
-	// const newFont = switchGlyphs(font, 50, 76)
+// 	console.log(commitMonoFont)
+// }
 
-	// console.log(newFont)
-	// console.log(newFont.glyphs.glyphs[50].path)
-	// console.log(newFont.glyphs.glyphs[76].path)
-
-	// const noSups = deleteFeature(font, "c001")
-
-	// console.log(noSups)
-	// font.download()
+async function updateCodeFont() {
+	opentype
+		.load(`/src/fonts/instances/CommitMono${versionOfCommitMono}-${websiteData.weight}.otf`)
+		.then((font) => {
+			commitMonoFont = font
+			updateCode(null, codeForm)
+		})
+		.catch((err) => console.log(err))
 }
 
-function deleteFeature(font, delFea) {
-	const featureIndex = font.tables.gsub.features.find((fea) => fea.tag == delFea)?.feature?.lookupListIndexes[0]
-	font.tables.gsub.lookups[featureIndex].subtables = [
-		{
-			coverage: {
-				format: 1,
-				glyphs: [],
-			},
-			subsFormat: 2,
-			substitute: [],
-		},
-	]
-	const features = font.tables.gsub.features.map((fea) => {
-		if (fea.tag == delFea) return fea
-	})
-	features.forEach((feature, index) => {
-		feature ? (font.tables.gsub.features[index] = feature) : null
-	})
-	return font
-}
-
-function switchGlyphs(font, glyphIndexA, glyphIndexB) {
-	const glyphPathA = font.glyphs.glyphs[glyphIndexA].path
-	const glyphPathB = font.glyphs.glyphs[glyphIndexB].path
-	font.glyphs.glyphs[glyphIndexB].path = glyphPathA
-	font.glyphs.glyphs[glyphIndexA].path = glyphPathB
-	return font
-}
-
-initFont()
+updateCodeFont()
 
 let downloadStarted = false
 async function downloadFont(button) {
@@ -90,41 +67,134 @@ async function downloadFont(button) {
 	}
 }
 
-function wait(milliseconds) {
-	return new Promise((resolve) => {
-		setTimeout(resolve, milliseconds)
-	})
-}
-
 async function downloadWithSettings(settings, button) {
 	console.log(settings)
 	button.classList.add("loading")
 
+	const fontFilePath = `/src/fonts/instances/CommitMono${versionOfCommitMono}-${settings.weight}.otf`
+
 	opentype
-		.load(`/src/fonts/instances/CommitMonoV108-${settings.weight}.otf`)
+		.load(fontFilePath)
 		.then(async (font) => {
+			//
+			// #1 change alternates by switching their paths
+			// the below loop does this
+
+			// loop through the alternate settings
 			Object.entries(settings.alternates).forEach(([alternate, active]) => {
+				//
+				// filter for only the active ones
 				if (!active) return
+				console.log("alternate", alternate, "active", active)
+
+				// look at all the fonts features
 				font.tables.gsub.features.forEach((feature) => {
+					//
+					// if the feature matches the alternate we're currently on
 					if (feature.tag == alternate) {
+						console.log("feature", feature)
+
+						// then loop through the list of lookup indexes of that feature
 						feature.feature.lookupListIndexes.forEach((lookupIndex) => {
+							console.log("lookupIndex", lookupIndex)
+
+							// loop through the subtable of each lookup at the lookup index
 							font.tables.gsub.lookups[lookupIndex].subtables.forEach((subtable) => {
-								console.log(subtable.substitute)
+								console.log("subtable", subtable)
+
+								// loop through the glyphs of the subtable
+								subtable.coverage.glyphs.forEach((glyphIndexOriginal, index) => {
+									//
+									// glyphIndexOriginal is the index of the original glyph
+									// glyphIndexSubstitute is the index of the glyph to substitute the original with
+									const glyphIndexSubstitute = subtable.substitute[index]
+									console.log("glyphIndexOriginal", glyphIndexOriginal, "glyphIndexSubstitute", glyphIndexSubstitute)
+
+									// get the paths for the original and the substitute glyph
+									const glyphPathOriginal = font.glyphs.glyphs[glyphIndexOriginal].path
+									const glyphPathSubstitute = font.glyphs.glyphs[glyphIndexSubstitute].path
+
+									// swap the paths, so the original glyph gets the path of the substitute and vice versa
+									font.glyphs.glyphs[glyphIndexOriginal].path = glyphPathSubstitute
+									font.glyphs.glyphs[glyphIndexSubstitute].path = glyphPathOriginal
+								})
 							})
 						})
-						console.log(feature.feature.lookupListIndexes)
 					}
 				})
 			})
-			Object.entries(settings.features).forEach(([key, value]) => {
-				console.log(key, value)
+
+			//
+			// "2 put active features into calt
+			// create empty "calt" feature to store the feature
+			const emptyCalt = { tag: "calt", feature: { featureParams: 0, lookupListIndexes: [] } }
+			font.tables.gsub.features.push(emptyCalt)
+
+			// garbage code that adds a single number to a specific array in the gsub table
+			// like this [0, 1, 2, 3, 4] => [0, 1, 2, 3, 4, 5]
+			font.tables.gsub.scripts.forEach((script) =>
+				script.script.defaultLangSys.featureIndexes.push(script.script.defaultLangSys.featureIndexes.length)
+			)
+
+			// create the empty array that is to be the lookup indexes for the calt feature
+			const caltLookupIndexes = []
+
+			// once again, loop through the alternate settings (feature settings)
+			Object.entries(settings.features).forEach(([alternate, active]) => {
+				//
+				// filter for only the active ones
+				if (!active) return
+				console.log("alternate", alternate, "active", active)
+
+				// then loop through all features
+				font.tables.gsub.features.forEach((feature) => {
+					//
+					// and find the ones that match the active tags
+					if (feature.tag == alternate) {
+						console.log("feature", feature)
+
+						// push the lookup indexes into the empty caltLookupIndexes variable
+						feature.feature.lookupListIndexes.forEach((lookupIndex) => caltLookupIndexes.push(lookupIndex))
+					}
+				})
+
+				// once more loop through all features
+				font.tables.gsub.features.forEach((feature) => {
+					//
+					// when the calt feature is reached (it's the last one)
+					if (feature.tag === "calt") {
+						//
+						// set its lookup indexes to the variable
+						feature.feature.lookupListIndexes = caltLookupIndexes
+						console.log("caltLookupIndexes", caltLookupIndexes)
+					}
+				})
 			})
 
-			await wait(1000)
+			//
+			// #3 change the names
+			Object.entries(font.names).forEach(([nameKey, nameValue]) => {
+				const oldName = `CommitMono${versionOfCommitMono}`
+				const newName = "CommitMonoTEST1"
+				if (nameValue.en.includes(oldName)) {
+					nameValue.en = nameValue.en
+						.split(oldName)
+						.map((str, i) => (i == 0 ? newName : str))
+						.join("")
+				}
+				console.log(nameKey)
+				if (nameKey == "fullName") {
+					font.names[nameKey].en = nameValue.en.split(" ").join("-")
+				}
+			})
+			font.tables.name = font.names
+
+			// await wait(1000)
+			await font.download()
+			downloadStarted = false
 			button.classList.remove("loading")
 			button.classList.add("loaded")
 
-			downloadStarted = false
 			console.log(font)
 		})
 		.catch(async (err) => {

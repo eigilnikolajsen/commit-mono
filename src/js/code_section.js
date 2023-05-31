@@ -22,6 +22,7 @@ websiteData.sections.forEach((section) => {
 })
 
 function updateCode(event, form) {
+	console.log("update code")
 	const data = new FormData(form)
 	let output = ""
 	for (const entry of data) {

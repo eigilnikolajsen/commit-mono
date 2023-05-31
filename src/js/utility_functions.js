@@ -23,3 +23,9 @@ mql.addEventListener("change", (e) => {
 	isMobile = e.matches
 	changedFocus(true)
 })
+
+function wait(milliseconds) {
+	return new Promise((resolve) => {
+		setTimeout(resolve, milliseconds)
+	})
+}

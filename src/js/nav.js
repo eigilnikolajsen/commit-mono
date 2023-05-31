@@ -124,6 +124,7 @@ function keyDown(e) {
 
 		if (e.code == "KeyV") {
 			websiteData.weight = websiteData.weight == 700 ? 300 : websiteData.weight + 25
+			updateCodeFont()
 			document.querySelector("body").style.fontVariationSettings = `"wght" ${websiteData.weight}`
 			changeSetting.textContent = `Weight: ${websiteData.weight}. Default 450.`
 			changeSetting.style.visibility = "visible"
