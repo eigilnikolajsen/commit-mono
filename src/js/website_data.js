@@ -135,7 +135,7 @@ const websiteData = {
 					{ value: [".", ","], options: ["period", "comma"] },
 					{ value: ["l", "1"], options: ["lowercase L", "one"] },
 					{ value: ["-", "—"], options: ["hyphen", "emdash"] },
-					{ value: ["ß", "B"], options: ["german double s", "uppercase b"] },
+					{ value: ["8", "B"], options: ["eight", "uppercase b"] },
 					{ value: ["⁄", "/"], options: ["fraction", "slash"] },
 				],
 			},
