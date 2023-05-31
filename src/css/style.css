@@ -167,11 +167,15 @@ button {
 	vertical-align: top;
 }
 
-a {
-	/* text-decoration: none; */
+a,
+#download_button {
+	text-decoration: underline;
 	text-decoration-skip-ink: none;
 	text-underline-offset: 0.24ch;
-	/* border: 1px solid var(--text); */
+}
+a:focus,
+#download_button:focus {
+	text-decoration: none;
 }
 
 h1 {
@@ -186,6 +190,7 @@ h1 {
 }
 
 :focus {
+	text-decoration: none;
 	color: var(--bg);
 	background-color: var(--text);
 	outline: none;

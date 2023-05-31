@@ -2,7 +2,7 @@ const websiteData = {
 	pushPage: {
 		coordinates: { x: 0, y: 0 },
 		scale: 1,
-		distance: 48, // in rem
+		distance: 64,
 		scaleOffset: 1.5,
 	},
 	weight: 450,
@@ -143,7 +143,10 @@ const websiteData = {
 		{
 			name: "customize",
 			description: `So, how does Commit Mono look in code?
-Change the settings below, then download when you're satisfied. Alternate characters will be baked in and features merged, creating a single static font that is compatible in all environments.`,
+
+Change the settings below, then download when you're satisfied. Alternate characters will be baked in and features merged, creating a single static font that is compatible in all environments.
+
+Press R to reset to default settings.`,
 			content: {
 				fonts: [
 					{
@@ -171,6 +174,25 @@ Change the settings below, then download when you're satisfied. Alternate charac
 						file: "Consolas.woff2",
 						id: "consolas",
 					},
+				],
+				weights: [
+					"300",
+					"325",
+					"350",
+					"375",
+					"400",
+					"425",
+					"450",
+					"475",
+					"500",
+					"525",
+					"550",
+					"575",
+					"600",
+					"625",
+					"650",
+					"675",
+					"700",
 				],
 				features: [
 					{ type: "alternate", name: "a", label: "alt. 'a'", feature: "cv01", on: false },

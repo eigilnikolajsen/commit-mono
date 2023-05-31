@@ -2,6 +2,7 @@ const exampleForm = document.querySelector("#examples_form")
 const exampleSettingsForm = document.querySelector("#examplesettings_form")
 const exampleFieldset = document.querySelector("#examples_form fieldset")
 const fontsFieldset = document.querySelector("#fonts_form fieldset")
+const weightFieldset = document.querySelector("#weight_form fieldset")
 const alternatesContainer = document.querySelector("#alternates_container")
 const featuresContainer = document.querySelector("#features_container")
 
@@ -40,6 +41,23 @@ function createCodeSection() {
 				label.setAttribute("for", language.languageName)
 				div.append(input, label)
 				exampleFieldset.append(div)
+			})
+
+			weightFieldset.innerHTML = ""
+			section.content.weights.forEach((weight, index) => {
+				const div = document.createElement("div")
+				const input = document.createElement("input")
+				input.type = "radio"
+				input.name = "weight"
+				input.id = `weight_${weight}`
+				input.classList.add("example_weight")
+				input.value = weight
+				if (index == 6) input.setAttribute("checked", "true")
+				const label = document.createElement("label")
+				label.textContent = weight
+				label.setAttribute("for", `weight_${weight}`)
+				div.append(input, label)
+				weightFieldset.append(div)
 			})
 
 			featuresContainer.innerHTML = ""
@@ -105,13 +123,28 @@ function updateFont(event, form) {
 	for (const entry of data) {
 		output = `${entry[1]}`
 	}
-	console.log(output)
 	codeExample.style.fontFamily = output
 
 	if (event) event.preventDefault()
 }
 
-let fontDownloadSettings = { alternates: {}, features: {} }
+function updateWeight(event, form) {
+	const data = new FormData(form)
+	let output = ""
+	for (const entry of data) {
+		output = +entry[1]
+	}
+
+	fontDownloadSettings.weight = output
+	websiteData.weight = output
+	document.querySelector("body").style.fontVariationSettings = `"wght" ${websiteData.weight}`
+
+	console.log(fontDownloadSettings)
+
+	if (event) event.preventDefault()
+}
+
+let fontDownloadSettings = { weight: 450, alternates: {}, features: {} }
 function updateExampleSettings(event, form) {
 	const data = new FormData(form)
 	let output = ""

@@ -314,7 +314,7 @@
 								<div class="top_container"></div>
 								<div class="content_container">
 									<br />
-									<button><a href="#" tabindex="-1" onclick="downloadFont()">Download</a></button>
+									<button id="download_button" onclick="downloadFont()">Download</button>
 									<form id="fonts_form" onchange="updateFont(event, this)">
 										<legend><h2>Font</h2></legend>
 										<fieldset></fieldset>
@@ -326,6 +326,10 @@
 									<div id="examples_container">
 										<p tabindex="0" data-edit="true" id="code_example"></p>
 									</div>
+									<form id="weight_form" onchange="updateWeight(event, this)">
+										<legend><h2>Weight</h2></legend>
+										<fieldset></fieldset>
+									</form>
 									<form id="examplesettings_form" onchange="updateExampleSettings(event, this)">
 										<!-- <h2>Fonts</h2>
 										<fieldset id="fonts"></fieldset> -->
