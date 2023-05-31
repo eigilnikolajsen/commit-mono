@@ -62,7 +62,7 @@ const websiteData = {
 						],
 					},
 					{
-						name: "commit_mono",
+						name: "commit_mono_example",
 						src: "commit_mono.svg",
 						description: [
 							"Commit Mono, 2023.",

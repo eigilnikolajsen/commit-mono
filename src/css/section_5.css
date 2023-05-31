@@ -39,6 +39,7 @@ form input {
 form input + label {
 	position: relative;
 	z-index: 1;
+	cursor: pointer;
 }
 
 form input + label::before {
