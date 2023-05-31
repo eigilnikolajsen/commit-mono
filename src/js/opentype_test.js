@@ -70,3 +70,7 @@ function switchGlyphs(font, glyphIndexA, glyphIndexB) {
 }
 
 initFont()
+
+function downloadFont() {
+	console.log("download font")
+}

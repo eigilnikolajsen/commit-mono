@@ -44,12 +44,7 @@ function updateNav(event, form) {
 			sectionContainer.style.display = "none"
 		}
 	})
-	// reset transforms
-	main.style.transform = `translate(0px, 0px)`
-	mainScale.style.transform = `scale(1)`
-	websiteData.pushPage.coordinates.x = 0
-	websiteData.pushPage.coordinates.y = 0
-	websiteData.pushPage.scale = 1
+	pushPage("KeyR")
 
 	if (event) event.preventDefault()
 }
@@ -72,20 +67,23 @@ function exitTextField() {
 
 const keys = document.querySelectorAll(".key")
 keys.forEach((key) => {
-	key.addEventListener("mousedown", () => {
+	key.addEventListener("click", () => {
 		if (key.dataset.noclick != "true") {
 			key.dataset.keyCode.includes("Shift")
 				? keyDown({ code: key.dataset.keyCode, key: key.dataset.key, shiftKey: true })
 				: keyDown({ code: key.dataset.keyCode, key: key.dataset.key, shiftKey: false })
-		}
-	})
-	key.addEventListener("mouseup", () => {
-		if (key.dataset.noclick != "true") {
 			key.dataset.keyCode.includes("Shift")
 				? keyUp({ code: key.dataset.keyCode, key: key.dataset.key, shiftKey: true })
 				: keyUp({ code: key.dataset.keyCode, key: key.dataset.key, shiftKey: false })
 		}
 	})
+	// key.addEventListener("mouseup", () => {
+	// 	if (key.dataset.noclick != "true") {
+	// 		key.dataset.keyCode.includes("Shift")
+	// 			? keyUp({ code: key.dataset.keyCode, key: key.dataset.key, shiftKey: true })
+	// 			: keyUp({ code: key.dataset.keyCode, key: key.dataset.key, shiftKey: false })
+	// 	}
+	// })
 })
 
 let changeSettingTimeoutID
@@ -103,6 +101,10 @@ function keyDown(e) {
 			: document.querySelector(`.key[data-key-code="Shift${e.code}"]`)
 		activeKey?.classList.add("active_key")
 
+		if (e.code.includes("Digit")) {
+			goToSection(e.code)
+		}
+
 		// push page
 		if (
 			e.code == "KeyW" ||
@@ -116,7 +118,7 @@ function keyDown(e) {
 			pushPage(e.code)
 		}
 
-		if (e.code == "KeyK") {
+		if (e.code == "KeyH") {
 			document.querySelector("#keyboard_section").classList.toggle("hidden")
 		}
 
@@ -235,8 +237,9 @@ function pushPage(keyCode) {
 		document.querySelector("#canvas").style.transform = "scale(1)"
 		websiteData.weight = 450
 		document.querySelector("body").style.fontVariationSettings = `"wght" 450`
-		updateCode(null, codeForm)
-		updateWaterfall()
+		if (typeof updateCode === "function") updateCode(null, codeForm)
+		if (typeof updateWaterfall === "function") updateWaterfall()
+		if (typeof createCodeSection === "function") createCodeSection()
 	}
 }
 
@@ -318,6 +321,18 @@ function onBlurIn(e) {
 		focusTimeOutID = setTimeout(() => {
 			active.focus()
 		}, 100)
+}
+
+function goToSection(keyCode) {
+	const section = +keyCode.split("Digit")[1]
+	const sectionName = websiteData.sections[section - 1]?.name
+	const attemptedSection = document.querySelector(`[value="section_${section}"]`)
+	if (attemptedSection && sectionName) {
+		attemptedSection.focus()
+		document.forms["nav_form"][sectionName].checked = true
+		updateNav(null, navForm)
+		console.log(section, sectionName, attemptedSection)
+	}
 }
 
 setInterval(checkDocumentFocus, 100)

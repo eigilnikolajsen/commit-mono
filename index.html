@@ -69,6 +69,14 @@
 								</div>
 								<p>Navigate ←→</p>
 							</div>
+							<div class="key_group" id="go_to_section">
+								<div class="keys">
+									<p data-key-code="Digit1" data-key="1" class="key">1</p>
+									<p data-key-code="Digit2" data-key="2" class="key">2</p>
+									<p data-key-code="Digit3" data-key="3" class="key">3</p>
+								</div>
+								<p>To section</p>
+							</div>
 							<div class="key_group" id="push_page">
 								<div class="keys">
 									<p data-key-code="KeyW" data-key="w" class="key">W</p>
@@ -100,15 +108,15 @@
 							</div>
 							<div class="key_group" id="show_hide_keys">
 								<div class="keys">
-									<p data-key-code="KeyK" data-key="k" class="key">K</p>
+									<p data-key-code="KeyH" data-key="h" class="key">H</p>
 								</div>
-								<p>Hide keys</p>
+								<p>Hide</p>
 							</div>
 							<div class="key_group" id="change_weight">
 								<div class="keys">
 									<p data-key-code="KeyV" data-key="v" class="key">V</p>
 								</div>
-								<p>Change weight</p>
+								<p>Font weight</p>
 							</div>
 							<div class="key_group" id="change_weight">
 								<div class="keys">
@@ -306,16 +314,21 @@
 								<div class="top_container"></div>
 								<div class="content_container">
 									<br />
-									<button><a href="#" tabindex="-1">Download</a></button>
+									<button><a href="#" tabindex="-1" onclick="downloadFont()">Download</a></button>
+									<form id="fonts_form" onchange="updateFont(event, this)">
+										<legend><h2>Font</h2></legend>
+										<fieldset></fieldset>
+									</form>
 									<form id="examples_form" onchange="updateExamples(event, this)">
+										<legend><h2>Language</h2></legend>
 										<fieldset></fieldset>
 									</form>
 									<div id="examples_container">
 										<p tabindex="0" data-edit="true" id="code_example"></p>
 									</div>
 									<form id="examplesettings_form" onchange="updateExampleSettings(event, this)">
-										<h2>Fonts</h2>
-										<fieldset id="fonts"></fieldset>
+										<!-- <h2>Fonts</h2>
+										<fieldset id="fonts"></fieldset> -->
 										<h2>Features</h2>
 										<div id="features_container"></div>
 										<h2>Alternates</h2>

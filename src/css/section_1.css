@@ -11,9 +11,10 @@
 }
 
 #keyboard_container {
+	font-size: 0.75rem;
 	display: flex;
 	width: max-content;
-	gap: 2rem;
+	gap: 3ch;
 	align-items: end;
 }
 
@@ -23,19 +24,20 @@
 }
 
 .keys {
+	font-size: 0.75rem;
 	display: flex;
-	gap: 0.1875rem 0.25rem;
+	gap: 0.375ch;
 	margin-bottom: 0.125rem;
 }
 
 .key {
 	font-size: 0.75rem;
-	height: 1.375rem;
+	height: 1.2rem;
 	border: 1px solid var(--text);
 	border-bottom: 3px solid var(--text);
 	display: grid;
 	place-content: center;
-	padding: 0 0.34rem;
+	padding: 0 0.25rem;
 	user-select: none;
 }
 
@@ -47,14 +49,15 @@
 	cursor: not-allowed;
 }
 
-.key.active_key {
+.key.active_key,
+.key:active {
 	background: var(--text);
 	color: var(--bg);
-	height: 1.25rem;
-	margin-top: 0.125rem;
+	height: 1.1rem;
+	margin-top: 0.1rem;
 }
 
-#push_page .keys {
+/* #push_page .keys {
 	display: grid;
 	grid-template-areas:
 		". up ."
@@ -75,7 +78,7 @@
 }
 #select_element .keys {
 	display: flex;
-}
+} */
 
 #select_element .key:nth-child(1) {
 	width: 5rem;

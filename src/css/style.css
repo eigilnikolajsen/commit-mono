@@ -1,5 +1,5 @@
 @font-face {
-	font-family: "CommitMono";
+	font-family: "Commit Mono";
 	src: url("/src/fonts/CommitMono-cleaned-VF-107.woff2");
 	font-style: normal;
 	font-weight: 450;
@@ -32,7 +32,7 @@
 body {
 	background-color: var(--bg);
 	color: var(--text);
-	font-family: CommitMono;
+	font-family: "Commit Mono";
 	/* overflow: hidden; */
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
@@ -168,8 +168,10 @@ button {
 }
 
 a {
+	/* text-decoration: none; */
 	text-decoration-skip-ink: none;
 	text-underline-offset: 0.24ch;
+	/* border: 1px solid var(--text); */
 }
 
 h1 {
@@ -237,4 +239,8 @@ input:focus + label {
 
 #mobile {
 	visibility: hidden;
+}
+
+.top_container p {
+	white-space: pre-wrap;
 }

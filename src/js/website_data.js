@@ -142,8 +142,8 @@ const websiteData = {
 		},
 		{
 			name: "customize",
-			description:
-				"So, how does it look in code? Change the settings below and download when you're satisfied. Alternate characters will be baked in and features merged, making a single static font that is compatible in all environments.",
+			description: `So, how does Commit Mono look in code?
+Change the settings below, then download when you're satisfied. Alternate characters will be baked in and features merged, creating a single static font that is compatible in all environments.`,
 			content: {
 				fonts: [
 					{
@@ -253,7 +253,7 @@ fibonacci(num)
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <style>
             @font-face {
-                font-family: "CommitMono";
+                font-family: "Commit Mono";
                 src: url("/fonts/CommitMono.woff2");
                 font-weight: 450;
             }
@@ -586,13 +586,13 @@ end program capitalize
 `,
 					},
 					{
-						languageName: "Blank",
+						languageName: "Code Font Test",
 						codeExample: `Focus, then press e to edit
 
-
-
-
-
+Hello world:          print("Hello, World!)
+Pangram:              The quick brown fox jumps over a lazy dog
+Confusable chars      ,. ;: |! Il1 2Z 5S 38B 0OQD
+Vertical alignment    H=H x=x += -= <= >= ~= *= ^= |= %= &= ->
 
 
 

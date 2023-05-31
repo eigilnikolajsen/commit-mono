@@ -66,7 +66,7 @@ const drawFontLine = (GLYPH_SCALE, ctx, upem, width, name, value, yOffset) => {
 	ctx.stroke()
 
 	ctx.fillStyle = getCssVar("--text")
-	ctx.font = `${0.75 * canvasScale}px CommitMono`
+	ctx.font = `${0.75 * canvasScale}px "Commit Mono"`
 	ctx.textAlign = "left"
 	ctx.fillText(name, 0, scaledValue + 0.25 * canvasScale)
 	ctx.textAlign = "left"
@@ -165,7 +165,7 @@ function updateCanvas(selectedGlyphData, selectedFont, displayCharacter, display
 		drawFontLineVertical(GLYPH_SCALE, ctx, upem, width, 53 * canvasScale, yOffset, ascender, descender)
 
 		ctx.fillStyle = getCssVar("--text")
-		ctx.font = `${0.75 * canvasScale}px CommitMono`
+		ctx.font = `${0.75 * canvasScale}px "Commit Mono"`
 		ctx.textAlign = "center"
 		ctx.fillText(displayName, (30 - 11.5) * canvasScale, 2.75 * canvasScale)
 		ctx.fillText(displayName, (30 + 11.5) * canvasScale, 2.75 * canvasScale)
