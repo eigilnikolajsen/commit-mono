@@ -314,10 +314,10 @@
 								<div class="top_container"></div>
 								<div class="content_container">
 									<br />
-									<button class="download_button" onclick="downloadFont(this)" data-type="staticDefault">Download static font with default settings</button>
-									<button class="download_button" onclick="downloadFont(this)" data-type="staticCurrent">Download static font with current settings</button>
-									<button class="download_button" onclick="downloadFont(this)" data-type="variableDefault">Download variable font with default settings</button>
-									<button class="download_button line-through" data-type="variableCurrent">Download variable font with current settings</button>
+									<!-- <button class="download_button" onclick="downloadFont(this)" data-type="staticDefault">Download static font with default settings</button> -->
+									<button class="download_button" onclick="downloadFont(this)" data-type="staticCurrent">Download Commit Mono with current settings</button>
+									<!-- <button class="download_button" onclick="downloadFont(this)" data-type="variableDefault">Download variable font with default settings</button> -->
+									<!-- <button class="download_button line-through" data-type="variableCurrent">Download variable font with current settings</button> -->
 									<form id="fonts_form" onchange="updateFont(event, this)">
 										<legend><h2>Font</h2></legend>
 										<fieldset></fieldset>
@@ -345,7 +345,7 @@
 							</section>
 							<section id="section_8">
 								<div class="top_container"></div>
-								<div class="content_container">
+								<ul class="content_container">
 									<ol>
 										<li><p tabindex="0">Dowload the font from the download section.</p></li>
 										<li><p tabindex="0">Install the font on your system</p>
@@ -360,6 +360,26 @@
 									</ol>
 									<br>
 									<p tabindex="0">If you have enabled one or more features/ligatures in your download, these are available through the 'calt' OpenType Feature. For a comprehensive guide on how to enable in your specific editor/IDE, refer to:</p><a href="https://github.com/tonsky/FiraCode/wiki#enabling-ligatures" target="_blank">Fira Code wiki</a>
+									<br>
+									<br>
+									<br>
+									<h2>FAQ</h2>
+									<p class="accordion_header" tabindex="0">I have downloaded a new verison, but the old version is still displayed.</p>
+									<ol class="accordion_point">
+										<li>Uninstall the current version you have installed.</li>
+										<li>Install the new version.</li>
+										<li>Restart you IDE. The new version should show up.</li>
+									</ol>
+									<p class="accordion_header" tabindex="0">May I install and use Commit Mono in any editor?</p>
+									<p class="accordion_point">Yes.</p>
+									<p class="accordion_header" tabindex="0">May I use Commit Mono in print design?</p>
+									<p class="accordion_point">Yes.</p>
+									<p class="accordion_header" tabindex="0">May I use Commit Mono on a website?</p>
+									<p class="accordion_point">Yes.</p>
+									<p class="accordion_header" tabindex="0">May I use Commit Mono in an app?</p>
+									<p class="accordion_point">Yes.</p>
+									<p class="accordion_header" tabindex="0">May I use Commit Mono to design my own font?</p>
+									<p class="accordion_point">Yes, but you need to indicate that it is based on Commit Mono.</p>
 								</div>
 							</section>
 							<section id="section_9">
@@ -393,6 +413,14 @@
 										<li>
 											<a href="https://opentypecookbook.com/" target="_blank">OpenType Cookbook</a> for all things
 											OpenType Features.
+										</li>
+										<li>
+											<a href="https://github.com/tonsky/FiraCode/" target="_blank">Fira Code</a> and <a href="https://www.jetbrains.com/lp/mono/" target="_blank">JetBrains Mono</a>
+											for being a huge inspiration and go-to for best practices.
+										</li>
+										<li>
+											Articles like <a href="https://realpython.com/coding-font/" target="_blank">this one from Real Python</a> for opinion on code fonts.
+											web.
 										</li>
 									</ul>
 									<br />

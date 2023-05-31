@@ -1,3 +1,39 @@
-#section_8 ol {
+ol {
 	margin-top: 1rem;
+	font-size: 0.75rem;
+	margin-left: 1ch;
+}
+
+.accordion_header {
+	margin-left: 2ch;
+	position: relative;
+}
+
+.accordion_header::before {
+	content: "+";
+	position: absolute;
+	left: -2ch;
+}
+
+.accordion_point {
+	margin-left: 2ch;
+	margin-bottom: 1rem;
+}
+
+ol.accordion_point {
+	margin-top: 0;
+	margin-left: 3ch;
+}
+
+.accordion_header + .accordion_point {
+	display: none;
+}
+
+.accordion_header:focus:has(+ .accordion_point)::before {
+	content: "-";
+	color: var(--text);
+}
+
+.accordion_header:focus + .accordion_point {
+	display: block;
 }

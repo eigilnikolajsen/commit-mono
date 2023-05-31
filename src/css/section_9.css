@@ -21,6 +21,10 @@ ol li {
 	width: fit-content;
 }
 
+ol li::before {
+	display: none;
+}
+
 ul li {
 	font-size: 0.75rem;
 	line-height: 1rem;

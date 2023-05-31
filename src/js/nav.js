@@ -238,7 +238,7 @@ function pushPage(keyCode) {
 		document.querySelector("#canvas").style.transform = "scale(1)"
 		websiteData.weight = 450
 		document.querySelector("body").style.fontVariationSettings = `"wght" 450`
-		if (typeof updateCode === "function") updateCode(null, codeForm)
+		if (typeof updateCodeFont === "function") updateCodeFont()
 		if (typeof updateWaterfall === "function") updateWaterfall()
 		if (typeof createCodeSection === "function") createCodeSection()
 	}

@@ -175,7 +175,7 @@ async function downloadWithSettings(settings, button) {
 			// #3 change the names
 			Object.entries(font.names).forEach(([nameKey, nameValue]) => {
 				const oldName = `CommitMono${versionOfCommitMono}`
-				const newName = "CommitMonoTEST1"
+				const newName = "CommitMono"
 				if (nameValue.en.includes(oldName)) {
 					nameValue.en = nameValue.en
 						.split(oldName)
