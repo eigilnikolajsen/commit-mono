@@ -70,11 +70,16 @@
 	opacity: 1;
 }
 
+#section_1 ul li {
+	margin-top: 0.3rem;
+}
+
 .span_key {
+	display: inline;
 	border: 0.0625rem solid var(--text);
 	border-bottom: 0.125rem solid var(--text);
-	padding: 0 0.5ch;
-	margin: 0 0.0625rem;
+	padding: 0 calc(0.5ch - 0.0625rem);
+	margin: 0;
 }
 
 ul:focus .span_key {

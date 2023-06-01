@@ -113,6 +113,7 @@ a:focus {
 #safari {
 	background-color: var(--bg);
 	color: var(--text);
+	width: max-content;
 }
 
 #safari:focus p,
@@ -149,4 +150,20 @@ a:focus {
 
 #nav_form input:checked + label {
 	color: var(--text);
+}
+
+.span_key.pressed_key {
+	position: relative;
+	background: repeating-conic-gradient(var(--text) 0% 25%, transparent 0% 50%, transparent 0% 100%) 50% / 2px 2px;
+}
+
+ul:focus .span_key.pressed_key {
+	background: repeating-conic-gradient(var(--bg) 0% 25%, transparent 0% 50%, transparent 0% 100%) 50% / 2px 2px;
+}
+
+.span_key.pressed_key::after {
+	content: " ✓";
+	position: absolute;
+	right: -1ch;
+	top: -0.5rem;
 }

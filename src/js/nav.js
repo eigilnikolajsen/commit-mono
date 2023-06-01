@@ -83,6 +83,17 @@ let changeSettingTimeoutID
 function keyDown(e) {
 	// console.log(e, e.code, e.shiftKey, e.key)
 
+	websiteData.tutorial.forEach((key) => {
+		if (e.code == key) {
+			const keyNode = document.querySelector(`.key_code_${key}`)
+			keyNode.classList.add("pressed_key")
+		}
+		if (key == "ShiftTab" && e.code == "Tab" && e.shiftKey) {
+			const keyNode = document.querySelector(".key_code_ShiftTab")
+			keyNode.classList.add("pressed_key")
+		}
+	})
+
 	if (e.code == "KeyE" && document.activeElement.dataset.edit == "true" && !insideTextField) enterTextField()
 
 	if (e.code == "Escape") exitTextField()
