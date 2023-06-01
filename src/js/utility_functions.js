@@ -29,3 +29,15 @@ function wait(milliseconds) {
 		setTimeout(resolve, milliseconds)
 	})
 }
+
+function appendStyleSheets() {
+	const stylesheetIndexes = [2, 3, 4, 5, 6, 7, 8, 9]
+	const head = document.querySelector("head")
+	stylesheetIndexes.forEach((stylesheet) => {
+		const link = document.createElement("link")
+		link.setAttribute("rel", "stylesheet")
+		link.setAttribute("href", `src/css/section_${stylesheet}.css`)
+		head.append(link)
+	})
+}
+appendStyleSheets()

@@ -4,12 +4,12 @@
 	font-style: normal;
 	font-weight: 450;
 }
-@font-face {
+/* @font-face {
 	font-family: "CommitMonoNum";
 	src: url("data:font/woff2;charset=url-8;base64,d09GMk9UVE8AAATUAAkAAAAAB5wAAASNAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAADYZUBmAAgVIBNgIkAyYEBgWDSQcgG/QGESSTEyf7UIKIlRMKyeUDAQAMAAAAAAD007tZk5CEKl1LtxdawqpQMZH9c/cHNxWCaGzNHl5NOpkEnVLEYiDp/6fyqYiXjLT7497x33Wez0dFsBHWBhnL5sS1LZAsTKMxpoZZGEcBawqwM0kL/MMIVEKEcaLmLCsjIyXfIyszy7MgY4lvQlJBekxu6cNLHzpILiHlvECuRbWrEThCTXBPraht3nDiOiSNrOMv0/fFGmA4ebfiRB0dhJKG9tiyIDNlOaX0htkHJuTmpWRlSmVLU9nTENLsgpcgREQTgQhocg2JEiJQhJSpilFlf1CEXhTGAeISOUq/pMIsEVaIpOYgOFHDwoI3wEEhwdQFDi8I08McLuStT2t9gzlYIMY8pLHVexoPn+bA9fSvb4d35oWvk2B6tIkNi199OIeHbsD0YHx3mDeHXf1mz5eInmvKg+9hJwXtyswtSszHM8UuQnBspUcdsZdQJF+reQ//FEIiVNP3nm+9foX7LXuI1ch/d5nV3CbJS+Zcz6m9N8V3jkU4h+eEejnzuBVvoE2EIjCTb2TPdZzYd1N892SYs0twpD3vZ3GReXbO39LC3U/f1PPwlWbehMHoixmwoP3lNai/CLtislZydfXOUzc5QHq/WIRVDWxmS0QwoaDYpoi2+GgO9+IGITTIp9KjURQ2fQqmMPk+niyPxIwQ7x4Noo2FogfgyGKy/70FqItB/OUzcMAu/4Q1giPLMtL4NVBEw7Z7GJjY0Sn3Kuh9qw6uOSl+ecFNpuvpZmjre/BaHS+Ck1dYE48rL15euvLk6UVXQwMPVxN+pWIqi2U4l3bXTdUz57DO5/nwH2h9/wqaMGnZJ6wam1idlyiBdDhFr36Z5msGViqU6VujkVZySnh2bwDP2WcX/aysPHyMjT3O3r9/8fQzHs5SN4+HurgEhTo4BB25evX4kZv8GEfB9B+vgXkSdMN4I399/Z6zN7jfuo+wMnWcrvksxz0+17MkxhlBjqYcZn7owfT90R1fmAySbmCogH7yxStP+cKxqSzIoEcufenNllf/3F1n0Tfcw1rzFmBNPOnd4rvqnh2Dq3dKcDqG/a1mQN58Ad+BF3sGJw6sGRBmMKVlyvIvzbuCRVTiohvRPn8rGQxNvM4mttzCHiIhZYYgAZHuRCdAJoX6iSkkeEFP6j3kMB1BTAKEEBLYphV9LdoE4TdWYFRCCCHTUbPJtkmGFALHU2gMISXKVKhSo45iDKUsSsgZeNVJmeQsV5DlvSNf8+v8gSYnLyUgw7ei0Z2G+RUVCh8QhF4cNAb9MVM+oVG+JcN0CcpM9lAeUd/kHEKInGyXQccf4/+2rNVyS36c2ZvHnQMbdu405A2JIKSqtb+DoH4xAZKQegwU1jSgqVuwncEyJEAUlRGB40YASSQBBCLlAWWhm0Dj4G7GwmB/hHl/juo/ZoH/VM3v22MnS4aZmSKfhyyZ9rGeCmTwlSBJgXQxcgVKcC15UupjpWSWWk4jZgWOUGsJ7zGja7mt0ws9jtwZ043K+rZGilCi+VX3tuPEhtv7ciOEEAAA");
 	font-style: normal;
 	font-weight: 450;
-}
+} */
 *,
 *::before,
 *::after {
@@ -147,14 +147,14 @@ header #keyboard_section {
 #section_container {
 	inset: 1rem 2rem;
 	/* display: grid; */
-	flex-grow: 1;
+	/* flex-grow: 1; */
 }
 
-#section_container > section {
+/* #section_container > section {
 	grid-column: 1;
 	grid-row: 1;
 	min-height: 100vh;
-}
+} */
 
 p,
 a,
@@ -185,6 +185,24 @@ h1 {
 	line-height: 2rem;
 	font-weight: normal;
 	width: fit-content;
+}
+
+button {
+	vertical-align: top;
+	border: none;
+	background: transparent;
+	font-family: inherit;
+	font-size: 0.75rem;
+	font-variation-settings: inherit;
+	line-height: 1rem;
+	width: max-content;
+	white-space: nowrap;
+	position: relative;
+	text-align: left;
+}
+
+button:active {
+	background: repeating-conic-gradient(transparent 0% 25%, var(--text) 0% 50%, var(--text) 0% 100%) 50% / 2px 2px;
 }
 
 #app_root.no_focus {
@@ -254,4 +272,58 @@ input:focus + label {
 
 .line-through {
 	text-decoration: line-through;
+}
+
+h2 {
+	font-size: 0.75rem;
+	line-height: 1rem;
+	font-weight: normal;
+	width: fit-content;
+}
+
+ul {
+	list-style-type: none;
+}
+
+ol li {
+	font-size: 0.75rem;
+	line-height: 1rem;
+	margin-left: 3ch;
+	max-width: 54ch;
+	width: fit-content;
+}
+
+ol li::before {
+	display: none;
+}
+
+ul li {
+	font-size: 0.75rem;
+	line-height: 1rem;
+	margin-left: 2ch;
+	max-width: 54ch;
+	width: fit-content;
+}
+
+ul li::before {
+	content: "• ";
+	position: absolute;
+	margin-left: -2ch;
+}
+
+ul li:focus::before {
+	background-color: transparent;
+	color: var(--text);
+}
+
+a,
+a:visited {
+	color: var(--text);
+}
+
+a:focus {
+	text-decoration: none;
+	background-color: var(--text);
+	color: var(--bg);
+	text-decoration: none;
 }
