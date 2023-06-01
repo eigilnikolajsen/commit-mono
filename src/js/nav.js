@@ -255,12 +255,12 @@ document.addEventListener("focusin", (e) => {
 	// save current focused element
 	active = document.activeElement
 
-	// when current focused element is blurred, start a timer of 100ms.
-	active.addEventListener("blur", onBlurIn)
+	// // when current focused element is blurred, start a timer of 100ms.
+	// active.addEventListener("blur", onBlurIn)
 
-	// clear timeout when a new element is focused
-	clearTimeout(focusTimeOutID)
-	focusTimeOutID = null
+	// // clear timeout when a new element is focused
+	// clearTimeout(focusTimeOutID)
+	// focusTimeOutID = null
 
 	if (active.id.includes("block_tab")) {
 		console.log("BLOCK TAB")

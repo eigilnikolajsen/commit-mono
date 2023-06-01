@@ -55,31 +55,11 @@
 	padding: 0.25rem;
 }
 
-#safari:focus p:first-of-type {
-	background-color: var(--text);
-	color: var(--bg);
-}
-
 #safari p,
 #safari ul {
 	background-color: var(--bg);
 	color: var(--text);
 	opacity: 0;
-}
-
-#safari {
-	background-color: var(--bg);
-	color: var(--text);
-}
-
-#safari:focus p,
-#safari:focus ul {
-	opacity: 1;
-}
-
-#safari:focus a,
-#safari a:focus {
-	opacity: 1;
 }
 
 #safari a {
@@ -88,28 +68,6 @@
 
 #safari p:first-of-type {
 	opacity: 1;
-}
-
-#safari:has(*:focus) * {
-	opacity: 1;
-}
-
-#safari #safari_not_working:focus {
-	background-color: var(--text);
-	color: var(--bg);
-	opacity: 1;
-}
-
-#safari #safari_not_working {
-	opacity: 0;
-}
-
-#safari a:focus + #safari_not_working {
-	visibility: hidden;
-}
-
-#section_1 li {
-	margin-top: 0;
 }
 
 .span_key {
