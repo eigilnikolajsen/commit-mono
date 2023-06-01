@@ -16,6 +16,7 @@ button {
 	width: max-content;
 	white-space: nowrap;
 	text-align: left;
+	position: relative;
 }
 
 button:active {

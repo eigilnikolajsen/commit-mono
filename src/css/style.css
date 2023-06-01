@@ -1,9 +1,3 @@
-@font-face {
-	font-family: "Commit Mono";
-	src: url("/src/fonts/CommitMono-cleaned-VF-108.woff2");
-	font-style: normal;
-	font-weight: 450;
-}
 *,
 *::before,
 *::after {
@@ -21,14 +15,6 @@
 ::selection {
 	color: var(--text);
 	background-color: var(--middle);
-}
-
-body {
-	background-color: var(--bg);
-	color: var(--text);
-	font-family: "Commit Mono";
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
 }
 
 #block_tab_start,
