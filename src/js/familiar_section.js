@@ -19,7 +19,8 @@ familiarContent.forEach((example, index) => {
 		p.dataset.edit = "true"
 		div.append(p)
 	})
-	div.append(img)
+	const br = document.createElement("br")
+	div.append(br, img)
 	familiarContainer.append(div)
 })
 

@@ -124,8 +124,9 @@ function createGTC() {
 		answerFeedback.classList.add("answer_feedback")
 
 		buttonContainer.append(option0, option1)
+		const br = document.createElement("br")
 		div.append(answerFeedback, p, buttonContainer, pWrong)
-		gtcContainer.append(div)
+		gtcContainer.append(br, div)
 	})
 	const scorePoints = document.createElement("p")
 	scorePoints.id = "score_points"

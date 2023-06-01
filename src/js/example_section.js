@@ -138,6 +138,7 @@ function updateWeight(event, form) {
 	fontDownloadSettings.weight = output
 	websiteData.weight = output
 	document.querySelector("body").style.fontVariationSettings = `"wght" ${websiteData.weight}`
+	document.querySelector("#download").textContent = `Download CommitMono-${websiteData.weight} with current settings`
 
 	console.log(fontDownloadSettings)
 

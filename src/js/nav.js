@@ -44,7 +44,7 @@ function updateNav(event, form) {
 			sectionContainer.style.display = "none"
 		}
 	})
-	pushPage("KeyR")
+	// pushPage("KeyR")
 
 	if (event) event.preventDefault()
 }
@@ -77,13 +77,6 @@ keys.forEach((key) => {
 				: keyUp({ code: key.dataset.keyCode, key: key.dataset.key, shiftKey: false })
 		}
 	})
-	// key.addEventListener("mouseup", () => {
-	// 	if (key.dataset.noclick != "true") {
-	// 		key.dataset.keyCode.includes("Shift")
-	// 			? keyUp({ code: key.dataset.keyCode, key: key.dataset.key, shiftKey: true })
-	// 			: keyUp({ code: key.dataset.keyCode, key: key.dataset.key, shiftKey: false })
-	// 	}
-	// })
 })
 
 let changeSettingTimeoutID
@@ -122,17 +115,22 @@ function keyDown(e) {
 			document.querySelector("#keyboard_section").classList.toggle("hidden")
 		}
 
-		if (e.code == "KeyV") {
-			websiteData.weight = websiteData.weight == 700 ? 300 : websiteData.weight + 25
+		if (e.code == "KeyB" || e.code == "KeyL") {
+			if (e.code == "KeyB") websiteData.weight = websiteData.weight == 700 ? 700 : websiteData.weight + 25
+			if (e.code == "KeyL") websiteData.weight = websiteData.weight == 300 ? 300 : websiteData.weight - 25
 			updateCodeFont()
 			document.querySelector("body").style.fontVariationSettings = `"wght" ${websiteData.weight}`
-			changeSetting.textContent = `Weight: ${websiteData.weight}. Default 450.`
+			changeSetting.textContent = `Weight: ${websiteData.weight}. Def: 450, Min: 300, Max: 700.`
 			changeSetting.style.visibility = "visible"
 			clearTimeout(changeSettingTimeoutID)
 			changeSettingTimeoutID = setTimeout(() => (changeSetting.style.visibility = "hidden"), 500)
+			document.querySelector(
+				"#download"
+			).textContent = `Download CommitMono-${websiteData.weight} with current settings`
+			document.forms["weight_form"][`weight_${websiteData.weight}`].checked = true
 		}
 
-		if (e.code == "KeyI") {
+		if (e.code == "KeyM") {
 			if (websiteData.invert) {
 				setCssVar(["--bg", "#aaa"])
 				setCssVar(["--text", "#111"])

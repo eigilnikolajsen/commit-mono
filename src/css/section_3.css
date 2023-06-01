@@ -1,7 +1,3 @@
-#section_3 .content_container {
-	margin-top: 4rem;
-}
-
 #familiar_form fieldset {
 	border: none;
 	display: flex;
@@ -13,7 +9,7 @@
 #familiar_form fieldset::before {
 	content: "";
 	position: absolute;
-	height: 1px;
+	height: 0.0625rem;
 	bottom: 0.125rem;
 	left: 1rem;
 	right: 1rem;
@@ -61,15 +57,10 @@
 	margin-left: 1rem;
 }
 
-#familiar_container {
-	margin-top: 2rem;
-}
-
 #familiar_container p {
 	max-width: none;
 }
 
 #familiar_container img {
 	height: 36rem;
-	margin-top: 1rem;
 }

@@ -36,6 +36,7 @@ function createTable() {
 				const label = document.createElement("label")
 				label.textContent = i == 6 && j == 16 ? "" : String.fromCharCode(charCode)
 				label.setAttribute("for", `char_${charCode}`)
+				label.dataset.edit = "true"
 				div.append(input, label)
 				td.append(div)
 				fieldset.append(td)

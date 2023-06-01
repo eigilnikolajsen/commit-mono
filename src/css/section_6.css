@@ -1,5 +1,4 @@
 #waterfall {
-	margin-top: 3rem;
 	display: flex;
 	width: min-content;
 	gap: 2rem;
@@ -28,16 +27,7 @@
 	white-space: pre;
 }
 
-#gtc {
-	margin-top: 3rem;
-}
-
-#gtc h2 {
-	margin-top: 1rem;
-}
-
 .question_container {
-	margin-top: 1rem;
 	display: flex;
 	align-items: center;
 	font-size: 0.75rem;
@@ -66,7 +56,7 @@
 .question_character {
 	font-size: var(--question-character-size);
 	line-height: var(--question-character-size);
-	border: 1px solid var(--text);
+	border: 0.0625rem solid var(--text);
 	position: relative;
 }
 .question_character::after {
@@ -75,7 +65,7 @@
 	left: 0;
 	right: 0;
 	bottom: 15%;
-	/* height: 1px; */
+	/* height: 0.0625rem; */
 	background-color: var(--text);
 }
 

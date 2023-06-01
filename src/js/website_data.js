@@ -195,7 +195,7 @@ Press R to reset to default settings.`,
 					"700",
 				],
 				features: [
-					{ type: "alternate", name: "a", label: "alt. 'a'", feature: "cv01", on: true },
+					{ type: "alternate", name: "a", label: "alt. 'a'", feature: "cv01", on: false },
 					{ type: "alternate", name: "g", label: "alt. 'g'", feature: "cv02", on: false },
 					{ type: "alternate", name: "square", label: "square dots .:ij", feature: "cv03", on: false },
 					{ type: "alternate", name: "asterisk", label: "lifted *", feature: "cv04", on: false },
@@ -639,10 +639,8 @@ ASCII                  !"#$%&'()*+,-./
 		},
 		{
 			name: "install",
-			description: "A short guide for how to install and enable Commit Mono.",
-			content: {
-				steps: ["Download the font from the download section.", "Install the font:"],
-			},
+			description: "A short guide for how to install and enable you shine new version of Commit Mono.",
+			content: {},
 		},
 		{
 			name: "about",

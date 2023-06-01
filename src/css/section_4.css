@@ -1,7 +1,3 @@
-#intelligent_container {
-	margin-top: 1rem;
-}
-
 #original figure > div,
 #smart_kerning figure > div {
 	display: flex;
@@ -12,9 +8,9 @@
 	font-size: 24rem;
 	line-height: 1;
 	position: relative;
-	border-right: 1px solid var(--text);
-	border-left: 1px solid var(--text);
-	margin-left: -1px;
+	border-right: 0.0625rem solid var(--text);
+	border-left: 0.0625rem solid var(--text);
+	margin-left: -0.0625rem;
 }
 
 #original p::after,
@@ -61,10 +57,6 @@
 
 #before p {
 	font-feature-settings: "calt" 0;
-}
-
-#intelligent_form {
-	margin-top: 4rem;
 }
 
 #intelligent_form fieldset {
@@ -127,8 +119,4 @@
 
 #intelligent_form input:checked + label {
 	color: var(--text);
-}
-
-#intelligent_container figcaption {
-	margin-top: 2rem;
 }

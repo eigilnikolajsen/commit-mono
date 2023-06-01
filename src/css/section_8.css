@@ -1,7 +1,15 @@
 ol {
-	margin-top: 1rem;
 	font-size: 0.75rem;
-	margin-left: 1ch;
+	margin-left: 0;
+	width: max-content;
+}
+
+ol li {
+	margin-left: 2ch;
+}
+
+ol:focus li p {
+	color: var(--bg);
 }
 
 .accordion_header {

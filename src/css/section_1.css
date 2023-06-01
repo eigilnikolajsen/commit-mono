@@ -1,15 +1,3 @@
-#section_1 h1 {
-	margin-top: 4rem;
-}
-
-#section_1 figure {
-	margin-top: 2rem;
-}
-
-#navigate_description {
-	margin-top: 8rem;
-}
-
 #keyboard_container {
 	font-size: 0.75rem;
 	display: flex;
@@ -33,8 +21,8 @@
 .key {
 	font-size: 0.75rem;
 	height: 1.2rem;
-	border: 1px solid var(--text);
-	border-bottom: 3px solid var(--text);
+	border: 0.0625rem solid var(--text);
+	border-bottom: 0.125rem solid var(--text);
 	display: grid;
 	place-content: center;
 	padding: 0 0.25rem;
@@ -56,29 +44,6 @@
 	height: 1.1rem;
 	margin-top: 0.1rem;
 }
-
-/* #push_page .keys {
-	display: grid;
-	grid-template-areas:
-		". up ."
-		"left down right";
-}
-
-#push_page .key:nth-child(1) {
-	grid-area: up;
-}
-#push_page .key:nth-child(2) {
-	grid-area: left;
-}
-#push_page .key:nth-child(3) {
-	grid-area: down;
-}
-#push_page .key:nth-child(4) {
-	grid-area: right;
-}
-#select_element .keys {
-	display: flex;
-} */
 
 #select_element .key:nth-child(1) {
 	width: 5rem;
@@ -141,4 +106,20 @@
 
 #safari a:focus + #safari_not_working {
 	visibility: hidden;
+}
+
+#section_1 li {
+	margin-top: 0;
+}
+
+.span_key {
+	border: 0.0625rem solid var(--text);
+	border-bottom: 0.125rem solid var(--text);
+	padding: 0 0.5ch;
+	margin: 0 0.0625rem;
+}
+
+ul:focus .span_key {
+	border: 0.0625rem solid var(--bg);
+	border-bottom: 0.125rem solid var(--bg);
 }
