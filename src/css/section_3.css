@@ -42,7 +42,7 @@
 }
 
 #familiar_form input[type="radio"]:focus {
-	transform: scale(3);
+	transform: scale(2);
 }
 
 #familiar_form fieldset > div:nth-child(2) {
@@ -61,6 +61,32 @@
 	max-width: none;
 }
 
-#familiar_container img {
-	height: 36rem;
+figure {
+	width: max-content;
+}
+
+blockquote,
+blockquote ~ * {
+	font-size: 0.75rem;
+	padding-left: 2ch;
+	position: relative;
+	border-left: 0.0625rem solid var(--text);
+	max-width: var(--max-width);
+}
+
+blockquote::before {
+	content: "“";
+	left: -0.5ch;
+	top: 0;
+	font-size: 1.5rem;
+	line-height: 2rem;
+}
+
+#familiar_container svg {
+	width: 100rem;
+	height: 20rem;
+}
+
+#familiar_container svg path {
+	fill: var(--text);
 }

@@ -36,6 +36,7 @@ function updateNav(event, form) {
 	for (const entry of data) {
 		output = `${entry[1]}`
 	}
+	pageAnimation()
 	websiteData.sections.forEach((section, index) => {
 		const sectionContainer = document.querySelector(`#section_${index + 1}`)
 		if (sectionContainer.id == output) {
@@ -47,6 +48,12 @@ function updateNav(event, form) {
 	// pushPage("KeyR")
 
 	if (event) event.preventDefault()
+}
+
+function pageAnimation() {
+	const element = document.querySelector("#page_animation")
+	element.classList.remove("page_animation")
+	setTimeout(() => element.classList.add("page_animation"), 10)
 }
 
 let currentSection = 1
@@ -337,6 +344,7 @@ function onBlurIn(e) {
 }
 
 function goToSection(keyCode) {
+	pageAnimation()
 	const section = +keyCode.split("Digit")[1]
 	const sectionName = websiteData.sections[section - 1]?.name
 	const attemptedSection = document.querySelector(`[value="section_${section}"]`)

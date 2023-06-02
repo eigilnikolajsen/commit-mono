@@ -9,6 +9,7 @@
 	--text: #111;
 	--middle: #555;
 	--bg: #aaa;
+	--max-width: 54ch;
 	font-size: 16px;
 }
 
@@ -26,17 +27,16 @@
 #main_scale {
 	inset: 0;
 	position: fixed;
-	width: 4rem;
 }
 
 main {
 	min-width: 100vw;
-	padding: 4rem 0 0 2rem;
+	padding: 4rem 0 0 4ch;
 }
 
 header nav {
 	width: max-content;
-	padding: 1rem 1rem 0 2rem;
+	padding: 1rem 4ch 0 4ch;
 	background-color: var(--bg);
 	z-index: 100;
 	position: fixed;
@@ -45,7 +45,7 @@ header nav {
 
 header #keyboard_section {
 	width: 100%;
-	padding: 0.25rem 0 1rem 2rem;
+	padding: 0.25rem 0 1rem 4ch;
 	background-color: var(--bg);
 	z-index: 100;
 	position: fixed;
@@ -102,10 +102,10 @@ figcaption,
 button {
 	font-size: 0.75rem;
 	line-height: 1rem;
-	max-width: 54ch;
+	max-width: var(--max-width);
 	width: fit-content;
 	vertical-align: top;
-	color: var(--text);
+	color: inherit;
 }
 
 a,

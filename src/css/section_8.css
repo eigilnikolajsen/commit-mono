@@ -6,15 +6,31 @@ ol {
 
 ol li {
 	margin-left: 3ch;
+	max-width: calc(var(--max-width) - 3ch);
+}
+
+ol li p {
+	max-width: calc(var(--max-width) - 6ch);
 }
 
 ol:focus li p {
 	color: var(--bg);
 }
 
+ol li ul li p {
+	position: relative;
+}
+
+ol li ul li p::before {
+	content: "•";
+	position: absolute;
+	left: -2ch;
+}
+
 .accordion_header {
 	margin-left: 2ch;
 	position: relative;
+	max-width: calc(var(--max-width) - 2ch);
 }
 
 .accordion_header::before {
@@ -26,6 +42,7 @@ ol:focus li p {
 .accordion_point {
 	margin-left: 2ch;
 	margin-bottom: 1rem;
+	max-width: calc(var(--max-width) - 2ch);
 }
 
 ol.accordion_point {
