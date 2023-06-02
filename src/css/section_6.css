@@ -1,126 +1,126 @@
 #waterfall {
-  display: flex;
-  width: min-content;
-  gap: 2rem;
+   display: flex;
+   width: min-content;
+   gap: 2rem;
 }
 
 .waterfall_texts_container {
-  display: flex;
-  flex-direction: column;
-  justify-content: end;
-  height: 10rem;
+   display: flex;
+   flex-direction: column;
+   justify-content: end;
+   height: 10rem;
 }
 
 .waterfall_texts_container > div {
-  height: 2.5rem;
-  display: flex;
-  align-items: end;
+   height: 2.5rem;
+   display: flex;
+   align-items: end;
 }
 
 .waterfall_text {
-  line-height: 0.6;
-  white-space: pre;
+   line-height: 0.6;
+   white-space: pre;
 }
 
 .waterfall_desc {
-  width: max-content;
-  white-space: pre;
+   width: max-content;
+   white-space: pre;
 }
 
 .question_container {
-  display: flex;
-  align-items: center;
-  font-size: 0.75rem;
-  gap: 2ch;
-  position: relative;
+   display: flex;
+   align-items: center;
+   font-size: 0.75rem;
+   gap: 2ch;
+   position: relative;
 }
 
 .question_character.hide_character {
-  opacity: 1;
-  animation: 0ms 0s 3 forwards flicker_reverse;
+   opacity: 1;
+   animation: 0ms 0s 3 forwards flicker_reverse;
 }
 
 .question_character.show_character {
-  opacity: 0;
-  animation: 100ms 0s 3 forwards flicker;
+   opacity: 0;
+   animation: 100ms 0s 3 forwards flicker;
 }
 
 .button_container button {
-  display: block;
+   display: block;
 }
 
 :root {
-  --question-character-size: 6rem;
+   --question-character-size: 6rem;
 }
 
 .question_character {
-  font-size: var(--question-character-size);
-  line-height: var(--question-character-size);
-  border: 0.0625rem solid var(--text);
-  position: relative;
+   font-size: var(--question-character-size);
+   line-height: var(--question-character-size);
+   border: 0.0625rem solid var(--text);
+   position: relative;
 }
 .question_character::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 15%;
-  /* height: 0.0625rem; */
-  background-color: var(--text);
+   content: "";
+   position: absolute;
+   left: 0;
+   right: 0;
+   bottom: 15%;
+   /* height: 0.0625rem; */
+   background-color: var(--text);
 }
 
 #score_points {
-  display: none;
+   display: none;
 }
 #score_points.view_score {
-  display: block;
+   display: block;
 }
 
 .question_button:focus::before {
-  content: "<-";
-  position: absolute;
-  left: -2ch;
-  color: var(--text);
+   content: "<-";
+   position: absolute;
+   left: -2ch;
+   color: var(--text);
 }
 .question_button.right_button::before {
-  content: "<-";
-  position: absolute;
-  left: -2ch;
-  color: var(--text);
+   content: "<-";
+   position: absolute;
+   left: -2ch;
+   color: var(--text);
 }
 .question_button.wrong_button::before {
-  content: "->";
-  position: absolute;
-  left: auto;
-  right: -2ch;
-  color: var(--text);
+   content: "->";
+   position: absolute;
+   left: auto;
+   right: -2ch;
+   color: var(--text);
 }
 
 .question_button.button_choice {
-  background: repeating-conic-gradient(var(--text) 0% 25%, transparent 0% 50%, transparent 0% 100%) 50% / 2px 2px;
-  color: var(--text);
+   background: repeating-conic-gradient(var(--text) 0% 25%, transparent 0% 50%, transparent 0% 100%) 50% / 2px 2px;
+   color: var(--text);
 }
 .question_button.button_choice:focus {
-  background: repeating-conic-gradient(transparent 0% 25%, var(--text) 0% 50%, var(--text) 0% 100%) 50% / 2px 2px;
-  color: var(--bg);
+   background: repeating-conic-gradient(transparent 0% 25%, var(--text) 0% 50%, var(--text) 0% 100%) 50% / 2px 2px;
+   color: var(--bg);
 }
 
 .answer_feedback {
-  position: relative;
-  font-size: 0.75rem;
-  top: calc(var(--question-character-size) * 0.5);
-  top: 40%;
-  width: 0;
-  margin-left: -2ch;
-  left: 0;
+   position: relative;
+   font-size: 0.75rem;
+   top: calc(var(--question-character-size) * 0.5);
+   top: 40%;
+   width: 0;
+   margin-left: -2ch;
+   left: 0;
 }
 
 .question_container.active_question ~ .question_container.active_question {
-  opacity: 1;
-  pointer-events: auto;
+   opacity: 1;
+   pointer-events: auto;
 }
 
 .question_container.active_question ~ .question_container {
-  opacity: 0;
-  pointer-events: none;
+   opacity: 0;
+   pointer-events: none;
 }

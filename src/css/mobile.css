@@ -1,24 +1,24 @@
 @media (max-width: 50rem) {
-  body {
-    overflow: visible;
-  }
-  #main_scale,
-  main {
-    position: relative;
-  }
-  header #keyboard_section {
-    bottom: auto;
-    top: 0;
-    visibility: hidden;
-  }
-  #mobile {
-    visibility: visible;
-  }
-  #safari,
-  #navigate_description {
-    visibility: hidden;
-  }
-  header nav {
-    position: absolute;
-  }
+   body {
+      overflow: visible;
+   }
+   #main_scale,
+   main {
+      position: relative;
+   }
+   header #keyboard_section {
+      bottom: auto;
+      top: 0;
+      visibility: hidden;
+   }
+   #mobile {
+      visibility: visible;
+   }
+   #safari,
+   #navigate_description {
+      visibility: hidden;
+   }
+   header nav {
+      position: absolute;
+   }
 }
