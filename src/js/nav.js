@@ -81,7 +81,7 @@ keys.forEach((key) => {
 
 let changeSettingTimeoutID
 function keyDown(e) {
-	// console.log(e, e.code, e.shiftKey, e.key)
+	console.log(e.code)
 
 	websiteData.tutorial.forEach((key) => {
 		if (e.code == key) {
@@ -155,10 +155,8 @@ function keyDown(e) {
 	}
 }
 function keyUp(e) {
-	const activeKey = document.querySelector(".active_key")
-	activeKey?.classList.remove("active_key")
-
-	main.style.opacity = 1
+	const activeKey = document.querySelectorAll(".active_key")
+	activeKey?.forEach((key) => key.classList.remove("active_key"))
 
 	if (e.code == "Tab" && document.activeElement.id.includes("block_tab")) {
 		console.log("active nav section then tab")
@@ -167,8 +165,8 @@ function keyUp(e) {
 	}
 }
 
-window.addEventListener("keydown", (e) => keyDown(e))
-window.addEventListener("keyup", (e) => keyUp(e))
+window.addEventListener("keydown", keyDown)
+window.addEventListener("keyup", keyUp)
 
 const main = document.querySelector("main")
 const mainScale = document.querySelector("#main_scale")
@@ -176,6 +174,7 @@ const keySection = document.querySelector("#keyboard_section")
 let rem = +document.documentElement.style.fontSize.split("px")[0]
 
 function pushPage(keyCode) {
+	console.log("push page", keyCode)
 	const x = websiteData.pushPage.coordinates.x
 	const y = websiteData.pushPage.coordinates.y
 	const scale = websiteData.pushPage.scale
@@ -184,35 +183,39 @@ function pushPage(keyCode) {
 	// move left
 	if (keyCode == "KeyW") {
 		main.style.transform = `translate(${x}px, ${y + dist}px)`
+		navForm.style.transform = `translate(${x}px, 0)`
+		keySection.style.transform = `translate(${x}px, 0)`
 		websiteData.pushPage.coordinates.y += dist
 	}
 
 	// move left
 	else if (keyCode == "KeyA") {
 		main.style.transform = `translate(${x + dist}px, ${y}px)`
-		navForm.style.transform = `translate(${x + dist}px, ${y}px)`
-		keySection.style.transform = `translate(${x + dist}px, ${y}px)`
+		navForm.style.transform = `translate(${x + dist}px, 0)`
+		keySection.style.transform = `translate(${x + dist}px, 0)`
 		websiteData.pushPage.coordinates.x += dist
 	}
 
 	// move down
 	else if (keyCode == "KeyS") {
 		main.style.transform = `translate(${x}px, ${y - dist}px)`
+		navForm.style.transform = `translate(${x}px, 0)`
+		keySection.style.transform = `translate(${x}px, 0)`
 		websiteData.pushPage.coordinates.y -= dist
 	}
 
 	// move right
 	else if (keyCode == "KeyD") {
 		main.style.transform = `translate(${x - dist}px, ${y}px)`
-		navForm.style.transform = `translate(${x - dist}px, ${y}px)`
-		keySection.style.transform = `translate(${x - dist}px, ${y}px)`
+		navForm.style.transform = `translate(${x - dist}px, 0)`
+		keySection.style.transform = `translate(${x - dist}px, 0)`
 		websiteData.pushPage.coordinates.x -= dist
 	}
 
 	// zoom in ("Minus" is the plus key, very confusing)
 	else if (keyCode == "Minus") {
-		document.documentElement.style.fontSize = `${rem + 2}px`
 		rem = +rem + 2
+		document.documentElement.style.fontSize = `${rem}px`
 		updateWaterfall()
 		document.querySelector("#canvas").style.transform = `scale(${rem / 16})`
 		changeSetting.textContent = `Base font size: ${rem}px`
@@ -223,8 +226,8 @@ function pushPage(keyCode) {
 
 	// zoom out
 	else if (keyCode == "Slash") {
-		document.documentElement.style.fontSize = `${rem - 2}px`
 		rem = +rem - 2
+		document.documentElement.style.fontSize = `${rem}px`
 		updateWaterfall()
 		document.querySelector("#canvas").style.transform = `scale(${rem / 16})`
 		changeSetting.textContent = `Base font size: ${rem}px`
