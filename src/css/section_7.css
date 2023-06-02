@@ -1,152 +1,152 @@
 #section_7 #alternates_container fieldset,
 #section_7 #features_container fieldset {
-	display: grid;
-	grid-template-columns: 21ch 3ch 3ch;
-	gap: 2ch;
+  display: grid;
+  grid-template-columns: 21ch 3ch 3ch;
+  gap: 2ch;
 }
 
 #section_7 #examplesettings_form fieldset p {
-	white-space: pre;
-	font-variant-ligatures: none;
+  white-space: pre;
+  font-variant-ligatures: none;
 }
 
 fieldset.alternates > div {
-	width: 4ch;
+  width: 4ch;
 }
 
 #section_7 form > div {
-	position: relative;
+  position: relative;
 }
 
 #section_7 form input[type="radio"] + label {
-	position: relative;
-	z-index: 1;
+  position: relative;
+  z-index: 1;
 }
 
 #section_7 form input[type="radio"] + label::before {
-	z-index: -1;
-	content: "";
-	position: absolute;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	background-color: var(--bg);
+  z-index: -1;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: var(--bg);
 }
 
 #section_7 form input[type="radio"]:focus:checked + label::before {
-	background-color: var(--text);
+  background-color: var(--text);
 }
 
 #section_7 form input[type="radio"]:focus:checked + label {
-	color: var(--bg);
+  color: var(--bg);
 }
 
 #section_7 form input[type="radio"]:checked + label::before {
-	background: repeating-conic-gradient(var(--text) 0% 25%, transparent 0% 50%, transparent 0% 100%) 50% / 2px 2px;
+  background: repeating-conic-gradient(var(--text) 0% 25%, transparent 0% 50%, transparent 0% 100%) 50% / 2px 2px;
 }
 
 #section_7 form input[type="radio"]:checked + label {
-	color: var(--text);
+  color: var(--text);
 }
 
 #examples_container {
-	width: fit-content;
-	max-height: 20.6rem;
-	margin-bottom: 0.4rem;
-	overflow-y: scroll;
-	-ms-overflow-style: none; /* Internet Explorer 10+ */
-	scrollbar-width: none; /* Firefox */
+  width: fit-content;
+  max-height: 20.6rem;
+  margin-bottom: 0.4rem;
+  overflow-y: scroll;
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
 }
 #examples_container::-webkit-scrollbar {
-	display: none; /* Safari and Chrome */
+  display: none; /* Safari and Chrome */
 }
 
 p#code_example {
-	white-space: pre;
-	max-width: none;
-	min-width: 102ch;
-	padding-left: 5ch;
-	position: relative;
-	font-variant-ligatures: none;
+  white-space: pre;
+  max-width: none;
+  min-width: 102ch;
+  padding-left: 5ch;
+  position: relative;
+  font-variant-ligatures: none;
 }
 p#code_example::before {
-	content: attr(data-before);
-	position: absolute;
-	white-space: pre;
-	left: 0;
-	top: 0;
-	height: 100%;
-	overflow: hidden;
+  content: attr(data-before);
+  position: absolute;
+  white-space: pre;
+  left: 0;
+  top: 0;
+  height: 100%;
+  overflow: hidden;
 }
 
 #section_7 form input[type="checkbox"] {
-	opacity: 1;
-	width: 0.5rem;
-	height: 0.5rem;
-	display: inline-block;
-	background-color: transparent;
-	border: 0.0625rem solid var(--text);
+  opacity: 1;
+  width: 0.5rem;
+  height: 0.5rem;
+  display: inline-block;
+  background-color: transparent;
+  border: 0.0625rem solid var(--text);
 }
 
 #section_7 form input[type="checkbox"]:checked {
-	background-color: var(--text);
+  background-color: var(--text);
 }
 
 #section_7 form input[type="checkbox"]:focus + label {
-	background-color: var(--text);
-	color: var(--bg);
+  background-color: var(--text);
+  color: var(--bg);
 }
 
 button:focus a {
-	color: var(--bg);
-	text-decoration: none;
+  color: var(--bg);
+  text-decoration: none;
 }
 
 .download_button {
-	display: block;
-	width: max-content;
+  display: block;
+  width: max-content;
 }
 
 .download_button.line-through:focus {
-	text-decoration: line-through;
+  text-decoration: line-through;
 }
 
 .download_button.line-through:focus::after {
-	content: "Not possible at the moment.";
-	text-decoration: none;
-	position: absolute;
-	background-color: var(--bg);
-	color: var(--text);
+  content: "Not possible at the moment.";
+  text-decoration: none;
+  position: absolute;
+  background-color: var(--bg);
+  color: var(--text);
 }
 
 .download_button.loading::after {
-	content: ".";
-	position: absolute;
-	color: var(--text);
-	right: -2ch;
-	animation: 800ms 0ms steps(4, jump-none) infinite loading;
+  content: ".";
+  position: absolute;
+  color: var(--text);
+  right: -2ch;
+  animation: 800ms 0ms steps(4, jump-none) infinite loading;
 }
 .download_button.loaded::after {
-	content: "✓";
-	position: absolute;
-	color: var(--text);
-	right: -2ch;
-	animation: none;
+  content: "✓";
+  position: absolute;
+  color: var(--text);
+  right: -2ch;
+  animation: none;
 }
 .download_button.error::after {
-	content: "✕";
-	position: absolute;
-	color: var(--text);
-	right: -2ch;
-	animation: none;
+  content: "✕";
+  position: absolute;
+  color: var(--text);
+  right: -2ch;
+  animation: none;
 }
 
 @keyframes loading {
-	0% {
-		transform: translateX(0);
-	}
-	100% {
-		transform: translateX(2ch);
-	}
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(2ch);
+  }
 }

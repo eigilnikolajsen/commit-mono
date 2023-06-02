@@ -1,71 +1,71 @@
 #code_form fieldset {
-	font-size: 1.5rem;
-	gap: 1ch;
+  font-size: 1.5rem;
+  gap: 1ch;
 }
 
 form fieldset {
-	border: none;
-	display: flex;
-	gap: 4ch;
-	font-size: 0.75rem;
-	line-height: 1rem;
-	background-color: var(--bg);
-	width: max-content;
+  border: none;
+  display: flex;
+  gap: 4ch;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  background-color: var(--bg);
+  width: max-content;
 }
 
 form > div {
-	position: relative;
+  position: relative;
 }
 
 form input {
-	-webkit-appearance: none;
-	appearance: none;
-	background-color: var(--text);
-	margin: 0;
-	padding: 0;
-	border: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: var(--text);
+  margin: 0;
+  padding: 0;
+  border: none;
 
-	color: var(--text);
-	width: 0;
-	height: 0;
-	position: relative;
-	opacity: 1;
-	display: block;
+  color: var(--text);
+  width: 0;
+  height: 0;
+  position: relative;
+  opacity: 1;
+  display: block;
 }
 
 form input + label {
-	position: relative;
-	z-index: 1;
-	cursor: pointer;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
 }
 
 form input + label::before {
-	z-index: -1;
-	content: "";
-	position: absolute;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	background-color: var(--bg);
+  z-index: -1;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: var(--bg);
 }
 
 form input:focus:checked + label::before {
-	background-color: var(--text);
+  background-color: var(--text);
 }
 
 form input:focus:checked + label {
-	color: var(--bg);
+  color: var(--bg);
 }
 
 form input:checked + label::before {
-	background: repeating-conic-gradient(var(--text) 0% 25%, transparent 0% 50%, transparent 0% 100%) 50% / 2px 2px;
+  background: repeating-conic-gradient(var(--text) 0% 25%, transparent 0% 50%, transparent 0% 100%) 50% / 2px 2px;
 }
 
 form input:checked + label {
-	color: var(--text);
+  color: var(--text);
 }
 
 #canvas {
-	transform-origin: top left;
+  transform-origin: top left;
 }

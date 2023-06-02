@@ -1,569 +1,581 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta name="description" content="Website for Commit Mono - a neutral programming font." />
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Website for Commit Mono - a neutral programming font." />
 
-		<!-- favicon -->
-		<!-- <link rel="icon" href="/favicon.ico" sizes="any" /> -->
-		<link rel="icon" href="/favicon/icon.svg" type="image/svg+xml" id="dynamic-favicon" />
-		<link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
-		<link rel="manifest" href="/manifest.webmanifest" />
+    <!-- favicon -->
+    <!-- <link rel="icon" href="/favicon.ico" sizes="any" /> -->
+    <link rel="icon" href="/favicon/icon.svg" type="image/svg+xml" id="dynamic-favicon" />
+    <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
 
-		<!-- title -->
-		<title>Commit Mono | Neutral programming font</title>
+    <!-- title -->
+    <title>Commit Mono | Neutral programming font</title>
 
-		<!-- CSS -->
-		<style>
-			@font-face {
-				font-family: "Commit Mono";
-				src: url("/src/fonts/CommitMono-cleaned-VF-108.woff2");
-				font-style: normal;
-				font-weight: 450;
-				font-display: swap;
-			}
-			body {
-				background-color: var(--bg);
-				color: var(--text);
-				font-family: "Commit Mono", monospace;
-				-webkit-font-smoothing: antialiased;
-				-moz-osx-font-smoothing: grayscale;
-				font-size: 0.75rem;
-				line-height: 1rem;
-			}
-		</style>
-		<link rel="stylesheet" href="src/css/style.css" />
-		<link rel="stylesheet" href="src/css/section_1.css" />
-		<link rel="stylesheet" href="src/css/mobile.css" />
+    <!-- CSS -->
+    <style>
+      @font-face {
+        font-family: "Commit Mono";
+        src: url("/src/fonts/CommitMono-cleaned-VF-108.woff2");
+        font-style: normal;
+        font-weight: 450;
+        font-display: swap;
+      }
+      body {
+        background-color: var(--bg);
+        color: var(--text);
+        font-family: "Commit Mono", monospace;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-size: 0.75rem;
+        line-height: 1rem;
+      }
+    </style>
+    <link rel="stylesheet" href="src/css/style.css" />
+    <link rel="stylesheet" href="src/css/section_1.css" />
+    <link rel="stylesheet" href="src/css/mobile.css" />
 
-		<!-- JS -->
-		<script src="src/js/utility_functions.js" defer></script>
-		<script src="src/js/website_data.js" defer></script>
-		<script src="src/js/section.js" defer></script>
-		<script src="src/js/nav.js" defer></script>
-		<script src="src/js/table_section.js" defer></script>
-		<script src="src/js/familiar_section.js" defer></script>
-		<script src="src/js/intelligent_section.js" defer></script>
-		<script src="src/js/code_section.js" defer></script>
-		<script src="src/js/distinction_section.js" defer></script>
-		<script src="src/js/example_section.js" defer></script>
-		<script src="src/js/dynamic_favicon.js" defer></script>
-		<script src="https://cdn.jsdelivr.net/npm/opentype.js" defer></script>
-		<script src="src/js/opentype_test.js" defer></script>
-	</head>
-	<body>
-		<div id="app_root">
-			<div tabindex="0" id="block_tab_start"></div>
-			<div id="click_focus"><p>Click to focus page.</p></div>
-			<div id="change_setting"><p></p></div>
-			<div id="page_animation"></div>
-			<div id="content_root">
-				<header>
-					<nav>
-						<form id="nav_form" onchange="updateNav(event, this)"></form>
-					</nav>
-					<div id="keyboard_section">
-						<div id="keyboard_container">
-							<div class="key_group" id="tab">
-								<div class="keys">
-									<p data-key-code="Tab" data-key="Tab" class="key" data-noclick="true">Tab</p>
-									<p data-key-code="ShiftTab" data-key="ShiftTab" class="key" data-noclick="true">⇧Tab</p>
-								</div>
-								<p>Navigate ↓↑</p>
-							</div>
-							<div class="key_group" id="navigate">
-								<div class="keys">
-									<p data-key-code="ArrowLeft" data-key="ArrowLeft" class="key" data-noclick="true">←</p>
-									<p data-key-code="ArrowRight" data-key="ArrowRight" class="key" data-noclick="true">→</p>
-								</div>
-								<p>Navigate ←→</p>
-							</div>
-							<div class="key_group" id="go_to_section">
-								<div class="keys">
-									<p data-key-code="Digit1" data-key="1" class="key">1</p>
-									<p data-key-code="Digit2" data-key="2" class="key">2</p>
-									<p data-key-code="Digit3" data-key="3" class="key">3</p>
-								</div>
-								<p>To section</p>
-							</div>
-							<div class="key_group" id="push_page">
-								<div class="keys">
-									<p data-key-code="KeyW" data-key="w" class="key">W</p>
-									<p data-key-code="KeyA" data-key="a" class="key">A</p>
-									<p data-key-code="KeyS" data-key="s" class="key">S</p>
-									<p data-key-code="KeyD" data-key="d" class="key">D</p>
-								</div>
-								<p>Scroll</p>
-							</div>
-							<div class="key_group" id="zoom_in_out">
-								<div class="keys">
-									<p data-key-code="Minus" data-key="+" class="key">+</p>
-									<p data-key-code="Slash" data-key="-" class="key">-</p>
-								</div>
-								<p>Zoom</p>
-							</div>
-							<div class="key_group" id="reset">
-								<div class="keys">
-									<p data-key-code="KeyR" data-key="r" class="key">R</p>
-								</div>
-								<p>Reset</p>
-							</div>
-							<div class="key_group" id="escape_textfield">
-								<div class="keys">
-									<p data-key-code="KeyE" data-key="e" class="key">E</p>
-									<p data-key-code="Escape" data-key="Escape" class="key">Esc</p>
-								</div>
-								<p>Edit text</p>
-							</div>
-							<div class="key_group" id="show_hide_keys">
-								<div class="keys">
-									<p data-key-code="KeyH" data-key="h" class="key">H</p>
-								</div>
-								<p>Hide</p>
-							</div>
-							<div class="key_group" id="change_weight">
-								<div class="keys">
-									<p data-key-code="KeyB" data-key="b" class="key">B</p>
-									<p data-key-code="KeyL" data-key="l" class="key">L</p>
-								</div>
-								<p>Font weight</p>
-							</div>
-							<div class="key_group" id="change_weight">
-								<div class="keys">
-									<p data-key-code="KeyM" data-key="m" class="key">M</p>
-								</div>
-								<p>Light/dark mode</p>
-							</div>
-						</div>
-					</div>
-				</header>
-				<div id="main_scale">
-					<main>
-						<div id="section_container">
-							<section id="section_1">
-								<div class="content_container">
-									<br />
-									<br />
-									<br />
-									<br />
-									<h1 tabindex="0" data-edit="true">Commit Mono. <br />Neutral programming typeface.</h1>
-									<br />
-									<br />
-									<p id="navigate_description" tabindex="0" data-edit="true">Use keyboard to discover the font:</p>
-									<ul id="tutorial" tabindex="0" data-edit="true">
-										<li>
-											<span class="span_key key_code_Tab">Tab</span> and
-											<span class="span_key key_code_ShiftTab">⇧Tab</span> to navigate up & down.
-										</li>
-										<li>
-											<span class="span_key key_code_ArrowLeft">←</span> and
-											<span class="span_key key_code_ArrowRight">→</span> to navigate left & right.
-										</li>
-										<li>
-											<span class="span_key key_code_KeyW">W</span> <span class="span_key key_code_KeyA">A</span>
-											<span class="span_key key_code_KeyS">S</span> <span class="span_key key_code_KeyD">D</span> to
-											scroll and <span class="span_key key_code_Minus">+</span>
-											<span class="span_key key_code_Slash">-</span> to zoom the page.
-										</li>
-										<li><span class="span_key key_code_KeyR">R</span> to reset scroll and zoom.</li>
-										<li>
-											<span class="span_key key_code_KeyE">E</span> to edit text and
-											<span class="span_key key_code_Escape">Esc</span> to escape editing mode.
-										</li>
-										<li>
-											<span class="span_key key_code_KeyB">B</span> for bolder font weight and
-											<span class="span_key key_code_KeyL">L</span> for lighter.
-										</li>
-										<li>
-											<span class="span_key key_code_KeyM">M</span> to change to dark/light mode and
-											<span class="span_key key_code_KeyH">H</span> to hide the keys at the bottom.
-										</li>
-										<li>
-											<span class="span_key key_code_Digit1">1</span>
-											<span class="span_key key_code_Digit2">2</span> ...<span class="span_key key_code_Digit9">9</span>
-											to go respective sections.
-										</li>
-									</ul>
-									<p id="mobile" tabindex="0" data-edit="true">Use a keyboard to unlock full functionality.</p>
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<div id="safari" tabindex="0" data-edit="true">
-										<p>Using Safari?</p>
-										<p id="safari_explanation">
-											Tabbing is disabled by default in Safari. <br />
-											Solve by either:
-										</p>
-										<ul>
-											<li>Using Option+Tab instead of Tab</li>
-											<li>
-												Safari → Settings → Advanced → Check the option: "Press Tab to highlight each item on a web
-												page"
-											</li>
-										</ul>
-										<a href="#">You know it's working if can focus here.</a>
-										<p id="safari_not_working" tabindex="0">It's not working.</p>
-									</div>
-								</div>
-							</section>
-							<section id="section_2">
-								<div class="top_container"></div>
-								<div class="content_container">
-									<form id="table_form" onchange="updateTable(event, this)">
-										<table></table>
-									</form>
-									<p tabindex="0" data-edit="true">
-										Commit Mono 450 – ASCII character table. <br />
-										Since most code is written using ASCII characters these characters are the backbone of every code
-										font. They have been sculpted with particularly great precision and attention to detail.
-									</p>
-								</div>
-							</section>
-							<section id="section_3">
-								<div class="top_container"></div>
-								<br />
-								<br />
-								<div class="content_container">
-									<figure tabindex="0" data-edit="true">
-										<blockquote cite="https://jaspermorrison.com/publications/essays/super-normal">
-											<p>
-												There are better ways to design than putting a big effort into making something look special.
-												Special is generally less useful than normal, and less rewarding in the long term. Special
-												things demand attention for the wrong reasons, interrupting potentially good atmosphere with
-												their awkward presence.
-											</p>
-										</blockquote>
-										<p><br /></p>
-										<figcaption>
-											<p>— Jasper Morrison, <cite>Super Normal Manifesto</cite></p>
-										</figcaption>
-									</figure>
-									<br />
-									<br />
-									<br />
-									<form id="familiar_form" onchange="updateFamiliar(event, this)">
-										<fieldset>
-											<div>
-												<input
-													type="radio"
-													id="franklin_gothic_input"
-													name="select_year"
-													value="franklin_gothic"
-													checked
-												/>
-												<label for="franklin_gothic_input">1896</label>
-											</div>
-											<div>
-												<input type="radio" id="letter_gothic_input" name="select_year" value="letter_gothic" />
-												<label for="letter_gothic_input">1956</label>
-											</div>
-											<div>
-												<input type="radio" id="fira_mono_input_input" name="select_year" value="fira_mono" />
-												<label for="fira_mono_input">2013</label>
-											</div>
-											<div>
-												<input type="radio" id="untitled_sans_input_input" name="select_year" value="untitled_sans" />
-												<label for="untitled_sans_input">2017</label>
-											</div>
-											<div>
-												<input
-													type="radio"
-													id="commit_mono_example_input"
-													name="select_year"
-													value="commit_mono_example"
-												/>
-												<label for="commit_mono_example_input">2023</label>
-											</div>
-										</fieldset>
-									</form>
-									<br />
-									<br />
-									<div id="familiar_container"></div>
-								</div>
-							</section>
-							<section id="section_4">
-								<div class="top_container"></div>
-								<div class="content_container">
-									<br />
-									<br />
-									<br />
-									<br />
-									<form id="intelligent_form" onchange="updateIntelligent(event, this)">
-										<fieldset>
-											<div>
-												<input type="radio" id="input_before" name="select_state" value="before" checked />
-												<label for="input_before">Smart kerning OFF</label>
-											</div>
-											<div>
-												<input type="radio" id="input_after" name="select_state" value="after" />
-												<label for="input_after">Smart kerning ON</label>
-											</div>
-											<div>
-												<input type="radio" id="input_original" name="select_state" value="original" />
-												<label for="input_original">How it works OFF</label>
-											</div>
-											<div>
-												<input type="radio" id="input_smart_kerning" name="select_state" value="smart_kerning" />
-												<label for="input_smart_kerning">How it works ON</label>
-											</div>
-										</fieldset>
-									</form>
-									<br />
-									<div id="intelligent_container">
-										<div style="display: block" id="before">
-											<figure>
-												<p>Commit Mono: Normal <br />programming typeface</p>
-												<br />
-												<br />
-												<figcaption tabindex="0" data-edit="true">
-													SMART KERNING OFF behaves exactly like your standard monospace font. Letters are centered in
-													their respective boxes.
-												</figcaption>
-											</figure>
-										</div>
-										<div style="display: none" id="after">
-											<figure>
-												<p>Commit Mono: Normal <br />programming typeface</p>
-												<br />
-												<br />
-												<figcaption tabindex="0" data-edit="true">
-													SMART KERNING ON improves overall word spacing and makes sublexical units easier to tell
-													apart, therefore improving reading speed and accuracy.
-												</figcaption>
-											</figure>
-										</div>
-										<div style="display: none" id="original">
-											<figure>
-												<div>
-													<p>m</p>
-													<p>o</p>
-													<p>i</p>
-												</div>
-												<br />
-												<br />
-												<figcaption tabindex="0" data-edit="true">
-													Smart kerning works by looking at single letter between two other letters. If the other
-													letters are in different width classes, the middle letter will slide closer to the narrow
-													letter.
-												</figcaption>
-											</figure>
-										</div>
-										<div style="display: none" id="smart_kerning">
-											<figure>
-												<div>
-													<p>m</p>
-													<p>o</p>
-													<p>i</p>
-												</div>
-												<br />
-												<br />
-												<figcaption tabindex="0" data-edit="true">
-													As you can see here, the 'o' is moved 40 units to the right, which evens out the spacing
-													between itself, 'm' and 'i'. This same process is applied to all letters.
-												</figcaption>
-											</figure>
-										</div>
-									</div>
-								</div>
-							</section>
-							<section id="section_5">
-								<div class="top_container"></div>
-								<div class="content_container">
-									<br />
-									<p>
-										Tip: Use <span class="span_key">B</span> and <span class="span_key">L</span> to view the font in
-										different weights.
-									</p>
-									<br />
-									<br />
-									<br />
-									<form id="code_form" onchange="updateCode(event, this)">
-										<fieldset></fieldset>
-									</form>
-									<div id="canvas_container">
-										<canvas id="canvas"></canvas>
-									</div>
-								</div>
-							</section>
-							<section id="section_6">
-								<div class="top_container"></div>
-								<div class="content_container">
-									<br />
-									<br />
-									<br />
-									<div id="waterfall"></div>
-									<br />
-									<br />
-									<div id="gtc">
-										<br />
-										<h2 tabindex="0" data-edit="true">Let's play 'Guess the Character'</h2>
-										<p>Correctly spot 10 commonly confused characters</p>
-										<br />
-										<h2>Select difficulty</h2>
-										<form id="gtc_form" onchange="updateGTC(event, this)">
-											<fieldset></fieldset>
-										</form>
-										<div id="gtc_questions_container"></div>
-										<br />
-										<p id="score_tally" tabindex="-1" data-edit="true"></p>
-									</div>
-								</div>
-							</section>
-							<section id="section_7">
-								<div class="top_container"></div>
-								<div class="content_container">
-									<br />
-									<button class="download_button" onclick="downloadFont(this)" data-type="staticCurrent" id="download">
-										Download CommitMono-450 with current settings
-									</button>
-									<form id="fonts_form" onchange="updateFont(event, this)">
-										<br />
-										<legend><h2>Font</h2></legend>
-										<fieldset></fieldset>
-									</form>
-									<form id="examples_form" onchange="updateExamples(event, this)">
-										<br />
-										<legend><h2>Language</h2></legend>
-										<fieldset></fieldset>
-									</form>
-									<div id="examples_container">
-										<br />
-										<p tabindex="0" data-edit="true" id="code_example"></p>
-									</div>
-									<form id="weight_form" onchange="updateWeight(event, this)">
-										<br />
-										<legend><h2>Weight</h2></legend>
-										<fieldset></fieldset>
-									</form>
-									<form id="examplesettings_form" onchange="updateExampleSettings(event, this)">
-										<br />
-										<h2>Features</h2>
-										<div id="features_container"></div>
-										<br />
-										<h2>Alternates</h2>
-										<div id="alternates_container"></div>
-									</form>
-								</div>
-							</section>
-							<section id="section_8">
-								<div class="top_container"></div>
-								<div class="content_container">
-									<br />
-									<ol tabindex="0">
-										<li><p>Dowload the font from the download section.</p></li>
-										<li>
-											<p>Install the font on your system</p>
-											<ul>
-												<li><p>Windows: Right click the font in the folder and click "Install".</p></li>
-												<li><p>Mac: Open fonts with Font Book from the folder and click "Install".</p></li>
-												<li>
-													<p>
-														Linux: Unpack fonts to ~/.local/share/fonts (or /usr/share/fonts to install fonts
-														system-wide) then <span data-edit="true">fc-cache -f -v</span>
-													</p>
-												</li>
-											</ul>
-										</li>
-										<li><p>Restart your editor/IDE.</p></li>
-										<li>
-											<p>
-												Settings/Preferences → Editor → Font: <br />Pick CommitMono-450 from the list. If you've
-												downloaded the weight 525, pick CommitMono-525.
-											</p>
-										</li>
-									</ol>
-									<br />
-									<p tabindex="0">
-										If you have enabled one or more features/ligatures in your download, these are available through the
-										'calt' OpenType Feature. For a comprehensive guide on how to enable in your specific editor/IDE,
-										refer to:
-									</p>
-									<a href="https://github.com/tonsky/FiraCode/wiki#enabling-ligatures" target="_blank"
-										>Fira Code wiki</a
-									>
-									<br />
-									<br />
-									<br />
-									<h2>FAQ</h2>
-									<p class="accordion_header" tabindex="0">
-										I have downloaded a new verison, but the old version is still displayed.
-									</p>
-									<ol class="accordion_point">
-										<li>Uninstall the current version you have installed.</li>
-										<li>Install the new version.</li>
-										<li>Restart you IDE. The new version should show up.</li>
-									</ol>
-									<p class="accordion_header" tabindex="0">May I install and use Commit Mono in any editor?</p>
-									<p class="accordion_point">Yes.</p>
-									<p class="accordion_header" tabindex="0">May I use Commit Mono in print design?</p>
-									<p class="accordion_point">Yes.</p>
-									<p class="accordion_header" tabindex="0">May I use Commit Mono on a website?</p>
-									<p class="accordion_point">Yes.</p>
-									<p class="accordion_header" tabindex="0">May I use Commit Mono in an app?</p>
-									<p class="accordion_point">Yes.</p>
-									<p class="accordion_header" tabindex="0">May I use Commit Mono to design my own font?</p>
-									<p class="accordion_point">Yes, but you need to indicate that it is based on Commit Mono.</p>
-								</div>
-							</section>
-							<section id="section_9">
-								<div class="top_container"></div>
-								<div class="content_container">
-									<br />
-									<h2>Thank you</h2>
-									<ul>
-										<li tabindex="0">Hakim Mazouz for motivation to pursue the project.</li>
-										<li tabindex="0">Mads Brodt and Philip Johansen for beta testing and interview.</li>
-										<li tabindex="0">Beta testers for great feedback and testing.</li>
-										<li tabindex="0">My teachers at DMJX for support and learning.</li>
-										<li tabindex="0">Everyone who answered my survey.</li>
-									</ul>
-									<br />
-									<h2>Inspiration</h2>
-									<ul>
-										<li>
-											<a href="https://klim.co.nz/collections/untitled/" target="_blank">Untitled Collection</a> by Klim
-											Type Foundry for so much inspiration.
-										</li>
-										<li>
-											<a href="https://sampleprograms.io/" target="_blank">sampleprograms.io</a> for code examples.
-										</li>
-										<li>
-											<a href="https://opentype.js.org/" target="_blank">opentype.js</a> for generating fonts on the
-											web.
-										</li>
-										<li>
-											<a href="https://opentypecookbook.com/" target="_blank">OpenType Cookbook</a> for all things
-											OpenType Features.
-										</li>
-										<li>
-											<a href="https://github.com/tonsky/FiraCode/" target="_blank">Fira Code</a> and
-											<a href="https://www.jetbrains.com/lp/mono/" target="_blank">JetBrains Mono</a>
-											for being a huge inspiration and go-to for best practices.
-										</li>
-										<li>
-											Articles like
-											<a href="https://realpython.com/coding-font/" target="_blank">this one from Real Python</a> for
-											opinions on code fonts.
-										</li>
-									</ul>
-									<br />
-									<h2>Programs used</h2>
-									<ul>
-										<li tabindex="0">FontLab 8 for font production.</li>
-										<li tabindex="0">Figma for prototyping.</li>
-										<li tabindex="0">Visual Studio Code for development environment.</li>
-									</ul>
-								</div>
-							</section>
-						</div>
-					</main>
-				</div>
-			</div>
-			<div tabindex="0" id="block_tab_end"></div>
-		</div>
-	</body>
+    <!-- JS -->
+    <script src="src/js/utility_functions.js" defer></script>
+    <script src="src/js/website_data.js" defer></script>
+    <script src="src/js/section.js" defer></script>
+    <script src="src/js/nav.js" defer></script>
+    <script src="src/js/table_section.js" defer></script>
+    <script src="src/js/familiar_section.js" defer></script>
+    <script src="src/js/intelligent_section.js" defer></script>
+    <script src="src/js/code_section.js" defer></script>
+    <script src="src/js/distinction_section.js" defer></script>
+    <script src="src/js/example_section.js" defer></script>
+    <script src="src/js/dynamic_favicon.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/opentype.js" defer></script>
+    <script src="src/js/opentype_test.js" defer></script>
+  </head>
+  <body>
+    <div id="app_root">
+      <div tabindex="0" id="block_tab_start"></div>
+      <div id="click_focus"><p>Click to focus page.</p></div>
+      <div id="change_setting"><p></p></div>
+      <div id="page_animation"></div>
+      <div id="content_root">
+        <header>
+          <nav>
+            <form id="nav_form" onchange="updateNav(event, this)"></form>
+          </nav>
+          <div id="keyboard_section">
+            <div id="keyboard_container">
+              <div class="key_group" id="tab">
+                <div class="keys">
+                  <p data-key-code="Tab" data-key="Tab" class="key" data-noclick="true">Tab</p>
+                  <p data-key-code="ShiftTab" data-key="ShiftTab" class="key" data-noclick="true">⇧Tab</p>
+                </div>
+                <p>Navigate ↓↑</p>
+              </div>
+              <div class="key_group" id="navigate">
+                <div class="keys">
+                  <p data-key-code="ArrowLeft" data-key="ArrowLeft" class="key" data-noclick="true">←</p>
+                  <p data-key-code="ArrowRight" data-key="ArrowRight" class="key" data-noclick="true">→</p>
+                </div>
+                <p>Navigate ←→</p>
+              </div>
+              <div class="key_group" id="go_to_section">
+                <div class="keys">
+                  <p data-key-code="Digit1" data-key="1" class="key">1</p>
+                  <p data-key-code="Digit2" data-key="2" class="key">2</p>
+                  <p data-key-code="Digit3" data-key="3" class="key">3</p>
+                </div>
+                <p>To section</p>
+              </div>
+              <div class="key_group" id="push_page">
+                <div class="keys">
+                  <p data-key-code="KeyW" data-key="w" class="key">W</p>
+                  <p data-key-code="KeyA" data-key="a" class="key">A</p>
+                  <p data-key-code="KeyS" data-key="s" class="key">S</p>
+                  <p data-key-code="KeyD" data-key="d" class="key">D</p>
+                </div>
+                <p>Scroll</p>
+              </div>
+              <div class="key_group" id="zoom_in_out">
+                <div class="keys">
+                  <p data-key-code="Minus" data-key="+" class="key">+</p>
+                  <p data-key-code="Slash" data-key="-" class="key">-</p>
+                </div>
+                <p>Zoom</p>
+              </div>
+              <div class="key_group" id="reset">
+                <div class="keys">
+                  <p data-key-code="KeyR" data-key="r" class="key">R</p>
+                </div>
+                <p>Reset</p>
+              </div>
+              <div class="key_group" id="escape_textfield">
+                <div class="keys">
+                  <p data-key-code="KeyE" data-key="e" class="key">E</p>
+                  <p data-key-code="Escape" data-key="Escape" class="key">Esc</p>
+                </div>
+                <p>Edit text</p>
+              </div>
+              <div class="key_group" id="show_hide_keys">
+                <div class="keys">
+                  <p data-key-code="KeyH" data-key="h" class="key">H</p>
+                </div>
+                <p>Hide</p>
+              </div>
+              <div class="key_group" id="change_weight">
+                <div class="keys">
+                  <p data-key-code="KeyB" data-key="b" class="key">B</p>
+                  <p data-key-code="KeyL" data-key="l" class="key">L</p>
+                </div>
+                <p>Font weight</p>
+              </div>
+              <div class="key_group" id="change_weight">
+                <div class="keys">
+                  <p data-key-code="KeyM" data-key="m" class="key">M</p>
+                </div>
+                <p>Light/dark mode</p>
+              </div>
+            </div>
+          </div>
+        </header>
+        <div id="main_scale">
+          <main>
+            <div id="section_container">
+              <section id="section_1">
+                <div class="content_container">
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <h1 tabindex="0" data-edit="true">Commit Mono. <br />Neutral programming typeface.</h1>
+                  <br />
+                  <br />
+                  <p id="navigate_description" tabindex="0" data-edit="true">Use keyboard to discover the font:</p>
+                  <ul id="tutorial" tabindex="0" data-edit="true">
+                    <li>
+                      <span class="span_key key_code_Tab">Tab</span> and
+                      <span class="span_key key_code_ShiftTab">⇧Tab</span> to navigate up & down.
+                    </li>
+                    <li>
+                      <span class="span_key key_code_ArrowLeft">←</span> and
+                      <span class="span_key key_code_ArrowRight">→</span> to navigate left & right.
+                    </li>
+                    <li>
+                      <span class="span_key key_code_KeyW">W</span>
+                      <span class="span_key key_code_KeyA">A</span>
+                      <span class="span_key key_code_KeyS">S</span>
+                      <span class="span_key key_code_KeyD">D</span> to scroll and
+                      <span class="span_key key_code_Minus">+</span>
+                      <span class="span_key key_code_Slash">-</span> to zoom the page.
+                    </li>
+                    <li><span class="span_key key_code_KeyR">R</span> to reset scroll and zoom.</li>
+                    <li>
+                      <span class="span_key key_code_KeyE">E</span> to edit text and
+                      <span class="span_key key_code_Escape">Esc</span> to escape editing mode.
+                    </li>
+                    <li>
+                      <span class="span_key key_code_KeyB">B</span> for bolder font weight and
+                      <span class="span_key key_code_KeyL">L</span> for lighter.
+                    </li>
+                    <li>
+                      <span class="span_key key_code_KeyM">M</span> to change to dark/light mode and
+                      <span class="span_key key_code_KeyH">H</span> to hide the keys at the bottom.
+                    </li>
+                    <li>
+                      <span class="span_key key_code_Digit1">1</span>
+                      <span class="span_key key_code_Digit2">2</span> ...<span class="span_key key_code_Digit9">9</span>
+                      to go respective sections.
+                    </li>
+                  </ul>
+                  <p id="mobile" tabindex="0" data-edit="true">Use a keyboard to unlock full functionality.</p>
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <div id="safari" tabindex="0" data-edit="true">
+                    <p>Using Safari?</p>
+                    <p id="safari_explanation">
+                      Tabbing is disabled by default in Safari. <br />
+                      Solve by either:
+                    </p>
+                    <ul>
+                      <li>Using Option+Tab instead of Tab</li>
+                      <li>
+                        Safari → Settings → Advanced → Check the option: "Press Tab to highlight each item on a web
+                        page"
+                      </li>
+                    </ul>
+                    <a href="#">You know it's working if can focus here.</a>
+                    <p id="safari_not_working" tabindex="0">It's not working.</p>
+                  </div>
+                </div>
+              </section>
+              <section id="section_2">
+                <div class="top_container"></div>
+                <div class="content_container">
+                  <form id="table_form" onchange="updateTable(event, this)">
+                    <table></table>
+                  </form>
+                  <p tabindex="0" data-edit="true">
+                    Commit Mono 450 – ASCII character table. <br />
+                    Since most code is written using ASCII characters these characters are the backbone of every code
+                    font. They have been sculpted with particularly great precision and attention to detail.
+                  </p>
+                </div>
+              </section>
+              <section id="section_3">
+                <div class="top_container"></div>
+                <br />
+                <br />
+                <div class="content_container">
+                  <figure tabindex="0" data-edit="true">
+                    <blockquote cite="https://jaspermorrison.com/publications/essays/super-normal">
+                      <p>
+                        There are better ways to design than putting a big effort into making something look special.
+                        Special is generally less useful than normal, and less rewarding in the long term. Special
+                        things demand attention for the wrong reasons, interrupting potentially good atmosphere with
+                        their awkward presence.
+                      </p>
+                    </blockquote>
+                    <p><br /></p>
+                    <figcaption>
+                      <p>
+                        — Jasper Morrison,
+                        <cite>Super Normal Manifesto</cite>
+                      </p>
+                    </figcaption>
+                  </figure>
+                  <br />
+                  <br />
+                  <br />
+                  <form id="familiar_form" onchange="updateFamiliar(event, this)">
+                    <fieldset>
+                      <div>
+                        <input
+                          type="radio"
+                          id="franklin_gothic_input"
+                          name="select_year"
+                          value="franklin_gothic"
+                          checked
+                        />
+                        <label for="franklin_gothic_input">1896</label>
+                      </div>
+                      <div>
+                        <input type="radio" id="letter_gothic_input" name="select_year" value="letter_gothic" />
+                        <label for="letter_gothic_input">1956</label>
+                      </div>
+                      <div>
+                        <input type="radio" id="fira_mono_input_input" name="select_year" value="fira_mono" />
+                        <label for="fira_mono_input">2013</label>
+                      </div>
+                      <div>
+                        <input type="radio" id="untitled_sans_input_input" name="select_year" value="untitled_sans" />
+                        <label for="untitled_sans_input">2017</label>
+                      </div>
+                      <div>
+                        <input
+                          type="radio"
+                          id="commit_mono_example_input"
+                          name="select_year"
+                          value="commit_mono_example"
+                        />
+                        <label for="commit_mono_example_input">2023</label>
+                      </div>
+                    </fieldset>
+                  </form>
+                  <br />
+                  <br />
+                  <div id="familiar_container"></div>
+                </div>
+              </section>
+              <section id="section_4">
+                <div class="top_container"></div>
+                <div class="content_container">
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <form id="intelligent_form" onchange="updateIntelligent(event, this)">
+                    <fieldset>
+                      <div>
+                        <input type="radio" id="input_before" name="select_state" value="before" checked />
+                        <label for="input_before">Smart kerning OFF</label>
+                      </div>
+                      <div>
+                        <input type="radio" id="input_after" name="select_state" value="after" />
+                        <label for="input_after">Smart kerning ON</label>
+                      </div>
+                      <div>
+                        <input type="radio" id="input_original" name="select_state" value="original" />
+                        <label for="input_original">How it works OFF</label>
+                      </div>
+                      <div>
+                        <input type="radio" id="input_smart_kerning" name="select_state" value="smart_kerning" />
+                        <label for="input_smart_kerning">How it works ON</label>
+                      </div>
+                    </fieldset>
+                  </form>
+                  <br />
+                  <div id="intelligent_container">
+                    <div style="display: block" id="before">
+                      <figure>
+                        <p>Commit Mono: Normal <br />programming typeface</p>
+                        <br />
+                        <br />
+                        <figcaption tabindex="0" data-edit="true">
+                          SMART KERNING OFF behaves exactly like your standard monospace font. Letters are centered in
+                          their respective boxes.
+                        </figcaption>
+                      </figure>
+                    </div>
+                    <div style="display: none" id="after">
+                      <figure>
+                        <p>Commit Mono: Normal <br />programming typeface</p>
+                        <br />
+                        <br />
+                        <figcaption tabindex="0" data-edit="true">
+                          SMART KERNING ON improves overall word spacing and makes sublexical units easier to tell
+                          apart, therefore improving reading speed and accuracy.
+                        </figcaption>
+                      </figure>
+                    </div>
+                    <div style="display: none" id="original">
+                      <figure>
+                        <div>
+                          <p>m</p>
+                          <p>o</p>
+                          <p>i</p>
+                        </div>
+                        <br />
+                        <br />
+                        <figcaption tabindex="0" data-edit="true">
+                          Smart kerning works by looking at single letter between two other letters. If the other
+                          letters are in different width classes, the middle letter will slide closer to the narrow
+                          letter.
+                        </figcaption>
+                      </figure>
+                    </div>
+                    <div style="display: none" id="smart_kerning">
+                      <figure>
+                        <div>
+                          <p>m</p>
+                          <p>o</p>
+                          <p>i</p>
+                        </div>
+                        <br />
+                        <br />
+                        <figcaption tabindex="0" data-edit="true">
+                          As you can see here, the 'o' is moved 40 units to the right, which evens out the spacing
+                          between itself, 'm' and 'i'. This same process is applied to all letters.
+                        </figcaption>
+                      </figure>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <section id="section_5">
+                <div class="top_container"></div>
+                <div class="content_container">
+                  <br />
+                  <p>
+                    Tip: Use <span class="span_key">B</span> and <span class="span_key">L</span> to view the font in
+                    different weights.
+                  </p>
+                  <br />
+                  <br />
+                  <br />
+                  <form id="code_form" onchange="updateCode(event, this)">
+                    <fieldset></fieldset>
+                  </form>
+                  <div id="canvas_container">
+                    <canvas id="canvas"></canvas>
+                  </div>
+                </div>
+              </section>
+              <section id="section_6">
+                <div class="top_container"></div>
+                <div class="content_container">
+                  <br />
+                  <br />
+                  <br />
+                  <div id="waterfall"></div>
+                  <br />
+                  <br />
+                  <div id="gtc">
+                    <br />
+                    <h2 tabindex="0" data-edit="true">Let's play 'Guess the Character'</h2>
+                    <p>Correctly spot 10 commonly confused characters</p>
+                    <br />
+                    <h2>Select difficulty</h2>
+                    <form id="gtc_form" onchange="updateGTC(event, this)">
+                      <fieldset></fieldset>
+                    </form>
+                    <div id="gtc_questions_container"></div>
+                    <br />
+                    <p id="score_tally" tabindex="-1" data-edit="true"></p>
+                  </div>
+                </div>
+              </section>
+              <section id="section_7">
+                <div class="top_container"></div>
+                <div class="content_container">
+                  <br />
+                  <button class="download_button" onclick="downloadFont(this)" data-type="staticCurrent" id="download">
+                    Download CommitMono-450 with current settings
+                  </button>
+                  <form id="fonts_form" onchange="updateFont(event, this)">
+                    <br />
+                    <legend><h2>Font</h2></legend>
+                    <fieldset></fieldset>
+                  </form>
+                  <form id="examples_form" onchange="updateExamples(event, this)">
+                    <br />
+                    <legend><h2>Language</h2></legend>
+                    <fieldset></fieldset>
+                  </form>
+                  <div id="examples_container">
+                    <br />
+                    <p tabindex="0" data-edit="true" id="code_example"></p>
+                  </div>
+                  <form id="weight_form" onchange="updateWeight(event, this)">
+                    <br />
+                    <legend><h2>Weight</h2></legend>
+                    <fieldset></fieldset>
+                  </form>
+                  <form id="examplesettings_form" onchange="updateExampleSettings(event, this)">
+                    <br />
+                    <h2>Features</h2>
+                    <div id="features_container"></div>
+                    <br />
+                    <h2>Alternates</h2>
+                    <div id="alternates_container"></div>
+                  </form>
+                </div>
+              </section>
+              <section id="section_8">
+                <div class="top_container"></div>
+                <div class="content_container">
+                  <br />
+                  <ol tabindex="0">
+                    <li><p>Dowload the font from the download section.</p></li>
+                    <li>
+                      <p>Install the font on your system</p>
+                      <ul>
+                        <li>
+                          <p>Windows: Right click the font in the folder and click "Install".</p>
+                        </li>
+                        <li>
+                          <p>Mac: Open fonts with Font Book from the folder and click "Install".</p>
+                        </li>
+                        <li>
+                          <p>
+                            Linux: Unpack fonts to ~/.local/share/fonts (or /usr/share/fonts to install fonts
+                            system-wide) then
+                            <span data-edit="true">fc-cache -f -v</span>
+                          </p>
+                        </li>
+                      </ul>
+                    </li>
+                    <li><p>Restart your editor/IDE.</p></li>
+                    <li>
+                      <p>
+                        Settings/Preferences → Editor → Font: <br />Pick CommitMono-450 from the list. If you've
+                        downloaded the weight 525, pick CommitMono-525.
+                      </p>
+                    </li>
+                  </ol>
+                  <br />
+                  <p tabindex="0">
+                    If you have enabled one or more features/ligatures in your download, these are available through the
+                    'calt' OpenType Feature. For a comprehensive guide on how to enable in your specific editor/IDE,
+                    refer to:
+                  </p>
+                  <a href="https://github.com/tonsky/FiraCode/wiki#enabling-ligatures" target="_blank"
+                    >Fira Code wiki</a
+                  >
+                  <br />
+                  <br />
+                  <br />
+                  <h2>FAQ</h2>
+                  <p class="accordion_header" tabindex="0">
+                    I have downloaded a new verison, but the old version is still displayed.
+                  </p>
+                  <ol class="accordion_point">
+                    <li>Uninstall the current version you have installed.</li>
+                    <li>Install the new version.</li>
+                    <li>Restart you IDE. The new version should show up.</li>
+                  </ol>
+                  <p class="accordion_header" tabindex="0">May I install and use Commit Mono in any editor?</p>
+                  <p class="accordion_point">Yes.</p>
+                  <p class="accordion_header" tabindex="0">May I use Commit Mono in print design?</p>
+                  <p class="accordion_point">Yes.</p>
+                  <p class="accordion_header" tabindex="0">May I use Commit Mono on a website?</p>
+                  <p class="accordion_point">Yes.</p>
+                  <p class="accordion_header" tabindex="0">May I use Commit Mono in an app?</p>
+                  <p class="accordion_point">Yes.</p>
+                  <p class="accordion_header" tabindex="0">May I use Commit Mono to design my own font?</p>
+                  <p class="accordion_point">Yes, but you need to indicate that it is based on Commit Mono.</p>
+                </div>
+              </section>
+              <section id="section_9">
+                <div class="top_container"></div>
+                <div class="content_container">
+                  <br />
+                  <h2>Thank you</h2>
+                  <ul>
+                    <li tabindex="0">Hakim Mazouz for motivation to pursue the project.</li>
+                    <li tabindex="0">Mads Brodt and Philip Johansen for beta testing and interview.</li>
+                    <li tabindex="0">Beta testers for great feedback and testing.</li>
+                    <li tabindex="0">My teachers at DMJX for support and learning.</li>
+                    <li tabindex="0">Everyone who answered my survey.</li>
+                  </ul>
+                  <br />
+                  <h2>Inspiration</h2>
+                  <ul>
+                    <li>
+                      <a href="https://klim.co.nz/collections/untitled/" target="_blank">Untitled Collection</a>
+                      by Klim Type Foundry for so much inspiration.
+                    </li>
+                    <li>
+                      <a href="https://sampleprograms.io/" target="_blank">sampleprograms.io</a>
+                      for code examples.
+                    </li>
+                    <li>
+                      <a href="https://opentype.js.org/" target="_blank">opentype.js</a>
+                      for generating fonts on the web.
+                    </li>
+                    <li>
+                      <a href="https://opentypecookbook.com/" target="_blank">OpenType Cookbook</a>
+                      for all things OpenType Features.
+                    </li>
+                    <li>
+                      <a href="https://github.com/tonsky/FiraCode/" target="_blank">Fira Code</a>
+                      and
+                      <a href="https://www.jetbrains.com/lp/mono/" target="_blank">JetBrains Mono</a>
+                      for being a huge inspiration and go-to for best practices.
+                    </li>
+                    <li>
+                      Articles like
+                      <a href="https://realpython.com/coding-font/" target="_blank">this one from Real Python</a>
+                      for opinions on code fonts.
+                    </li>
+                  </ul>
+                  <br />
+                  <h2>Programs used</h2>
+                  <ul>
+                    <li tabindex="0">FontLab 8 for font production.</li>
+                    <li tabindex="0">Figma for prototyping.</li>
+                    <li tabindex="0">Visual Studio Code for development environment.</li>
+                  </ul>
+                </div>
+              </section>
+            </div>
+          </main>
+        </div>
+      </div>
+      <div tabindex="0" id="block_tab_end"></div>
+    </div>
+  </body>
 </html>

@@ -1,122 +1,122 @@
 #original figure > div,
 #smart_kerning figure > div {
-	display: flex;
+  display: flex;
 }
 
 #original p,
 #smart_kerning p {
-	font-size: 24rem;
-	line-height: 1;
-	position: relative;
-	border-right: 0.0625rem solid var(--text);
-	border-left: 0.0625rem solid var(--text);
-	margin-left: -0.0625rem;
+  font-size: 24rem;
+  line-height: 1;
+  position: relative;
+  border-right: 0.0625rem solid var(--text);
+  border-left: 0.0625rem solid var(--text);
+  margin-left: -0.0625rem;
 }
 
 #original p::after,
 #smart_kerning p::after {
-	font-size: 0.75rem;
-	text-align: center;
-	display: block;
-	width: 100%;
+  font-size: 0.75rem;
+  text-align: center;
+  display: block;
+  width: 100%;
 }
 
 #original p:nth-child(1)::after,
 #smart_kerning p:nth-child(1)::after {
-	content: "Wide letter";
+  content: "Wide letter";
 }
 
 #original p:nth-child(2)::after {
-	content: "Smart kerning OFF";
+  content: "Smart kerning OFF";
 }
 
 #smart_kerning p:nth-child(2)::after {
-	content: "Smart kerning ON";
+  content: "Smart kerning ON";
 }
 
 #original p:nth-child(3)::after,
 #smart_kerning p:nth-child(3)::after {
-	content: "Narrow letter";
+  content: "Narrow letter";
 }
 
 #smart_kerning p:nth-child(2)::before {
-	content: "o";
-	position: absolute;
-	transform: translateX(calc(24rem / 1000 * 40));
-	color: var(--middle);
-	z-index: -1;
+  content: "o";
+  position: absolute;
+  transform: translateX(calc(24rem / 1000 * 40));
+  color: var(--middle);
+  z-index: -1;
 }
 
 #before p,
 #after p {
-	font-size: 8rem;
-	line-height: 1;
-	max-width: none;
-	white-space: nowrap;
+  font-size: 8rem;
+  line-height: 1;
+  max-width: none;
+  white-space: nowrap;
 }
 
 #before p {
-	font-feature-settings: "calt" 0;
+  font-feature-settings: "calt" 0;
 }
 
 #intelligent_form fieldset {
-	border: none;
-	display: flex;
-	gap: 2rem;
-	font-size: 0.75rem;
-	line-height: 1rem;
-	background-color: var(--bg);
-	width: max-content;
+  border: none;
+  display: flex;
+  gap: 2rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  background-color: var(--bg);
+  width: max-content;
 }
 
 #intelligent_form > div {
-	position: relative;
+  position: relative;
 }
 
 #intelligent_form input {
-	-webkit-appearance: none;
-	appearance: none;
-	background-color: var(--text);
-	margin: 0;
-	padding: 0;
-	border: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: var(--text);
+  margin: 0;
+  padding: 0;
+  border: none;
 
-	color: var(--text);
-	width: 0;
-	height: 0;
-	position: relative;
-	opacity: 1;
-	display: block;
+  color: var(--text);
+  width: 0;
+  height: 0;
+  position: relative;
+  opacity: 1;
+  display: block;
 }
 
 #intelligent_form input + label {
-	position: relative;
-	z-index: 1;
+  position: relative;
+  z-index: 1;
 }
 
 #intelligent_form input + label::before {
-	z-index: -1;
-	content: "";
-	position: absolute;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	background-color: var(--bg);
+  z-index: -1;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: var(--bg);
 }
 
 #intelligent_form input:focus:checked + label::before {
-	background-color: var(--text);
+  background-color: var(--text);
 }
 
 #intelligent_form input:focus:checked + label {
-	color: var(--bg);
+  color: var(--bg);
 }
 
 #intelligent_form input:checked + label::before {
-	background: repeating-conic-gradient(var(--text) 0% 25%, transparent 0% 50%, transparent 0% 100%) 50% / 2px 2px;
+  background: repeating-conic-gradient(var(--text) 0% 25%, transparent 0% 50%, transparent 0% 100%) 50% / 2px 2px;
 }
 
 #intelligent_form input:checked + label {
-	color: var(--text);
+  color: var(--text);
 }

@@ -6,193 +6,193 @@
 } */
 
 button {
-	vertical-align: top;
-	border: none;
-	background: transparent;
-	font-family: inherit;
-	font-size: 0.75rem;
-	font-variation-settings: inherit;
-	line-height: 1rem;
-	width: max-content;
-	white-space: nowrap;
-	text-align: left;
-	position: relative;
+  vertical-align: top;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-variation-settings: inherit;
+  line-height: 1rem;
+  width: max-content;
+  white-space: nowrap;
+  text-align: left;
+  position: relative;
 }
 
 button:active {
-	background: repeating-conic-gradient(transparent 0% 25%, var(--text) 0% 50%, var(--text) 0% 100%) 50% / 2px 2px;
+  background: repeating-conic-gradient(transparent 0% 25%, var(--text) 0% 50%, var(--text) 0% 100%) 50% / 2px 2px;
 }
 
 #app_root.no_focus {
-	opacity: 0.5;
+  opacity: 0.5;
 }
 
 :focus,
 input:focus + label {
-	animation: flicker 60ms 2;
+  animation: flicker 60ms 2;
 }
 
 [contenteditable="true"]:focus {
-	animation: flicker 200ms 2;
+  animation: flicker 200ms 2;
 }
 
 @keyframes flicker {
-	0%,
-	49% {
-		opacity: 0;
-	}
-	50%,
-	100% {
-		opacity: 1;
-	}
+  0%,
+  49% {
+    opacity: 0;
+  }
+  50%,
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes flicker_reverse {
-	0%,
-	49% {
-		opacity: 1;
-	}
-	50%,
-	100% {
-		opacity: 0;
-	}
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
 }
 
 .top_container p {
-	white-space: pre-wrap;
+  white-space: pre-wrap;
 }
 
 .line-through {
-	text-decoration: line-through;
+  text-decoration: line-through;
 }
 
 h2 {
-	font-size: 0.75rem;
-	line-height: 1rem;
-	font-weight: normal;
-	width: fit-content;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: normal;
+  width: fit-content;
 }
 
 ul {
-	list-style-type: none;
-	width: max-content;
+  list-style-type: none;
+  width: max-content;
 }
 
 ol li::before {
-	display: none;
+  display: none;
 }
 
 ul li::before {
-	content: "• ";
-	position: absolute;
-	margin-left: -2ch;
+  content: "• ";
+  position: absolute;
+  margin-left: -2ch;
 }
 
 ul li:focus::before {
-	background-color: transparent;
-	color: var(--text);
+  background-color: transparent;
+  color: var(--text);
 }
 
 a,
 a:visited {
-	color: var(--text);
+  color: var(--text);
 }
 
 a:focus {
-	text-decoration: none;
-	background-color: var(--text);
-	color: var(--bg);
-	text-decoration: none;
+  text-decoration: none;
+  background-color: var(--text);
+  color: var(--bg);
+  text-decoration: none;
 }
 
 #safari:focus p:first-of-type {
-	background-color: var(--text);
-	color: var(--bg);
+  background-color: var(--text);
+  color: var(--bg);
 }
 
 #safari {
-	background-color: var(--bg);
-	color: var(--text);
-	width: max-content;
+  background-color: var(--bg);
+  color: var(--text);
+  width: max-content;
 }
 
 #safari:focus p,
 #safari:focus ul {
-	opacity: 1;
+  opacity: 1;
 }
 
 #safari:focus a,
 #safari a:focus {
-	opacity: 1;
+  opacity: 1;
 }
 
 #safari:has(*:focus) * {
-	opacity: 1;
+  opacity: 1;
 }
 
 #safari #safari_not_working:focus {
-	background-color: var(--text);
-	color: var(--bg);
-	opacity: 1;
+  background-color: var(--text);
+  color: var(--bg);
+  opacity: 1;
 }
 
 #safari #safari_not_working {
-	opacity: 0;
+  opacity: 0;
 }
 
 #safari a:focus + #safari_not_working {
-	visibility: hidden;
+  visibility: hidden;
 }
 
 #nav_form input:checked + label::before {
-	background: repeating-conic-gradient(var(--text) 0% 25%, transparent 0% 50%, transparent 0% 100%) 50% / 2px 2px;
+  background: repeating-conic-gradient(var(--text) 0% 25%, transparent 0% 50%, transparent 0% 100%) 50% / 2px 2px;
 }
 
 #nav_form input:checked + label {
-	color: var(--text);
+  color: var(--text);
 }
 
 .span_key.pressed_key {
-	position: relative;
-	background: repeating-conic-gradient(var(--text) 0% 25%, transparent 0% 50%, transparent 0% 100%) 50% / 2px 2px;
+  position: relative;
+  background: repeating-conic-gradient(var(--text) 0% 25%, transparent 0% 50%, transparent 0% 100%) 50% / 2px 2px;
 }
 
 ul:focus .span_key.pressed_key {
-	background: repeating-conic-gradient(var(--bg) 0% 25%, transparent 0% 50%, transparent 0% 100%) 50% / 2px 2px;
+  background: repeating-conic-gradient(var(--bg) 0% 25%, transparent 0% 50%, transparent 0% 100%) 50% / 2px 2px;
 }
 
 .span_key.pressed_key::after {
-	content: " ✓";
-	position: absolute;
-	right: -1ch;
-	top: -0.5rem;
+  content: " ✓";
+  position: absolute;
+  right: -1ch;
+  top: -0.5rem;
 }
 
 #page_animation {
-	width: 100vw;
-	height: 100vh;
-	height: 100dvh;
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: 99;
-	background-color: var(--bg);
-	pointer-events: none;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  background-color: var(--bg);
+  pointer-events: none;
 }
 
 #page_animation.page_animation {
-	animation: 220ms steps(5, jump-start) forwards page_animation;
+  animation: 220ms steps(5, jump-start) forwards page_animation;
 }
 
 @keyframes page_animation {
-	0% {
-		transform: translateY(0vh);
-	}
-	99.9% {
-		visibility: visible;
-	}
-	100% {
-		visibility: hidden;
-		transform: translateY(100vh);
-	}
+  0% {
+    transform: translateY(0vh);
+  }
+  99.9% {
+    visibility: visible;
+  }
+  100% {
+    visibility: hidden;
+    transform: translateY(100vh);
+  }
 }

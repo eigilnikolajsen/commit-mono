@@ -1,64 +1,64 @@
 ol {
-	font-size: 0.75rem;
-	margin-left: 0;
-	width: max-content;
+  font-size: 0.75rem;
+  margin-left: 0;
+  width: max-content;
 }
 
 ol li {
-	margin-left: 3ch;
-	max-width: calc(var(--max-width) - 3ch);
+  margin-left: 3ch;
+  max-width: calc(var(--max-width) - 3ch);
 }
 
 ol li p {
-	max-width: calc(var(--max-width) - 6ch);
+  max-width: calc(var(--max-width) - 6ch);
 }
 
 ol:focus li p {
-	color: var(--bg);
+  color: var(--bg);
 }
 
 ol li ul li p {
-	position: relative;
+  position: relative;
 }
 
 ol li ul li p::before {
-	content: "•";
-	position: absolute;
-	left: -2ch;
+  content: "•";
+  position: absolute;
+  left: -2ch;
 }
 
 .accordion_header {
-	margin-left: 2ch;
-	position: relative;
-	max-width: calc(var(--max-width) - 2ch);
+  margin-left: 2ch;
+  position: relative;
+  max-width: calc(var(--max-width) - 2ch);
 }
 
 .accordion_header::before {
-	content: "+";
-	position: absolute;
-	left: -2ch;
+  content: "+";
+  position: absolute;
+  left: -2ch;
 }
 
 .accordion_point {
-	margin-left: 2ch;
-	margin-bottom: 1rem;
-	max-width: calc(var(--max-width) - 2ch);
+  margin-left: 2ch;
+  margin-bottom: 1rem;
+  max-width: calc(var(--max-width) - 2ch);
 }
 
 ol.accordion_point {
-	margin-top: 0;
-	margin-left: 3ch;
+  margin-top: 0;
+  margin-left: 3ch;
 }
 
 .accordion_header + .accordion_point {
-	display: none;
+  display: none;
 }
 
 .accordion_header:focus:has(+ .accordion_point)::before {
-	content: "-";
-	color: var(--text);
+  content: "-";
+  color: var(--text);
 }
 
 .accordion_header:focus + .accordion_point {
-	display: block;
+  display: block;
 }

@@ -1,88 +1,88 @@
 #keyboard_container {
-	font-size: 0.75rem;
-	display: flex;
-	width: max-content;
-	gap: 4ch;
-	align-items: end;
+  font-size: 0.75rem;
+  display: flex;
+  width: max-content;
+  gap: 4ch;
+  align-items: end;
 }
 
 .key_group {
-	display: flex;
-	flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .keys {
-	font-size: 0.75rem;
-	display: flex;
-	gap: 0.375ch;
-	margin-bottom: 0.125rem;
+  font-size: 0.75rem;
+  display: flex;
+  gap: 0.375ch;
+  margin-bottom: 0.125rem;
 }
 
 .key {
-	font-size: 0.75rem;
-	height: 1.2rem;
-	border: 0.0625rem solid var(--text);
-	border-bottom: 0.125rem solid var(--text);
-	display: grid;
-	place-content: center;
-	padding: 0 0.25rem;
-	user-select: none;
+  font-size: 0.75rem;
+  height: 1.2rem;
+  border: 0.0625rem solid var(--text);
+  border-bottom: 0.125rem solid var(--text);
+  display: grid;
+  place-content: center;
+  padding: 0 0.25rem;
+  user-select: none;
 }
 
 .key:hover {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 .key[data-noclick="true"]:hover {
-	cursor: not-allowed;
+  cursor: not-allowed;
 }
 
 .key.active_key,
 .key:active {
-	background: var(--text);
-	color: var(--bg);
-	height: 1.1rem;
-	margin-top: 0.1rem;
+  background: var(--text);
+  color: var(--bg);
+  height: 1.1rem;
+  margin-top: 0.1rem;
 }
 
 #select_element .key:nth-child(1) {
-	width: 5rem;
+  width: 5rem;
 }
 
 #escape_textfield .key:nth-child(2) {
-	letter-spacing: -0.1rem;
-	text-indent: -0.1rem;
-	padding: 0.25rem;
+  letter-spacing: -0.1rem;
+  text-indent: -0.1rem;
+  padding: 0.25rem;
 }
 
 #safari p,
 #safari ul {
-	background-color: var(--bg);
-	color: var(--text);
-	opacity: 0;
+  background-color: var(--bg);
+  color: var(--text);
+  opacity: 0;
 }
 
 #safari a {
-	opacity: 0;
+  opacity: 0;
 }
 
 #safari p:first-of-type {
-	opacity: 1;
+  opacity: 1;
 }
 
 #tutorial li {
-	margin-top: 0.3rem;
+  margin-top: 0.3rem;
 }
 
 .span_key {
-	display: inline;
-	border: 0.0625rem solid var(--text);
-	border-bottom: 0.125rem solid var(--text);
-	padding: 0 calc(0.5ch - 0.0625rem);
-	margin: 0;
+  display: inline;
+  border: 0.0625rem solid var(--text);
+  border-bottom: 0.125rem solid var(--text);
+  padding: 0 calc(0.5ch - 0.0625rem);
+  margin: 0;
 }
 
 ul:focus .span_key {
-	border: 0.0625rem solid var(--bg);
-	border-bottom: 0.125rem solid var(--bg);
+  border: 0.0625rem solid var(--bg);
+  border-bottom: 0.125rem solid var(--bg);
 }

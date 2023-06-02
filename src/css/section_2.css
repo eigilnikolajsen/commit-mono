@@ -1,74 +1,74 @@
 table {
-	margin: 4rem 0 2rem 0;
-	border-collapse: collapse;
+  margin: 4rem 0 2rem 0;
+  border-collapse: collapse;
 }
 
 th > div > p,
 td > div > p {
-	/* width: 6rem; */
-	font-size: 0.5rem;
-	font-weight: normal;
-	text-align: center;
+  /* width: 6rem; */
+  font-size: 0.5rem;
+  font-weight: normal;
+  text-align: center;
 }
 
 th > div,
 td > div {
-	width: 6rem;
-	aspect-ratio: 1 / 1;
-	display: grid;
-	justify-content: center;
+  width: 6rem;
+  aspect-ratio: 1 / 1;
+  display: grid;
+  justify-content: center;
 }
 
 tr:first-of-type th > div {
-	width: 6rem;
-	aspect-ratio: 3 / 1;
+  width: 6rem;
+  aspect-ratio: 3 / 1;
 }
 
 td > div > input,
 td > div > label,
 td > div > p {
-	grid-row: 1;
-	grid-column: 1;
-	display: inline-block;
-	margin: auto;
-	white-space: pre;
-	text-align: center;
-	line-height: 1.1;
+  grid-row: 1;
+  grid-column: 1;
+  display: inline-block;
+  margin: auto;
+  white-space: pre;
+  text-align: center;
+  line-height: 1.1;
 }
 
 tr th:first-of-type > div {
-	font-size: 0.5rem;
-	width: 2rem;
-	justify-content: start;
+  font-size: 0.5rem;
+  width: 2rem;
+  justify-content: start;
 }
 
 tr th:first-of-type > div > p {
-	font-size: 0.5rem;
-	text-align: start;
+  font-size: 0.5rem;
+  text-align: start;
 }
 
 td > div > label {
-	font-size: 4rem;
+  font-size: 4rem;
 }
 
 #section_2 fieldset {
-	border: none;
-	display: block;
+  border: none;
+  display: block;
 }
 
 #section_2 input {
-	width: 0;
-	height: 0;
-	opacity: 0;
+  width: 0;
+  height: 0;
+  opacity: 0;
 }
 
 #section_2 input:focus:checked + label {
-	background-color: var(--text);
-	color: var(--bg);
-	transform: scale(4);
-	z-index: 2;
+  background-color: var(--text);
+  color: var(--bg);
+  transform: scale(4);
+  z-index: 2;
 }
 
 #section_2 input:checked + label::before {
-	display: none;
+  display: none;
 }
