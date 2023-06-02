@@ -11,7 +11,9 @@ websiteData.sections.forEach((section) => {
          input.id = character.name
          input.classList.add("code_character")
          input.value = character.name
-         if (index == 0) input.setAttribute("checked", "true")
+         if (index == 0) {
+            input.setAttribute("checked", "true")
+         }
          const label = document.createElement("label")
          label.textContent = character.value
          label.setAttribute("for", character.name)

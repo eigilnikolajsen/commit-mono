@@ -49,7 +49,9 @@ websiteData.sections.forEach((section) => {
          input.id = `difficulty_${difficulty.name}`
          input.classList.add("gtc_difficulty")
          input.value = difficulty.name
-         if (index == 0) input.setAttribute("checked", "true")
+         if (index == 0) {
+            input.setAttribute("checked", "true")
+         }
          const label = document.createElement("label")
          label.textContent = difficulty.name
          label.setAttribute("for", `difficulty_${difficulty.name}`)

@@ -31,7 +31,6 @@ function createTable() {
             input.id = `char_${charCode}`
             input.name = `row_${i}`
             input.value = charCode
-            // input.tabIndex = 1
             if (j == 2) input.setAttribute("checked", "true")
             const label = document.createElement("label")
             label.textContent = i == 6 && j == 16 ? "" : String.fromCharCode(charCode)

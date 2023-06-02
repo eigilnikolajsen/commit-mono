@@ -41,6 +41,7 @@ function appendStyleSheets() {
       "section_7",
       "section_8",
       "section_9",
+      "section_10",
    ]
    const head = document.querySelector("head")
    stylesheetIndexes.forEach((stylesheet) => {

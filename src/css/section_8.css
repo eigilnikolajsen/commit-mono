@@ -47,7 +47,7 @@ ol li ul li p::before {
 
 ol.accordion_point {
    margin-top: 0;
-   margin-left: 3ch;
+   margin-left: 2ch;
 }
 
 .accordion_header + .accordion_point {

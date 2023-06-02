@@ -18,7 +18,9 @@ function createCodeSection() {
             input.id = font.id
             input.classList.add("example_font")
             input.value = font.name
-            if (index == 0) input.setAttribute("checked", "true")
+            if (index == 0) {
+               input.setAttribute("checked", "true")
+            }
             const label = document.createElement("label")
             label.textContent = font.name
             label.setAttribute("for", font.id)
@@ -35,7 +37,9 @@ function createCodeSection() {
             input.id = language.languageName
             input.classList.add("example_language")
             input.value = language.languageName
-            if (index == 0) input.setAttribute("checked", "true")
+            if (index == 0) {
+               input.setAttribute("checked", "true")
+            }
             const label = document.createElement("label")
             label.textContent = language.languageName
             label.setAttribute("for", language.languageName)
@@ -52,7 +56,9 @@ function createCodeSection() {
             input.id = `weight_${weight}`
             input.classList.add("example_weight")
             input.value = weight
-            if (index == 6) input.setAttribute("checked", "true")
+            if (index == 6) {
+               input.setAttribute("checked", "true")
+            }
             const label = document.createElement("label")
             label.textContent = weight
             label.setAttribute("for", `weight_${weight}`)
@@ -69,7 +75,7 @@ function createCodeSection() {
             p.textContent = feature.label
             p.id = `alt_${feature.name}`
             fieldset.append(p)
-            duo.forEach((d, index) => {
+            duo.forEach((_, index) => {
                const div = document.createElement("div")
                const input = document.createElement("input")
                input.type = "radio"

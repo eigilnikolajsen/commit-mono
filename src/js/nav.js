@@ -14,7 +14,9 @@ websiteData.sections.forEach((section, index) => {
    input.id = section.name
    input.classList.add("nav_section_input")
    input.value = `section_${index + 1}`
-   if (index == 0) input.setAttribute("checked", "true")
+   if (index == 0) {
+      input.setAttribute("checked", "true")
+   }
    const label = document.createElement("label")
    label.for = section.name
    label.textContent = `${index + 1 < 10 ? `0${index + 1}` : index + 1} ${capitalize(section.name)}`
@@ -45,7 +47,6 @@ function updateNav(event, form) {
          sectionContainer.style.display = "none"
       }
    })
-   // pushPage("KeyR")
 
    if (event) event.preventDefault()
 }
@@ -88,28 +89,22 @@ keys.forEach((key) => {
 
 let changeSettingTimeoutID
 function keyDown(e) {
-   console.log(e.code)
-
-   websiteData.tutorial.forEach((key) => {
-      if (e.code == "ArrowDown") {
-         simulateKeyPress("Tab")
-      }
-      if (e.code == key) {
-         const keyNode = document.querySelector(`.key_code_${key}`)
-         keyNode.classList.add("pressed_key")
-      }
-      if (key == "ShiftTab" && e.code == "Tab" && e.shiftKey) {
-         const keyNode = document.querySelector(".key_code_ShiftTab")
-         keyNode.classList.add("pressed_key")
-      }
-   })
-
    if (e.code == "KeyE" && document.activeElement.dataset.edit == "true" && !insideTextField) enterTextField()
 
    if (e.code == "Escape") exitTextField()
 
-   if (!insideTextField) {
-      // show keypress on frontpage
+   if (!insideTextField || e.code == "KeyE") {
+      websiteData.tutorial.forEach((key) => {
+         if (e.code == key) {
+            const keyNode = document.querySelector(`.key_code_${key}`)
+            keyNode.classList.add("pressed_key")
+         }
+         if (key == "ShiftTab" && e.code == "Tab" && e.shiftKey) {
+            const keyNode = document.querySelector(".key_code_ShiftTab")
+            keyNode.classList.add("pressed_key")
+         }
+      })
+
       const activeKey = !e.shiftKey
          ? document.querySelector(`.key[data-key-code="${e.code}"]`)
          : document.querySelector(`.key[data-key-code="Shift${e.code}"]`)
@@ -175,8 +170,8 @@ function keyUp(e) {
    }
 }
 
-window.addEventListener("keydown", keyDown)
-window.addEventListener("keyup", keyUp)
+document.addEventListener("keydown", keyDown)
+document.addEventListener("keyup", keyUp)
 
 const main = document.querySelector("main")
 const mainScale = document.querySelector("#main_scale")
@@ -224,11 +219,11 @@ function pushPage(keyCode) {
 
    // zoom in ("Minus" is the plus key, very confusing)
    else if (keyCode == "Minus") {
-      rem = +rem + 2
+      rem = (+rem * 0.75 + 1) / 0.75
       document.documentElement.style.fontSize = `${rem}px`
       updateWaterfall()
       document.querySelector("#canvas").style.transform = `scale(${rem / 16})`
-      changeSetting.textContent = `Base font size: ${rem}px`
+      changeSetting.textContent = `Base font size: ${rem * 0.75}px`
       changeSetting.style.visibility = "visible"
       clearTimeout(changeSettingTimeoutID)
       changeSettingTimeoutID = setTimeout(() => (changeSetting.style.visibility = "hidden"), 500)
@@ -236,11 +231,11 @@ function pushPage(keyCode) {
 
    // zoom out
    else if (keyCode == "Slash") {
-      rem = +rem - 2
+      rem = (+rem * 0.75 - 1) / 0.75
       document.documentElement.style.fontSize = `${rem}px`
       updateWaterfall()
       document.querySelector("#canvas").style.transform = `scale(${rem / 16})`
-      changeSetting.textContent = `Base font size: ${rem}px`
+      changeSetting.textContent = `Base font size: ${rem * 0.75}px`
       changeSetting.style.visibility = "visible"
       clearTimeout(changeSettingTimeoutID)
       changeSettingTimeoutID = setTimeout(() => (changeSetting.style.visibility = "hidden"), 500)
@@ -340,10 +335,7 @@ function onBlurIn(e) {
    e.target.removeEventListener("blur", onBlurIn)
 
    // if this timer runs out before a new element is focused, refocus same element
-   if (!isMobile)
-      focusTimeOutID = setTimeout(() => {
-         active.focus()
-      }, 100)
+   if (!isMobile) focusTimeOutID = setTimeout(() => active.focus(), 100)
 }
 
 function goToSection(keyCode) {
@@ -361,8 +353,3 @@ function goToSection(keyCode) {
 
 setInterval(checkDocumentFocus, 100)
 updateNav(null, navForm)
-
-function simulateKeyPress(key) {
-   const event = new KeyboardEvent("keydown", { key })
-   document.dispatchEvent(event)
-}
