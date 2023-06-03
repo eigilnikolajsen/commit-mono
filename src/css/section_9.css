@@ -1,0 +1,31 @@
+.documentation_example {
+   width: max-content;
+   font-variant-ligatures: none;
+   white-space: pre;
+}
+
+.active_feature {
+   background: repeating-conic-gradient(var(--text) 0% 25%, transparent 0% 50%, transparent 0% 100%) 50% / 2px 2px;
+}
+
+h2:focus .active_feature {
+   background: repeating-conic-gradient(var(--bg) 0% 25%, transparent 0% 50%, transparent 0% 100%) 50% / 2px 2px;
+}
+
+#features_docu h2 {
+   max-width: var(--max-width);
+}
+
+.documentation_alternate {
+   margin-right: 2rem;
+   display: inline-block;
+   vertical-align: baseline;
+}
+
+#charset {
+   width: var(--max-width);
+   font-variant-ligatures: none;
+   white-space: pre-wrap;
+   font-size: 3rem;
+   line-height: 4rem;
+}

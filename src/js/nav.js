@@ -114,6 +114,10 @@ function keyDown(e) {
          goToSection(e.code)
       }
 
+      if (e.code == "KeyO") {
+         changeFeatureDocumentation("switch")
+      }
+
       // push page
       if (
          e.code == "KeyW" ||
@@ -263,7 +267,9 @@ function pushPage(keyCode) {
 
 let active // saves what DOM element is currently active
 let focusTimeOutID // to be able to use clearTimeout()
-document.addEventListener("focusin", (e) => {
+document.addEventListener("focusin", onFocusIn)
+
+function onFocusIn(e) {
    // console.log("focusin", document.activeElement)
 
    // new focus: exit text field
@@ -286,8 +292,9 @@ document.addEventListener("focusin", (e) => {
       if (prevActive.className.includes("question_button")) {
          prevActive.parentElement.querySelector(".question_button").focus()
       } else {
-         const checkedMenuInput = document.querySelector("#nav_form input:checked")
-         checkedMenuInput.focus()
+         prevActive.focus()
+         // const checkedMenuInput = document.querySelector("#nav_form input:checked")
+         // checkedMenuInput.focus()
       }
    }
 
@@ -310,7 +317,7 @@ document.addEventListener("focusin", (e) => {
          pushPage("KeyW")
       }
    }
-})
+}
 
 let prevHasFocus = true
 function checkDocumentFocus() {

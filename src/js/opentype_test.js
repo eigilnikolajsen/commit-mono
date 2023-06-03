@@ -1,5 +1,5 @@
 console.log("opentype test")
-const versionOfCommitMono = "V109"
+const versionOfCommitMono = "V112"
 
 const updateLabel = (input) => {
    console.log(input)
