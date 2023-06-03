@@ -1,5 +1,6 @@
 const codeForm = document.querySelector("#code_form")
 const codeFieldset = document.querySelector("#code_form fieldset")
+const codeDescription = document.querySelector("#code_description")
 
 websiteData.sections.forEach((section) => {
    if (section.name == "code") {
@@ -19,6 +20,15 @@ websiteData.sections.forEach((section) => {
          label.setAttribute("for", character.name)
          div.append(input, label)
          codeFieldset.append(div)
+
+         const p = document.createElement("p")
+         p.tabIndex = 0
+         p.dataset.edit = "true"
+         p.classList.add("code_char")
+         p.dataset.char = character.name
+         p.textContent = character.description
+         p.style.display = "none"
+         codeDescription.append(p)
       })
    }
 })
@@ -39,6 +49,10 @@ function updateCode(event, form) {
             if (character.name == output) {
                displayCharacter = character.value
                displayName = character.name
+               const ps = document.querySelectorAll(".code_char")
+               ps.forEach((p) =>
+                  p.dataset.char == character.name ? (p.style.display = "block") : (p.style.display = "none")
+               )
             }
          })
       }

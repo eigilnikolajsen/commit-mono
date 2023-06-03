@@ -19,7 +19,7 @@
       <style>
          @font-face {
             font-family: "Commit Mono";
-            src: url("/src/fonts/CommitMonoV112-VF.woff2");
+            src: url("/src/fonts/CommitMonoV113-VF.woff2");
             font-style: normal;
             font-weight: 450;
             font-display: swap;
@@ -155,11 +155,11 @@
                            <p id="navigate_description" tabindex="0" data-edit="true">Use keyboard to discover</p>
                            <ul id="tutorial" tabindex="0" data-edit="true">
                               <li>
-                                 <span class="span_key key_code_Tab">Tab</span> &
+                                 <span class="span_key key_code_Tab">Tab</span>
                                  <span class="span_key key_code_ShiftTab">⇧Tab</span> to navigate up & down
                               </li>
                               <li>
-                                 <span class="span_key key_code_ArrowLeft">←</span> &
+                                 <span class="span_key key_code_ArrowLeft">←</span>
                                  <span class="span_key key_code_ArrowRight">→</span> to navigate left & right
                               </li>
                               <li>
@@ -172,21 +172,19 @@
                               </li>
                               <li><span class="span_key key_code_KeyR">R</span> to reset</li>
                               <li>
-                                 <span class="span_key key_code_KeyE">E</span> &
+                                 <span class="span_key key_code_KeyE">E</span>
                                  <span class="span_key key_code_Escape">Esc</span> to edit and stop edit text.
                               </li>
                               <li>
-                                 <span class="span_key key_code_KeyB">B</span> &
+                                 <span class="span_key key_code_KeyB">B</span>
                                  <span class="span_key key_code_KeyL">L</span> for bolder or lighter font.
                               </li>
-                              <li><span class="span_key key_code_KeyM">M</span> to dark/light mode and</li>
+                              <li><span class="span_key key_code_KeyM">M</span> toggle dark/light mode</li>
                               <li>
                                  <span class="span_key key_code_Digit1">1</span>
-                                 <span class="span_key key_code_Digit2">2</span> ...<span
-                                    class="span_key key_code_Digit9"
-                                    >9</span
-                                 >
-                                 to go to sections.
+                                 <span class="span_key key_code_Digit2">2</span> ...
+                                 <span class="span_key key_code_Digit9">9</span>
+                                 go to section.
                               </li>
                            </ul>
                            <p id="mobile" tabindex="0" data-edit="true">Use a keyboard to unlock full functionality.</p>
@@ -343,7 +341,7 @@
                            <div id="intelligent_container">
                               <div style="display: block" id="before">
                                  <figure>
-                                    <p>Commit Mono: Normal <br />programming typeface</p>
+                                    <p tabindex="0">Commit Mono: Normal <br />programming typeface</p>
                                     <br />
                                     <br />
                                     <figcaption tabindex="0" data-edit="true">
@@ -354,7 +352,7 @@
                               </div>
                               <div style="display: none" id="after">
                                  <figure>
-                                    <p>Commit Mono: Normal <br />programming typeface</p>
+                                    <p tabindex="0">Commit Mono: Normal <br />programming typeface</p>
                                     <br />
                                     <br />
                                     <figcaption tabindex="0" data-edit="true">
@@ -365,7 +363,7 @@
                               </div>
                               <div style="display: none" id="original">
                                  <figure>
-                                    <div>
+                                    <div tabindex="0">
                                        <p>m</p>
                                        <p>o</p>
                                        <p>i</p>
@@ -381,7 +379,7 @@
                               </div>
                               <div style="display: none" id="smart_kerning">
                                  <figure>
-                                    <div>
+                                    <div tabindex="0">
                                        <p>m</p>
                                        <p>o</p>
                                        <p>i</p>
@@ -411,6 +409,8 @@
                            <form id="code_form" onchange="updateCode(event, this)">
                               <fieldset></fieldset>
                            </form>
+                           <br />
+                           <div id="code_description"></div>
                            <div id="canvas_container">
                               <canvas id="canvas"></canvas>
                            </div>

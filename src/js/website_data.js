@@ -126,29 +126,116 @@ const websiteData = {
             "Commit Mono is designed and tested for code first. Characters frequently used in code have been given extra care to look distinct and neat.",
          content: {
             characters: [
-               { value: "0", name: "zero" },
-               { value: "1", name: "one" },
-               { value: "2", name: "two" },
-               { value: "3", name: "three" },
-               { value: "@", name: "at" },
-               { value: "$", name: "dollar" },
-               { value: "?", name: "question" },
-               { value: '"', name: "quotedbl" },
-               { value: "+", name: "plus" },
-               { value: "%", name: "percent" },
-               { value: "*", name: "asterisk" },
-               { value: "-", name: "hyphen" },
-               { value: "(", name: "parenleft" },
-               { value: "[", name: "bracketleft" },
-               { value: "{", name: "braceleft" },
-               { value: "/", name: "slash" },
-               { value: "|", name: "bar" },
-               { value: "~", name: "asciitilde" },
-               { value: "&", name: "ampersand" },
-               { value: ";", name: "semicolon" },
-               { value: "#", name: "numbersign" },
-               { value: "`", name: "grave" },
-               { value: "<", name: "less" },
+               {
+                  value: "0",
+                  name: "zero",
+                  description:
+                     "0 (zero): The slashed '0' is easy to tell apart from 'O' at small sizes. Change to a dotted zero in '07 Customize'.",
+               },
+               {
+                  value: "1",
+                  name: "one",
+                  description:
+                     "1 (one): The '1' is in Helvetica style because it's easy to tell apart from 'l' and 'I' – even at small sizes.",
+               },
+               {
+                  value: "6",
+                  name: "six",
+                  description:
+                     "6 (six): The '6' and '9' are more open than the typical closed terminal six. Again, this performs better in small sizes. Change to the closed version in '07 Customize'.",
+               },
+               {
+                  value: "@",
+                  name: "at",
+                  description:
+                     "@ (at): The complex curves of the '@' function poorly at small sizes, hence the simplification of the design. Change to a more traditional '@' in '07 Customize'.",
+               },
+               {
+                  value: "$",
+                  name: "dollar",
+                  description:
+                     "$ (dollar): The '$' is slashed all the way through to make it easily distinguishable from 'S'.",
+               },
+               {
+                  value: "?",
+                  name: "question",
+                  description: "? (question): The '?' and exclam symbols are simple and recognisable.",
+               },
+               {
+                  value: '"',
+                  name: "quotedbl",
+                  description: `" (double quote): The " and ' have been very carefully adjusted since they're used repeatedly in programming.`,
+               },
+               {
+                  value: "%",
+                  name: "percent",
+                  description:
+                     "% (percent): The '%' is a quite wide symbol, so it will always look squashed in monospace. It fills all available space to more normal.",
+               },
+               {
+                  value: "&",
+                  name: "ampersand",
+                  description:
+                     "& (ampersand): Unlike most coding fonts, the '&' in Commit Mono looks normal and boring.",
+               },
+               {
+                  value: "*",
+                  name: "asterisk",
+                  description:
+                     "* (asterisk): The '*' is centered like '+' and '='. This is more common in programming, but it can be changed in '07 Customize'.",
+               },
+               {
+                  value: "-",
+                  name: "hyphen",
+                  description:
+                     "- Hyphen: The '-' is short but not too short. This is as it often works like a minus so it has to fit next to +.",
+               },
+               {
+                  value: "(",
+                  name: "parenleft",
+                  description:
+                     "( (left parenthesis): The parentheses are crucial in programming fonts and much care has been given to make them distinguishable.",
+               },
+               {
+                  value: "[",
+                  name: "bracketleft",
+                  description: "[ (left bracket): The brackets are tall and wide to make them stand out.",
+               },
+               {
+                  value: "{",
+                  name: "braceleft",
+                  description:
+                     "{ (left brace): The braces are slightly bent but not overly. This results in a neutral aesthetic.",
+               },
+               {
+                  value: "~",
+                  name: "asciitilde",
+                  description:
+                     "~ (tilde): The '~' has a slightly exaggerated curve to make it easy to tell apart in small sizes.",
+               },
+               {
+                  value: ";",
+                  name: "semicolon",
+                  description:
+                     "; (semicolon): As seen in the semicolon, the period and the comma are very dissimilar so you always know what you're looking at",
+               },
+               {
+                  value: "#",
+                  name: "numbersign",
+                  description: "# (hash/numbersign): The '#' is slightly tilted but remains stable.",
+               },
+               {
+                  value: "`",
+                  name: "grave",
+                  description:
+                     "` (grave): The backtick or accent grave is overly tilted to distingush it more from the single quote '.",
+               },
+               {
+                  value: "<",
+                  name: "less",
+                  description:
+                     "< (less): Less and greater symbols are slightly more closed than some coding fonts, which ties it together better with the lowercase letters.",
+               },
             ],
          },
       },

@@ -56,7 +56,11 @@
 }
 
 #before p {
-   font-feature-settings: "calt" 0;
+   font-feature-settings: "ss05" 0;
+}
+
+#after p {
+   font-feature-settings: "ss05" 1;
 }
 
 #intelligent_form fieldset {

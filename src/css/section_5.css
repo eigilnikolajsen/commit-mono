@@ -69,3 +69,7 @@ form input:checked + label {
 #canvas {
    transform-origin: top left;
 }
+
+#code_description {
+   height: 4rem;
+}

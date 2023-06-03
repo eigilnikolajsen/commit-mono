@@ -36,12 +36,12 @@ function buildDocumentation() {
       h2.tabIndex = 0
       h2.dataset.edit = "true"
       const p = document.createElement("p")
-      p.textContent = `DEFAULT: [${feature.on ? "ON" : "OFF"}]`
+      p.textContent = `Default: ${feature.on ? "ON" : "OFF"}`
       const br1 = document.createElement("br")
       const br2 = document.createElement("br")
       const br3 = document.createElement("br")
       const br4 = document.createElement("br")
-      container.append(br1, br2, br3, h2, br4, p)
+      container.append(br1, br2, br3, h2, p)
       sizes.forEach((size) => {
          const exampleText = document.createElement("p")
          exampleText.textContent = feature.documentationExample

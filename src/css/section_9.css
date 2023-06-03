@@ -5,6 +5,7 @@
 }
 
 .active_feature {
+   cursor: pointer;
    background: repeating-conic-gradient(var(--text) 0% 25%, transparent 0% 50%, transparent 0% 100%) 50% / 2px 2px;
 }
 
@@ -20,6 +21,10 @@ h2:focus .active_feature {
    margin-right: 2rem;
    display: inline-block;
    vertical-align: baseline;
+}
+
+#features_docu > div {
+   width: max-content;
 }
 
 #charset {

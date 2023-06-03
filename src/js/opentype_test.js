@@ -1,40 +1,16 @@
 console.log("opentype test")
-const versionOfCommitMono = "V112"
-
-const updateLabel = (input) => {
-   console.log(input)
-   input.parentNode.querySelector("output").textContent = input.value
-}
+const versionOfCommitMono = "V113"
 
 const updateOptions = (event, form) => {
-   console.log(event)
-
    const data = new FormData(form)
    let output = ""
    for (const entry of data) {
       output = `${output}${entry[0]}=${entry[1]}\n`
    }
-   console.log(output)
    event.preventDefault()
 }
 
 let commitMonoFont
-
-// async function initFont() {
-// 	// opentype
-// 	// 	.load("/src/fonts/instances/CommitMonoV109-VF.ttf")
-// 	// 	.then(async (vf) => {
-// 	// 		console.log(vf)
-// 	// 		vf.download()
-// 	// 	})
-// 	// 	.catch((err) => console.log(err))
-
-// 	commitMonoFont = await opentype.load(`/src/fonts/instances/CommitMono${versionOfCommitMono}-450.otf`)
-
-// 	updateCode(null, codeForm)
-
-// 	console.log(commitMonoFont)
-// }
 
 async function updateCodeFont() {
    opentype

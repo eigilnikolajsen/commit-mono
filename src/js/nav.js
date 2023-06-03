@@ -347,7 +347,8 @@ function onBlurIn(e) {
 
 function goToSection(keyCode) {
    pageAnimation()
-   const section = +keyCode.split("Digit")[1]
+   let section = +keyCode.split("Digit")[1]
+   section = section == 0 ? 10 : section
    const sectionName = websiteData.sections[section - 1]?.name
    const attemptedSection = document.querySelector(`[value="section_${section}"]`)
    if (attemptedSection && sectionName) {
