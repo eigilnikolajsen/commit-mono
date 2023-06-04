@@ -4,6 +4,11 @@
    white-space: pre;
 }
 
+.span_off,
+.span_on {
+   cursor: pointer;
+}
+
 .active_feature {
    cursor: pointer;
    background: repeating-conic-gradient(var(--text) 0% 25%, transparent 0% 50%, transparent 0% 100%) 50% / 2px 2px;

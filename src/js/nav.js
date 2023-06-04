@@ -48,6 +48,13 @@ function updateNav(event, form) {
       }
    })
 
+   main.style.transform = `translate(0)`
+   navForm.style.transform = `translate(0)`
+   keySection.style.transform = `translate(0)`
+   websiteData.pushPage.coordinates.x = 0
+   websiteData.pushPage.coordinates.y = 0
+   websiteData.pushPage.scale = 1
+
    if (event) event.preventDefault()
 }
 
@@ -75,6 +82,11 @@ function exitTextField() {
    document.activeElement.setAttribute("contenteditable", "false")
    insideTextField = false
 }
+
+// document.addEventListener("scroll", (e) => {
+//    console.log(window.scrollY, e)
+//    window.scroll(0, Math.round(window.scrollY / 16) * 16)
+// })
 
 const keys = document.querySelectorAll(".key")
 keys.forEach((key) => {
@@ -123,13 +135,15 @@ function keyDown(e) {
 
       // push page
       if (
-         e.code == "KeyW" ||
-         e.code == "KeyA" ||
-         e.code == "KeyS" ||
-         e.code == "KeyD" ||
-         e.code == "KeyR" ||
-         e.code == "Minus" ||
-         e.code == "Slash"
+         (e.code == "KeyW" ||
+            e.code == "KeyA" ||
+            e.code == "KeyS" ||
+            e.code == "KeyD" ||
+            e.code == "KeyR" ||
+            e.code == "Minus" ||
+            e.code == "Slash") &&
+         !e.ctrlKey &&
+         !e.metaKey
       ) {
          pushPage(e.code)
       }
@@ -358,14 +372,6 @@ function goToSection(keyCode) {
       attemptedSection.focus()
       document.forms["nav_form"][sectionName].checked = true
       updateNav(null, navForm)
-      console.log(section, sectionName, attemptedSection)
-
-      main.style.transform = `translate(0)`
-      navForm.style.transform = `translate(0)`
-      keySection.style.transform = `translate(0)`
-      websiteData.pushPage.coordinates.x = 0
-      websiteData.pushPage.coordinates.y = 0
-      websiteData.pushPage.scale = 1
       document.querySelector("#canvas").style.transform = "scale(1)"
    }
 }
