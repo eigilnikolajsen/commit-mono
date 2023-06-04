@@ -8,12 +8,13 @@
 body {
    background-color: var(--bg);
    color: var(--text);
-   font-family: "CommitMonoFontFace", monospace;
+   font-family: "CommitMono", monospace;
    -webkit-font-smoothing: antialiased;
    -moz-osx-font-smoothing: grayscale;
    font-size: 0.75rem;
    line-height: 1rem;
    font-feature-settings: "ss03", "ss04", "ss05";
+   min-height: 100vh;
 }
 
 *,
@@ -201,9 +202,9 @@ ul li:focus::before {
 }
 
 #page_animation {
-   width: 300vw;
-   height: 300vh;
-   height: 300dvh;
+   width: 200vw;
+   height: 200vh;
+   height: 200dvh;
    position: fixed;
    top: 0;
    left: 0;
@@ -213,7 +214,7 @@ ul li:focus::before {
 }
 
 #page_animation.page_animation {
-   animation: 660ms steps(15, jump-start) forwards page_animation;
+   animation: 440ms steps(10, jump-start) forwards page_animation;
 }
 
 @keyframes page_animation {
@@ -225,7 +226,7 @@ ul li:focus::before {
    }
    100% {
       visibility: hidden;
-      transform: translateY(300vh);
+      transform: translateY(200vh);
    }
 }
 

@@ -16,7 +16,7 @@ function updateWaterfall() {
 
       const desc = document.createElement("p")
       desc.classList.add("waterfall_desc")
-      desc.textContent = `${size}rem\n${size * rem}px`
+      desc.textContent = `${size}rem\n${Math.round(size * rem * 100) / 100}px`
 
       const textsContainer = document.createElement("div")
       textsContainer.classList.add("waterfall_texts_container")
@@ -24,7 +24,7 @@ function updateWaterfall() {
          const div2 = document.createElement("div")
          const p = document.createElement("p")
          p.classList.add("waterfall_text")
-         p.style.fontSize = `${size * rem}px`
+         p.style.fontSize = `${Math.round(size * rem * 100) / 100}px`
          p.textContent = text
          div2.append(p)
          textsContainer.append(div2)

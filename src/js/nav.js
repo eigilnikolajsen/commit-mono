@@ -253,13 +253,12 @@ function pushPage(keyCode) {
       main.style.transform = `translate(0)`
       navForm.style.transform = `translate(0)`
       keySection.style.transform = `translate(0)`
-      mainScale.style.transform = `scale(1)`
       websiteData.pushPage.coordinates.x = 0
       websiteData.pushPage.coordinates.y = 0
       websiteData.pushPage.scale = 1
+      document.querySelector("#canvas").style.transform = "scale(1)"
       rem = 16
       document.documentElement.style.fontSize = "16px"
-      document.querySelector("#canvas").style.transform = "scale(1)"
       websiteData.weight = 450
       document.querySelector("body").style.fontVariationSettings = `"wght" 450`
       if (typeof updateCodeFont === "function") updateCodeFont()
@@ -360,5 +359,13 @@ function goToSection(keyCode) {
       document.forms["nav_form"][sectionName].checked = true
       updateNav(null, navForm)
       console.log(section, sectionName, attemptedSection)
+
+      main.style.transform = `translate(0)`
+      navForm.style.transform = `translate(0)`
+      keySection.style.transform = `translate(0)`
+      websiteData.pushPage.coordinates.x = 0
+      websiteData.pushPage.coordinates.y = 0
+      websiteData.pushPage.scale = 1
+      document.querySelector("#canvas").style.transform = "scale(1)"
    }
 }

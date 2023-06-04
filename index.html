@@ -8,7 +8,7 @@
 
       <!-- favicon -->
       <!-- <link rel="icon" href="/favicon.ico" sizes="any" /> -->
-      <link rel="icon" href="/favicon/icon.svg" type="image/svg+xml" id="dynamic-favicon" />
+      <link rel="icon" href="src/favicon/icon.svg" type="image/svg+xml" id="dynamic-favicon" />
       <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
       <link rel="manifest" href="/manifest.webmanifest" />
 
@@ -104,12 +104,6 @@
                         </div>
                         <p>Edit text</p>
                      </div>
-                     <div class="key_group" id="show_hide_keys">
-                        <div class="keys">
-                           <p data-key-code="KeyH" data-key="h" class="key">H</p>
-                        </div>
-                        <p>Hide</p>
-                     </div>
                      <div class="key_group" id="change_weight">
                         <div class="keys">
                            <p data-key-code="KeyB" data-key="b" class="key">B</p>
@@ -122,6 +116,12 @@
                            <p data-key-code="KeyM" data-key="m" class="key">M</p>
                         </div>
                         <p>Light/dark mode</p>
+                     </div>
+                     <div class="key_group" id="show_hide_keys">
+                        <div class="keys">
+                           <p data-key-code="KeyH" data-key="h" class="key">H</p>
+                        </div>
+                        <p>Hide</p>
                      </div>
                   </div>
                </div>
@@ -151,6 +151,11 @@
                                  <span class="span_key key_code_ArrowRight">→</span> navigate left & right
                               </li>
                               <li>
+                                 <span class="span_key key_code_Digit1">1</span>
+                                 <span class="span_key key_code_Digit2">2</span>
+                                 <span class="span_key key_code_Digit3">3</span> ... go to section.
+                              </li>
+                              <li>
                                  <span class="span_key key_code_KeyW">W</span>
                                  <span class="span_key key_code_KeyA">A</span>
                                  <span class="span_key key_code_KeyS">S</span>
@@ -160,7 +165,7 @@
                                  <span class="span_key key_code_Minus">+</span>
                                  <span class="span_key key_code_Slash">-</span> zoom
                               </li>
-                              <li><span class="span_key key_code_KeyR">R</span> to reset</li>
+                              <li><span class="span_key key_code_KeyR">R</span> reset</li>
                               <li>
                                  <span class="span_key key_code_KeyE">E</span>
                                  <span class="span_key key_code_Escape">Esc</span> edit text and cancel edit
@@ -170,15 +175,7 @@
                                  <span class="span_key key_code_KeyL">L</span> bolder or lighter font
                               </li>
                               <li><span class="span_key key_code_KeyM">M</span> dark/light mode</li>
-                              <li>
-                                 <span class="span_key key_code_Digit1">1</span>
-                                 <span class="span_key key_code_Digit2">2</span> ...
-                                 <span class="span_key key_code_Digit9">9</span>
-                                 <span class="span_key key_code_Digit9">0</span>
-                                 go to section.
-                              </li>
                            </ul>
-                           <p id="mobile" tabindex="0" data-edit="true">Use a keyboard to unlock full functionality.</p>
                            <br />
                            <br />
                            <br />
@@ -477,9 +474,26 @@
                         <div class="content_container">
                            <br />
                            <ol tabindex="0">
-                              <li><p>Dowload the font from the download section.</p></li>
+                              <li><p>Dowload the fonts from '07 Customize'. Your download is a .zip file.</p></li>
                               <li>
-                                 <p>Install the font on your system</p>
+                                 <p>Unzip the fonts. You'll see 4 files.</p>
+                                 <ul>
+                                    <li>
+                                       <p>CommitMono-Regular: Base version with settings and weight of your choice.</p>
+                                    </li>
+                                    <li>
+                                       <p>CommitMono-Italic: An italic version.</p>
+                                    </li>
+                                    <li>
+                                       <p>CommitMono-Italic: A bold version.</p>
+                                    </li>
+                                    <li>
+                                       <p>CommitMono-BoldItalic: A bold italic version.</p>
+                                    </li>
+                                 </ul>
+                              </li>
+                              <li>
+                                 <p>Install the font on your system.</p>
                                  <ul>
                                     <li>
                                        <p>Windows: Right click the font in the folder and click "Install".</p>
@@ -611,7 +625,7 @@
       </div>
       <script>
          let fontsLoaded = false
-         const commitMono = new FontFace("CommitMonoFontFace", "url(/src/fonts/CommitMonoV113-VF.woff2)", {
+         const commitMono = new FontFace("CommitMono", "url(/src/fonts/CommitMonoV113-VF.woff2)", {
             style: "normal",
             weight: "450",
          })

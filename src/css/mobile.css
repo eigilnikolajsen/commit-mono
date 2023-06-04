@@ -1,4 +1,4 @@
-@media (max-width: 50rem) {
+@media (pointer: coarse) and (max-width: 1000px) {
    body {
       overflow: visible;
    }
@@ -7,15 +7,9 @@
       position: relative;
    }
    header #keyboard_section {
-      bottom: auto;
-      top: 0;
       visibility: hidden;
    }
-   #mobile {
-      visibility: visible;
-   }
-   #safari,
-   #navigate_description {
+   #safari {
       visibility: hidden;
    }
    header nav {
