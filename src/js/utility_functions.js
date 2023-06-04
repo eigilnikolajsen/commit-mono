@@ -31,6 +31,7 @@ function wait(milliseconds) {
 }
 
 function appendStyleSheets() {
+   console.log("appendStyleSheets")
    const stylesheetIndexes = [
       "non_essential",
       "section_2",
@@ -51,4 +52,3 @@ function appendStyleSheets() {
       head.append(link)
    })
 }
-appendStyleSheets()

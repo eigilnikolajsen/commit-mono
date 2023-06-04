@@ -6,39 +6,39 @@ const clickFocus = document.querySelector("#click_focus")
 const navForm = document.querySelector("#nav_form")
 const changeSetting = document.querySelector("#change_setting p")
 
-websiteData.sections.forEach((section, index) => {
-   const div = document.createElement("div")
-   const input = document.createElement("input")
-   input.type = "radio"
-   input.name = "nav"
-   input.id = section.name
-   input.classList.add("nav_section_input")
-   input.value = `section_${index + 1}`
-   if (index == 0) {
-      input.setAttribute("checked", "true")
-   }
-   const label = document.createElement("label")
-   label.for = section.name
-   label.textContent = `${index + 1 < 10 ? `0${index + 1}` : index + 1} ${capitalize(section.name)}`
-   label.classList.add("nav_element")
-   label.dataset.sectionIndex = index + 1
-   label.setAttribute("for", section.name)
-   div.append(input, label)
-   navForm.append(div)
-   if (index == 0) {
-      setTimeout(() => {
-         input.focus()
-      }, 1)
-   }
-})
+function buildNav() {
+   console.log("buildNav")
+   websiteData.sections.forEach((section, index) => {
+      const div = document.createElement("div")
+      const input = document.createElement("input")
+      input.type = "radio"
+      input.name = "nav"
+      input.id = section.name
+      input.classList.add("nav_section_input")
+      input.value = `section_${index + 1}`
+      if (index == 0) {
+         input.setAttribute("checked", "true")
+      }
+      const label = document.createElement("label")
+      label.for = section.name
+      label.textContent = `${index + 1 < 10 ? `0${index + 1}` : index + 1} ${capitalize(section.name)}`
+      label.classList.add("nav_element")
+      label.dataset.sectionIndex = index + 1
+      label.setAttribute("for", section.name)
+      div.append(input, label)
+      navForm.append(div)
+   })
+}
 
 function updateNav(event, form) {
+   console.log("updateNav")
    const data = new FormData(form)
    let output = ""
    for (const entry of data) {
       output = `${entry[1]}`
    }
    pageAnimation()
+   // goToSection("Digit1")
    websiteData.sections.forEach((section, index) => {
       const sectionContainer = document.querySelector(`#section_${index + 1}`)
       if (sectionContainer.id == output) {
@@ -52,6 +52,7 @@ function updateNav(event, form) {
 }
 
 function pageAnimation() {
+   console.log("pageAnimation")
    const element = document.querySelector("#page_animation")
    element.classList.remove("page_animation")
    setTimeout(() => element.classList.add("page_animation"), 10)
@@ -60,6 +61,7 @@ function pageAnimation() {
 let currentSection = 1
 let insideTextField = false
 function enterTextField() {
+   console.log("enterTextField")
    active = document.activeElement
    setTimeout(() => {
       active.setAttribute("contenteditable", "true")
@@ -69,6 +71,7 @@ function enterTextField() {
    insideTextField = true
 }
 function exitTextField() {
+   console.log("exitTextField")
    document.activeElement.setAttribute("contenteditable", "false")
    insideTextField = false
 }
@@ -97,7 +100,7 @@ function keyDown(e) {
       websiteData.tutorial.forEach((key) => {
          if (e.code == key) {
             const keyNode = document.querySelector(`.key_code_${key}`)
-            keyNode.classList.add("pressed_key")
+            keyNode?.classList.add("pressed_key")
          }
          if (key == "ShiftTab" && e.code == "Tab" && e.shiftKey) {
             const keyNode = document.querySelector(".key_code_ShiftTab")
@@ -261,7 +264,7 @@ function pushPage(keyCode) {
       document.querySelector("body").style.fontVariationSettings = `"wght" 450`
       if (typeof updateCodeFont === "function") updateCodeFont()
       if (typeof updateWaterfall === "function") updateWaterfall()
-      if (typeof createCodeSection === "function") createCodeSection()
+      if (typeof buildExample === "function") buildExample()
    }
 }
 
@@ -334,7 +337,7 @@ function changedFocus(hasFocus) {
    changeFavicon(hasFocus)
    hasFocus ? contentRoot.classList.remove("faded") : contentRoot.classList.add("faded")
    clickFocus.style.visibility = hasFocus ? "hidden" : "visible"
-   updateCode(null, codeForm)
+   // updateCode(null, codeForm)
 }
 
 function onBlurIn(e) {
@@ -346,6 +349,7 @@ function onBlurIn(e) {
 }
 
 function goToSection(keyCode) {
+   console.log("goToSection")
    pageAnimation()
    let section = +keyCode.split("Digit")[1]
    section = section == 0 ? 10 : section
@@ -358,6 +362,3 @@ function goToSection(keyCode) {
       console.log(section, sectionName, attemptedSection)
    }
 }
-
-setInterval(checkDocumentFocus, 100)
-updateNav(null, navForm)

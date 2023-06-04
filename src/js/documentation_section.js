@@ -8,6 +8,7 @@ websiteData.sections.forEach((section) => {
 })
 
 function buildDocumentation() {
+   console.log("buildDocumentation")
    customizeContent.features.forEach((feature) => {
       const sizes = [
          [3, 4],
@@ -70,9 +71,9 @@ function buildDocumentation() {
    end.tabIndex = 0
    featuresDocu.append(br1, br2, br3, charH2, br4, charset, end)
 }
-buildDocumentation()
 
 function changeFeatureDocumentation(enable) {
+   console.log("changeFeatureDocumentation")
    if (enable == "enable") {
       websiteData.enableFeaturesInDocumentation = true
    } else if (enable == "disable") {

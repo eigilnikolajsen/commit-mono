@@ -2,39 +2,42 @@ const codeForm = document.querySelector("#code_form")
 const codeFieldset = document.querySelector("#code_form fieldset")
 const codeDescription = document.querySelector("#code_description")
 
-websiteData.sections.forEach((section) => {
-   if (section.name == "code") {
-      section.content.characters.forEach((character, index) => {
-         const div = document.createElement("div")
-         const input = document.createElement("input")
-         input.type = "radio"
-         input.name = "code"
-         input.id = character.name
-         input.classList.add("code_character")
-         input.value = character.name
-         if (index == 0) {
-            input.setAttribute("checked", "true")
-         }
-         const label = document.createElement("label")
-         label.textContent = character.value
-         label.setAttribute("for", character.name)
-         div.append(input, label)
-         codeFieldset.append(div)
+function buildCode() {
+   console.log("buildCode")
+   websiteData.sections.forEach((section) => {
+      if (section.name == "code") {
+         section.content.characters.forEach((character, index) => {
+            const div = document.createElement("div")
+            const input = document.createElement("input")
+            input.type = "radio"
+            input.name = "code"
+            input.id = character.name
+            input.classList.add("code_character")
+            input.value = character.name
+            if (index == 0) {
+               input.setAttribute("checked", "true")
+            }
+            const label = document.createElement("label")
+            label.textContent = character.value
+            label.setAttribute("for", character.name)
+            div.append(input, label)
+            codeFieldset.append(div)
 
-         const p = document.createElement("p")
-         p.tabIndex = 0
-         p.dataset.edit = "true"
-         p.classList.add("code_char")
-         p.dataset.char = character.name
-         p.textContent = character.description
-         p.style.display = "none"
-         codeDescription.append(p)
-      })
-   }
-})
+            const p = document.createElement("p")
+            p.tabIndex = 0
+            p.dataset.edit = "true"
+            p.classList.add("code_char")
+            p.dataset.char = character.name
+            p.textContent = character.description
+            p.style.display = "none"
+            codeDescription.append(p)
+         })
+      }
+   })
+}
 
 function updateCode(event, form) {
-   console.log("update code")
+   console.log("updateCode")
    const data = new FormData(form)
    let output = ""
    for (const entry of data) {
@@ -89,7 +92,6 @@ const drawFontLine = (GLYPH_SCALE, ctx, upem, width, name, value, yOffset) => {
    ctx.textAlign = "left"
    ctx.fillText(value, width - 4 * canvasScale, scaledValue + 0.25 * canvasScale)
 }
-
 const drawFontLineVertical = (GLYPH_SCALE, ctx, upem, width, value, yOffset, ascender, descender) => {
    let scaledValue1 = mapRange(ascender, 0, upem, 0, width * GLYPH_SCALE)
    scaledValue1 = width - scaledValue1 + (yOffset * GLYPH_SCALE * width) / upem

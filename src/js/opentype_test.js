@@ -1,7 +1,7 @@
-console.log("opentype test")
 const versionOfCommitMono = "V113"
 
 const updateOptions = (event, form) => {
+   console.log("updateOptions")
    const data = new FormData(form)
    let output = ""
    for (const entry of data) {
@@ -13,6 +13,7 @@ const updateOptions = (event, form) => {
 let commitMonoFont
 
 async function updateCodeFont() {
+   console.log("updateCodeFont")
    opentype
       .load(`/src/fonts/instances/CommitMono${versionOfCommitMono}-${websiteData.weight}.otf`)
       .then((font) => {
@@ -22,10 +23,9 @@ async function updateCodeFont() {
       .catch((err) => console.log(err))
 }
 
-updateCodeFont()
-
 let downloadStarted = false
 async function downloadFont(button) {
+   console.log("downloadFont")
    if (!downloadStarted) {
       downloadStarted = true
       let downloadableFont
@@ -44,7 +44,7 @@ async function downloadFont(button) {
 }
 
 async function downloadWithSettings(settings, button) {
-   console.log(settings)
+   console.log("downloadWithSettings")
    button.classList.add("loading")
 
    const fontFilePath = `/src/fonts/instances/CommitMono${versionOfCommitMono}-${settings.weight}.otf`

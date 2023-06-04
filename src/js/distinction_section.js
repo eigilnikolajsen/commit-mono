@@ -7,6 +7,7 @@ websiteData.sections.forEach((section) => {
 })
 
 function updateWaterfall() {
+   console.log("updateWaterfall")
    const waterfallContainer = document.querySelector("#waterfall")
    waterfallContainer.innerHTML = ""
    waterfall.sizes.forEach((size) => {
@@ -34,34 +35,36 @@ function updateWaterfall() {
    })
 }
 
-updateWaterfall()
-
 const gtcForm = document.querySelector("#gtc_form")
 const gtcFieldset = document.querySelector("#gtc_form fieldset")
 
-websiteData.sections.forEach((section) => {
-   if (section.name == "distinction") {
-      section.content.gtcDifficulties.forEach((difficulty, index) => {
-         const div = document.createElement("div")
-         const input = document.createElement("input")
-         input.type = "radio"
-         input.name = "difficulty"
-         input.id = `difficulty_${difficulty.name}`
-         input.classList.add("gtc_difficulty")
-         input.value = difficulty.name
-         if (index == 0) {
-            input.setAttribute("checked", "true")
-         }
-         const label = document.createElement("label")
-         label.textContent = difficulty.name
-         label.setAttribute("for", `difficulty_${difficulty.name}`)
-         div.append(input, label)
-         gtcFieldset.append(div)
-      })
-   }
-})
+function buildDistinction() {
+   console.log("buildDistinction")
+   websiteData.sections.forEach((section) => {
+      if (section.name == "distinction") {
+         section.content.gtcDifficulties.forEach((difficulty, index) => {
+            const div = document.createElement("div")
+            const input = document.createElement("input")
+            input.type = "radio"
+            input.name = "difficulty"
+            input.id = `difficulty_${difficulty.name}`
+            input.classList.add("gtc_difficulty")
+            input.value = difficulty.name
+            if (index == 0) {
+               input.setAttribute("checked", "true")
+            }
+            const label = document.createElement("label")
+            label.textContent = difficulty.name
+            label.setAttribute("for", `difficulty_${difficulty.name}`)
+            div.append(input, label)
+            gtcFieldset.append(div)
+         })
+      }
+   })
+}
 
 function updateGTC(event, form) {
+   console.log("updateGTC")
    const data = new FormData(form)
    let output = ""
    for (const entry of data) {
@@ -84,7 +87,8 @@ let answers = []
 let score = -1
 let currentQuestion = -1
 let firstButtons = []
-function createGTC() {
+function buildGTC() {
+   console.log("buildGTC")
    const gtcContainer = document.querySelector("#gtc_questions_container")
    gtcContainer.innerHTML = ""
    answers = []
@@ -183,5 +187,3 @@ function nextQuestion(correct, answer, wrongAnswer) {
       setTimeout(() => scoreTally.focus(), 10)
    }
 }
-
-createGTC()

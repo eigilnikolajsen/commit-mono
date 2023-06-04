@@ -6,7 +6,8 @@ const weightFieldset = document.querySelector("#weight_form fieldset")
 const alternatesContainer = document.querySelector("#alternates_container")
 const featuresContainer = document.querySelector("#features_container")
 
-function createCodeSection() {
+function buildExample() {
+   console.log("buildExample")
    websiteData.sections.forEach((section) => {
       if (section.name == "customize") {
          fontsFieldset.innerHTML = ""
@@ -102,6 +103,7 @@ function createCodeSection() {
 
 const codeExample = document.querySelector("#code_example")
 function updateExamples(event, form) {
+   console.log("updateExamples")
    const data = new FormData(form)
    let output = ""
    for (const entry of data) {
@@ -124,6 +126,7 @@ function updateExamples(event, form) {
 }
 
 function updateFont(event, form) {
+   console.log("updateFont")
    const data = new FormData(form)
    let output = ""
    for (const entry of data) {
@@ -135,6 +138,7 @@ function updateFont(event, form) {
 }
 
 function updateWeight(event, form) {
+   console.log("updateWeight")
    const data = new FormData(form)
    let output = ""
    for (const entry of data) {
@@ -172,6 +176,7 @@ let fontDownloadSettingsDefault = {
    },
 }
 function updateExampleSettings(event, form) {
+   console.log("updateExampleSettings")
    const data = new FormData(form)
    let output = ""
    let font = ""
@@ -190,12 +195,8 @@ function updateExampleSettings(event, form) {
       if (label) label.style.fontFeatureSettings = entry[1]
    }
 
-   console.log(fontDownloadSettings)
-
    const codeExample = document.querySelector("#code_example")
    codeExample.style.fontFeatureSettings = output.slice(0, -2)
 
    if (event) event.preventDefault()
 }
-
-createCodeSection()

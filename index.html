@@ -16,24 +16,6 @@
       <title>Commit Mono | Neutral programming font</title>
 
       <!-- CSS -->
-      <style>
-         @font-face {
-            font-family: "Commit Mono";
-            src: url("/src/fonts/CommitMonoV113-VF.woff2");
-            font-style: normal;
-            font-weight: 450;
-            font-display: swap;
-         }
-         body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: "Commit Mono", monospace;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            font-size: 0.75rem;
-            line-height: 1rem;
-         }
-      </style>
       <link rel="stylesheet" href="src/css/style.css" />
       <link rel="stylesheet" href="src/css/section_1.css" />
       <link rel="stylesheet" href="src/css/mobile.css" />
@@ -46,13 +28,14 @@
       <script src="src/js/table_section.js" defer></script>
       <script src="src/js/familiar_section.js" defer></script>
       <script src="src/js/intelligent_section.js" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/opentype.js" defer></script>
+      <script src="src/js/opentype_test.js" defer></script>
       <script src="src/js/code_section.js" defer></script>
       <script src="src/js/distinction_section.js" defer></script>
       <script src="src/js/example_section.js" defer></script>
       <script src="src/js/documentation_section.js" defer></script>
       <script src="src/js/dynamic_favicon.js" defer></script>
-      <script src="https://cdn.jsdelivr.net/npm/opentype.js" defer></script>
-      <script src="src/js/opentype_test.js" defer></script>
+      <script src="src/js/start_functions.js" defer></script>
    </head>
    <body>
       <div id="app_root">
@@ -60,6 +43,9 @@
          <div id="click_focus"><p>Click to focus page.</p></div>
          <div id="change_setting"><p></p></div>
          <div id="page_animation"></div>
+         <div id="loading">
+            <p>loading</p>
+         </div>
          <div id="content_root">
             <header>
                <nav>
@@ -152,38 +138,43 @@
                            <h1 tabindex="0" data-edit="true">Commit Mono. <br />Neutral programming typeface.</h1>
                            <br />
                            <br />
-                           <p id="navigate_description" tabindex="0" data-edit="true">Use keyboard to discover</p>
+                           <p id="navigate_description" tabindex="0" data-edit="true">
+                              Use keyboard to control website:
+                           </p>
                            <ul id="tutorial" tabindex="0" data-edit="true">
                               <li>
                                  <span class="span_key key_code_Tab">Tab</span>
-                                 <span class="span_key key_code_ShiftTab">⇧Tab</span> to navigate up & down
+                                 <span class="span_key key_code_ShiftTab">⇧Tab</span> navigate up & down
                               </li>
                               <li>
                                  <span class="span_key key_code_ArrowLeft">←</span>
-                                 <span class="span_key key_code_ArrowRight">→</span> to navigate left & right
+                                 <span class="span_key key_code_ArrowRight">→</span> navigate left & right
                               </li>
                               <li>
                                  <span class="span_key key_code_KeyW">W</span>
                                  <span class="span_key key_code_KeyA">A</span>
                                  <span class="span_key key_code_KeyS">S</span>
-                                 <span class="span_key key_code_KeyD">D</span> to scroll and
+                                 <span class="span_key key_code_KeyD">D</span> scroll
+                              </li>
+                              <li>
                                  <span class="span_key key_code_Minus">+</span>
-                                 <span class="span_key key_code_Slash">-</span> to zoom
+                                 <span class="span_key key_code_Slash">-</span> zoom
                               </li>
                               <li><span class="span_key key_code_KeyR">R</span> to reset</li>
                               <li>
                                  <span class="span_key key_code_KeyE">E</span>
-                                 <span class="span_key key_code_Escape">Esc</span> to edit and stop edit text.
+                                 <span class="span_key key_code_Escape">Esc</span> edit text and cancel edit
                               </li>
                               <li>
                                  <span class="span_key key_code_KeyB">B</span>
-                                 <span class="span_key key_code_KeyL">L</span> for bolder or lighter font.
+                                 <span class="span_key key_code_KeyL">L</span> bolder or lighter font
                               </li>
-                              <li><span class="span_key key_code_KeyM">M</span> toggle dark/light mode</li>
+                              <li><span class="span_key key_code_KeyM">M</span> dark/light mode</li>
                               <li>
                                  <span class="span_key key_code_Digit1">1</span>
                                  <span class="span_key key_code_Digit2">2</span> ...
                                  <span class="span_key key_code_Digit9">9</span>
+                                 <span class="span_key key_code_Digit9">0</span>
                                  go to section.
                               </li>
                            </ul>
@@ -618,5 +609,24 @@
          </div>
          <div tabindex="0" id="block_tab_end"></div>
       </div>
+      <script>
+         let fontsLoaded = false
+         const commitMono = new FontFace("CommitMonoFontFace", "url(/src/fonts/CommitMonoV113-VF.woff2)", {
+            style: "normal",
+            weight: "450",
+         })
+         // Add to the document.fonts (FontFaceSet)
+         document.fonts.add(commitMono)
+
+         // Load the font
+         commitMono.load()
+
+         // Wait until the fonts are all loaded
+         document.fonts.ready.then(() => {
+            console.log("all fonts loaded")
+            fontsLoaded = true
+            if (typeof startAll === "function") startAll()
+         })
+      </script>
    </body>
 </html>
