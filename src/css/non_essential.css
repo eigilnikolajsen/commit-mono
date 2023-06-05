@@ -10,6 +10,7 @@ button {
    white-space: nowrap;
    text-align: left;
    position: relative;
+   font-feature-settings: inherit;
 }
 
 button:active {

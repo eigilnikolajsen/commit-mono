@@ -57,10 +57,6 @@
    margin-left: 1rem;
 }
 
-#familiar_container p {
-   max-width: none;
-}
-
 figure {
    width: max-content;
 }
@@ -87,6 +83,20 @@ blockquote::before {
    height: 20rem;
 }
 
+#familiar_container svg {
+   width: 100rem;
+   height: 20rem;
+}
+
+.svg_container {
+   width: 100rem;
+   height: 20rem;
+}
+
 #familiar_container svg path {
    fill: var(--text);
+}
+
+#familiar_container .svg_container:focus svg path {
+   fill: var(--bg);
 }

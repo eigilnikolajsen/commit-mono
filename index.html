@@ -522,16 +522,27 @@
                            <br />
                            <p tabindex="0">
                               If you have enabled one or more features/ligatures in your download, these are available
-                              through the 'calt' OpenType Feature. For a comprehensive guide on how to enable in your
+                              through the 'calt' OpenType Feature. In VS Code this feature is on by default and you
+                              don't have to do anything to enable it. For a comprehensive guide on how to enable in your
                               specific editor/IDE, refer to:
+                              <a href="https://github.com/tonsky/FiraCode/wiki#enabling-ligatures" target="_blank">
+                                 Fira Code wiki
+                              </a>
                            </p>
-                           <a href="https://github.com/tonsky/FiraCode/wiki#enabling-ligatures" target="_blank"
-                              >Fira Code wiki</a
-                           >
-                           <br />
-                           <br />
+                        </div>
+                     </section>
+                     <section id="section_9">
+                        <div class="top_container"></div>
+                        <div class="content_container">
                            <br />
                            <h2>FAQ</h2>
+                           <p class="accordion_header" tabindex="0">What is the licensing on Commit Mono?</p>
+                           <p class="accordion_point">
+                              Commit Mono is available under the SIL Open Font License 1.1 license. It can therefore be
+                              used freely for both commercial and non-commercial purposes. Only if you decide to make
+                              your own font based of Commit Mono, do you need to give credit, but it is always
+                              appreciated.
+                           </p>
                            <p class="accordion_header" tabindex="0">
                               I have downloaded a new verison, but the old version is still displayed.
                            </p>
@@ -540,24 +551,22 @@
                               <li>Install the new version.</li>
                               <li>Restart you IDE. The new version should show up.</li>
                            </ol>
-                           <p class="accordion_header" tabindex="0">May I install and use Commit Mono in any editor?</p>
+                           <p class="accordion_header" tabindex="0">
+                              May I install and use Commit Mono in any editor or terminal?
+                           </p>
                            <p class="accordion_point">Yes.</p>
                            <p class="accordion_header" tabindex="0">May I use Commit Mono in print design?</p>
                            <p class="accordion_point">Yes.</p>
-                           <p class="accordion_header" tabindex="0">May I use Commit Mono on a website?</p>
-                           <p class="accordion_point">Yes.</p>
-                           <p class="accordion_header" tabindex="0">May I use Commit Mono in an app?</p>
+                           <p class="accordion_header" tabindex="0">May I use Commit Mono on a website or in an app?</p>
                            <p class="accordion_point">Yes.</p>
                            <p class="accordion_header" tabindex="0">May I use Commit Mono to design my own font?</p>
-                           <p class="accordion_point">Yes, but you need to indicate that it is based on Commit Mono.</p>
-                        </div>
-                     </section>
-                     <section id="section_9">
-                        <div class="top_container"></div>
-                        <div class="content_container">
+                           <p class="accordion_point">
+                              Yes, but you need to give credit and indicate that it is based on Commit Mono.
+                           </p>
+                           <br />
+                           <br />
                            <br />
                            <p>Use <span class="span_key">O</span> to switch between ON and OFF</p>
-                           <br />
                            <div id="features_docu"></div>
                            <div id="charset"></div>
                         </div>
@@ -625,8 +634,9 @@
          <div tabindex="0" id="block_tab_end"></div>
       </div>
       <script>
+         const versionOfCommitMono = "V114"
          let fontsLoaded = false
-         const commitMono = new FontFace("CommitMono", "url(/src/fonts/CommitMonoV113-VF.woff2)", {
+         const commitMono = new FontFace("CommitMono", `url(/src/fonts/CommitMono${versionOfCommitMono}-VF.woff2)`, {
             style: "normal",
             weight: "450",
          })

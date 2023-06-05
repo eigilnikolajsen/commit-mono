@@ -41,7 +41,7 @@ function buildDocumentation() {
       const br1 = document.createElement("br")
       const br2 = document.createElement("br")
       const br3 = document.createElement("br")
-      container.append(br1, br2, br3, h2, p)
+      container.append(br1, br2, h2, p)
       sizes.forEach((size) => {
          const exampleText = document.createElement("p")
          exampleText.textContent = feature.documentationExample

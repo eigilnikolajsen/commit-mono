@@ -325,12 +325,14 @@ function onFocusIn(e) {
          pushPage("KeyS")
       }
    }
-   const paddingOffsetTop = 16
-   if (bounds.top < paddingOffsetTop) {
-      const numberOfMoves = Math.ceil(Math.abs(bounds.top - paddingOffsetTop - 32) / websiteData.pushPage.distance)
-      console.log("num of moves:", numberOfMoves, "bounds.top:", bounds.top)
-      for (let i = 0; i < numberOfMoves; i++) {
-         pushPage("KeyW")
+   const paddingOffsetTop = 24
+   if (!document.activeElement.className.includes("nav")) {
+      if (bounds.top < paddingOffsetTop) {
+         const numberOfMoves = Math.ceil(Math.abs(bounds.top - paddingOffsetTop - 32) / websiteData.pushPage.distance)
+         console.log("num of moves:", numberOfMoves, "bounds.top:", bounds.top)
+         for (let i = 0; i < numberOfMoves; i++) {
+            pushPage("KeyW")
+         }
       }
    }
 }

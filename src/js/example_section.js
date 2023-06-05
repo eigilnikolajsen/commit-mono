@@ -18,7 +18,7 @@ function buildExample() {
             input.name = "font"
             input.id = font.id
             input.classList.add("example_font")
-            input.value = font.name
+            input.value = font.cssName
             if (index == 0) {
                input.setAttribute("checked", "true")
             }
