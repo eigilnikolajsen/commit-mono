@@ -72,11 +72,20 @@ a:visited {
    color: var(--text);
 }
 
+p:focus a,
 a:focus {
    text-decoration: none;
    background-color: var(--text);
    color: var(--bg);
    text-decoration: none;
+}
+
+#safari {
+   display: none;
+}
+
+#safari.safari_visible {
+   display: block;
 }
 
 #safari:focus p:first-of-type {
@@ -140,4 +149,8 @@ ul:focus .span_key.pressed_key {
    position: absolute;
    right: -1ch;
    top: -0.5rem;
+}
+
+#keyboard_container.use_keyboard_animation {
+   animation: flicker 140ms 8;
 }

@@ -62,10 +62,6 @@ form input:checked + label::before {
    background: repeating-conic-gradient(var(--text) 0% 25%, transparent 0% 50%, transparent 0% 100%) 50% / 2px 2px;
 }
 
-form input:checked + label {
-   color: var(--text);
-}
-
 #canvas {
    transform-origin: top left;
 }

@@ -18,38 +18,6 @@ fieldset.alternates > div {
    position: relative;
 }
 
-#section_7 form input[type="radio"] + label {
-   position: relative;
-   z-index: 1;
-}
-
-#section_7 form input[type="radio"] + label::before {
-   z-index: -1;
-   content: "";
-   position: absolute;
-   top: 0;
-   left: 0;
-   bottom: 0;
-   right: 0;
-   background-color: var(--bg);
-}
-
-#section_7 form input[type="radio"]:focus:checked + label::before {
-   background-color: var(--text);
-}
-
-#section_7 form input[type="radio"]:focus:checked + label {
-   color: var(--bg);
-}
-
-#section_7 form input[type="radio"]:checked + label::before {
-   background: repeating-conic-gradient(var(--text) 0% 25%, transparent 0% 50%, transparent 0% 100%) 50% / 2px 2px;
-}
-
-#section_7 form input[type="radio"]:checked + label {
-   color: var(--text);
-}
-
 #examples_container {
    width: fit-content;
    max-height: 20.6rem;
@@ -80,24 +48,6 @@ p#code_example::before {
    overflow: hidden;
 }
 
-#section_7 form input[type="checkbox"] {
-   opacity: 1;
-   width: 0.5rem;
-   height: 0.5rem;
-   display: inline-block;
-   background-color: transparent;
-   border: 0.0625rem solid var(--text);
-}
-
-#section_7 form input[type="checkbox"]:checked {
-   background-color: var(--text);
-}
-
-#section_7 form input[type="checkbox"]:focus + label {
-   background-color: var(--text);
-   color: var(--bg);
-}
-
 button:focus a {
    color: var(--bg);
    text-decoration: none;
@@ -106,6 +56,13 @@ button:focus a {
 .download_button {
    display: block;
    width: max-content;
+}
+
+.download_button:hover {
+   background: repeating-conic-gradient(transparent 0% 25%, var(--text) 0% 50%, transparent 0% 75%, var(--text) 0% 100%)
+      50% / 2px 2px;
+   color: var(--bg);
+   text-decoration: none;
 }
 
 .download_button.line-through:focus {

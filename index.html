@@ -121,7 +121,7 @@
                         <div class="keys">
                            <p data-key-code="KeyH" data-key="h" class="key">H</p>
                         </div>
-                        <p>Hide</p>
+                        <p>Hide keys</p>
                      </div>
                   </div>
                </div>
@@ -141,40 +141,46 @@
                            <p id="navigate_description" tabindex="0" data-edit="true">
                               Use keyboard to control website:
                            </p>
+                           <button id="focus_check"></button>
                            <ul id="tutorial" tabindex="0" data-edit="true">
                               <li>
-                                 <span class="span_key key_code_Tab">Tab</span>
-                                 <span class="span_key key_code_ShiftTab">⇧Tab</span> navigate up & down
+                                 <span class="span_key key_code_Tab tutorial_key">Tab</span> &
+                                 <span class="span_key key_code_ShiftTab1 tutorial_key">Shift</span>+<span
+                                    class="span_key key_code_ShiftTab2 tutorial_key"
+                                    >Tab</span
+                                 >
+                                 navigate up/down
                               </li>
                               <li>
-                                 <span class="span_key key_code_ArrowLeft">←</span>
-                                 <span class="span_key key_code_ArrowRight">→</span> navigate left & right
+                                 <span class="span_key key_code_ArrowLeft tutorial_key">←</span>
+                                 <span class="span_key key_code_ArrowRight tutorial_key">→</span> navigate left/right
                               </li>
                               <li>
-                                 <span class="span_key key_code_Digit1">1</span>
-                                 <span class="span_key key_code_Digit2">2</span>
-                                 <span class="span_key key_code_Digit3">3</span> ... go to section.
+                                 <span class="span_key key_code_Digit1 tutorial_key">1</span>
+                                 <span class="span_key key_code_Digit2 tutorial_key">2</span>
+                                 <span class="span_key key_code_Digit3 tutorial_key">3</span> ... go to section.
                               </li>
                               <li>
-                                 <span class="span_key key_code_KeyW">W</span>
-                                 <span class="span_key key_code_KeyA">A</span>
-                                 <span class="span_key key_code_KeyS">S</span>
-                                 <span class="span_key key_code_KeyD">D</span> scroll
+                                 <span class="span_key key_code_KeyW tutorial_key">W</span>
+                                 <span class="span_key key_code_KeyA tutorial_key">A</span>
+                                 <span class="span_key key_code_KeyS tutorial_key">S</span>
+                                 <span class="span_key key_code_KeyD tutorial_key">D</span> scroll
                               </li>
                               <li>
-                                 <span class="span_key key_code_Minus">+</span>
-                                 <span class="span_key key_code_Slash">-</span> zoom
+                                 <span class="span_key key_code_Minus tutorial_key">+</span>
+                                 <span class="span_key key_code_Slash tutorial_key">-</span> zoom
                               </li>
-                              <li><span class="span_key key_code_KeyR">R</span> reset</li>
+                              <li><span class="span_key key_code_KeyR tutorial_key">R</span> reset scroll & zoom</li>
                               <li>
-                                 <span class="span_key key_code_KeyE">E</span>
-                                 <span class="span_key key_code_Escape">Esc</span> edit text and cancel edit
+                                 <span class="span_key key_code_KeyE tutorial_key">E</span>
+                                 <span class="span_key key_code_Escape tutorial_key">Esc</span> edit text and cancel
+                                 edit
                               </li>
                               <li>
-                                 <span class="span_key key_code_KeyB">B</span>
-                                 <span class="span_key key_code_KeyL">L</span> bolder or lighter font
+                                 <span class="span_key key_code_KeyB tutorial_key">B</span>
+                                 <span class="span_key key_code_KeyL tutorial_key">L</span> bolder or lighter font
                               </li>
-                              <li><span class="span_key key_code_KeyM">M</span> dark/light mode</li>
+                              <li><span class="span_key key_code_KeyM tutorial_key">M</span> dark/light mode</li>
                            </ul>
                            <br />
                            <br />
@@ -184,17 +190,19 @@
                            <div id="safari" tabindex="0" data-edit="true">
                               <p>Using Safari?</p>
                               <p id="safari_explanation">
-                                 Tabbing is disabled by default in Safari. <br />
-                                 Solve by either:
+                                 Tabbing is unfortunately disabled by default in Safari. Solve by either:
                               </p>
                               <ul>
-                                 <li>Using Option+Tab instead of Tab</li>
+                                 <li>
+                                    Use <span class="span_key">Option</span>+<span class="span_key">Tab</span> instead
+                                    of <span class="span_key">Tab</span>.
+                                 </li>
                                  <li>
                                     Safari → Settings → Advanced → Check the option: "Press Tab to highlight each item
                                     on a web page"
                                  </li>
                               </ul>
-                              <a href="#">You know it's working if can focus here.</a>
+                              <a href="#">You know it's working if can use Tab focus here.</a>
                               <p id="safari_not_working" tabindex="0">It's not working.</p>
                            </div>
                         </div>
@@ -260,18 +268,13 @@
                                     <label for="letter_gothic_input">1956</label>
                                  </div>
                                  <div>
-                                    <input
-                                       type="radio"
-                                       id="fira_mono_input_input"
-                                       name="select_year"
-                                       value="fira_mono"
-                                    />
+                                    <input type="radio" id="fira_mono_input" name="select_year" value="fira_mono" />
                                     <label for="fira_mono_input">2013</label>
                                  </div>
                                  <div>
                                     <input
                                        type="radio"
-                                       id="untitled_sans_input_input"
+                                       id="untitled_sans_input"
                                        name="select_year"
                                        value="untitled_sans"
                                     />
@@ -476,7 +479,7 @@
                            <ol tabindex="0">
                               <li><p>Dowload the fonts from '07 Customize'. Your download is a .zip file.</p></li>
                               <li>
-                                 <p>Unzip the fonts. You'll see 4 files. These 4 fonts make up a 'Style Group'.</p>
+                                 <p>Unzip the fonts. You'll see 4 files. These 4 fonts make up a 'Style Group':</p>
                                  <ul>
                                     <li>
                                        <p>CommitMono-Regular: Base version with settings and weight of your choice.</p>
@@ -493,7 +496,7 @@
                                  </ul>
                               </li>
                               <li>
-                                 <p>Install the font on your system.</p>
+                                 <p>Install all 4 fonts on your system:</p>
                                  <ul>
                                     <li>
                                        <p>Windows: Right click the font in the folder and click "Install".</p>

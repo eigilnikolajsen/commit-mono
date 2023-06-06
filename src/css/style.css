@@ -6,7 +6,7 @@
    font-display: swap;
 }
 body {
-   background-color: var(--bg);
+   background: var(--bg);
    color: var(--text);
    font-family: "CommitMono", monospace;
    -webkit-font-smoothing: antialiased;
@@ -15,6 +15,12 @@ body {
    line-height: 1rem;
    font-feature-settings: "ss01", "ss03", "ss04", "ss05";
    min-height: 100vh;
+   padding-bottom: 10rem;
+   -ms-overflow-style: none; /* Internet Explorer 10+ */
+   scrollbar-width: none; /* Firefox */
+}
+body::-webkit-scrollbar {
+   display: none; /* Safari and Chrome */
 }
 
 *,
@@ -45,7 +51,7 @@ body {
 
 #main_scale {
    inset: 0;
-   position: fixed;
+   /* position: fixed; */
 }
 
 main {
@@ -54,7 +60,7 @@ main {
 }
 
 header nav {
-   width: max-content;
+   width: 100vw;
    padding: 1rem 4ch 0 4ch;
    background-color: var(--bg);
    z-index: 100;
@@ -64,11 +70,22 @@ header nav {
 
 header #keyboard_section {
    width: 100%;
-   padding: 0.25rem 0 1rem 4ch;
+   padding: 0.25rem 4ch 1rem 4ch;
    background-color: var(--bg);
    z-index: 100;
    position: fixed;
    bottom: 0;
+}
+
+header #keyboard_section,
+header nav {
+   overflow-y: scroll;
+   -ms-overflow-style: none; /* Internet Explorer 10+ */
+   scrollbar-width: none; /* Firefox */
+}
+header #keyboard_section::-webkit-scrollbar,
+header nav::-webkit-scrollbar {
+   display: none; /* Safari and Chrome */
 }
 
 #keyboard_section.hidden {
@@ -80,6 +97,7 @@ header #keyboard_section {
    gap: 4ch;
    font-size: 0.75rem;
    line-height: 1rem;
+   width: max-content;
 }
 
 #nav_form input {
@@ -157,6 +175,11 @@ h1 {
    pointer-events: none;
 }
 
+#change_setting p {
+   padding: 0 1ch;
+   background-color: var(--bg);
+}
+
 #content_root.faded {
    opacity: 0.33;
 }
@@ -170,6 +193,21 @@ h1 {
    color: var(--bg);
    background-color: var(--text);
    outline: none;
+}
+
+form input:hover + label {
+   text-decoration: none;
+   color: var(--bg);
+   outline: none;
+}
+
+form input:hover + label::before {
+   background: repeating-conic-gradient(transparent 0% 25%, var(--text) 0% 50%, transparent 0% 75%, var(--text) 0% 100%)
+      50% / 2px 2px;
+}
+
+form input:checked:hover + label::before {
+   background: repeating-conic-gradient(transparent 0% 25%, var(--text) 0% 50%, var(--text) 0% 100%) 50% / 2px 2px;
 }
 
 ul li,
@@ -265,4 +303,8 @@ ul li:focus::before {
    100% {
       content: "";
    }
+}
+
+#focus_check {
+   position: absolute;
 }

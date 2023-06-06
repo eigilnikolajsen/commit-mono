@@ -52,3 +52,11 @@ function appendStyleSheets() {
       head.append(link)
    })
 }
+
+function showHideChangeSettings(text, ms) {
+   const changeSetting = document.querySelector("#change_setting p")
+   changeSetting.textContent = text
+   changeSetting.style.visibility = "visible"
+   clearTimeout(changeSettingTimeoutID)
+   changeSettingTimeoutID = setTimeout(() => (changeSetting.style.visibility = "hidden"), ms ?? 500)
+}

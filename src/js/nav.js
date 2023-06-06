@@ -4,7 +4,6 @@ const appRoot = document.querySelector("#app_root")
 const contentRoot = document.querySelector("#content_root")
 const clickFocus = document.querySelector("#click_focus")
 const navForm = document.querySelector("#nav_form")
-const changeSetting = document.querySelector("#change_setting p")
 
 function buildNav() {
    console.log("buildNav")
@@ -88,6 +87,17 @@ function exitTextField() {
 //    window.scroll(0, Math.round(window.scrollY / 16) * 16)
 // })
 
+let timesClicked = 0
+
+document.addEventListener("click", (e) => {
+   focusUsingTab = false
+   timesClicked++
+   if (timesClicked == 10) {
+      document.querySelector("#keyboard_container").classList.add("use_keyboard_animation")
+      showHideChangeSettings("Use keyboard to navigate!", 2400)
+   }
+})
+
 const keys = document.querySelectorAll(".key")
 keys.forEach((key) => {
    key.addEventListener("click", () => {
@@ -103,22 +113,13 @@ keys.forEach((key) => {
 })
 
 let changeSettingTimeoutID
+let focusUsingTab = false
 function keyDown(e) {
+   focusUsingTab = true
    if (e.code == "KeyE" && document.activeElement.dataset.edit == "true" && !insideTextField) enterTextField()
 
-   if (e.code == "Escape") exitTextField()
-
    if (!insideTextField || e.code == "KeyE") {
-      websiteData.tutorial.forEach((key) => {
-         if (e.code == key) {
-            const keyNode = document.querySelector(`.key_code_${key}`)
-            keyNode?.classList.add("pressed_key")
-         }
-         if (key == "ShiftTab" && e.code == "Tab" && e.shiftKey) {
-            const keyNode = document.querySelector(".key_code_ShiftTab")
-            keyNode.classList.add("pressed_key")
-         }
-      })
+      checkTutorialKeys(e)
 
       const activeKey = !e.shiftKey
          ? document.querySelector(`.key[data-key-code="${e.code}"]`)
@@ -157,10 +158,7 @@ function keyDown(e) {
          if (e.code == "KeyL") websiteData.weight = websiteData.weight == 300 ? 300 : websiteData.weight - 25
          updateCodeFont()
          document.querySelector("body").style.fontVariationSettings = `"wght" ${websiteData.weight}`
-         changeSetting.textContent = `Weight: ${websiteData.weight}. Def: 450, Min: 300, Max: 700.`
-         changeSetting.style.visibility = "visible"
-         clearTimeout(changeSettingTimeoutID)
-         changeSettingTimeoutID = setTimeout(() => (changeSetting.style.visibility = "hidden"), 500)
+         showHideChangeSettings(`Weight: ${websiteData.weight}. Def: 450, Min: 300, Max: 700.`)
          document.querySelector(
             "#download"
          ).textContent = `Download CommitMono-${websiteData.weight} with current settings`
@@ -178,7 +176,12 @@ function keyDown(e) {
          updateCode(null, codeForm)
          websiteData.invert = !websiteData.invert
       }
+   } else if (e.code == "Escape" && insideTextField) {
+      console.log(insideTextField)
+      document.querySelector(".key_code_Escape")?.classList.add("pressed_key")
    }
+
+   if (e.code == "Escape") exitTextField()
 }
 function keyUp(e) {
    const activeKey = document.querySelectorAll(".active_key")
@@ -244,10 +247,7 @@ function pushPage(keyCode) {
       document.documentElement.style.fontSize = `${rem}px`
       updateWaterfall()
       document.querySelector("#canvas").style.transform = `scale(${rem / 16})`
-      changeSetting.textContent = `Base font size: ${rem * 0.75}px`
-      changeSetting.style.visibility = "visible"
-      clearTimeout(changeSettingTimeoutID)
-      changeSettingTimeoutID = setTimeout(() => (changeSetting.style.visibility = "hidden"), 500)
+      showHideChangeSettings(`Base font size: ${rem * 0.75}px`)
    }
 
    // zoom out
@@ -256,10 +256,7 @@ function pushPage(keyCode) {
       document.documentElement.style.fontSize = `${rem}px`
       updateWaterfall()
       document.querySelector("#canvas").style.transform = `scale(${rem / 16})`
-      changeSetting.textContent = `Base font size: ${rem * 0.75}px`
-      changeSetting.style.visibility = "visible"
-      clearTimeout(changeSettingTimeoutID)
-      changeSettingTimeoutID = setTimeout(() => (changeSetting.style.visibility = "hidden"), 500)
+      showHideChangeSettings(`Base font size: ${rem * 0.75}px`)
    }
 
    // reset transforms
@@ -281,6 +278,7 @@ function pushPage(keyCode) {
    }
 }
 
+let isSafari = 0
 let active // saves what DOM element is currently active
 let focusTimeOutID // to be able to use clearTimeout()
 document.addEventListener("focusin", onFocusIn)
@@ -296,6 +294,25 @@ function onFocusIn(e) {
    // save current focused element
    active = document.activeElement
 
+   if (focusUsingTab) {
+      if (prevActive?.id == "navigate_description" && active.id == "tutorial" && isSafari == 0) {
+         console.log("safari")
+         isSafari = 1
+         document.querySelector("#safari").classList.add("safari_visible")
+      }
+
+      if (active.id == "focus_check") {
+         console.log("not safari")
+         isSafari = -1
+         if (prevActive.id == "navigate_description") {
+            document.querySelector("#tutorial").focus()
+         }
+         if (prevActive.id == "tutorial") {
+            document.querySelector("#navigate_description").focus()
+         }
+         document.querySelector("#focus_check")?.remove()
+      }
+   }
    // // when current focused element is blurred, start a timer of 100ms.
    // active.addEventListener("blur", onBlurIn)
 
@@ -314,24 +331,28 @@ function onFocusIn(e) {
       }
    }
 
-   // scroll page, if focus reaches bottom or top
-   const bounds = active.getBoundingClientRect()
-   const paddingOffsetBottom = 200
-   if (bounds.top > window.innerHeight - paddingOffsetBottom) {
-      const numberOfMoves = Math.floor(
-         (bounds.top - (window.innerHeight - paddingOffsetBottom)) / websiteData.pushPage.distance
-      )
-      for (let i = 0; i < numberOfMoves; i++) {
-         pushPage("KeyS")
-      }
-   }
-   const paddingOffsetTop = 24
-   if (!document.activeElement.className.includes("nav")) {
-      if (bounds.top < paddingOffsetTop) {
-         const numberOfMoves = Math.ceil(Math.abs(bounds.top - paddingOffsetTop - 32) / websiteData.pushPage.distance)
-         console.log("num of moves:", numberOfMoves, "bounds.top:", bounds.top)
+   // if focus using tab, scroll page, if focus reaches bottom or top
+   if (focusUsingTab) {
+      const bounds = active.getBoundingClientRect()
+      const paddingOffsetBottom = 200
+      if (bounds.top > window.innerHeight - paddingOffsetBottom) {
+         const numberOfMoves = Math.floor(
+            (bounds.top - (window.innerHeight - paddingOffsetBottom)) / websiteData.pushPage.distance
+         )
          for (let i = 0; i < numberOfMoves; i++) {
-            pushPage("KeyW")
+            pushPage("KeyS")
+         }
+      }
+      const paddingOffsetTop = 24
+      if (!document.activeElement.className.includes("nav")) {
+         if (bounds.top < paddingOffsetTop) {
+            const numberOfMoves = Math.ceil(
+               Math.abs(bounds.top - paddingOffsetTop - 32) / websiteData.pushPage.distance
+            )
+            console.log("num of moves:", numberOfMoves, "bounds.top:", bounds.top)
+            for (let i = 0; i < numberOfMoves; i++) {
+               pushPage("KeyW")
+            }
          }
       }
    }
@@ -376,4 +397,32 @@ function goToSection(keyCode) {
       updateNav(null, navForm)
       document.querySelector("#canvas").style.transform = "scale(1)"
    }
+}
+
+function checkTutorialKeys(e) {
+   websiteData.tutorial.forEach((key) => {
+      if (e.code == key) {
+         if (e.code.includes("Arrow")) {
+            if (document.activeElement.nodeName == "INPUT") {
+               const keyNode = document.querySelector(`.key_code_${key}`)
+               keyNode?.classList.add("pressed_key")
+            }
+         } else if (e.code == "KeyE") {
+            if (document.activeElement.dataset.edit == "true") {
+               document.querySelector(".key_code_KeyE")?.classList.add("pressed_key")
+            }
+         } else if (e.code != "Escape") {
+            const keyNode = document.querySelector(`.key_code_${key}`)
+            keyNode?.classList.add("pressed_key")
+         }
+      }
+      if (key == "ShiftTab" && e.code == "Tab" && e.shiftKey) {
+         document.querySelector(".key_code_ShiftTab1").classList.add("pressed_key")
+         document.querySelector(".key_code_ShiftTab2").classList.add("pressed_key")
+      }
+   })
+   const numnerOfTutorialKeys = document.querySelectorAll(".tutorial_key").length
+   const numberOfPressedKeys = document.querySelectorAll(".tutorial_key.pressed_key").length
+
+   if (numnerOfTutorialKeys === numberOfPressedKeys) console.log("TUTORIAL FINISHED!!")
 }

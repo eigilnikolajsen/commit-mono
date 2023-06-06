@@ -33,6 +33,7 @@
    font-size: 0.75rem;
    gap: 2ch;
    position: relative;
+   margin-top: 1rem;
 }
 
 .question_character.hide_character {
@@ -76,11 +77,17 @@
    display: block;
 }
 
-.question_button:focus::before {
+.question_button:focus::before,
+.question_button:hover::before {
    content: "<-";
    position: absolute;
    left: -2ch;
    color: var(--text);
+}
+.question_button:hover {
+   background: repeating-conic-gradient(transparent 0% 25%, var(--text) 0% 50%, transparent 0% 75%, var(--text) 0% 100%)
+      50% / 2px 2px;
+   color: var(--bg);
 }
 .question_button.right_button::before {
    content: "<-";
@@ -116,11 +123,15 @@
 }
 
 .question_container.active_question ~ .question_container.active_question {
-   opacity: 1;
    pointer-events: auto;
+   display: flex;
 }
 
 .question_container.active_question ~ .question_container {
-   opacity: 0;
    pointer-events: none;
+   display: none;
+}
+
+.question_container.active_question ~ br {
+   display: none;
 }

@@ -123,8 +123,8 @@ function buildGTC() {
       option1.tabIndex = -1
 
       const options = [option0, option1]
-      options[answer].addEventListener("click", () => nextQuestion(true, answer, wrongAnswer))
-      options[wrongAnswer].addEventListener("click", () => nextQuestion(false, answer, wrongAnswer))
+      options[answer].addEventListener("click", (e) => nextQuestion(true, answer, wrongAnswer, e.pointerType))
+      options[wrongAnswer].addEventListener("click", (e) => nextQuestion(false, answer, wrongAnswer, e.pointerType))
 
       const answerFeedback = document.createElement("p")
       answerFeedback.classList.add("answer_feedback")
@@ -132,7 +132,7 @@ function buildGTC() {
       buttonContainer.append(option0, option1)
       const br = document.createElement("br")
       div.append(answerFeedback, p, buttonContainer, pWrong)
-      gtcContainer.append(br, div)
+      gtcContainer.append(div)
    })
    const scorePoints = document.createElement("p")
    scorePoints.id = "score_points"
@@ -141,7 +141,8 @@ function buildGTC() {
    nextQuestion(true, 0, 1)
 }
 
-function nextQuestion(correct, answer, wrongAnswer) {
+function nextQuestion(correct, answer, wrongAnswer, pointerType) {
+   console.log(pointerType)
    const scoreTally = document.querySelector("#score_tally")
    const allQuestions = document.querySelectorAll(".question_container")
    let answerFeedback
@@ -181,7 +182,7 @@ function nextQuestion(correct, answer, wrongAnswer) {
    scoreTally.textContent = `Score: ${score}/${gtc.length}`
 
    if (currentQuestion < gtc.length) {
-      if (!isMobile) setTimeout(() => firstButtons[currentQuestion]?.focus(), 10)
+      if (!isMobile && pointerType === "") setTimeout(() => firstButtons[currentQuestion]?.focus(), 10)
    } else {
       scoreTally.tabIndex = 0
       setTimeout(() => scoreTally.focus(), 10)
