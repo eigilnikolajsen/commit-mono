@@ -26,26 +26,58 @@ async function downloadFont(button) {
    console.log("downloadFont")
    if (!downloadStarted) {
       downloadStarted = true
-      downloadWithSettings(fontDownloadSettingsDefault, button)
-      // const fontArrayBuffer = await downloadWithSettings(fontDownloadSettingsDefault, button)
-      // console.log(fontArrayBuffer)
-      // const fontFileBlob = new Blob([fontArrayBuffer])
-      // console.log(fontFileBlob)
-      // // getZipFileBlob(fontFileBlob)
-      // //    .then(downloadFile)
-      // //    .catch((err) => console.log(err))
+
+      const regularDownloadSettigns = { ...fontDownloadSettings }
+      const italicDownloadSettigns = { ...fontDownloadSettings }
+      italicDownloadSettigns.italic = true
+      const boldDownloadSettigns = { ...fontDownloadSettings }
+      boldDownloadSettigns.weight = 700
+      const bolditalicDownloadSettigns = { ...fontDownloadSettings }
+      bolditalicDownloadSettigns.weight = 700
+      bolditalicDownloadSettigns.italic = true
+
+      getFontBlob(regularDownloadSettigns, "regular", button)
+         .then((resolve) => {
+            fontFileBlobs.regular = resolve
+            return getFontBlob(italicDownloadSettigns, "italic", button)
+         })
+         .then((resolve) => {
+            fontFileBlobs.italic = resolve
+            return getFontBlob(boldDownloadSettigns, "bold", button)
+         })
+         .then((resolve) => {
+            fontFileBlobs.bold = resolve
+            return getFontBlob(bolditalicDownloadSettigns, "bolditalic", button)
+         })
+         .then((resolve) => {
+            fontFileBlobs.bolditalic = resolve
+            return getZipFileBlob()
+         })
+         .then((resolve) => {
+            downloadFile(resolve)
+         })
+         .catch((err) => console.log(err))
    }
 }
 
-async function downloadWithSettings(settings, button) {
-   console.log("downloadWithSettings")
+const fontFileBlobs = {
+   regular: null,
+   italic: null,
+   bold: null,
+   bolditalic: null,
+}
+function getFontBlob(settings, style, button) {
+   console.log("getFontBlob")
    button.classList.add("loading")
 
+   // const fontFilePath = `/src/fonts/CommitMono${versionOfCommitMono}-${settings.weight}-${
+   //    style.includes("italic") ? "italic" : "regular"
+   // }.otf`
    const fontFilePath = `/src/fonts/CommitMono${versionOfCommitMono}-${settings.weight}.otf`
 
-   opentype
+   return opentype
       .load(fontFilePath)
-      .then(async (font) => {
+      .then((font) => {
          //
          // #1 change alternates by switching their paths
          // the below loop does this
@@ -55,22 +87,22 @@ async function downloadWithSettings(settings, button) {
             //
             // filter for only the active ones
             if (!active) return
-            console.log("alternate", alternate, "active", active)
+            // console.log("alternate", alternate, "active", active)
 
             // look at all the fonts features
             font.tables.gsub.features.forEach((feature) => {
                //
                // if the feature matches the alternate we're currently on
                if (feature.tag == alternate) {
-                  console.log("feature", feature)
+                  // console.log("feature", feature)
 
                   // then loop through the list of lookup indexes of that feature
                   feature.feature.lookupListIndexes.forEach((lookupIndex) => {
-                     console.log("lookupIndex", lookupIndex)
+                     // console.log("lookupIndex", lookupIndex)
 
                      // loop through the subtable of each lookup at the lookup index
                      font.tables.gsub.lookups[lookupIndex].subtables.forEach((subtable) => {
-                        console.log("subtable", subtable)
+                        // console.log("subtable", subtable)
 
                         // loop through the glyphs of the subtable
                         subtable.coverage.glyphs.forEach((glyphIndexOriginal, index) => {
@@ -78,12 +110,12 @@ async function downloadWithSettings(settings, button) {
                            // glyphIndexOriginal is the index of the original glyph
                            // glyphIndexSubstitute is the index of the glyph to substitute the original with
                            const glyphIndexSubstitute = subtable.substitute[index]
-                           console.log(
-                              "glyphIndexOriginal",
-                              glyphIndexOriginal,
-                              "glyphIndexSubstitute",
-                              glyphIndexSubstitute
-                           )
+                           // console.log(
+                           //    "glyphIndexOriginal",
+                           //    glyphIndexOriginal,
+                           //    "glyphIndexSubstitute",
+                           //    glyphIndexSubstitute
+                           // )
 
                            // get the paths for the original and the substitute glyph
                            const glyphPathOriginal = font.glyphs.glyphs[glyphIndexOriginal].path
@@ -119,14 +151,14 @@ async function downloadWithSettings(settings, button) {
             //
             // filter for only the active ones
             if (!active) return
-            console.log("alternate", alternate, "active", active)
+            // console.log("alternate", alternate, "active", active)
 
             // then loop through all features
             font.tables.gsub.features.forEach((feature) => {
                //
                // and find the ones that match the active tags
                if (feature.tag == alternate) {
-                  console.log("feature", feature)
+                  // console.log("feature", feature)
 
                   // push the lookup indexes into the empty caltLookupIndexes variable
                   feature.feature.lookupListIndexes.forEach((lookupIndex) => caltLookupIndexes.push(lookupIndex))
@@ -141,7 +173,7 @@ async function downloadWithSettings(settings, button) {
                   //
                   // set its lookup indexes to the variable
                   feature.feature.lookupListIndexes = caltLookupIndexes
-                  console.log("caltLookupIndexes", caltLookupIndexes)
+                  // console.log("caltLookupIndexes", caltLookupIndexes)
                }
             })
          })
@@ -157,7 +189,7 @@ async function downloadWithSettings(settings, button) {
                   .map((str, i) => (i == 0 ? newName : str))
                   .join("")
             }
-            console.log(nameKey)
+            // console.log(nameKey)
             if (nameKey == "fullName") {
                font.names[nameKey].en = nameValue.en.split(" ").join("-")
             }
@@ -170,35 +202,35 @@ async function downloadWithSettings(settings, button) {
          button.classList.remove("loading")
          button.classList.add("loaded")
 
-         console.log(font)
+         const fontAB = font.toArrayBuffer()
+         const fontBlob = new Blob([fontAB], { type: "font/otf" })
 
-         const regularAR = await font.toArrayBuffer()
-         console.log(regularAR)
-         const regularBlob = new Blob([regularAR])
-         console.log(regularBlob)
-         getZipFileBlob(regularBlob)
-            .then(downloadFile)
-            .catch((err) => console.log(err))
+         console.log(fontBlob)
+
+         return fontBlob
       })
-      .catch(async (err) => {
-         await wait(1000)
+      .catch((err) => {
          button.classList.remove("loading")
          button.classList.add("error")
 
          downloadStarted = false
          console.log(err)
-         // return null
+         return null
       })
 }
 
-async function getZipFileBlob(fontFileBlob) {
+async function getZipFileBlob() {
+   console.log(fontFileBlobs)
    const { BlobWriter, BlobReader, HttpReader, TextReader, ZipWriter } = zip
-   const README_URL = "https://unpkg.com/@zip.js/zip.js/README.md"
+   const installationTextURL = "/src/txt/installation.txt"
    const zipWriter = new ZipWriter(new BlobWriter("application/zip"))
+   const { regular, italic, bold, bolditalic } = fontFileBlobs
    await Promise.all([
-      zipWriter.add("hello.txt", new TextReader("Hello world!")),
-      zipWriter.add("README.md", new HttpReader(README_URL)),
-      zipWriter.add("CommitMono-Regular.otf", new BlobReader(fontFileBlob)),
+      zipWriter.add("installation.txt", new HttpReader(installationTextURL)),
+      zipWriter.add("CommitMono-Regular.otf", new BlobReader(regular)),
+      zipWriter.add("CommitMono-Italic.otf", new BlobReader(italic)),
+      zipWriter.add("CommitMono-Bold.otf", new BlobReader(bold)),
+      zipWriter.add("CommitMono-BoldItalic.otf", new BlobReader(bolditalic)),
    ])
    return zipWriter.close()
 }

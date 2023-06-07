@@ -1,0 +1,24 @@
+A short guide for how to install and enable your shiny new version of Commit Mono.
+This is taken from https://commitmono.com/install
+
+1. (Download the fonts)
+2. Unzip the fonts. You'll see 4 font files. These 4 fonts make up a 'Style Group':
+   * CommitMono-Regular: Base version with settings and weight of your choice.
+   * CommitMono-Italic: An italic version, same weight as regular.
+   * CommitMono-Bold: A bold version, weight 700.
+   * CommitMono-BoldItalic: A bold version, weight 700, that is also italic.
+3. Install all 4 fonts on your system:
+   * Windows: Right click the font in the folder and click "Install".
+   * Mac: Open fonts with Font Book from the folder and click "Install".
+   * Linux: Unpack fonts to ~/.local/share/fonts (or /usr/share/fonts to install
+     fonts system-wide) then fc-cache -f -v
+4. Restart your editor/IDE.
+5. Settings/Preferences → Editor → Font:
+   Pick CommitMono from the list. If you're using VS Code, simply put 
+   "editor.fontFamily": "CommitMono", in the settings.json file.
+
+If you have enabled one or more features/ligatures in your download, these are 
+available through the 'calt' OpenType Feature. In VS Code this feature is on by 
+default and you don't have to do anything to enable it. For a comprehensive guide 
+on how to enable in your specific editor/IDE, refer to: Fira Code wiki 
+https://github.com/tonsky/FiraCode/wiki#enabling-ligatures
