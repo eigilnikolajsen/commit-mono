@@ -6,6 +6,7 @@ const websiteData = {
       scaleOffset: 1.5,
    },
    weight: 450,
+   italic: false,
    invert: false,
    tutorial: [
       "Tab",

@@ -13,8 +13,13 @@ let commitMonoFont
 async function updateCodeFont() {
    console.log("updateCodeFont")
    opentype
-      .load(`/src/fonts/CommitMono${versionOfCommitMono}-${websiteData.weight}.otf`)
+      .load(
+         `/src/fonts/CommitMono${versionOfCommitMono}-${websiteData.weight}${
+            websiteData.italic ? "Italic" : "Regular"
+         }.otf`
+      )
       .then((font) => {
+         console.log(font)
          commitMonoFont = font
          updateCode(null, codeForm)
       })
@@ -36,27 +41,35 @@ async function downloadFont(button) {
       bolditalicDownloadSettigns.weight = 700
       bolditalicDownloadSettigns.italic = true
 
-      getFontBlob(regularDownloadSettigns, "regular", button)
+      getFontBlob(regularDownloadSettigns, "Regular", button)
          .then((resolve) => {
             fontFileBlobs.regular = resolve
-            return getFontBlob(italicDownloadSettigns, "italic", button)
+            return getFontBlob(italicDownloadSettigns, "Italic", button)
          })
          .then((resolve) => {
             fontFileBlobs.italic = resolve
-            return getFontBlob(boldDownloadSettigns, "bold", button)
+            return getFontBlob(boldDownloadSettigns, "Bold", button)
          })
          .then((resolve) => {
             fontFileBlobs.bold = resolve
-            return getFontBlob(bolditalicDownloadSettigns, "bolditalic", button)
+            return getFontBlob(bolditalicDownloadSettigns, "Bold Italic", button)
          })
          .then((resolve) => {
             fontFileBlobs.bolditalic = resolve
             return getZipFileBlob()
          })
          .then((resolve) => {
+            downloadStarted = false
+            button.classList.remove("loading")
+            button.classList.add("loaded")
             downloadFile(resolve)
          })
-         .catch((err) => console.log(err))
+         .catch((err) => {
+            downloadStarted = false
+            button.classList.remove("loading")
+            button.classList.add("error")
+            console.log(err)
+         })
    }
 }
 
@@ -70,10 +83,9 @@ function getFontBlob(settings, style, button) {
    console.log("getFontBlob")
    button.classList.add("loading")
 
-   // const fontFilePath = `/src/fonts/CommitMono${versionOfCommitMono}-${settings.weight}-${
-   //    style.includes("italic") ? "italic" : "regular"
-   // }.otf`
-   const fontFilePath = `/src/fonts/CommitMono${versionOfCommitMono}-${settings.weight}.otf`
+   const fontFilePath = `/src/fonts/CommitMono${versionOfCommitMono}-${settings.weight}${
+      settings.italic ? "Italic" : "Regular"
+   }.otf`
 
    return opentype
       .load(fontFilePath)
@@ -193,15 +205,17 @@ function getFontBlob(settings, style, button) {
             if (nameKey == "fullName") {
                font.names[nameKey].en = nameValue.en.split(" ").join("-")
             }
+            if (nameKey == "fontFamily") {
+               font.names[nameKey].en = "CommitMono"
+            }
+            if (nameKey == "fontSubfamily") {
+               // const styleToSubFamily = { regular: "Regular", italic: "Italic", bold: "Bold", bolditalic: "BoldItalic" }
+               font.names[nameKey].en = style
+            }
          })
          font.tables.name = font.names
 
-         // await wait(1000)
-         // await font.download()
-         downloadStarted = false
-         button.classList.remove("loading")
-         button.classList.add("loaded")
-
+         console.log(font)
          const fontAB = font.toArrayBuffer()
          const fontBlob = new Blob([fontAB], { type: "font/otf" })
 
@@ -210,12 +224,7 @@ function getFontBlob(settings, style, button) {
          return fontBlob
       })
       .catch((err) => {
-         button.classList.remove("loading")
-         button.classList.add("error")
-
-         downloadStarted = false
-         console.log(err)
-         return null
+         return err
       })
 }
 

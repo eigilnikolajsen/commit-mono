@@ -162,12 +162,23 @@ function keyDown(e) {
          if (e.code == "KeyB") websiteData.weight = websiteData.weight == 700 ? 700 : websiteData.weight + 25
          if (e.code == "KeyL") websiteData.weight = websiteData.weight == 300 ? 300 : websiteData.weight - 25
          updateCodeFont()
-         document.querySelector("body").style.fontVariationSettings = `"wght" ${websiteData.weight}`
+         document.querySelector("body").style.fontVariationSettings = `"wght" ${websiteData.weight}, "ital" ${
+            websiteData.italic ? "1" : "0"
+         }`
          showHideChangeSettings(`Weight: ${websiteData.weight}. Def: 450, Min: 300, Max: 700.`)
          document.querySelector(
             "#download"
          ).textContent = `Download CommitMono-${websiteData.weight} with current settings`
          document.forms["weight_form"][`weight_${websiteData.weight}`].checked = true
+      }
+
+      if (e.code == "KeyI") {
+         websiteData.italic = !websiteData.italic
+         updateCodeFont()
+         document.querySelector("body").style.fontVariationSettings = `"wght" ${websiteData.weight}, "ital" ${
+            websiteData.italic ? "1" : "0"
+         }`
+         showHideChangeSettings(`Italic: ${websiteData.italic}.`)
       }
 
       if (e.code == "KeyM") {
@@ -276,6 +287,10 @@ function pushPage(keyCode) {
       document.documentElement.style.fontSize = "16px"
       websiteData.weight = 450
       document.querySelector("body").style.fontVariationSettings = `"wght" 450`
+      document.querySelector(
+         "#download"
+      ).textContent = `Download CommitMono-${websiteData.weight} with current settings`
+      document.forms["weight_form"][`weight_${websiteData.weight}`].checked = true
       if (typeof updateCodeFont === "function") updateCodeFont()
       if (typeof updateWaterfall === "function") updateWaterfall()
       if (typeof buildExample === "function") buildExample()
@@ -418,9 +433,9 @@ function checkTutorialKeys(e) {
 function sectionNavigation(sectionIndex, fromPopstate) {
    console.log(window.history)
    const sectionName = websiteData.sections[sectionIndex]?.name
-   if (!fromPopstate) {
-      window.history.pushState({ name: sectionName }, `Go to section ${sectionName}`, `/${sectionName}`)
-   }
+   // if (!fromPopstate) {
+   //    window.history.pushState({ name: sectionName }, `Go to section ${sectionName}`, `?s=${sectionName}`)
+   // }
 
    pageAnimation()
 
