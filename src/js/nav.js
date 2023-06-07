@@ -15,6 +15,7 @@ function buildNav() {
       input.id = section.name
       input.classList.add("nav_section_input")
       input.value = `section_${index + 1}`
+      input.tabIndex = 0
       if (index == 0) {
          input.setAttribute("checked", "true")
       }
@@ -36,23 +37,29 @@ function updateNav(event, form) {
    for (const entry of data) {
       output = `${entry[1]}`
    }
-   pageAnimation()
-   // goToSection("Digit1")
-   websiteData.sections.forEach((section, index) => {
-      const sectionContainer = document.querySelector(`#section_${index + 1}`)
-      if (sectionContainer.id == output) {
-         sectionContainer.style.display = "block"
-      } else {
-         sectionContainer.style.display = "none"
-      }
-   })
+   sectionNavigation(output.split("section_")[1] - 1)
 
-   main.style.transform = `translate(0)`
-   navForm.style.transform = `translate(0)`
-   keySection.style.transform = `translate(0)`
-   websiteData.pushPage.coordinates.x = 0
-   websiteData.pushPage.coordinates.y = 0
-   websiteData.pushPage.scale = 1
+   // pageAnimation()
+
+   // websiteData.sections.forEach((section, index) => {
+   //    const sectionContainer = document.querySelector(`#section_${index + 1}`)
+   //    if (sectionContainer.id == output) {
+   //       sectionContainer.style.display = "block"
+   //       sectionNavigation(section.name, `Digit${index + 1}`)
+   //    } else {
+   //       sectionContainer.style.display = "none"
+   //    }
+   // })
+   // main.style.transform = `translate(0)`
+   // navForm.style.transform = `translate(0)`
+   // keySection.style.transform = `translate(0)`
+   // websiteData.pushPage.coordinates.x = 0
+   // websiteData.pushPage.coordinates.y = 0
+   // websiteData.pushPage.scale = 1
+
+   // const sectionName = websiteData.sections[output.split("section_")[1] - 1]?.name
+   // console.log("sectionNavigation from updateNav")
+   // sectionNavigation(sectionName)
 
    if (event) event.preventDefault()
 }
@@ -82,21 +89,18 @@ function exitTextField() {
    insideTextField = false
 }
 
-// document.addEventListener("scroll", (e) => {
-//    console.log(window.scrollY, e)
-//    window.scroll(0, Math.round(window.scrollY / 16) * 16)
-// })
-
 let timesClicked = 0
-
-document.addEventListener("click", (e) => {
-   focusUsingTab = false
-   timesClicked++
-   if (timesClicked == 10) {
-      document.querySelector("#keyboard_container").classList.add("use_keyboard_animation")
-      showHideChangeSettings("Use keyboard to navigate!", 2400)
+function onClick(e) {
+   if (e.pointerType !== "") {
+      focusUsingTab = false
+      timesClicked++
+      if (timesClicked == 10) {
+         document.querySelector("#keyboard_container").classList.add("use_keyboard_animation")
+         showHideChangeSettings("Use keyboard to navigate!", 2400, true)
+      }
    }
-})
+}
+document.addEventListener("click", onClick)
 
 const keys = document.querySelectorAll(".key")
 keys.forEach((key) => {
@@ -127,7 +131,8 @@ function keyDown(e) {
       activeKey?.classList.add("active_key")
 
       if (e.code.includes("Digit")) {
-         goToSection(e.code)
+         const digitNumber = e.code.split("Digit")[1] - 1
+         sectionNavigation(digitNumber == -1 ? 9 : digitNumber)
       }
 
       if (e.code == "KeyO") {
@@ -193,7 +198,6 @@ function keyUp(e) {
       checkedMenuInput.focus()
    }
 }
-
 document.addEventListener("keydown", keyDown)
 document.addEventListener("keyup", keyUp)
 
@@ -281,8 +285,6 @@ function pushPage(keyCode) {
 let isSafari = 0
 let active // saves what DOM element is currently active
 let focusTimeOutID // to be able to use clearTimeout()
-document.addEventListener("focusin", onFocusIn)
-
 function onFocusIn(e) {
    // console.log("focusin", document.activeElement)
 
@@ -357,6 +359,7 @@ function onFocusIn(e) {
       }
    }
 }
+document.addEventListener("focusin", onFocusIn)
 
 let prevHasFocus = true
 function checkDocumentFocus() {
@@ -386,7 +389,6 @@ function onBlurIn(e) {
 
 function goToSection(keyCode) {
    console.log("goToSection")
-   pageAnimation()
    let section = +keyCode.split("Digit")[1]
    section = section == 0 ? 10 : section
    const sectionName = websiteData.sections[section - 1]?.name
@@ -395,7 +397,6 @@ function goToSection(keyCode) {
       attemptedSection.focus()
       document.forms["nav_form"][sectionName].checked = true
       updateNav(null, navForm)
-      document.querySelector("#canvas").style.transform = "scale(1)"
    }
 }
 
@@ -426,3 +427,44 @@ function checkTutorialKeys(e) {
 
    if (numnerOfTutorialKeys === numberOfPressedKeys) console.log("TUTORIAL FINISHED!!")
 }
+function sectionNavigation(sectionIndex, fromPopstate) {
+   console.log(window.history)
+   const sectionName = websiteData.sections[sectionIndex]?.name
+   if (!fromPopstate) {
+      window.history.pushState({ name: sectionName }, `Go to section ${sectionName}`, `/${sectionName}`)
+   }
+
+   pageAnimation()
+
+   const attemptedSection = document.querySelector(`[value="section_${sectionIndex + 1}"]`)
+   if (attemptedSection && sectionName) {
+      attemptedSection.focus()
+      document.forms["nav_form"][sectionName].checked = true
+   }
+
+   websiteData.sections.forEach((section, index) => {
+      const sectionContainer = document.querySelector(`#section_${index + 1}`)
+      if (index == sectionIndex) {
+         sectionContainer.style.display = "block"
+      } else {
+         sectionContainer.style.display = "none"
+      }
+   })
+   main.style.transform = `translate(0)`
+   navForm.style.transform = `translate(0)`
+   keySection.style.transform = `translate(0)`
+   websiteData.pushPage.coordinates.x = 0
+   websiteData.pushPage.coordinates.y = 0
+   websiteData.pushPage.scale = 1
+}
+
+function onPopState(e) {
+   console.log(e)
+   e.preventDefault()
+   if (e.state) {
+      websiteData.sections.forEach((section, index) => {
+         if (section.name === e.state.name) sectionNavigation(index, true)
+      })
+   }
+}
+window.addEventListener("popstate", onPopState)

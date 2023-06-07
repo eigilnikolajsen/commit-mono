@@ -27,13 +27,19 @@ function startAll() {
 
    changeFavicon(true)
 
-   updateNav(null, navForm)
+   websiteData.sections.forEach((section, index) => {
+      const pathName = window.location.pathname.slice(1)
+      if (pathName == "" && index == 0) {
+         sectionNavigation(0)
+      } else if (section.name == pathName) {
+         sectionNavigation(index)
+      }
+   })
 
    setInterval(checkDocumentFocus, 100)
-   // setTimeout(() => {
+
    document.querySelector("#navigate_description").focus()
    document.querySelector("#loading").style.display = "none"
-   // }, 1)
 }
 
 if (fontsLoaded) {

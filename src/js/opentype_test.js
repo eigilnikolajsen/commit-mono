@@ -26,18 +26,14 @@ async function downloadFont(button) {
    console.log("downloadFont")
    if (!downloadStarted) {
       downloadStarted = true
-      let downloadableFont
-      if (button.dataset.type === "staticDefault") {
-         downloadWithSettings(fontDownloadSettingsDefault, button)
-      }
-      if (button.dataset.type === "staticCurrent") {
-         downloadWithSettings(fontDownloadSettings, button)
-         console.log(button.dataset.type)
-      }
-      if (button.dataset.type === "variableDefault") {
-         downloadWithSettings(fontDownloadSettingsDefault, button)
-         console.log(button.dataset.type)
-      }
+      downloadWithSettings(fontDownloadSettingsDefault, button)
+      // const fontArrayBuffer = await downloadWithSettings(fontDownloadSettingsDefault, button)
+      // console.log(fontArrayBuffer)
+      // const fontFileBlob = new Blob([fontArrayBuffer])
+      // console.log(fontFileBlob)
+      // // getZipFileBlob(fontFileBlob)
+      // //    .then(downloadFile)
+      // //    .catch((err) => console.log(err))
    }
 }
 
@@ -169,12 +165,20 @@ async function downloadWithSettings(settings, button) {
          font.tables.name = font.names
 
          // await wait(1000)
-         await font.download()
+         // await font.download()
          downloadStarted = false
          button.classList.remove("loading")
          button.classList.add("loaded")
 
          console.log(font)
+
+         const regularAR = await font.toArrayBuffer()
+         console.log(regularAR)
+         const regularBlob = new Blob([regularAR])
+         console.log(regularBlob)
+         getZipFileBlob(regularBlob)
+            .then(downloadFile)
+            .catch((err) => console.log(err))
       })
       .catch(async (err) => {
          await wait(1000)
@@ -183,5 +187,25 @@ async function downloadWithSettings(settings, button) {
 
          downloadStarted = false
          console.log(err)
+         // return null
       })
+}
+
+async function getZipFileBlob(fontFileBlob) {
+   const { BlobWriter, BlobReader, HttpReader, TextReader, ZipWriter } = zip
+   const README_URL = "https://unpkg.com/@zip.js/zip.js/README.md"
+   const zipWriter = new ZipWriter(new BlobWriter("application/zip"))
+   await Promise.all([
+      zipWriter.add("hello.txt", new TextReader("Hello world!")),
+      zipWriter.add("README.md", new HttpReader(README_URL)),
+      zipWriter.add("CommitMono-Regular.otf", new BlobReader(fontFileBlob)),
+   ])
+   return zipWriter.close()
+}
+
+function downloadFile(blob) {
+   const a = document.createElement("a")
+   a.download = `CommitMono-${Date.now()}.zip`
+   a.href = URL.createObjectURL(blob)
+   a.click()
 }
