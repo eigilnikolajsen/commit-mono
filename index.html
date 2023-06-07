@@ -7,7 +7,7 @@
       <meta name="description" content="Website for Commit Mono - a neutral programming font." />
 
       <!-- favicon -->
-      <!-- <link rel="icon" href="/favicon.ico" sizes="any" /> -->
+      <link rel="icon" href="/favicon.ico" sizes="any" />
       <link rel="icon" href="src/favicon/icon.svg" type="image/svg+xml" id="dynamic-favicon" />
       <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
       <link rel="manifest" href="/manifest.webmanifest" />
@@ -28,16 +28,15 @@
       <script src="src/js/table_section.js" defer></script>
       <script src="src/js/familiar_section.js" defer></script>
       <script src="src/js/intelligent_section.js" defer></script>
-      <script src="https://cdn.jsdelivr.net/npm/opentype.js" defer></script>
-      <script src="src/js/zip.min.js" defer></script>
       <script src="src/js/opentype_test.js" defer></script>
       <script src="src/js/code_section.js" defer></script>
       <script src="src/js/distinction_section.js" defer></script>
       <script src="src/js/example_section.js" defer></script>
       <script src="src/js/documentation_section.js" defer></script>
       <script src="src/js/dynamic_favicon.js" defer></script>
+      <script src="src/js/opentype.min.js" defer></script>
+      <script src="src/js/zip.min.js" defer></script>
       <script src="src/js/start_functions.js" defer></script>
-      <!-- <script src="https://unpkg.com/@zip.js/zip.js/index.js"></script> -->
    </head>
    <body>
       <div id="app_root">
@@ -544,6 +543,12 @@
                         <div class="content_container">
                            <br />
                            <h2>FAQ</h2>
+                           <p class="accordion_header" tabindex="0">Why does the font not include more ligatures?</p>
+                           <p class="accordion_point">
+                              The ligatures already in Commit Mono are added because they provide additional
+                              funktionality (!= becomes ≠), but they are off by default. Commit Mono won't be updated
+                              with ligatures that purely serve aesthetic purposes ($> becomes connected).
+                           </p>
                            <p class="accordion_header" tabindex="0">What is the licensing on Commit Mono?</p>
                            <p class="accordion_point">
                               Commit Mono is available under the SIL Open Font License 1.1 license. It can therefore be
@@ -570,6 +575,11 @@
                            <p class="accordion_header" tabindex="0">May I use Commit Mono to design my own font?</p>
                            <p class="accordion_point">
                               Yes, but you need to give credit and indicate that it is based on Commit Mono.
+                           </p>
+                           <p class="accordion_header" tabindex="0">My .zip file won't work, what to do?</p>
+                           <p class="accordion_point">
+                              There have been some problems with downloading .zip files from Safari. The download is
+                              tested to work in Chrome and FireFox.
                            </p>
                            <br />
                            <br />

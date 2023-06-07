@@ -56,6 +56,7 @@ button:focus a {
 .download_button {
    display: block;
    width: max-content;
+   position: relative;
 }
 
 .download_button:hover {
@@ -65,23 +66,12 @@ button:focus a {
    text-decoration: none;
 }
 
-.download_button.line-through:focus {
-   text-decoration: line-through;
-}
-
-.download_button.line-through:focus::after {
-   content: "Not possible at the moment.";
-   text-decoration: none;
-   position: absolute;
-   background-color: var(--bg);
-   color: var(--text);
-}
-
 .download_button.loading::after {
    content: ".";
    position: absolute;
    color: var(--text);
    right: -2ch;
+   top: 0;
    animation: 800ms 0ms steps(4, jump-none) infinite loading;
 }
 .download_button.loaded::after {
@@ -89,6 +79,7 @@ button:focus a {
    position: absolute;
    color: var(--text);
    right: -2ch;
+   top: 0;
    animation: none;
 }
 .download_button.error::after {
@@ -96,6 +87,7 @@ button:focus a {
    position: absolute;
    color: var(--text);
    right: -2ch;
+   top: 0;
    animation: none;
 }
 
