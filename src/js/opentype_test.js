@@ -24,6 +24,21 @@ async function updateCodeFont() {
          updateCode(null, codeForm)
       })
       .catch((err) => console.log(err))
+
+   opentype
+      .load("src/fonts/CommitMonoV117-BoldItalic.otf")
+      .then((font) => {
+         console.log(font.tables)
+         // font.download()
+      })
+      .catch((err) => console.log(err))
+   opentype
+      .load("src/fonts/CommitMonoV117-Light.otf")
+      .then((font) => {
+         console.log(font.tables)
+         // font.download()
+      })
+      .catch((err) => console.log(err))
 }
 
 let downloadStarted = false
@@ -192,30 +207,57 @@ function getFontBlob(settings, style, button) {
 
          //
          // #3 change the names
-         Object.entries(font.names).forEach(([nameKey, nameValue]) => {
-            const oldName = `CommitMono${versionOfCommitMono}`
-            const newName = "CommitMono"
-            if (nameValue.en.includes(oldName)) {
-               nameValue.en = nameValue.en
-                  .split(oldName)
-                  .map((str, i) => (i == 0 ? newName : str))
-                  .join("")
-            }
-            // console.log(nameKey)
-            if (nameKey == "fullName") {
-               font.names[nameKey].en = nameValue.en.split(" ").join("-")
-            }
-            if (nameKey == "fontFamily") {
-               font.names[nameKey].en = "CommitMono"
-            }
-            if (nameKey == "fontSubfamily") {
-               // const styleToSubFamily = { regular: "Regular", italic: "Italic", bold: "Bold", bolditalic: "BoldItalic" }
-               font.names[nameKey].en = style
-            }
-         })
+         // Object.entries(font.names).forEach(([nameKey, nameValue]) => {
+         //    const oldName = `CommitMono${versionOfCommitMono}`
+         //    const newName = "CommitMono"
+         //    if (nameValue.en.includes(oldName)) {
+         //       nameValue.en = nameValue.en.replace(oldName, newName)
+         //    }
+         //    if (style == "Bold" && nameValue.en.includes("Regular")) {
+         //       nameValue.en = nameValue.en.replace("Regular", "Bold")
+         //    }
+         //    if (nameKey == "fullName") {
+         //       font.names[nameKey].en = `${newName}-${style}`
+         //    }
+         //    if (nameKey == "fontFamily") {
+         //       font.names[nameKey].en = "CommitMono"
+         //    }
+         //    if (nameKey == "fontSubfamily") {
+         //       font.names[nameKey].en = style
+         //    }
+         //    if (nameKey == "preferredSubfamily") {
+         //       font.names[nameKey].en = style
+         //    }
+         //    if (nameKey == "postScriptName") {
+         //       font.names[nameKey].en = `${newName}-${style}`
+         //    }
+         // })
+
+         // give custom names to each member of the style group
+         font.names.fontFamily.en = "CommitMono"
+         font.names.fontSubfamily.en = style
+         font.names.fullName.en = `CommitMono ${style}`
+         font.names.postScriptName.en = `CommitMono-${style.split(" ").join("")}`
+         // font.names.preferredFamily = { en: "CommitMono" }
+         // font.names.preferredSubfamily.en = style
+         delete font.names.preferredFamily
+         delete font.names.preferredSubfamily
+         font.names.uniqueID.en = `Version 0.900;;CommitMono-${style.split(" ").join("")};2023;FL801`
+
+         font.tables.cff.topDict.familyName = font.names.fontFamily.en
+         font.tables.cff.topDict.fullName = font.names.fullName.en
+         font.tables.cff.topDict.weight = settings.weight == 700 ? "Bold" : "Regular"
+
+         const macStyles = ["Regular", "Italic", "Bold", "Bold Italic"]
+         font.tables.head.macStyle = macStyles.indexOf(style)
+
+         // make the font.tables.name equal to that of font.names
          font.tables.name = font.names
 
-         console.log(font)
+         // set the correct weight
+         font.tables.os2.usWeightClass = settings.weight
+
+         console.log(font.tables)
          const fontAB = font.toArrayBuffer()
          const fontBlob = new Blob([fontAB], { type: "font/otf" })
 

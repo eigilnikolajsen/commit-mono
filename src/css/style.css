@@ -16,6 +16,7 @@ body {
    font-feature-settings: "ss01", "ss03", "ss04", "ss05";
    min-height: 100vh;
    padding-bottom: 10rem;
+   overflow: scroll;
    -ms-overflow-style: none; /* Internet Explorer 10+ */
    scrollbar-width: none; /* Firefox */
 }

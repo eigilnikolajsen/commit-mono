@@ -227,32 +227,24 @@ function pushPage(keyCode) {
    // move left
    if (keyCode == "KeyW") {
       main.style.transform = `translate(${x}px, ${y + dist}px)`
-      navForm.style.transform = `translate(${x}px, 0)`
-      keySection.style.transform = `translate(${x}px, 0)`
       websiteData.pushPage.coordinates.y += dist
    }
 
    // move left
    else if (keyCode == "KeyA") {
       main.style.transform = `translate(${x + dist}px, ${y}px)`
-      navForm.style.transform = `translate(${x + dist}px, 0)`
-      keySection.style.transform = `translate(${x + dist}px, 0)`
       websiteData.pushPage.coordinates.x += dist
    }
 
    // move down
    else if (keyCode == "KeyS") {
       main.style.transform = `translate(${x}px, ${y - dist}px)`
-      navForm.style.transform = `translate(${x}px, 0)`
-      keySection.style.transform = `translate(${x}px, 0)`
       websiteData.pushPage.coordinates.y -= dist
    }
 
    // move right
    else if (keyCode == "KeyD") {
       main.style.transform = `translate(${x - dist}px, ${y}px)`
-      navForm.style.transform = `translate(${x - dist}px, 0)`
-      keySection.style.transform = `translate(${x - dist}px, 0)`
       websiteData.pushPage.coordinates.x -= dist
    }
 
@@ -277,8 +269,6 @@ function pushPage(keyCode) {
    // reset transforms
    else if (keyCode == "KeyR") {
       main.style.transform = `translate(0)`
-      navForm.style.transform = `translate(0)`
-      keySection.style.transform = `translate(0)`
       websiteData.pushPage.coordinates.x = 0
       websiteData.pushPage.coordinates.y = 0
       websiteData.pushPage.scale = 1
@@ -469,3 +459,16 @@ function onPopState(e) {
    }
 }
 window.addEventListener("popstate", onPopState)
+
+// when the user has scrolled manually using the keyboard the page is offset
+// so when you use your scroll wheen to scroll back up, you can't see the top
+// this little script combats that
+window.addEventListener("scroll", onScroll)
+function onScroll(e) {
+   const { x, y } = websiteData.pushPage.coordinates
+   if (x != 0 || y != 0) {
+      main.style.transform = `translate(0)`
+      websiteData.pushPage.coordinates = { x: 0, y: 0 }
+      window.scrollTo(window.scrollX - x, window.scrollY - y)
+   }
+}
