@@ -1,3 +1,5 @@
+let waitingForLoadIntervalID = null
+let allCssLoaded = false
 function startAll() {
    console.log("startAll")
 
@@ -38,8 +40,14 @@ function startAll() {
 
    setInterval(checkDocumentFocus, 100)
 
-   document.querySelector("#navigate_description").focus()
-   document.querySelector("#loading").style.display = "none"
+   waitingForLoadIntervalID = setInterval(() => {
+      if (allCssLoaded) {
+         document.querySelector("#navigate_description").focus()
+         document.querySelector("#loading").style.display = "none"
+         clearInterval(waitingForLoadIntervalID)
+         waitingForLoadIntervalID = null
+      }
+   }, 100)
 }
 
 if (fontsLoaded) {

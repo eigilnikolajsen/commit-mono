@@ -12,20 +12,17 @@
 }
 
 .keys {
-   font-size: 0.75rem;
    display: flex;
    gap: 0.375ch;
    margin-bottom: 0.125rem;
 }
 
 .key {
-   font-size: 0.75rem;
-   height: 1.2rem;
+   line-height: 0.85rem;
+   display: inline;
    border: 0.0625rem solid var(--text);
    border-bottom: 0.125rem solid var(--text);
-   display: grid;
-   place-content: center;
-   padding: 0 0.25rem;
+   padding: 0 calc(0.5ch - 0.0625rem);
    user-select: none;
 }
 
@@ -41,7 +38,7 @@
 .key:active {
    background: var(--text);
    color: var(--bg);
-   height: 1.1rem;
+   line-height: 0.75rem;
    margin-top: 0.1rem;
 }
 
@@ -52,7 +49,6 @@
 #escape_textfield .key:nth-child(2) {
    letter-spacing: -0.1rem;
    text-indent: -0.1rem;
-   padding: 0.25rem;
 }
 
 #safari p,
@@ -79,7 +75,6 @@
    border: 0.0625rem solid var(--text);
    border-bottom: 0.125rem solid var(--text);
    padding: 0 calc(0.5ch - 0.0625rem);
-   margin: 0;
 }
 
 ul:focus .span_key {

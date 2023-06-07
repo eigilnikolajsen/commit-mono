@@ -30,6 +30,7 @@ function wait(milliseconds) {
    })
 }
 
+let checkCssLoadIntervalIDs = []
 function appendStyleSheets() {
    console.log("appendStyleSheets")
    const stylesheetIndexes = [
@@ -45,11 +46,23 @@ function appendStyleSheets() {
       "section_10",
    ]
    const head = document.querySelector("head")
-   stylesheetIndexes.forEach((stylesheet) => {
+   stylesheetIndexes.forEach((stylesheet, index) => {
       const link = document.createElement("link")
       link.setAttribute("rel", "stylesheet")
       link.setAttribute("href", `src/css/${stylesheet}.css`)
       head.append(link)
+      checkCssLoadIntervalIDs[index] = setInterval(() => {
+         const cssLoaded = Boolean(link.sheet)
+         if (cssLoaded) {
+            console.log(`${stylesheet} CSS loaded`)
+            clearInterval(checkCssLoadIntervalIDs[index])
+            checkCssLoadIntervalIDs[index] = null
+            if (index == stylesheetIndexes.length - 1) {
+               allCssLoaded = true
+               console.log("ALL CSS LOADED")
+            }
+         }
+      }, 100)
    })
 }
 

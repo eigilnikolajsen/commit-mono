@@ -387,19 +387,6 @@ function onBlurIn(e) {
    if (!isMobile) focusTimeOutID = setTimeout(() => active.focus(), 100)
 }
 
-function goToSection(keyCode) {
-   console.log("goToSection")
-   let section = +keyCode.split("Digit")[1]
-   section = section == 0 ? 10 : section
-   const sectionName = websiteData.sections[section - 1]?.name
-   const attemptedSection = document.querySelector(`[value="section_${section}"]`)
-   if (attemptedSection && sectionName) {
-      attemptedSection.focus()
-      document.forms["nav_form"][sectionName].checked = true
-      updateNav(null, navForm)
-   }
-}
-
 function checkTutorialKeys(e) {
    websiteData.tutorial.forEach((key) => {
       if (e.code == key) {
@@ -427,6 +414,7 @@ function checkTutorialKeys(e) {
 
    if (numnerOfTutorialKeys === numberOfPressedKeys) console.log("TUTORIAL FINISHED!!")
 }
+
 function sectionNavigation(sectionIndex, fromPopstate) {
    console.log(window.history)
    const sectionName = websiteData.sections[sectionIndex]?.name
@@ -459,8 +447,6 @@ function sectionNavigation(sectionIndex, fromPopstate) {
 }
 
 function onPopState(e) {
-   console.log(e)
-   e.preventDefault()
    if (e.state) {
       websiteData.sections.forEach((section, index) => {
          if (section.name === e.state.name) sectionNavigation(index, true)
