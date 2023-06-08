@@ -138,11 +138,11 @@ a:focus {
    visibility: hidden;
 }
 
-#nav_form input:checked + label::before {
+input:checked + label::before {
    background: repeating-conic-gradient(var(--text) 0% 25%, transparent 0% 50%, transparent 0% 100%) 50% / 2px 2px;
 }
 
-#nav_form input:checked + label {
+input:checked + label {
    color: var(--text);
 }
 

@@ -5,6 +5,11 @@ const contentRoot = document.querySelector("#content_root")
 const clickFocus = document.querySelector("#click_focus")
 const navForm = document.querySelector("#nav_form")
 
+const main = document.querySelector("main")
+const mainScale = document.querySelector("#main_scale")
+const keySection = document.querySelector("#keyboard_section")
+let rem = +document.documentElement.style.fontSize.split("px")[0]
+
 function buildNav() {
    console.log("buildNav")
    websiteData.sections.forEach((section, index) => {
@@ -211,11 +216,6 @@ function keyUp(e) {
 }
 document.addEventListener("keydown", keyDown)
 document.addEventListener("keyup", keyUp)
-
-const main = document.querySelector("main")
-const mainScale = document.querySelector("#main_scale")
-const keySection = document.querySelector("#keyboard_section")
-let rem = +document.documentElement.style.fontSize.split("px")[0]
 
 function pushPage(keyCode) {
    console.log("push page", keyCode)
@@ -470,6 +470,6 @@ function onScroll(e) {
    if (x != 0 || y != 0) {
       main.style.transform = `translate(0)`
       websiteData.pushPage.coordinates = { x: 0, y: 0 }
-      mainScale.scrollTo(window.scrollX - x, window.scrollY - y)
+      mainScale.scrollBy(-x, -y)
    }
 }
