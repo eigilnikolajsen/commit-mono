@@ -6,13 +6,14 @@
    main {
       position: relative;
    }
-   header #keyboard_section {
-      visibility: hidden;
-   }
+   header #keyboard_section,
    #safari {
       visibility: hidden;
    }
-   /* header nav {
-      position: absolute;
-   } */
+   #footer_hint {
+      display: none;
+   }
+   #footer_hint_mobile {
+      display: block;
+   }
 }

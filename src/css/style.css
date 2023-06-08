@@ -300,3 +300,7 @@ ul li:focus::before {
 #focus_check {
    position: absolute;
 }
+
+#footer_hint_mobile {
+   display: none;
+}

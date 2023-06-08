@@ -19,7 +19,7 @@ async function updateCodeFont() {
          }.otf`
       )
       .then((font) => {
-         console.log(font)
+         // console.log(font)
          commitMonoFont = font
          updateCode(null, codeForm)
       })
@@ -28,14 +28,14 @@ async function updateCodeFont() {
    opentype
       .load("src/fonts/CommitMonoV117-BoldItalic.otf")
       .then((font) => {
-         console.log(font.tables)
+         console.log(font)
          // font.download()
       })
       .catch((err) => console.log(err))
    opentype
       .load("src/fonts/CommitMonoV117-Light.otf")
       .then((font) => {
-         console.log(font.tables)
+         console.log(font)
          // font.download()
       })
       .catch((err) => console.log(err))
@@ -46,6 +46,9 @@ async function downloadFont(button) {
    console.log("downloadFont")
    if (!downloadStarted) {
       downloadStarted = true
+      button.classList.remove("loaded")
+      button.classList.remove("error")
+      button.classList.add("loading")
 
       const regularDownloadSettigns = { ...fontDownloadSettings }
       const italicDownloadSettigns = { ...fontDownloadSettings }
@@ -96,7 +99,6 @@ const fontFileBlobs = {
 }
 function getFontBlob(settings, style, button) {
    console.log("getFontBlob")
-   button.classList.add("loading")
 
    const fontFilePath = `/src/fonts/CommitMono${versionOfCommitMono}-${settings.weight}${
       settings.italic ? "Italic" : "Regular"
@@ -207,39 +209,11 @@ function getFontBlob(settings, style, button) {
 
          //
          // #3 change the names
-         // Object.entries(font.names).forEach(([nameKey, nameValue]) => {
-         //    const oldName = `CommitMono${versionOfCommitMono}`
-         //    const newName = "CommitMono"
-         //    if (nameValue.en.includes(oldName)) {
-         //       nameValue.en = nameValue.en.replace(oldName, newName)
-         //    }
-         //    if (style == "Bold" && nameValue.en.includes("Regular")) {
-         //       nameValue.en = nameValue.en.replace("Regular", "Bold")
-         //    }
-         //    if (nameKey == "fullName") {
-         //       font.names[nameKey].en = `${newName}-${style}`
-         //    }
-         //    if (nameKey == "fontFamily") {
-         //       font.names[nameKey].en = "CommitMono"
-         //    }
-         //    if (nameKey == "fontSubfamily") {
-         //       font.names[nameKey].en = style
-         //    }
-         //    if (nameKey == "preferredSubfamily") {
-         //       font.names[nameKey].en = style
-         //    }
-         //    if (nameKey == "postScriptName") {
-         //       font.names[nameKey].en = `${newName}-${style}`
-         //    }
-         // })
-
          // give custom names to each member of the style group
          font.names.fontFamily.en = "CommitMono"
          font.names.fontSubfamily.en = style
          font.names.fullName.en = `CommitMono ${style}`
          font.names.postScriptName.en = `CommitMono-${style.split(" ").join("")}`
-         // font.names.preferredFamily = { en: "CommitMono" }
-         // font.names.preferredSubfamily.en = style
          delete font.names.preferredFamily
          delete font.names.preferredSubfamily
          font.names.uniqueID.en = `Version 0.900;;CommitMono-${style.split(" ").join("")};2023;FL801`
@@ -257,7 +231,7 @@ function getFontBlob(settings, style, button) {
          // set the correct weight
          font.tables.os2.usWeightClass = settings.weight
 
-         console.log(font.tables)
+         console.log(font)
          const fontAB = font.toArrayBuffer()
          const fontBlob = new Blob([fontAB], { type: "font/otf" })
 

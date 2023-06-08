@@ -58,36 +58,33 @@ button:focus a {
    width: max-content;
    position: relative;
 }
-
 .download_button:hover {
    background: repeating-conic-gradient(transparent 0% 25%, var(--text) 0% 50%, transparent 0% 75%, var(--text) 0% 100%)
       50% / 2px 2px;
    color: var(--bg);
    text-decoration: none;
 }
-
-.download_button.loading::after {
-   content: ".";
+.download_button:focus {
+   background-color: var(--text);
+   color: var(--bg);
+   text-decoration: none;
+}
+.download_button::after {
    position: absolute;
    color: var(--text);
    right: -2ch;
    top: 0;
+}
+.download_button.loading::after {
+   content: ".";
    animation: 800ms 0ms steps(4, jump-none) infinite loading;
 }
 .download_button.loaded::after {
    content: "✓";
-   position: absolute;
-   color: var(--text);
-   right: -2ch;
-   top: 0;
    animation: none;
 }
 .download_button.error::after {
    content: "✕";
-   position: absolute;
-   color: var(--text);
-   right: -2ch;
-   top: 0;
    animation: none;
 }
 
