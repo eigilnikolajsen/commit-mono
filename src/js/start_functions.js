@@ -5,6 +5,15 @@ function startAll() {
 
    appendStyleSheets()
 
+   waitingForLoadIntervalID = setInterval(() => {
+      if (allCssLoaded) {
+         document.querySelector("#navigate_description").focus()
+         document.querySelector("#loading").style.display = "none"
+         clearInterval(waitingForLoadIntervalID)
+         waitingForLoadIntervalID = null
+      }
+   }, 100)
+
    fillSectionData()
 
    buildNav()
@@ -29,25 +38,9 @@ function startAll() {
 
    changeFavicon(true)
 
-   websiteData.sections.forEach((section, index) => {
-      const pathName = window.location.pathname.slice(1)
-      if (pathName == "" && index == 0) {
-         sectionNavigation(0)
-      } else if (section.name == pathName) {
-         sectionNavigation(index)
-      }
-   })
+   sectionNavigation(0)
 
    setInterval(checkDocumentFocus, 100)
-
-   waitingForLoadIntervalID = setInterval(() => {
-      if (allCssLoaded) {
-         document.querySelector("#navigate_description").focus()
-         document.querySelector("#loading").style.display = "none"
-         clearInterval(waitingForLoadIntervalID)
-         waitingForLoadIntervalID = null
-      }
-   }, 100)
 }
 
 if (fontsLoaded) {

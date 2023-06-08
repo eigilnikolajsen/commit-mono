@@ -34,7 +34,10 @@ let checkCssLoadIntervalIDs = []
 function appendStyleSheets() {
    console.log("appendStyleSheets")
    const stylesheetIndexes = [
+      "style",
+      "mobile",
       "non_essential",
+      "section_1",
       "section_2",
       "section_3",
       "section_4",
