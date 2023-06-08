@@ -60,7 +60,7 @@ function appendStyleSheets() {
             console.log(`${stylesheet} CSS loaded`)
             clearInterval(checkCssLoadIntervalIDs[index])
             checkCssLoadIntervalIDs[index] = null
-            if (index == stylesheetIndexes.length - 1) {
+            if (index == 3) {
                allCssLoaded = true
                console.log("ALL CSS LOADED")
             }
