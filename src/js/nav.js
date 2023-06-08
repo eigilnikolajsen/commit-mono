@@ -91,7 +91,7 @@ function exitTextField() {
 
 let timesClicked = 0
 function onClick(e) {
-   if (e.pointerType !== "") {
+   if (e.pointerType !== "" && !isMobile) {
       focusUsingTab = false
       timesClicked++
       if (timesClicked == 10) {
@@ -421,7 +421,7 @@ function checkTutorialKeys(e) {
 }
 
 function sectionNavigation(sectionIndex, fromPopstate) {
-   console.log(window.history)
+   // console.log(window.history)
    const sectionName = websiteData.sections[sectionIndex]?.name
    // if (!fromPopstate) {
    //    window.history.pushState({ name: sectionName }, `Go to section ${sectionName}`, `?s=${sectionName}`)
@@ -451,14 +451,14 @@ function sectionNavigation(sectionIndex, fromPopstate) {
    websiteData.pushPage.scale = 1
 }
 
-function onPopState(e) {
-   if (e.state) {
-      websiteData.sections.forEach((section, index) => {
-         if (section.name === e.state.name) sectionNavigation(index, true)
-      })
-   }
-}
-window.addEventListener("popstate", onPopState)
+// function onPopState(e) {
+//    if (e.state) {
+//       websiteData.sections.forEach((section, index) => {
+//          if (section.name === e.state.name) sectionNavigation(index, true)
+//       })
+//    }
+// }
+// window.addEventListener("popstate", onPopState)
 
 // when the user has scrolled manually using the keyboard the page is offset
 // so when you use your scroll wheen to scroll back up, you can't see the top

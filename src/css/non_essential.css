@@ -80,6 +80,17 @@ a:focus {
    text-decoration: none;
 }
 
+#click_focus,
+#change_setting {
+   inset: 0;
+   position: fixed;
+   z-index: 999;
+   display: grid;
+   place-content: center;
+   visibility: hidden;
+   pointer-events: none;
+}
+
 #safari {
    display: none;
 }

@@ -27,14 +27,18 @@
    -webkit-appearance: none;
    appearance: none;
    background-color: var(--text);
-   margin: 0;
 
-   color: var(--text);
+   display: block;
    width: 0.375rem;
    height: 0.375rem;
 
-   display: grid;
-   place-content: center;
+   /* display: grid; */
+   /* place-content: center; */
+}
+
+#familiar_form label {
+   display: inline;
+   height: auto;
 }
 
 #familiar_form input[type="radio"]:checked {

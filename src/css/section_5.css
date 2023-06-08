@@ -1,5 +1,6 @@
 #code_form fieldset {
    font-size: 1.5rem;
+   line-height: 1.65rem;
    gap: 1ch;
 }
 
@@ -37,6 +38,8 @@ form input + label {
    position: relative;
    z-index: 1;
    cursor: pointer;
+   height: 100%;
+   display: inline-block;
 }
 
 form input + label::before {

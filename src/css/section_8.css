@@ -1,7 +1,7 @@
 ol {
    font-size: 0.75rem;
    margin-left: 0;
-   width: max-content;
+   /* width: max-content; */
 }
 
 ol li {

@@ -14,12 +14,7 @@ body {
    font-size: 0.75rem;
    line-height: 1rem;
    font-feature-settings: "ss01", "ss03", "ss04", "ss05";
-   min-height: 100vh;
-   padding-bottom: 10rem;
-   -ms-overflow-style: none; /* Internet Explorer 10+ */
-}
-body::-webkit-scrollbar {
-   display: none; /* Safari and Chrome */
+   overflow: hidden;
 }
 
 *,
@@ -35,7 +30,6 @@ body::-webkit-scrollbar {
    --bg: #aaa;
    --max-width: 54ch;
    font-size: 16px;
-   scrollbar-width: none;
 }
 
 ::selection {
@@ -51,12 +45,21 @@ body::-webkit-scrollbar {
 
 #main_scale {
    inset: 0;
-   /* position: fixed; */
+   overflow: scroll;
+   scrollbar-width: none;
+   -ms-overflow-style: none;
+   min-height: 100vh;
+   min-height: 100dvh;
+   padding-bottom: 10rem;
+}
+#main_scale::-webkit-scrollbar {
+   display: none;
 }
 
 main {
    min-width: 100vw;
-   padding: 4rem 0 0 4ch;
+   width: fit-content;
+   padding: 4rem 2ch 0 4ch;
 }
 
 header nav {
@@ -164,17 +167,6 @@ h1 {
    width: fit-content;
 }
 
-#click_focus,
-#change_setting {
-   inset: 0;
-   position: fixed;
-   z-index: 999;
-   display: grid;
-   place-content: center;
-   visibility: hidden;
-   pointer-events: none;
-}
-
 #change_setting p {
    padding: 0 1ch;
    background-color: var(--bg);
@@ -216,12 +208,12 @@ ol li {
    line-height: 1rem;
    margin-left: 2ch;
    max-width: 54ch;
-   width: fit-content;
+   /* width: fit-content; */
 }
 
 ul {
    list-style-type: none;
-   width: max-content;
+   /* width: max-content; */
 }
 
 ol li::before {
