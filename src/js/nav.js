@@ -463,12 +463,13 @@ function sectionNavigation(sectionIndex, fromPopstate) {
 // when the user has scrolled manually using the keyboard the page is offset
 // so when you use your scroll wheen to scroll back up, you can't see the top
 // this little script combats that
-window.addEventListener("scroll", onScroll)
+mainScale.addEventListener("scroll", onScroll)
 function onScroll(e) {
+   console.log(e)
    const { x, y } = websiteData.pushPage.coordinates
    if (x != 0 || y != 0) {
       main.style.transform = `translate(0)`
       websiteData.pushPage.coordinates = { x: 0, y: 0 }
-      window.scrollTo(window.scrollX - x, window.scrollY - y)
+      mainScale.scrollTo(window.scrollX - x, window.scrollY - y)
    }
 }

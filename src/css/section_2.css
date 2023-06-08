@@ -5,7 +5,6 @@ table {
 
 th > div > p,
 td > div > p {
-   /* width: 6rem; */
    font-size: 0.5rem;
    font-weight: normal;
    text-align: center;
@@ -47,8 +46,9 @@ tr th:first-of-type > div > p {
    text-align: start;
 }
 
-td > div > label {
+td > div > input + label {
    font-size: 4rem;
+   height: auto;
 }
 
 #section_2 fieldset {

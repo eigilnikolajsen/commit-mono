@@ -2,6 +2,7 @@
    width: max-content;
    font-variant-ligatures: none;
    white-space: pre;
+   font-feature-settings: normal;
 }
 
 .span_off,

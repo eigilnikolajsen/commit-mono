@@ -9,7 +9,7 @@ function fillSectionData() {
          h1.dataset.edit = "true"
          const br = document.createElement("br")
          const p = document.createElement("p")
-         p.textContent = section.description
+         p.innerHTML = section.description
          p.tabIndex = 0
          p.dataset.edit = "true"
          topContainer.append(h1, br, p)

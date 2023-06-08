@@ -48,8 +48,8 @@ body {
    overflow: scroll;
    scrollbar-width: none;
    -ms-overflow-style: none;
-   min-height: 100vh;
-   min-height: 100dvh;
+   height: 100vh;
+   height: 100dvh;
    padding-bottom: 10rem;
 }
 #main_scale::-webkit-scrollbar {
@@ -208,12 +208,11 @@ ol li {
    line-height: 1rem;
    margin-left: 2ch;
    max-width: 54ch;
-   /* width: fit-content; */
 }
 
 ul {
    list-style-type: none;
-   /* width: max-content; */
+   max-width: max-content;
 }
 
 ol li::before {

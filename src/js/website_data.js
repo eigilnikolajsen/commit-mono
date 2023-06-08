@@ -135,12 +135,6 @@ const websiteData = {
                      "1 (one): The '1' is in Helvetica style because it's easy to tell apart from 'l' and 'I' – even at small sizes.",
                },
                {
-                  value: "6",
-                  name: "six",
-                  description:
-                     "6 (six): The '6' and '9' are more open than the typical closed terminal six. Again, this performs better in small sizes. Change to the closed version in '07 Customize'.",
-               },
-               {
                   value: "@",
                   name: "at",
                   description:
@@ -270,7 +264,7 @@ const websiteData = {
 
 Change settings below the code example and download when you're satisfied. Alternate characters will be baked and features merged, resulting in a single static font that is compatible in all environments.
 
-Press R to reset to default settings.`,
+Tip: Press <span class="span_key">R</span> to reset to default settings.`,
          content: {
             fonts: [
                {
