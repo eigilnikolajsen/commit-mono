@@ -155,7 +155,6 @@ function updateWeight(event, form) {
    if (event) event.preventDefault()
 }
 
-let fontDownloadSettings = { weight: 450, italic: false, alternates: {}, features: {} }
 function updateExampleSettings(event, form) {
    console.log("updateExampleSettings")
    const data = new FormData(form)
@@ -175,7 +174,7 @@ function updateExampleSettings(event, form) {
       const label = document.querySelector(`#alt_${entry[0]}`)
       if (label) label.style.fontFeatureSettings = entry[1]
    }
-
+   console.log(fontDownloadSettings)
    const codeExample = document.querySelector("#code_example")
    codeExample.style.fontFeatureSettings = output.slice(0, -2)
 

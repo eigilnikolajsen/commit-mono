@@ -62,7 +62,8 @@ form input:focus:checked + label {
 }
 
 form input:checked + label::before {
-   background: repeating-conic-gradient(var(--text) 0% 25%, transparent 0% 50%, transparent 0% 100%) 50% / 2px 2px;
+   background: var(--bg25);
+   background-position: 1px 0.5px;
 }
 
 #canvas {

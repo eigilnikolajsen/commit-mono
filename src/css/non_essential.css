@@ -14,7 +14,7 @@ button {
 }
 
 button:active {
-   background: repeating-conic-gradient(transparent 0% 25%, var(--text) 0% 50%, var(--text) 0% 100%) 50% / 2px 2px;
+   background: var(--bg75);
 }
 
 #app_root.no_focus {
@@ -138,21 +138,13 @@ a:focus {
    visibility: hidden;
 }
 
-input:checked + label::before {
-   background: repeating-conic-gradient(var(--text) 0% 25%, transparent 0% 50%, transparent 0% 100%) 50% / 2px 2px;
-}
-
-input:checked + label {
-   color: var(--text);
-}
-
 .span_key.pressed_key {
    position: relative;
-   background: repeating-conic-gradient(var(--text) 0% 25%, transparent 0% 50%, transparent 0% 100%) 50% / 2px 2px;
+   background: var(--bg25);
 }
 
 ul:focus .span_key.pressed_key {
-   background: repeating-conic-gradient(var(--bg) 0% 25%, transparent 0% 50%, transparent 0% 100%) 50% / 2px 2px;
+   background: var(--bg25-i);
 }
 
 .span_key.pressed_key::after {

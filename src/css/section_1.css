@@ -42,15 +42,6 @@
    margin-top: 0.1rem;
 }
 
-#select_element .key:nth-child(1) {
-   width: 5rem;
-}
-
-#escape_textfield .key:nth-child(2) {
-   letter-spacing: -0.1rem;
-   text-indent: -0.1rem;
-}
-
 #safari p,
 #safari ul {
    background-color: var(--bg);

@@ -59,8 +59,7 @@ button:focus a {
    position: relative;
 }
 .download_button:hover {
-   background: repeating-conic-gradient(transparent 0% 25%, var(--text) 0% 50%, transparent 0% 75%, var(--text) 0% 100%)
-      50% / 2px 2px;
+   background: var(--bg50);
    color: var(--bg);
    text-decoration: none;
 }

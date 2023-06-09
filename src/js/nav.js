@@ -44,28 +44,6 @@ function updateNav(event, form) {
    }
    sectionNavigation(output.split("section_")[1] - 1)
 
-   // pageAnimation()
-
-   // websiteData.sections.forEach((section, index) => {
-   //    const sectionContainer = document.querySelector(`#section_${index + 1}`)
-   //    if (sectionContainer.id == output) {
-   //       sectionContainer.style.display = "block"
-   //       sectionNavigation(section.name, `Digit${index + 1}`)
-   //    } else {
-   //       sectionContainer.style.display = "none"
-   //    }
-   // })
-   // main.style.transform = `translate(0)`
-   // navForm.style.transform = `translate(0)`
-   // keySection.style.transform = `translate(0)`
-   // websiteData.pushPage.coordinates.x = 0
-   // websiteData.pushPage.coordinates.y = 0
-   // websiteData.pushPage.scale = 1
-
-   // const sectionName = websiteData.sections[output.split("section_")[1] - 1]?.name
-   // console.log("sectionNavigation from updateNav")
-   // sectionNavigation(sectionName)
-
    if (event) event.preventDefault()
 }
 
@@ -125,9 +103,9 @@ let changeSettingTimeoutID
 let focusUsingTab = false
 function keyDown(e) {
    focusUsingTab = true
-   if (e.code == "KeyE" && document.activeElement.dataset.edit == "true" && !insideTextField) enterTextField()
+   if (e.code == "Enter" && document.activeElement.dataset.edit == "true" && !insideTextField) enterTextField()
 
-   if (!insideTextField || e.code == "KeyE") {
+   if (!insideTextField || e.code == "Enter") {
       checkTutorialKeys(e)
 
       const activeKey = !e.shiftKey
@@ -400,9 +378,9 @@ function checkTutorialKeys(e) {
                const keyNode = document.querySelector(`.key_code_${key}`)
                keyNode?.classList.add("pressed_key")
             }
-         } else if (e.code == "KeyE") {
+         } else if (e.code == "Enter") {
             if (document.activeElement.dataset.edit == "true") {
-               document.querySelector(".key_code_KeyE")?.classList.add("pressed_key")
+               document.querySelector(".key_code_Enter")?.classList.add("pressed_key")
             }
          } else if (e.code != "Escape") {
             const keyNode = document.querySelector(`.key_code_${key}`)
@@ -420,12 +398,8 @@ function checkTutorialKeys(e) {
    if (numnerOfTutorialKeys === numberOfPressedKeys) console.log("TUTORIAL FINISHED!!")
 }
 
-function sectionNavigation(sectionIndex, fromPopstate) {
-   // console.log(window.history)
+function sectionNavigation(sectionIndex) {
    const sectionName = websiteData.sections[sectionIndex]?.name
-   // if (!fromPopstate) {
-   //    window.history.pushState({ name: sectionName }, `Go to section ${sectionName}`, `?s=${sectionName}`)
-   // }
 
    pageAnimation()
 
@@ -451,21 +425,11 @@ function sectionNavigation(sectionIndex, fromPopstate) {
    websiteData.pushPage.scale = 1
 }
 
-// function onPopState(e) {
-//    if (e.state) {
-//       websiteData.sections.forEach((section, index) => {
-//          if (section.name === e.state.name) sectionNavigation(index, true)
-//       })
-//    }
-// }
-// window.addEventListener("popstate", onPopState)
-
 // when the user has scrolled manually using the keyboard the page is offset
 // so when you use your scroll wheen to scroll back up, you can't see the top
 // this little script combats that
 mainScale.addEventListener("scroll", onScroll)
 function onScroll(e) {
-   console.log(e)
    const { x, y } = websiteData.pushPage.coordinates
    if (x != 0 || y != 0) {
       main.style.transform = `translate(0)`

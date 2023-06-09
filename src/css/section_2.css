@@ -75,6 +75,5 @@ td > div > input + label {
 
 #section_2 input:checked + label:hover::before {
    display: block;
-   background: repeating-conic-gradient(transparent 0% 25%, var(--text) 0% 50%, transparent 0% 75%, var(--text) 0% 100%)
-      50% / 2px 2px;
+   background: var(--bg50);
 }

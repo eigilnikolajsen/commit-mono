@@ -1,3 +1,14 @@
+:root {
+   --bg25: repeating-conic-gradient(var(--text) 0% 25%, transparent 0% 100%) 1px 0.5px / 2px 2px;
+   --bg50: repeating-conic-gradient(var(--text) 0% 25%, transparent 0% 50%, var(--text) 0% 75%, transparent 0% 100%) 1px
+      0.5px / 2px 2px;
+   --bg75: repeating-conic-gradient(transparent 0% 25%, var(--text) 0% 100%) 1px 0.5px / 2px 2px;
+   --bg25-i: repeating-conic-gradient(var(--bg) 0% 25%, transparent 0% 100%) 1px 0.5px / 2px 2px;
+   --bg50-i: repeating-conic-gradient(var(--bg) 0% 25%, transparent 0% 50%, var(--bg) 0% 75%, transparent 0% 100%) 1px
+      0.5px / 2px 2px;
+   --bg75-i: repeating-conic-gradient(transparent 0% 25%, var(--bg) 0% 100%) 1px 0.5px / 2px 2px;
+}
+
 ::selection {
    color: var(--text);
    background-color: var(--middle);
@@ -160,12 +171,11 @@ form input:hover + label {
 }
 
 form input:hover + label::before {
-   background: repeating-conic-gradient(transparent 0% 25%, var(--text) 0% 50%, transparent 0% 75%, var(--text) 0% 100%)
-      50% / 2px 2px;
+   background: var(--bg50);
 }
 
 form input:checked:hover + label::before {
-   background: repeating-conic-gradient(transparent 0% 25%, var(--text) 0% 50%, var(--text) 0% 100%) 50% / 2px 2px;
+   background: var(--bg75);
 }
 
 ul li,

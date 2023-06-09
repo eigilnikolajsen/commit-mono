@@ -85,8 +85,7 @@
    color: var(--text);
 }
 .question_button:hover {
-   background: repeating-conic-gradient(transparent 0% 25%, var(--text) 0% 50%, transparent 0% 75%, var(--text) 0% 100%)
-      50% / 2px 2px;
+   background: var(--bg50);
    color: var(--bg);
 }
 .question_button.right_button::before {
@@ -104,11 +103,11 @@
 }
 
 .question_button.button_choice {
-   background: repeating-conic-gradient(var(--text) 0% 25%, transparent 0% 50%, transparent 0% 100%) 50% / 2px 2px;
+   background: var(--bg25);
    color: var(--text);
 }
 .question_button.button_choice:focus {
-   background: repeating-conic-gradient(transparent 0% 25%, var(--text) 0% 50%, var(--text) 0% 100%) 50% / 2px 2px;
+   background: var(--bg75);
    color: var(--bg);
 }
 

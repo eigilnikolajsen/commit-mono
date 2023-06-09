@@ -57,8 +57,8 @@
                   <div id="keyboard_container">
                      <div class="key_group" id="tab">
                         <div class="keys">
-                           <p data-key-code="Tab" data-key="Tab" class="key" data-noclick="true">Tab</p>
-                           <p data-key-code="ShiftTab" data-key="ShiftTab" class="key" data-noclick="true">⇧Tab</p>
+                           <p data-key-code="Tab" data-key="Tab" class="key" data-noclick="true">TAB</p>
+                           <p data-key-code="ShiftTab" data-key="ShiftTab" class="key" data-noclick="true">⇧TAB</p>
                         </div>
                         <p>Navigate ↓↑</p>
                      </div>
@@ -95,8 +95,8 @@
                      </div>
                      <div class="key_group" id="escape_textfield">
                         <div class="keys">
-                           <p data-key-code="KeyE" data-key="e" class="key">E</p>
-                           <p data-key-code="Escape" data-key="Escape" class="key">Esc</p>
+                           <p data-key-code="Enter" data-key="Enter" class="key">ENTER</p>
+                           <p data-key-code="Escape" data-key="Escape" class="key">ESC</p>
                         </div>
                         <p>Edit text</p>
                      </div>
@@ -147,10 +147,10 @@
                            <button id="focus_check" title="FocusCheckButton"></button>
                            <ul id="tutorial" tabindex="0" data-edit="true">
                               <li>
-                                 <span class="span_key key_code_Tab tutorial_key">Tab</span> &
-                                 <span class="span_key key_code_ShiftTab1 tutorial_key">Shift</span>+<span
+                                 <span class="span_key key_code_Tab tutorial_key">TAB</span> &
+                                 <span class="span_key key_code_ShiftTab1 tutorial_key">SHIFT</span>+<span
                                     class="span_key key_code_ShiftTab2 tutorial_key"
-                                    >Tab</span
+                                    >TAB</span
                                  >
                                  navigate up/down
                               </li>
@@ -175,7 +175,7 @@
                               </li>
                               <!-- <li><span class="span_key key_code_KeyR tutorial_key">R</span> reset scroll & zoom</li> -->
                               <li>
-                                 <span class="span_key key_code_KeyE tutorial_key">E</span>
+                                 <span class="span_key key_code_Enter tutorial_key">ENTER</span>
                                  <span class="span_key key_code_Escape tutorial_key">Esc</span> edit text and cancel
                                  edit
                               </li>
@@ -461,8 +461,8 @@
                               <legend><h2>Language</h2></legend>
                               <fieldset></fieldset>
                            </form>
+                           <br />
                            <div id="examples_container">
-                              <br />
                               <p tabindex="0" data-edit="true" id="code_example"></p>
                            </div>
                            <form id="weight_form" onchange="updateWeight(event, this)">
@@ -656,7 +656,7 @@
          <div tabindex="0" id="block_tab_end"></div>
       </div>
       <script>
-         const versionOfCommitMono = "V117"
+         const versionOfCommitMono = "V118"
          let fontsLoaded = false
          const commitMono = new FontFace("CommitMono", `url(/src/fonts/CommitMono${versionOfCommitMono}-VF.woff2)`, {
             style: "normal",

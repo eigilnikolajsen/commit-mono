@@ -22,7 +22,7 @@ const websiteData = {
       "KeyD",
       "Minus",
       "Slash",
-      "KeyE",
+      "Enter",
       "Escape",
    ],
    enableFeaturesInDocumentation: false,
@@ -35,8 +35,9 @@ const websiteData = {
       },
       {
          name: "concept",
-         description:
-            "The most effective font is the one you don’t notice. No super high x-height, no geometric construction, no eye-catching design and no confusing ligatures. Designed to be neutral and anonymous, Commit Mono is quietly useful.",
+         description: `The most effective font is the one you don’t notice. No super high x-height, no geometric construction, no eye-catching design and no confusing ligatures. Designed to be neutral and anonymous, Commit Mono is quietly useful.
+
+Tip: Press <span class="span_key">I</span> to switch between italic and regular.`,
          content: {},
       },
       {
@@ -380,6 +381,16 @@ Tip: Press <span class="span_key">R</span> to reset to default settings.`,
                   on: false,
                   description: "Slashed |OFF| or dotted |ON| zero.",
                   documentationExample: "0",
+               },
+               {
+                  type: "alternate",
+                  name: "oblique",
+                  label: "oblique italic 'aefgy'",
+                  feature: "cv08",
+                  on: false,
+                  description:
+                     "Standard italic construction |OFF| or slanted version of uprights |ON| of 'aefgy'. See the difference in italic by pressing I.",
+                  documentationExample: "aefgy",
                },
                {
                   type: "feature",
@@ -834,10 +845,10 @@ end program capitalize
                },
                {
                   languageName: "Code Font Test",
-                  codeExample: `Focus, then press e to edit
+                  codeExample: `Focus, then press ENTER to edit
 
-Hello world:          print("Hello, World!)
-Pangram:              The quick brown fox jumps over a lazy dog
+Hello world           print("Hello, World!")
+Pangram               The quick brown fox jumps over a lazy dog
 Confusable chars      ,. ;: |! Il1 2Z 5S 38B 0OQD
 Vertical alignment    H=H x=x += -= <= >= ~= *= ^= |= %= &= ->
 ASCII                  !"#$%&'()*+,-./

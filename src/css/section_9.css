@@ -12,11 +12,13 @@
 
 .active_feature {
    cursor: pointer;
-   background: repeating-conic-gradient(var(--text) 0% 25%, transparent 0% 50%, transparent 0% 100%) 50% / 2px 2px;
+   background: var(--bg25);
+   height: 100%;
+   display: inline-block;
 }
 
 h2:focus .active_feature {
-   background: repeating-conic-gradient(var(--bg) 0% 25%, transparent 0% 50%, transparent 0% 100%) 50% / 2px 2px;
+   background: var(--bg25-i);
 }
 
 #features_docu h2 {

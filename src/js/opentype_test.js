@@ -9,6 +9,7 @@ const updateOptions = (event, form) => {
 }
 
 let commitMonoFont
+let fontDownloadSettings = { weight: 450, italic: false, alternates: {}, features: {} }
 
 async function updateCodeFont() {
    console.log("updateCodeFont")
@@ -59,18 +60,18 @@ async function downloadFont(button) {
       bolditalicDownloadSettigns.weight = 700
       bolditalicDownloadSettigns.italic = true
 
-      getFontBlob(regularDownloadSettigns, "Regular", button)
+      getFontBlob(regularDownloadSettigns, "Regular")
          .then((resolve) => {
             fontFileBlobs.regular = resolve
-            return getFontBlob(italicDownloadSettigns, "Italic", button)
+            return getFontBlob(italicDownloadSettigns, "Italic")
          })
          .then((resolve) => {
             fontFileBlobs.italic = resolve
-            return getFontBlob(boldDownloadSettigns, "Bold", button)
+            return getFontBlob(boldDownloadSettigns, "Bold")
          })
          .then((resolve) => {
             fontFileBlobs.bold = resolve
-            return getFontBlob(bolditalicDownloadSettigns, "Bold Italic", button)
+            return getFontBlob(bolditalicDownloadSettigns, "Bold Italic")
          })
          .then((resolve) => {
             fontFileBlobs.bolditalic = resolve
@@ -97,7 +98,7 @@ const fontFileBlobs = {
    bold: null,
    bolditalic: null,
 }
-function getFontBlob(settings, style, button) {
+function getFontBlob(settings, style) {
    console.log("getFontBlob")
 
    const fontFilePath = `/src/fonts/CommitMono${versionOfCommitMono}-${settings.weight}${
