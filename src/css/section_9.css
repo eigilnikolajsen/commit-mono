@@ -21,7 +21,7 @@ h2:focus .active_feature {
     background: var(--bg25-i);
 }
 
-#features_docu h2 {
+#section_9 h2 {
     max-width: var(--max-width);
 }
 
@@ -41,4 +41,16 @@ h2:focus .active_feature {
     white-space: pre-wrap;
     font-size: 3rem;
     line-height: 4rem;
+}
+
+#language_support {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-rows: repeat(12, 1fr);
+    width: max-content;
+    gap: 0 4ch;
+}
+
+#language_support > p {
+    /* width: 22ch; */
 }

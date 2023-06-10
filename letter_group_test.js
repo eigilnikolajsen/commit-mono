@@ -2903,13 +2903,13 @@ names.forEach((_, i) => {
         })
     })
 })
-console.log(combinations)
-// for (let i = 0; i < 50; i++) {
-// 	const randomWord = words[Math.floor(words.length * Math.random())]
-// 	console.log(
-// 		randomWord
-// 			.split("")
-// 			.map((l, i) => (i == 6 ? l.toUpperCase() : l))
-// 			.join("")
-// 	)
-// }
+// console.log(combinations)
+for (let i = 0; i < 50; i++) {
+    const randomWord = words[Math.floor(words.length * Math.random())]
+    console.log(
+        randomWord
+            .split("")
+            .map((l, i) => (i == 6 ? l.toUpperCase() : l))
+            .join("")
+    )
+}

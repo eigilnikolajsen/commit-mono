@@ -206,6 +206,9 @@ function getFontBlob(settings) {
                 })
             })
 
+            // remove unsupported lookup type
+            font.tables.gsub.lookups = font.tables.gsub.lookups.filter((l) => l.lookupType != 7)
+
             //
             // #3 change the names
             // give custom names to each member of the style group

@@ -1,4 +1,9 @@
-const featuresDocu = document.querySelector("#features_docu")
+const docsForm = document.querySelector("#docs_form")
+const faqContainerDocs = document.querySelector("#faq_container_docs")
+const featuresContainerDocs = document.querySelector("#features_container_docs")
+const alternatesContainerDocs = document.querySelector("#alternates_container_docs")
+const charsetContainerDocs = document.querySelector("#charset_container_docs")
+const languageContainerDocs = document.querySelector("#language_container_docs")
 
 let customizeContent
 let docsContent
@@ -38,10 +43,7 @@ function buildDocs() {
         h2.dataset.edit = "true"
         const p = document.createElement("p")
         p.textContent = `Default: ${feature.on ? "ON" : "OFF"}`
-        const br1 = document.createElement("br")
-        const br2 = document.createElement("br")
-        const br3 = document.createElement("br")
-        container.append(br1, br2, h2, p)
+        container.append(h2, p)
         sizes.forEach((size) => {
             const exampleText = document.createElement("p")
             exampleText.textContent = feature.docsExample
@@ -51,24 +53,29 @@ function buildDocs() {
             exampleText.style.lineHeight = `${size[1]}rem`
             container.append(exampleText)
         })
-        featuresDocu.append(container)
+        const br1 = document.createElement("br")
+        const br2 = document.createElement("br")
+        container.append(br1, br2)
+        if (feature.type == "feature") {
+            featuresContainerDocs.append(container)
+        }
+        if (feature.type == "alternate") {
+            alternatesContainerDocs.append(container)
+        }
     })
-    const charH2 = document.createElement("h2")
-    charH2.textContent = "Full characterset without alternates. Support for Greek and Cyrillic coming soon."
-    const charset = document.createElement("p")
-    const tunedCharset = websiteData.charset.split("").join(" ")
+    const charset = document.querySelector("#charset")
+    const tunedCharset = docsContent.charset.split("").join(" ")
     charset.textContent = tunedCharset
-    charset.id = "charset"
-    charset.tabIndex = 0
-    charset.dataset.edit = "true"
-    const br1 = document.createElement("br")
-    const br2 = document.createElement("br")
-    const br3 = document.createElement("br")
-    const br4 = document.createElement("br")
-    const end = document.createElement("p")
-    end.textContent = "End of line."
-    end.tabIndex = 0
-    featuresDocu.append(br1, br2, br3, charH2, br4, charset, end)
+
+    const languageSupport = document.querySelector("#language_support")
+    docsContent.supportedLanguages.forEach((language) => {
+        const p = document.createElement("p")
+        p.classList.add("language_support")
+        p.textContent = language
+        languageSupport.append(p)
+    })
+
+    updateDocs(null, docsForm)
 }
 
 function changeFeatureDocs(enable) {
@@ -94,4 +101,22 @@ function changeFeatureDocs(enable) {
         allSpanOff.forEach((span) => span.classList.add("active_feature"))
         allSpanOn.forEach((span) => span.classList.remove("active_feature"))
     }
+}
+
+function updateDocs(event, form) {
+    console.log("updateDocs")
+    const data = new FormData(form)
+    let output = ""
+    for (const entry of data) {
+        output = entry[1]
+    }
+    const docsContainers = document.querySelectorAll(".docs_container")
+    docsContainers.forEach((topic) => {
+        console.log(topic.id)
+        topic.style.display = "none"
+        if (`${output}_container_docs` == topic.id) {
+            topic.style.display = "block"
+        }
+    })
+    if (event) event.preventDefault()
 }

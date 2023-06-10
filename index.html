@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content="Website for Commit Mono - a neutral programming font." />
+        <meta name="description" content="Website for Commit Mono - a neutral programming typeface." />
 
         <!-- favicon -->
         <link rel="icon" href="src/favicon/icon.svg" type="image/svg+xml" id="dynamic-favicon" />
@@ -17,9 +17,6 @@
 
         <!-- CSS -->
         <link rel="stylesheet" href="src/css/loading.css" />
-        <!-- <link rel="stylesheet" href="src/css/style.css" />
-      <link rel="stylesheet" href="src/css/section_1.css" />
-      <link rel="stylesheet" href="src/css/mobile.css" /> -->
 
         <!-- JS -->
         <script src="src/js/utility_functions.js" defer></script>
@@ -613,72 +610,145 @@
                                 <div class="top_container"></div>
                                 <div class="content_container">
                                     <br />
-                                    <h2>FAQ</h2>
-                                    <details>
-                                        <summary>
-                                            Why does the font not include more ligatures? Why does the font not include
-                                            more ligatures?
-                                        </summary>
-                                        <p>
-                                            The ligatures already in Commit Mono are added because they provide
-                                            additional functionality (i.e. != becomes ≠), but they are off by default.
-                                            Commit Mono won't be updated with ligatures that purely serve aesthetic
-                                            purposes (i.e. $> becomes connected).
-                                        </p>
-                                    </details>
-                                    <details>
-                                        <summary>What is the licensing on Commit Mono?</summary>
-                                        <p>
-                                            Commit Mono is available under the SIL Open Font License 1.1 license. It can
-                                            therefore be used freely for both commercial and non-commercial purposes.
-                                            Only if you decide to make your own font based of Commit Mono, do you need
-                                            to give credit, but it is always appreciated.
-                                        </p>
-                                    </details>
-                                    <details>
-                                        <summary>
-                                            I have downloaded a new verison, but the old version is still displayed.
-                                        </summary>
-                                        <ol>
-                                            <li>Uninstall the current version you have installed.</li>
-                                            <li>Install the new version.</li>
-                                            <li>Restart you IDE. The new version should show up.</li>
-                                        </ol>
-                                    </details>
-                                    <details>
-                                        <summary>May I install and use Commit Mono in any editor or terminal?</summary>
-                                        <p>Yes.</p>
-                                    </details>
-                                    <details>
-                                        <summary>Is Commit Mono free to use in a logo or print design?</summary>
-                                        <p>Yes.</p>
-                                    </details>
-                                    <details>
-                                        <summary>
-                                            Is Commit Mono free to use on a website, in software or an app?
-                                        </summary>
-                                        <p>Yes.</p>
-                                    </details>
-                                    <details>
-                                        <summary>May I use Commit Mono to design my own font?</summary>
-                                        <p>
-                                            Yes, but you need to give credit and indicate that it is based on Commit
-                                            Mono.
-                                        </p>
-                                    </details>
-                                    <details>
-                                        <summary>My .zip file won't work, what to do?</summary>
-                                        <p>
-                                            There have been some problems with downloading .zip files from Safari. The
-                                            download is tested to work in Chrome and FireFox.
-                                        </p>
-                                    </details>
                                     <br />
+                                    <form id="docs_form" onchange="updateDocs(event, this)">
+                                        <fieldset>
+                                            <div>
+                                                <input
+                                                    type="radio"
+                                                    id="docs_faq"
+                                                    name="docs_topic"
+                                                    value="faq"
+                                                    checked
+                                                />
+                                                <label for="docs_faq">FAQ</label>
+                                            </div>
+                                            <div>
+                                                <input
+                                                    type="radio"
+                                                    id="docs_features"
+                                                    name="docs_topic"
+                                                    value="features"
+                                                />
+                                                <label for="docs_features">Features</label>
+                                            </div>
+                                            <div>
+                                                <input
+                                                    type="radio"
+                                                    id="docs_alternates"
+                                                    name="docs_topic"
+                                                    value="alternates"
+                                                />
+                                                <label for="docs_alternates">Alternates</label>
+                                            </div>
+                                            <div>
+                                                <input
+                                                    type="radio"
+                                                    id="docs_charset"
+                                                    name="docs_topic"
+                                                    value="charset"
+                                                />
+                                                <label for="docs_charset">Character set</label>
+                                            </div>
+                                            <div>
+                                                <input
+                                                    type="radio"
+                                                    id="docs_language"
+                                                    name="docs_topic"
+                                                    value="language"
+                                                />
+                                                <label for="docs_language">Languages</label>
+                                            </div>
+                                        </fieldset>
+                                    </form>
                                     <br />
-                                    <br />
-                                    <p>Use <span class="span_key">O</span> to switch between ON and OFF</p>
-                                    <div id="features_docu"></div>
-                                    <div id="charset"></div>
+                                    <div class="docs_container" id="faq_container_docs">
+                                        <details>
+                                            <summary>
+                                                Why does the font not include more ligatures? Why does the font not
+                                                include more ligatures?
+                                            </summary>
+                                            <p>
+                                                The ligatures already in Commit Mono are added because they provide
+                                                additional functionality (i.e. != becomes ≠), but they are off by
+                                                default. Commit Mono won't be updated with ligatures that purely serve
+                                                aesthetic purposes (i.e. $> becomes connected).
+                                            </p>
+                                        </details>
+                                        <details>
+                                            <summary>What is the licensing on Commit Mono?</summary>
+                                            <p>
+                                                Commit Mono is available under the SIL Open Font License 1.1 license. It
+                                                can therefore be used freely for both commercial and non-commercial
+                                                purposes. Only if you decide to make your own font based of Commit Mono,
+                                                do you need to give credit, but it is always appreciated.
+                                            </p>
+                                        </details>
+                                        <details>
+                                            <summary>
+                                                I have downloaded a new verison, but the old version is still displayed.
+                                            </summary>
+                                            <ol>
+                                                <li>Uninstall the current version you have installed.</li>
+                                                <li>Install the new version.</li>
+                                                <li>Restart you IDE. The new version should show up.</li>
+                                            </ol>
+                                        </details>
+                                        <details>
+                                            <summary>
+                                                May I install and use Commit Mono in any editor or terminal?
+                                            </summary>
+                                            <p>Yes.</p>
+                                        </details>
+                                        <details>
+                                            <summary>Is Commit Mono free to use in a logo or print design?</summary>
+                                            <p>Yes.</p>
+                                        </details>
+                                        <details>
+                                            <summary>
+                                                Is Commit Mono free to use on a website, in software or an app?
+                                            </summary>
+                                            <p>Yes.</p>
+                                        </details>
+                                        <details>
+                                            <summary>May I use Commit Mono to design my own font?</summary>
+                                            <p>
+                                                Yes, but you need to give credit and indicate that it is based on Commit
+                                                Mono.
+                                            </p>
+                                        </details>
+                                        <details>
+                                            <summary>My .zip file won't work, what to do?</summary>
+                                            <p>
+                                                There have been some problems with downloading .zip files from Safari.
+                                                The download is tested to work in Chrome and FireFox.
+                                            </p>
+                                        </details>
+                                    </div>
+                                    <div class="docs_container" id="features_container_docs">
+                                        <br />
+                                        <p>Use <span class="span_key">O</span> to switch between ON and OFF</p>
+                                        <br />
+                                    </div>
+                                    <div class="docs_container" id="alternates_container_docs">
+                                        <br />
+                                        <p>Use <span class="span_key">O</span> to switch between ON and OFF</p>
+                                        <br />
+                                    </div>
+                                    <div class="docs_container" id="charset_container_docs">
+                                        <h2 tabindex="0" data-edit="true">
+                                            Full characterset without alternates. Support for Greek and Cyrillic coming
+                                            soon.
+                                        </h2>
+                                        <br />
+                                        <div id="charset" tabindex="0" data-edit="true"></div>
+                                        <p tabindex="0" data-edit="true">End of transmission.</p>
+                                    </div>
+                                    <div class="docs_container" id="language_container_docs">
+                                        <h2 tabindex="0" data-edit="true">Currently supported languages.</h2>
+                                        <br />
+                                        <div id="language_support" tabindex="0" data-edit="true"></div>
+                                    </div>
                                 </div>
                             </section>
                             <section id="section_10">
@@ -750,7 +820,7 @@
             <div tabindex="0" id="block_tab_end"></div>
         </div>
         <script>
-            const versionOfCommitMono = "V120"
+            const versionOfCommitMono = "V123"
             let fontsLoaded = false
             const commitMono = new FontFace("CommitMono", `url(/src/fonts/CommitMono${versionOfCommitMono}-VF.woff2)`, {
                 style: "normal",
