@@ -1,62 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="UTF-8" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta name="description" content="Website for Commit Mono - a neutral programming font." />
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Website for Commit Mono - a neutral programming font." />
 
-      <!-- favicon -->
-      <link rel="icon" href="src/favicon/icon.svg" type="image/svg+xml" id="dynamic-favicon" />
-      <link rel="icon" href="/favicon.ico" sizes="any" />
-      <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
-      <link rel="manifest" href="/manifest.webmanifest" />
+        <!-- favicon -->
+        <link rel="icon" href="src/favicon/icon.svg" type="image/svg+xml" id="dynamic-favicon" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
+        <link rel="manifest" href="/manifest.webmanifest" />
 
-      <!-- title -->
-      <title>Commit Mono. Neutral programming typeface.</title>
+        <!-- title -->
+        <title>Commit Mono. Neutral programming typeface.</title>
 
-      <!-- CSS -->
-      <style>
-         @font-face {
-            font-family: "CommitMono";
-            src: url("/src/fonts/CommitMonoV118-VF.woff2");
-            font-style: normal;
-            font-weight: 450;
-            font-display: swap;
-         }
-         body {
-            background-color: #aaa;
-            position: fixed;
-            inset: 0;
-            display: grid;
-            place-content: center;
-         }
-         p,
-         a {
-            font-family: "CommitMono";
-            font-size: 0.75rem;
-            color: #111;
-            line-height: 1rem;
-            margin: 0;
-            width: fit-content;
-            text-decoration: none;
-         }
-         a {
-            background-color: #111;
-            color: #aaa;
-            outline: none;
-         }
-      </style>
-   </head>
-   <body>
-      <p>404</p>
-      <p>page not found</p>
-      <br />
-      <a href="/">Press ENTER to go to home page.</a>
-      <script>
-         const a = document.querySelector("a")
-         a.focus()
-         a.addEventListener("blur", () => a.focus())
-      </script>
-   </body>
+        <!-- CSS -->
+        <style>
+            @font-face {
+                font-family: "CommitMono";
+                src: url("/src/fonts/CommitMonoV118-VF.woff2");
+                font-style: normal;
+                font-weight: 450;
+                font-display: swap;
+            }
+            body {
+                background-color: #aaa;
+                position: fixed;
+                inset: 0;
+                display: grid;
+                place-content: center;
+            }
+            p,
+            a {
+                font-family: "CommitMono";
+                font-size: 0.75rem;
+                color: #111;
+                line-height: 1rem;
+                margin: 0;
+                width: fit-content;
+                text-decoration: none;
+            }
+            a {
+                background-color: #111;
+                color: #aaa;
+                outline: none;
+            }
+        </style>
+    </head>
+    <body>
+        <p>404</p>
+        <p>page not found</p>
+        <br />
+        <a href="/">Press ENTER to go to home page.</a>
+        <script>
+            const a = document.querySelector("a")
+            a.focus()
+            a.addEventListener("blur", () => a.focus())
+        </script>
+    </body>
 </html>

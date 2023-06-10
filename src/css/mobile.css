@@ -1,19 +1,19 @@
 @media (pointer: coarse) and (max-width: 1000px) {
-   body {
-      overflow: visible;
-   }
-   #main_scale,
-   main {
-      position: relative;
-   }
-   header #keyboard_section,
-   #safari {
-      visibility: hidden;
-   }
-   #footer_hint {
-      display: none;
-   }
-   #footer_hint_mobile {
-      display: block;
-   }
+    body {
+        overflow: visible;
+    }
+    #main_scale,
+    main {
+        position: relative;
+    }
+    header #keyboard_section,
+    #safari {
+        visibility: hidden;
+    }
+    #footer_hint {
+        display: none;
+    }
+    #footer_hint_mobile {
+        display: block;
+    }
 }

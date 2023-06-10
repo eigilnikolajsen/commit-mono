@@ -1,49 +1,49 @@
 let waitingForLoadIntervalID = null
 let allCssLoaded = false
 function startAll() {
-   console.log("startAll")
+    console.log("startAll")
 
-   appendStyleSheets()
+    appendStyleSheets()
 
-   waitingForLoadIntervalID = setInterval(() => {
-      if (allCssLoaded) {
-         document.querySelector("#navigate_description").focus()
-         document.querySelector("#loading").style.display = "none"
-         clearInterval(waitingForLoadIntervalID)
-         waitingForLoadIntervalID = null
-      }
-   }, 100)
+    waitingForLoadIntervalID = setInterval(() => {
+        if (allCssLoaded) {
+            document.querySelector("#navigate_description").focus()
+            document.querySelector("#loading").style.display = "none"
+            clearInterval(waitingForLoadIntervalID)
+            waitingForLoadIntervalID = null
+        }
+    }, 100)
 
-   fillSectionData()
+    fillSectionData()
 
-   buildNav()
+    buildNav()
 
-   buildTable()
+    buildTable()
 
-   buildFamiliar()
+    buildFamiliar()
 
-   buildCode()
+    buildCode()
 
-   buildDistinction()
+    buildDistinction()
 
-   buildGTC()
+    buildGTC()
 
-   buildExample()
+    buildExample()
 
-   buildDocumentation()
+    buildDocs()
 
-   updateCodeFont()
+    updateCodeFont()
 
-   updateWaterfall()
+    updateWaterfall()
 
-   changeFavicon(true)
+    changeFavicon(true)
 
-   sectionNavigation(0)
+    sectionNavigation(0)
 
-   setInterval(checkDocumentFocus, 100)
+    setInterval(checkDocumentFocus, 100)
 }
 
 if (fontsLoaded) {
-   console.log("fontsLoaded startAll()")
-   startAll()
+    console.log("fontsLoaded startAll()")
+    startAll()
 }

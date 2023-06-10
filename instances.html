@@ -1,53 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="UTF-8" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Generate Axis Value</title>
-      <style>
-         #resultButton {
-            user-select: all;
-         }
-      </style>
-   </head>
-   <body>
-      <label for="start">Start value</label>
-      <input type="text" name="start" id="start" />
-      <br />
-      <br />
-      <label for="end">End value</label>
-      <input type="text" name="end" id="end" />
-      <br />
-      <br />
-      <label for="precision">Precision</label>
-      <input type="text" name="precision" id="precision" />
-      <br />
-      <br />
-      <button type="submit" id="submit">Submit</button>
-      <br />
-      <br />
-      <p id="resultButton"></p>
-      <script>
-         const submit = document.querySelector("#submit")
-         const start = document.querySelector("#start")
-         const end = document.querySelector("#end")
-         const precision = document.querySelector("#precision")
-         const resultButton = document.querySelector("#resultButton")
-         submit.addEventListener("click", () => {
-            const result = generateAxisValue([+start.value, +end.value], +precision.value)
-            resultButton.textContent = result
-            navigator.clipboard.writeText(result)
-         })
-         const generateAxisValue = ([start, end], precision) => {
-            let value = start
-            let result = ""
-            while (value <= end) {
-               result += `"${value}"=${value}, `
-               value += precision
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Generate Axis Value</title>
+        <style>
+            #resultButton {
+                user-select: all;
             }
-            return result.slice(0, -2)
-         }
-      </script>
-   </body>
+        </style>
+    </head>
+    <body>
+        <label for="start">Start value</label>
+        <input type="text" name="start" id="start" />
+        <br />
+        <br />
+        <label for="end">End value</label>
+        <input type="text" name="end" id="end" />
+        <br />
+        <br />
+        <label for="precision">Precision</label>
+        <input type="text" name="precision" id="precision" />
+        <br />
+        <br />
+        <button type="submit" id="submit">Submit</button>
+        <br />
+        <br />
+        <p id="resultButton"></p>
+        <script>
+            const submit = document.querySelector("#submit")
+            const start = document.querySelector("#start")
+            const end = document.querySelector("#end")
+            const precision = document.querySelector("#precision")
+            const resultButton = document.querySelector("#resultButton")
+            submit.addEventListener("click", () => {
+                const result = generateAxisValue([+start.value, +end.value], +precision.value)
+                resultButton.textContent = result
+                navigator.clipboard.writeText(result)
+            })
+            const generateAxisValue = ([start, end], precision) => {
+                let value = start
+                let result = ""
+                while (value <= end) {
+                    result += `"${value}"=${value}, `
+                    value += precision
+                }
+                return result.slice(0, -2)
+            }
+        </script>
+    </body>
 </html>

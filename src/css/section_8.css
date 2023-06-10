@@ -1,77 +1,77 @@
 ol {
-   font-size: 0.75rem;
-   margin-left: 0;
-   max-width: max-content;
-   counter-reset: install;
-   list-style: none;
+    font-size: 0.75rem;
+    margin-left: 0;
+    max-width: max-content;
+    counter-reset: install;
+    list-style: none;
 }
 
 ol > li {
-   margin-left: 3ch;
-   max-width: calc(var(--max-width) - 3ch);
-   counter-increment: install;
-   position: relative;
+    margin-left: 3ch;
+    max-width: calc(var(--max-width) - 3ch);
+    counter-increment: install;
+    position: relative;
 }
 
 ol > li p::before {
-   content: "#" counter(install) " ";
-   position: absolute;
-   left: -3ch;
+    content: "#" counter(install) " ";
+    position: absolute;
+    left: -3ch;
 }
 
 ol li p {
-   max-width: calc(var(--max-width) - 6ch);
+    max-width: calc(var(--max-width) - 6ch);
 }
 
 ol:focus li p {
-   color: var(--bg);
+    color: var(--bg);
 }
 
 ol li ul li p {
-   position: relative;
+    position: relative;
 }
 
 ol li ul li p::before {
-   content: "•";
-   position: absolute;
-   left: -2ch;
+    content: "•";
+    position: absolute;
+    left: -2ch;
 }
 
 details > summary {
-   cursor: pointer;
-   list-style: none;
-   width: fit-content;
-   max-width: calc(var(--max-width) - 4ch);
-   margin-left: 4ch;
-   position: relative;
+    cursor: pointer;
+    list-style: none;
+    width: fit-content;
+    max-width: calc(var(--max-width) - 4ch);
+    margin-left: 4ch;
+    position: relative;
 }
 details > p {
-   max-width: calc(var(--max-width) - 4ch);
-   margin: 0 0 1rem 4ch;
+    max-width: calc(var(--max-width) - 4ch);
+    margin: 0 0 1rem 4ch;
 }
 details > ol {
-   max-width: calc(var(--max-width) - 4ch);
-   margin: 0 0 1rem 4ch;
-   counter-reset: reinstall;
+    max-width: calc(var(--max-width) - 4ch);
+    margin: 0 0 1rem 4ch;
+    counter-reset: reinstall;
 }
 details > ol li::before {
-   display: block;
-   counter-increment: reinstall;
-   content: "#" counter(reinstall) " ";
-   position: absolute;
-   left: -3ch;
+    display: block;
+    counter-increment: reinstall;
+    content: "#" counter(reinstall) " ";
+    position: absolute;
+    left: -3ch;
 }
 details > ol li {
-   position: relative;
+    position: relative;
 }
 details > summary::before {
-   content: "[+]";
-   position: absolute;
-   left: -4ch;
+    content: "[+]";
+    position: absolute;
+    left: -4ch;
 }
 details[open] > summary::before {
-   content: "[-]";
+    content: "[-]";
 }
 details > summary:focus::before {
-   color: var(--text);
+    color: var(--text);
 }

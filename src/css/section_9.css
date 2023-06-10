@@ -1,44 +1,44 @@
-.documentation_example {
-   width: max-content;
-   font-variant-ligatures: none;
-   white-space: pre;
-   font-feature-settings: normal;
+.docs_example {
+    width: max-content;
+    font-variant-ligatures: none;
+    white-space: pre;
+    font-feature-settings: normal;
 }
 
 .span_off,
 .span_on {
-   cursor: pointer;
+    cursor: pointer;
 }
 
 .active_feature {
-   cursor: pointer;
-   background: var(--bg25);
-   height: 100%;
-   display: inline-block;
+    cursor: pointer;
+    background: var(--bg25);
+    height: 100%;
+    display: inline-block;
 }
 
 h2:focus .active_feature {
-   background: var(--bg25-i);
+    background: var(--bg25-i);
 }
 
 #features_docu h2 {
-   max-width: var(--max-width);
+    max-width: var(--max-width);
 }
 
-.documentation_alternate {
-   margin-right: 2rem;
-   display: inline-block;
-   vertical-align: baseline;
+.docs_alternate {
+    margin-right: 2rem;
+    display: inline-block;
+    vertical-align: baseline;
 }
 
 #features_docu > div {
-   width: max-content;
+    width: max-content;
 }
 
 #charset {
-   width: var(--max-width);
-   font-variant-ligatures: none;
-   white-space: pre-wrap;
-   font-size: 3rem;
-   line-height: 4rem;
+    width: var(--max-width);
+    font-variant-ligatures: none;
+    white-space: pre-wrap;
+    font-size: 3rem;
+    line-height: 4rem;
 }

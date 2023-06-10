@@ -1,244 +1,244 @@
 :root {
-   --bg25: repeating-conic-gradient(var(--text) 0% 25%, transparent 0% 100%) 1px 0.5px / 2px 2px;
-   --bg50: repeating-conic-gradient(var(--text) 0% 25%, transparent 0% 50%, var(--text) 0% 75%, transparent 0% 100%) 1px
-      0.5px / 2px 2px;
-   --bg75: repeating-conic-gradient(transparent 0% 25%, var(--text) 0% 100%) 1px 0.5px / 2px 2px;
-   --bg25-i: repeating-conic-gradient(var(--bg) 0% 25%, transparent 0% 100%) 1px 0.5px / 2px 2px;
-   --bg50-i: repeating-conic-gradient(var(--bg) 0% 25%, transparent 0% 50%, var(--bg) 0% 75%, transparent 0% 100%) 1px
-      0.5px / 2px 2px;
-   --bg75-i: repeating-conic-gradient(transparent 0% 25%, var(--bg) 0% 100%) 1px 0.5px / 2px 2px;
+    --bg25: repeating-conic-gradient(var(--text) 0% 25%, transparent 0% 100%) 1px 0.5px / 2px 2px;
+    --bg50: repeating-conic-gradient(var(--text) 0% 25%, transparent 0% 50%, var(--text) 0% 75%, transparent 0% 100%)
+        1px 0.5px / 2px 2px;
+    --bg75: repeating-conic-gradient(transparent 0% 25%, var(--text) 0% 100%) 1px 0.5px / 2px 2px;
+    --bg25-i: repeating-conic-gradient(var(--bg) 0% 25%, transparent 0% 100%) 1px 0.5px / 2px 2px;
+    --bg50-i: repeating-conic-gradient(var(--bg) 0% 25%, transparent 0% 50%, var(--bg) 0% 75%, transparent 0% 100%) 1px
+        0.5px / 2px 2px;
+    --bg75-i: repeating-conic-gradient(transparent 0% 25%, var(--bg) 0% 100%) 1px 0.5px / 2px 2px;
 }
 
 ::selection {
-   color: var(--text);
-   background-color: var(--middle);
+    color: var(--text);
+    background-color: var(--middle);
 }
 
 #block_tab_start,
 #block_tab_end {
-   position: absolute;
-   top: 0;
+    position: absolute;
+    top: 0;
 }
 
 #main_scale {
-   inset: 0;
-   overflow: scroll;
-   scrollbar-width: none;
-   -ms-overflow-style: none;
-   height: 100vh;
-   height: 100dvh;
-   padding-bottom: 10rem;
+    inset: 0;
+    overflow: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    height: 100vh;
+    height: 100dvh;
+    padding-bottom: 10rem;
 }
 #main_scale::-webkit-scrollbar {
-   display: none;
+    display: none;
 }
 
 main {
-   min-width: 100vw;
-   width: fit-content;
-   padding: 4rem 2ch 0 4ch;
+    min-width: 100vw;
+    width: fit-content;
+    padding: 4rem 2ch 0 4ch;
 }
 
 header nav {
-   width: 100vw;
-   padding: 1rem 4ch 0 4ch;
-   background-color: var(--bg);
-   z-index: 100;
-   position: fixed;
-   top: 0;
+    width: 100vw;
+    padding: 1rem 4ch 0 4ch;
+    background-color: var(--bg);
+    z-index: 100;
+    position: fixed;
+    top: 0;
 }
 
 header #keyboard_section {
-   width: 100%;
-   padding: 0.25rem 4ch 1rem 4ch;
-   background-color: var(--bg);
-   z-index: 100;
-   position: fixed;
-   bottom: 0;
+    width: 100%;
+    padding: 0.25rem 4ch 1rem 4ch;
+    background-color: var(--bg);
+    z-index: 100;
+    position: fixed;
+    bottom: 0;
 }
 
 header #keyboard_section,
 header nav {
-   overflow-y: scroll;
-   -ms-overflow-style: none; /* Internet Explorer 10+ */
-   scrollbar-width: none; /* Firefox */
+    overflow-y: scroll;
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
 }
 header #keyboard_section::-webkit-scrollbar,
 header nav::-webkit-scrollbar {
-   display: none; /* Safari and Chrome */
+    display: none; /* Safari and Chrome */
 }
 
 #keyboard_section.hidden {
-   display: none;
+    display: none;
 }
 
 #nav_form {
-   display: flex;
-   gap: 4ch;
-   font-size: 0.75rem;
-   line-height: 1rem;
-   width: max-content;
+    display: flex;
+    gap: 4ch;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    width: max-content;
 }
 
 #nav_form input {
-   -webkit-appearance: none;
-   appearance: none;
-   width: 0;
-   height: 0;
-   opacity: 0;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 0;
+    height: 0;
+    opacity: 0;
 }
 
 #nav_form input + label {
-   position: relative;
-   z-index: 1;
+    position: relative;
+    z-index: 1;
 }
 
 #nav_form input + label::before {
-   z-index: -1;
-   content: "";
-   position: absolute;
-   inset: 0;
-   background-color: var(--bg);
+    z-index: -1;
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: var(--bg);
 }
 
 #nav_form input:focus:checked + label::before {
-   background-color: var(--text);
+    background-color: var(--text);
 }
 
 #nav_form input:focus:checked + label {
-   color: var(--bg);
+    color: var(--bg);
 }
 
 #section_container {
-   inset: 1rem 2rem;
+    inset: 1rem 2rem;
 }
 
 p,
 a,
 figcaption,
 button {
-   font-size: 0.75rem;
-   line-height: 1rem;
-   max-width: var(--max-width);
-   width: fit-content;
-   vertical-align: top;
-   color: inherit;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    max-width: var(--max-width);
+    width: fit-content;
+    vertical-align: top;
+    color: inherit;
 }
 
 a,
 .download_button {
-   text-decoration: underline;
-   text-decoration-skip-ink: none;
-   text-underline-offset: 0.24ch;
-   cursor: pointer;
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
+    text-underline-offset: 0.24ch;
+    cursor: pointer;
 }
 a:focus,
 .download_button:focus {
-   text-decoration: none;
+    text-decoration: none;
 }
 
 h1 {
-   font-size: 1.5rem;
-   line-height: 2rem;
-   font-weight: normal;
-   width: fit-content;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: normal;
+    width: fit-content;
 }
 
 #change_setting p {
-   padding: 0 1ch;
-   background-color: var(--bg);
+    padding: 0 1ch;
+    background-color: var(--bg);
 }
 
 .faded {
-   opacity: 0.33;
+    opacity: 0.33;
 }
 
 #mobile {
-   visibility: hidden;
+    visibility: hidden;
 }
 
 :focus {
-   text-decoration: none;
-   color: var(--bg);
-   background-color: var(--text);
-   outline: none;
+    text-decoration: none;
+    color: var(--bg);
+    background-color: var(--text);
+    outline: none;
 }
 
 form input:hover + label {
-   text-decoration: none;
-   color: var(--bg);
-   outline: none;
+    text-decoration: none;
+    color: var(--bg);
+    outline: none;
 }
 
 form input:hover + label::before {
-   background: var(--bg50);
+    background: var(--bg50);
 }
 
 form input:checked:hover + label::before {
-   background: var(--bg75);
+    background: var(--bg75);
 }
 
 ul li,
 ol li {
-   font-size: 0.75rem;
-   line-height: 1rem;
-   margin-left: 2ch;
-   max-width: 54ch;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    margin-left: 2ch;
+    max-width: 54ch;
 }
 
 ul {
-   list-style-type: none;
-   max-width: max-content;
+    list-style-type: none;
+    max-width: max-content;
 }
 
 ol li::before {
-   display: none;
+    display: none;
 }
 
 ul li::before {
-   content: "• ";
-   position: absolute;
-   margin-left: -2ch;
+    content: "• ";
+    position: absolute;
+    margin-left: -2ch;
 }
 
 ul li:focus::before {
-   background-color: transparent;
-   color: var(--text);
+    background-color: transparent;
+    color: var(--text);
 }
 
 #page_animation {
-   width: 200vw;
-   height: 200vh;
-   height: 200dvh;
-   position: fixed;
-   top: 0;
-   left: 0;
-   z-index: 99;
-   background-color: var(--bg);
-   pointer-events: none;
+    width: 200vw;
+    height: 200vh;
+    height: 200dvh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    background-color: var(--bg);
+    pointer-events: none;
 }
 
 #page_animation.page_animation {
-   animation: 440ms steps(10, jump-start) forwards page_animation;
+    animation: 440ms steps(10, jump-start) forwards page_animation;
 }
 
 @keyframes page_animation {
-   0% {
-      transform: translateY(0vh);
-   }
-   99.9% {
-      visibility: visible;
-   }
-   100% {
-      visibility: hidden;
-      transform: translateY(200vh);
-   }
+    0% {
+        transform: translateY(0vh);
+    }
+    99.9% {
+        visibility: visible;
+    }
+    100% {
+        visibility: hidden;
+        transform: translateY(200vh);
+    }
 }
 
 #focus_check {
-   position: absolute;
+    position: absolute;
 }
 
 #footer_hint_mobile {
-   display: none;
+    display: none;
 }

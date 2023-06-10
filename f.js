@@ -6,10 +6,10 @@
 // @c3_3 = [exclam.c3_3 comma.c3_3 period.c3_3 slash.c3_3 colon.c3_3 semicolon.c3_3 question.c3_3 backslash.c3_3 bar.c3_3];
 
 const input =
-   "exclam exclam.square comma period period.square slash slash.case colon colon.square colon.case colon.case.square semicolon semicolon.square semicolon.case semicolon.case.square question question.square backslash backslash.case bar bar.case less less.case greater greater.case asterisk asterisk.case plus plus.case hyphen hyphen.case equal equal.case asciitilde asciitilde.case"
+    "exclam exclam.square comma period period.square slash slash.case colon colon.square colon.case colon.case.square semicolon semicolon.square semicolon.case semicolon.case.square question question.square backslash backslash.case bar bar.case less less.case greater greater.case asterisk asterisk.case plus plus.case hyphen hyphen.case equal equal.case asciitilde asciitilde.case"
 function c002(input) {
-   const s = input.split(" ")
-   return `
+    const s = input.split(" ")
+    return `
     @dflt = [${input}];
     @c2_1 = [${s.join(".c2_1 ")}.c2_1];
     @c2_2 = [${s.join(".c2_2 ")}.c2_2];
@@ -19,20 +19,20 @@ function c002(input) {
 }
 
 function classExcess(c) {
-   return [...new Set(c.split(" "))].join(" ")
+    return [...new Set(c.split(" "))].join(" ")
 }
 
 function buildGlyphs(g) {
-   return g
-      .split(", ")
-      .map((gl) => gl.split("=")[0])
-      .join(", ")
+    return g
+        .split(", ")
+        .map((gl) => gl.split("=")[0])
+        .join(", ")
 }
 
 function pbcopy(data) {
-   var proc = require("child_process").spawn("pbcopy")
-   proc.stdin.write(data)
-   proc.stdin.end()
+    var proc = require("child_process").spawn("pbcopy")
+    proc.stdin.write(data)
+    proc.stdin.end()
 }
 
 pbcopy(c002(input))

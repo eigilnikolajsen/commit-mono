@@ -1,7 +1,7 @@
 document.onvisibilitychange = () => {
-   // dynamicFavicon()
-   if (document.visibilityState === "visible") changeFavicon(true)
-   else changeFavicon(false)
+    // dynamicFavicon()
+    if (document.visibilityState === "visible") changeFavicon(true)
+    else changeFavicon(false)
 }
 
 let faviconIntervalID
@@ -32,15 +32,15 @@ let faviconCounter = 0
 // }
 
 function changeFavicon(hasFocus) {
-   console.log("changeFavicon")
-   const link = document.createElement("link"),
-      oldLink = document.getElementById("dynamic-favicon")
+    console.log("changeFavicon")
+    const link = document.createElement("link"),
+        oldLink = document.getElementById("dynamic-favicon")
 
-   link.id = "dynamic-favicon"
-   link.rel = "icon"
-   link.href = hasFocus ? "src/favicon/icon-off.svg" : "src/favicon/icon.svg"
-   if (oldLink) {
-      document.head.removeChild(oldLink)
-   }
-   document.head.appendChild(link)
+    link.id = "dynamic-favicon"
+    link.rel = "icon"
+    link.href = hasFocus ? "src/favicon/icon-off.svg" : "src/favicon/icon.svg"
+    if (oldLink) {
+        document.head.removeChild(oldLink)
+    }
+    document.head.appendChild(link)
 }
