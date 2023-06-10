@@ -61,6 +61,10 @@
    margin-left: 1rem;
 }
 
+cite {
+   font-style: normal;
+}
+
 figure {
    width: max-content;
 }

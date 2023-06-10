@@ -1,12 +1,24 @@
 ol {
    font-size: 0.75rem;
    margin-left: 0;
-   /* width: max-content; */
+   max-width: max-content;
+   counter-reset: install;
+   list-style: none;
 }
 
-ol li {
+ol > li {
    margin-left: 3ch;
    max-width: calc(var(--max-width) - 3ch);
+}
+
+ol > li {
+   counter-increment: install;
+}
+
+ol > li p::before {
+   content: "#" counter(install) " ";
+   position: absolute;
+   left: 4ch;
 }
 
 ol li p {

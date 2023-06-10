@@ -1,5 +1,6 @@
 const exampleForm = document.querySelector("#examples_form")
 const exampleSettingsForm = document.querySelector("#examplesettings_form")
+const weightForm = document.querySelector("#weight_form")
 const exampleFieldset = document.querySelector("#examples_form fieldset")
 const fontsFieldset = document.querySelector("#fonts_form fieldset")
 const weightFieldset = document.querySelector("#weight_form fieldset")
@@ -98,7 +99,7 @@ function buildExample() {
    })
 
    updateExamples(null, exampleForm)
-   updateExampleSettings(null, exampleSettingsForm)
+   updateExampleSettings(null, exampleSettingsForm, true)
 }
 
 const codeExample = document.querySelector("#code_example")
@@ -148,29 +149,30 @@ function updateWeight(event, form) {
    fontDownloadSettings.weight = output
    websiteData.weight = output
    document.querySelector("body").style.fontVariationSettings = `"wght" ${websiteData.weight}`
-   document.querySelector("#download").textContent = `Download CommitMono-${websiteData.weight} with current settings`
+   downloadButton.textContent = areObjectsIdentical(fontDownloadSettings, fontDownloadSettingsDefault)
+      ? "Download default CommitMono"
+      : "Download custom CommitMono"
 
    console.log(fontDownloadSettings)
 
    if (event) event.preventDefault()
 }
 
-function updateExampleSettings(event, form) {
+function updateExampleSettings(event, form, isDefault) {
    console.log("updateExampleSettings")
    const data = new FormData(form)
    let output = ""
-   let font = ""
    function updateDownloadSettings(type, feature) {
       const key = feature.split("' ")[0].slice(1)
       const value = feature.split("' ")[1] == "on"
       fontDownloadSettings[type][key] = value
+      if (isDefault) fontDownloadSettingsDefault[type][key] = value
    }
    for (const entry of data) {
-      if (entry[0] != "font") {
-         output += `${entry[1]}, `
-         if (entry[1].includes("cv")) updateDownloadSettings("alternates", entry[1])
-         if (entry[1].includes("ss")) updateDownloadSettings("features", entry[1])
-      } else font = entry[1]
+      output += `${entry[1]}, `
+      if (entry[1].includes("cv")) updateDownloadSettings("alternates", entry[1])
+      if (entry[1].includes("ss")) updateDownloadSettings("features", entry[1])
+
       const label = document.querySelector(`#alt_${entry[0]}`)
       if (label) label.style.fontFeatureSettings = entry[1]
    }
@@ -178,5 +180,13 @@ function updateExampleSettings(event, form) {
    const codeExample = document.querySelector("#code_example")
    codeExample.style.fontFeatureSettings = output.slice(0, -2)
 
+   downloadButton.textContent = areObjectsIdentical(fontDownloadSettings, fontDownloadSettingsDefault)
+      ? "Download default CommitMono"
+      : "Download custom CommitMono"
+
    if (event) event.preventDefault()
+}
+
+function areObjectsIdentical(obj1, obj2) {
+   return JSON.stringify(obj1) === JSON.stringify(obj2)
 }

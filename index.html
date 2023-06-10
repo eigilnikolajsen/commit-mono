@@ -449,7 +449,7 @@
                               data-type="staticCurrent"
                               id="download"
                            >
-                              Download CommitMono-450 with current settings
+                              Download default CommitMono
                            </button>
                            <form id="fonts_form" onchange="updateFont(event, this)">
                               <br />
@@ -484,10 +484,28 @@
                         <div class="top_container"></div>
                         <div class="content_container">
                            <br />
-                           <ol tabindex="0">
-                              <li><p>Download the fonts from '07 Customize'. Your download is a .zip file.</p></li>
+                           <ol tabindex="0" data-edit="true">
                               <li>
-                                 <p>Unzip the fonts. You'll see 4 font files. These 4 fonts make up a 'Style Group':</p>
+                                 <p>Download CommitMono.zip:</p>
+                                 <ul>
+                                    <li>
+                                       <p>
+                                          <button class="download_button" onclick="keyDown({code:'Digit7'})">
+                                             Download custom version
+                                          </button>
+                                       </p>
+                                    </li>
+                                    <li>
+                                       <p>
+                                          <button class="download_button" onclick="downloadFont(this, true)">
+                                             Download default version
+                                          </button>
+                                       </p>
+                                    </li>
+                                 </ul>
+                              </li>
+                              <li>
+                                 <p>Unzip the fonts. You get 4 font files that make up the 'Style Group':</p>
                                  <ul>
                                     <li>
                                        <p>CommitMono-Regular: Base version with settings and weight of your choice.</p>
@@ -656,7 +674,7 @@
          <div tabindex="0" id="block_tab_end"></div>
       </div>
       <script>
-         const versionOfCommitMono = "V118"
+         const versionOfCommitMono = "V120"
          let fontsLoaded = false
          const commitMono = new FontFace("CommitMono", `url(/src/fonts/CommitMono${versionOfCommitMono}-VF.woff2)`, {
             style: "normal",

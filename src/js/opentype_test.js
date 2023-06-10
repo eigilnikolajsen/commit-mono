@@ -10,6 +10,7 @@ const updateOptions = (event, form) => {
 
 let commitMonoFont
 let fontDownloadSettings = { weight: 450, italic: false, alternates: {}, features: {} }
+let fontDownloadSettingsDefault = { weight: 450, italic: false, alternates: {}, features: {} }
 
 async function updateCodeFont() {
    console.log("updateCodeFont")
@@ -26,24 +27,24 @@ async function updateCodeFont() {
       })
       .catch((err) => console.log(err))
 
-   opentype
-      .load("src/fonts/CommitMonoV117-BoldItalic.otf")
-      .then((font) => {
-         console.log(font)
-         // font.download()
-      })
-      .catch((err) => console.log(err))
-   opentype
-      .load("src/fonts/CommitMonoV117-Light.otf")
-      .then((font) => {
-         console.log(font)
-         // font.download()
-      })
-      .catch((err) => console.log(err))
+   // opentype
+   //    .load("src/fonts/CommitMonoV117-BoldItalic.otf")
+   //    .then((font) => {
+   //       console.log(font)
+   //       // font.download()
+   //    })
+   //    .catch((err) => console.log(err))
+   // opentype
+   //    .load("src/fonts/CommitMonoV117-Light.otf")
+   //    .then((font) => {
+   //       console.log(font)
+   //       // font.download()
+   //    })
+   //    .catch((err) => console.log(err))
 }
 
 let downloadStarted = false
-async function downloadFont(button) {
+async function downloadFont(button, isDefault) {
    console.log("downloadFont")
    if (!downloadStarted) {
       downloadStarted = true
@@ -51,30 +52,32 @@ async function downloadFont(button) {
       button.classList.remove("error")
       button.classList.add("loading")
 
-      const regularDownloadSettigns = { ...fontDownloadSettings }
-      const italicDownloadSettigns = { ...fontDownloadSettings }
-      italicDownloadSettigns.italic = true
-      const boldDownloadSettigns = { ...fontDownloadSettings }
-      boldDownloadSettigns.weight = 700
-      const bolditalicDownloadSettigns = { ...fontDownloadSettings }
-      bolditalicDownloadSettigns.weight = 700
-      bolditalicDownloadSettigns.italic = true
+      const allSettings = !isDefault
+         ? {
+              regular: { ...fontDownloadSettings, style: "Regular" },
+              italic: { ...fontDownloadSettings, style: "Italic", italic: true },
+              bold: { ...fontDownloadSettings, style: "Bold", weight: 700 },
+              bolditalic: { ...fontDownloadSettings, style: "Bold Italic", italic: true, weight: 700 },
+           }
+         : {
+              regular: { ...fontDownloadSettingsDefault, style: "Regular" },
+              italic: { ...fontDownloadSettingsDefault, style: "Italic", italic: true },
+              bold: { ...fontDownloadSettingsDefault, style: "Bold", weight: 700 },
+              bolditalic: { ...fontDownloadSettingsDefault, style: "Bold Italic", italic: true, weight: 700 },
+           }
 
-      getFontBlob(regularDownloadSettigns, "Regular")
+      Promise.all([
+         getFontBlob(allSettings.regular),
+         getFontBlob(allSettings.italic),
+         getFontBlob(allSettings.bold),
+         getFontBlob(allSettings.bolditalic),
+      ])
          .then((resolve) => {
-            fontFileBlobs.regular = resolve
-            return getFontBlob(italicDownloadSettigns, "Italic")
-         })
-         .then((resolve) => {
-            fontFileBlobs.italic = resolve
-            return getFontBlob(boldDownloadSettigns, "Bold")
-         })
-         .then((resolve) => {
-            fontFileBlobs.bold = resolve
-            return getFontBlob(bolditalicDownloadSettigns, "Bold Italic")
-         })
-         .then((resolve) => {
-            fontFileBlobs.bolditalic = resolve
+            const [regular, italic, bold, bolditalic] = resolve
+            fontFileBlobs.regular = regular
+            fontFileBlobs.italic = italic
+            fontFileBlobs.bold = bold
+            fontFileBlobs.bolditalic = bolditalic
             return getZipFileBlob()
          })
          .then((resolve) => {
@@ -92,13 +95,8 @@ async function downloadFont(button) {
    }
 }
 
-const fontFileBlobs = {
-   regular: null,
-   italic: null,
-   bold: null,
-   bolditalic: null,
-}
-function getFontBlob(settings, style) {
+const fontFileBlobs = { regular: null, italic: null, bold: null, bolditalic: null }
+function getFontBlob(settings) {
    console.log("getFontBlob")
 
    const fontFilePath = `/src/fonts/CommitMono${versionOfCommitMono}-${settings.weight}${
@@ -212,19 +210,19 @@ function getFontBlob(settings, style) {
          // #3 change the names
          // give custom names to each member of the style group
          font.names.fontFamily.en = "CommitMono"
-         font.names.fontSubfamily.en = style
-         font.names.fullName.en = `CommitMono ${style}`
-         font.names.postScriptName.en = `CommitMono-${style.split(" ").join("")}`
+         font.names.fontSubfamily.en = settings.style
+         font.names.fullName.en = `CommitMono ${settings.style}`
+         font.names.postScriptName.en = `CommitMono-${settings.style.split(" ").join("")}`
          delete font.names.preferredFamily
          delete font.names.preferredSubfamily
-         font.names.uniqueID.en = `Version 0.900;;CommitMono-${style.split(" ").join("")};2023;FL801`
+         font.names.uniqueID.en = `Version 0.900;;CommitMono-${settings.style.split(" ").join("")};2023;FL801`
 
          font.tables.cff.topDict.familyName = font.names.fontFamily.en
          font.tables.cff.topDict.fullName = font.names.fullName.en
          font.tables.cff.topDict.weight = settings.weight == 700 ? "Bold" : "Regular"
 
          const macStyles = ["Regular", "Italic", "Bold", "Bold Italic"]
-         font.tables.head.macStyle = macStyles.indexOf(style)
+         font.tables.head.macStyle = macStyles.indexOf(settings.style)
 
          // make the font.tables.name equal to that of font.names
          font.tables.name = font.names

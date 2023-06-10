@@ -10,6 +10,8 @@ const mainScale = document.querySelector("#main_scale")
 const keySection = document.querySelector("#keyboard_section")
 let rem = +document.documentElement.style.fontSize.split("px")[0]
 
+const downloadButton = document.querySelector("#download")
+
 function buildNav() {
    console.log("buildNav")
    websiteData.sections.forEach((section, index) => {
@@ -149,10 +151,8 @@ function keyDown(e) {
             websiteData.italic ? "1" : "0"
          }`
          showHideChangeSettings(`Weight: ${websiteData.weight}. Def: 450, Min: 300, Max: 700.`)
-         document.querySelector(
-            "#download"
-         ).textContent = `Download CommitMono-${websiteData.weight} with current settings`
          document.forms["weight_form"][`weight_${websiteData.weight}`].checked = true
+         updateWeight(null, weightForm)
       }
 
       if (e.code == "KeyI") {
@@ -262,6 +262,7 @@ function pushPage(keyCode) {
       if (typeof updateCodeFont === "function") updateCodeFont()
       if (typeof updateWaterfall === "function") updateWaterfall()
       if (typeof buildExample === "function") buildExample()
+      if (typeof updateWeight === "function") updateWeight(null, weightForm)
    }
 }
 
