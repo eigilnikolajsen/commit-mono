@@ -173,20 +173,15 @@
                                  <span class="span_key key_code_Minus tutorial_key">+</span>
                                  <span class="span_key key_code_Slash tutorial_key">-</span> zoom
                               </li>
-                              <!-- <li><span class="span_key key_code_KeyR tutorial_key">R</span> reset scroll & zoom</li> -->
                               <li>
                                  <span class="span_key key_code_Enter tutorial_key">ENTER</span>
-                                 <span class="span_key key_code_Escape tutorial_key">Esc</span> edit text and cancel
+                                 <span class="span_key key_code_Escape tutorial_key">ESC</span> edit text and cancel
                                  edit
                               </li>
-                              <!-- <li>
-                                 <span class="span_key key_code_KeyB tutorial_key">B</span>
-                                 <span class="span_key key_code_KeyL tutorial_key">L</span> bolder/lighter –
-                                 <span class="span_key key_code_KeyI tutorial_key">I</span> toggle italic
-                              </li> -->
                            </ul>
                            <br />
                            <br />
+                           <div id="tutorial_complete"></div>
                            <p tabindex="0" data-edit="true" id="footer_hint">All controls in footer.</p>
                            <p tabindex="0" data-edit="true" id="footer_hint_mobile">
                               To use all features, visit website on desktop.
@@ -511,13 +506,13 @@
                                        <p>CommitMono-Regular: Base version with settings and weight of your choice.</p>
                                     </li>
                                     <li>
-                                       <p>CommitMono-Italic: An italic version, same weight as regular.</p>
+                                       <p>CommitMono-Italic: Italic version, same weight as regular.</p>
                                     </li>
                                     <li>
-                                       <p>CommitMono-Bold: A bold version, weight 700.</p>
+                                       <p>CommitMono-Bold: Bold version, weight 700.</p>
                                     </li>
                                     <li>
-                                       <p>CommitMono-BoldItalic: A bold version, weight 700, that is also italic.</p>
+                                       <p>CommitMono-BoldItalic: Bold & italic version, weight 700.</p>
                                     </li>
                                  </ul>
                               </li>
@@ -565,44 +560,60 @@
                         <div class="content_container">
                            <br />
                            <h2>FAQ</h2>
-                           <p class="accordion_header" tabindex="0">Why does the font not include more ligatures?</p>
-                           <p class="accordion_point">
-                              The ligatures already in Commit Mono are added because they provide additional
-                              functionality (!= becomes ≠), but they are off by default. Commit Mono won't be updated
-                              with ligatures that purely serve aesthetic purposes ($> becomes connected).
-                           </p>
-                           <p class="accordion_header" tabindex="0">What is the licensing on Commit Mono?</p>
-                           <p class="accordion_point">
-                              Commit Mono is available under the SIL Open Font License 1.1 license. It can therefore be
-                              used freely for both commercial and non-commercial purposes. Only if you decide to make
-                              your own font based of Commit Mono, do you need to give credit, but it is always
-                              appreciated.
-                           </p>
-                           <p class="accordion_header" tabindex="0">
-                              I have downloaded a new verison, but the old version is still displayed.
-                           </p>
-                           <ol class="accordion_point">
-                              <li>Uninstall the current version you have installed.</li>
-                              <li>Install the new version.</li>
-                              <li>Restart you IDE. The new version should show up.</li>
-                           </ol>
-                           <p class="accordion_header" tabindex="0">
-                              May I install and use Commit Mono in any editor or terminal?
-                           </p>
-                           <p class="accordion_point">Yes.</p>
-                           <p class="accordion_header" tabindex="0">May I use Commit Mono in print design?</p>
-                           <p class="accordion_point">Yes.</p>
-                           <p class="accordion_header" tabindex="0">May I use Commit Mono on a website or in an app?</p>
-                           <p class="accordion_point">Yes.</p>
-                           <p class="accordion_header" tabindex="0">May I use Commit Mono to design my own font?</p>
-                           <p class="accordion_point">
-                              Yes, but you need to give credit and indicate that it is based on Commit Mono.
-                           </p>
-                           <p class="accordion_header" tabindex="0">My .zip file won't work, what to do?</p>
-                           <p class="accordion_point">
-                              There have been some problems with downloading .zip files from Safari. The download is
-                              tested to work in Chrome and FireFox.
-                           </p>
+                           <details>
+                              <summary>
+                                 Why does the font not include more ligatures? Why does the font not include more
+                                 ligatures?
+                              </summary>
+                              <p>
+                                 The ligatures already in Commit Mono are added because they provide additional
+                                 functionality (i.e. != becomes ≠), but they are off by default. Commit Mono won't be
+                                 updated with ligatures that purely serve aesthetic purposes (i.e. $> becomes
+                                 connected).
+                              </p>
+                           </details>
+                           <details>
+                              <summary>What is the licensing on Commit Mono?</summary>
+                              <p>
+                                 Commit Mono is available under the SIL Open Font License 1.1 license. It can therefore
+                                 be used freely for both commercial and non-commercial purposes. Only if you decide to
+                                 make your own font based of Commit Mono, do you need to give credit, but it is always
+                                 appreciated.
+                              </p>
+                           </details>
+                           <details>
+                              <summary>
+                                 I have downloaded a new verison, but the old version is still displayed.
+                              </summary>
+                              <ol>
+                                 <li>Uninstall the current version you have installed.</li>
+                                 <li>Install the new version.</li>
+                                 <li>Restart you IDE. The new version should show up.</li>
+                              </ol>
+                           </details>
+                           <details>
+                              <summary>May I install and use Commit Mono in any editor or terminal?</summary>
+                              <p>Yes.</p>
+                           </details>
+                           <details>
+                              <summary>Is Commit Mono free to use in a logo or print design?</summary>
+                              <p>Yes.</p>
+                           </details>
+                           <details>
+                              <summary>Is Commit Mono free to use on a website, in software or an app?</summary>
+                              <p>Yes.</p>
+                           </details>
+                           <details>
+                              <summary>May I use Commit Mono to design my own font?</summary>
+                              <p>Yes, but you need to give credit and indicate that it is based on Commit Mono.</p>
+                           </details>
+                           <details>
+                              <summary>My .zip file won't work, what to do?</summary>
+                              <p>
+                                 There have been some problems with downloading .zip files from Safari. The download is
+                                 tested to work in Chrome and FireFox.
+                              </p>
+                           </details>
                            <br />
                            <br />
                            <br />

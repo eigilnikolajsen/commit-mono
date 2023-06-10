@@ -108,8 +108,6 @@ function keyDown(e) {
    if (e.code == "Enter" && document.activeElement.dataset.edit == "true" && !insideTextField) enterTextField()
 
    if (!insideTextField || e.code == "Enter") {
-      checkTutorialKeys(e)
-
       const activeKey = !e.shiftKey
          ? document.querySelector(`.key[data-key-code="${e.code}"]`)
          : document.querySelector(`.key[data-key-code="Shift${e.code}"]`)
@@ -181,6 +179,8 @@ function keyDown(e) {
    }
 
    if (e.code == "Escape") exitTextField()
+
+   checkTutorialKeys(e)
 }
 function keyUp(e) {
    const activeKey = document.querySelectorAll(".active_key")
@@ -371,32 +371,43 @@ function onBlurIn(e) {
    if (!isMobile) focusTimeOutID = setTimeout(() => active.focus(), 100)
 }
 
+let tutorialFinished = false
 function checkTutorialKeys(e) {
-   websiteData.tutorial.forEach((key) => {
-      if (e.code == key) {
-         if (e.code.includes("Arrow")) {
-            if (document.activeElement.nodeName == "INPUT") {
+   if (!tutorialFinished) {
+      websiteData.tutorial.forEach((key) => {
+         if (e.code == key) {
+            if (e.code.includes("Arrow")) {
+               if (document.activeElement.nodeName == "INPUT") {
+                  const keyNode = document.querySelector(`.key_code_${key}`)
+                  keyNode?.classList.add("pressed_key")
+               }
+            } else if (e.code == "Enter") {
+               if (document.activeElement.dataset.edit == "true") {
+                  document.querySelector(".key_code_Enter")?.classList.add("pressed_key")
+               }
+            } else if (e.code != "Escape") {
                const keyNode = document.querySelector(`.key_code_${key}`)
                keyNode?.classList.add("pressed_key")
             }
-         } else if (e.code == "Enter") {
-            if (document.activeElement.dataset.edit == "true") {
-               document.querySelector(".key_code_Enter")?.classList.add("pressed_key")
-            }
-         } else if (e.code != "Escape") {
-            const keyNode = document.querySelector(`.key_code_${key}`)
-            keyNode?.classList.add("pressed_key")
          }
-      }
-      if (key == "ShiftTab" && e.code == "Tab" && e.shiftKey) {
-         document.querySelector(".key_code_ShiftTab1").classList.add("pressed_key")
-         document.querySelector(".key_code_ShiftTab2").classList.add("pressed_key")
-      }
-   })
-   const numnerOfTutorialKeys = document.querySelectorAll(".tutorial_key").length
-   const numberOfPressedKeys = document.querySelectorAll(".tutorial_key.pressed_key").length
+         if (key == "ShiftTab" && e.code == "Tab" && e.shiftKey) {
+            document.querySelector(".key_code_ShiftTab1").classList.add("pressed_key")
+            document.querySelector(".key_code_ShiftTab2").classList.add("pressed_key")
+         }
+      })
+      const numnerOfTutorialKeys = document.querySelectorAll(".tutorial_key").length
+      const numberOfPressedKeys = document.querySelectorAll(".tutorial_key.pressed_key").length
 
-   if (numnerOfTutorialKeys === numberOfPressedKeys) console.log("TUTORIAL FINISHED!!")
+      if (numnerOfTutorialKeys === numberOfPressedKeys) {
+         console.log("TUTORIAL FINISHED!!")
+         tutorialFinished = true
+         const tutorialContainer = document.querySelector("#tutorial_complete")
+         tutorialContainer.innerHTML = `<p>Tutorial complete! Your present is the variable version of Commit Mono:</p>
+<p><a href="/src/fonts/CommitMonoV120-VF.ttf">Download CommitMono-VF.ttf</a></p>
+<p><a href="/src/fonts/CommitMonoV120-VF.woff2">Download CommitMono-VF.woff2</a></p>
+<br />`
+      }
+   }
 }
 
 function sectionNavigation(sectionIndex) {

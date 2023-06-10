@@ -9,16 +9,14 @@ ol {
 ol > li {
    margin-left: 3ch;
    max-width: calc(var(--max-width) - 3ch);
-}
-
-ol > li {
    counter-increment: install;
+   position: relative;
 }
 
 ol > li p::before {
    content: "#" counter(install) " ";
    position: absolute;
-   left: 4ch;
+   left: -3ch;
 }
 
 ol li p {
@@ -39,38 +37,41 @@ ol li ul li p::before {
    left: -2ch;
 }
 
-.accordion_header {
-   margin-left: 2ch;
+details > summary {
+   cursor: pointer;
+   list-style: none;
+   width: fit-content;
+   max-width: calc(var(--max-width) - 4ch);
+   margin-left: 4ch;
    position: relative;
-   max-width: calc(var(--max-width) - 2ch);
 }
-
-.accordion_header::before {
-   content: "+";
-   position: absolute;
-   left: -2ch;
+details > p {
+   max-width: calc(var(--max-width) - 4ch);
+   margin: 0 0 1rem 4ch;
 }
-
-.accordion_point {
-   margin-left: 2ch;
-   margin-bottom: 1rem;
-   max-width: calc(var(--max-width) - 2ch);
+details > ol {
+   max-width: calc(var(--max-width) - 4ch);
+   margin: 0 0 1rem 4ch;
+   counter-reset: reinstall;
 }
-
-ol.accordion_point {
-   margin-top: 0;
-   margin-left: 2ch;
-}
-
-.accordion_header + .accordion_point {
-   display: none;
-}
-
-.accordion_header:focus:has(+ .accordion_point)::before {
-   content: "-";
-   color: var(--text);
-}
-
-.accordion_header:focus + .accordion_point {
+details > ol li::before {
    display: block;
+   counter-increment: reinstall;
+   content: "#" counter(reinstall) " ";
+   position: absolute;
+   left: -3ch;
+}
+details > ol li {
+   position: relative;
+}
+details > summary::before {
+   content: "[+]";
+   position: absolute;
+   left: -4ch;
+}
+details[open] > summary::before {
+   content: "[-]";
+}
+details > summary:focus::before {
+   color: var(--text);
 }

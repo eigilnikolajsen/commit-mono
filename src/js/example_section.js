@@ -148,7 +148,9 @@ function updateWeight(event, form) {
 
    fontDownloadSettings.weight = output
    websiteData.weight = output
-   document.querySelector("body").style.fontVariationSettings = `"wght" ${websiteData.weight}`
+   document.querySelector("body").style.fontVariationSettings = `"wght" ${websiteData.weight}, "ital" ${
+      websiteData.italic ? "1" : "0"
+   }`
    downloadButton.textContent = areObjectsIdentical(fontDownloadSettings, fontDownloadSettingsDefault)
       ? "Download default CommitMono"
       : "Download custom CommitMono"
