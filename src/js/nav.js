@@ -271,6 +271,7 @@ function pushPage(keyCode) {
             "#download"
         ).textContent = `Download CommitMono-${websiteData.weight} with current settings`
         document.forms["weight_form"][`weight_${websiteData.weight}`].checked = true
+        codeExample.style.fontFamily = "CommitMono"
         if (typeof updateCodeFont === "function") updateCodeFont()
         if (typeof updateWaterfall === "function") updateWaterfall()
         if (typeof buildExample === "function") buildExample()

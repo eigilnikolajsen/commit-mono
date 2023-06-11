@@ -138,6 +138,8 @@ function updateFont(event, form) {
     document.fonts.forEach((font) => (font.family == output ? (fontInDocument = true) : null))
 
     if (!fontInDocument) {
+        const input = document.querySelector(`input[value="${output}"]`)
+        input.classList.add("loading_font")
         const outputFont = new FontFace(output, `url(/src/fonts/other/${output}.woff2)`, {
             style: "normal",
             weight: "450",
@@ -146,6 +148,7 @@ function updateFont(event, form) {
         outputFont.load()
         document.fonts.ready.then(() => {
             codeExample.style.fontFamily = output
+            input.classList.remove("loading_font")
         })
     } else {
         codeExample.style.fontFamily = output

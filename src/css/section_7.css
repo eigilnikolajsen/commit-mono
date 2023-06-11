@@ -94,3 +94,7 @@ button:focus a {
         transform: translateX(2ch);
     }
 }
+
+input.loading_font + label {
+    animation: flicker 200ms infinite;
+}
