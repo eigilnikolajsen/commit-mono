@@ -1,2 +1,50 @@
+Commit Mono: Normal
+programming typeface
+
+
+FEATURES
 => <= H:H ... immi
+
+
+ALTERNATES
 a g . * @ 6 0
+
+
+SMART KERNING
+iom oom Hom moH
+ioH ooH Hoo moo
+ioo ooi Hoi moi
+
+tmmt tCCt toot gttg CttC mttm
+     gmmg gCCg CggC mggm
+          CmmC mCCm 
+
+
+ARROWS
+<- <------
+<= <======
+-> ------>
+=> ======>
+<<-----<<
+>>----->>
+<<----->>
+>>-----<<
+<<=====<<
+>>=====>>
+<<=====>>
+>>=====<<
+
+
+CASE
+H: H :  
+e:  H:o  
+H : H  H: o  H : o 
+H :::::H ::::::H
+H ::::: H :::::: H
+H-----H H------H
+H-----n H------n
+n-----H n------H
+n-----n n------n
+H----- n H------ n
+n -----H n ------H
+

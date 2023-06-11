@@ -31,7 +31,6 @@ feature ss01 {
         sub @less' @less_arrow_start_hyphen by @less_arrow_start;
         sub @less' @less_arrow_start_equal by @less_arrow_start;
         sub @greater' @greater_arrow_end by @greater_arrow_end;
-        sub @greater' @greater_arrow_end by @greater_arrow_end;
     } TipStart_2;
 
     lookup TipStart_3 {
@@ -94,8 +93,6 @@ feature ss01 {
     } TipEnd_1;
 
     lookup TipEnd_2 {
-        sub @hyphen_arrow @less_arrow_end' by @less_arrow_end;
-        sub @equal_arrow @less_arrow_end' by @less_arrow_end;
         sub @greater_arrow_start_hyphen @greater' by @greater_arrow_start;
         sub @greater_arrow_start_equal @greater' by @greater_arrow_start;
     } TipEnd_2;

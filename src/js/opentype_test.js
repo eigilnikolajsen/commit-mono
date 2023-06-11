@@ -28,7 +28,7 @@ async function updateCodeFont() {
         .catch((err) => consol.log(err))
 
     // opentype
-    //     .load("src/fonts/CommitMonoV126-test1Regular.otf")
+    //     .load("src/fonts/CommitMonoV127-test3Regular.otf")
     //     // .load("src/fonts/CommitMono-1.otf")
     //     .then((font) => {
     //         consol.log(font.tables.gsub.lookups)

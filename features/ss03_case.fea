@@ -1,66 +1,28 @@
 feature ss03 {
     # Coding Feature 00-99
     # Case sensitive punctuation
-
-    # classes
-    @colon = [colon colon.square];
-    @question_exclam = [question question.square exclam exclam.square];
     
     # feature
-    lookup NoSpace {
-        ignore sub @colon' @question_exclam;
-        ignore sub @question_exclam @colon';
-        sub @uppercase_actor @case_default' @uppercase_actor by @case_top;
-        sub @uppercase_actor @case_default' @case_default @uppercase_actor by @case_top;
-        sub @uppercase_actor @case_default' @case_default @case_default @uppercase_actor by @case_top;
-        sub @uppercase_actor @case_default' @case_default @case_default @case_default @uppercase_actor by @case_top;
-        sub @uppercase_actor @case_default' @case_default @case_default @case_default @case_default @uppercase_actor by @case_top;
-    } NoSpace;
-    
-    lookup StartSpace {
-        ignore sub @colon' @question_exclam;
-        ignore sub @question_exclam @colon';
-        sub @uppercase_actor @space_actor @case_default' @uppercase_actor by @case_top;
-        sub @uppercase_actor @space_actor @case_default' @case_default @uppercase_actor by @case_top;
-        sub @uppercase_actor @space_actor @case_default' @case_default @case_default @uppercase_actor by @case_top;
-        sub @uppercase_actor @space_actor @case_default' @case_default @case_default @case_default @uppercase_actor by @case_top;
-        sub @uppercase_actor @space_actor @case_default' @case_default @case_default @case_default @case_default @uppercase_actor by @case_top;
-    } StartSpace;
-    
-    lookup EndSpace {
-        ignore sub @colon' @question_exclam;
-        ignore sub @question_exclam @colon';
-        sub @uppercase_actor @case_default' @space_actor @uppercase_actor by @case_top;
-        sub @uppercase_actor @case_default' @case_default @space_actor @uppercase_actor by @case_top;
-        sub @uppercase_actor @case_default' @case_default @case_default @space_actor @uppercase_actor by @case_top;
-        sub @uppercase_actor @case_default' @case_default @case_default @case_default @space_actor @uppercase_actor by @case_top;
-        sub @uppercase_actor @case_default' @case_default @case_default @case_default @case_default @space_actor @uppercase_actor by @case_top;
-    } EndSpace;
-    
-    lookup StartEndSpace {
-        ignore sub @colon' @question_exclam;
-        ignore sub @question_exclam @colon';
-        sub @uppercase_actor @space_actor @case_default' @space_actor @uppercase_actor by @case_top;
-        sub @uppercase_actor @space_actor @case_default' @case_default @space_actor @uppercase_actor by @case_top;
-        sub @uppercase_actor @space_actor @case_default' @case_default @case_default @space_actor @uppercase_actor by @case_top;
-        sub @uppercase_actor @space_actor @case_default' @case_default @case_default @case_default @space_actor @uppercase_actor by @case_top;
-        sub @uppercase_actor @space_actor @case_default' @case_default @case_default @case_default @case_default @space_actor @uppercase_actor by @case_top;
-    } StartEndSpace;
-    
     lookup CloseUp_1 {
-        ignore sub @colon' @question_exclam;
-        ignore sub @question_exclam @colon';
         ignore sub @case_default' @lowercase_actor;
         ignore sub @case_default' @case_default @lowercase_actor;
+        ignore sub @case_default @case_default' @lowercase_actor;
         ignore sub @case_default' @case_default @case_default @lowercase_actor;
+        ignore sub @case_default @case_default' @case_default @lowercase_actor;
+        ignore sub @case_default @case_default @case_default' @lowercase_actor;
         ignore sub @case_default' @case_default @case_default @case_default @lowercase_actor;
+        ignore sub @case_default @case_default' @case_default @case_default @lowercase_actor;
+        ignore sub @case_default @case_default @case_default' @case_default @lowercase_actor;
+        ignore sub @case_default @case_default @case_default @case_default' @lowercase_actor;
         ignore sub @case_default' @case_default @case_default @case_default @case_default @lowercase_actor;
+        ignore sub @case_default @case_default' @case_default @case_default @case_default @lowercase_actor;
+        ignore sub @case_default @case_default @case_default' @case_default @case_default @lowercase_actor;
+        ignore sub @case_default @case_default @case_default @case_default' @case_default @lowercase_actor;
+        ignore sub @case_default @case_default @case_default @case_default @case_default' @lowercase_actor;
         sub @uppercase_actor @case_default' by @case_top;
     } CloseUp_1;
-    
+
     lookup CloseUp_2 {
-        ignore sub @colon' @question_exclam;
-        ignore sub @question_exclam @colon';
         ignore sub @lowercase_actor @case_default';
         ignore sub @lowercase_actor @case_default @case_default';
         ignore sub @lowercase_actor @case_default @case_default @case_default';
@@ -73,20 +35,20 @@ feature ss03 {
         sub @case_default' @case_default @case_default @case_default @case_default @uppercase_actor by @case_top;
     } CloseUp_2;
     
-    lookup CloseUp_3 {
-        sub @case_default' @case_top by @case_top;
-    } CloseUp_3;
-    
-    lookup CloseUp_4 {
-        sub @case_default' @case_top by @case_top;
-    } CloseUp_4;
-    
-    lookup CloseUp_5 {
-        sub @case_default' @case_top by @case_top;
-    } CloseUp_5;
+    lookup StartEndSpace {
+        sub @uppercase_actor @space_actor @case_default' @space_actor @uppercase_actor by @case_top;
+        sub @uppercase_actor @space_actor @case_default' @case_default @space_actor @uppercase_actor by @case_top;
+        sub @uppercase_actor @space_actor @case_default' @case_default @case_default @space_actor @uppercase_actor by @case_top;
+        sub @uppercase_actor @space_actor @case_default' @case_default @case_default @case_default @space_actor @uppercase_actor by @case_top;
+        sub @uppercase_actor @space_actor @case_default' @case_default @case_default @case_default @case_default @space_actor @uppercase_actor by @case_top;
+    } StartEndSpace;
     
     lookup InBetween {
         sub @case_top @case_default' by @case_top;
     } InBetween;
+    
+    lookup Fix {
+        sub @case_default @case_top' by @case_default;
+    } Fix;
     
 } ss03;
