@@ -2909,7 +2909,8 @@ for (let i = 0; i < 50; i++) {
     console.log(
         randomWord
             .split("")
-            .map((l, i) => (i == 6 ? l.toUpperCase() : l))
+            // .map((l, i) => (i == 6 ? l.toUpperCase() : l))
+            .map((l, i) => (i == 0 ? " " + l : l))
             .join("")
     )
 }

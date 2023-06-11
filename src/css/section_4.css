@@ -42,7 +42,7 @@
 #smart_kerning p:nth-child(2)::before {
     content: "o";
     position: absolute;
-    transform: translateX(calc(24rem / 1000 * 40));
+    transform: translateX(calc(24rem / 1000 * 37));
     color: var(--middle);
     z-index: -1;
 }

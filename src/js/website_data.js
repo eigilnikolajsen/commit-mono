@@ -112,8 +112,9 @@ Tip: Press <span class="span_key">I</span> to switch between italic and regular.
         },
         {
             name: "intelligent",
-            description:
-                "Commit Mono uses an innovated technique to improve kerning. Kerning and spacing is crucial to a good reading experience but it’s not possible in monospaced fonts. Smart kerning combats this by sliding letters to better spacing positions – preserving monospacing. This way, Commit Mono reads more like the proportional fonts you’re used to reading.",
+            description: `Commit Mono uses an innovative technique to improve kerning. Kerning is crucial for effecient reading, but it’s not possible if you want a monospaced font. ‘Smart Kerning’ combats this by sliding letters to better spacing positions – all while preserving monospacing. This gives Commit Mono a superior reading experience compared to other monospaced fonts.
+
+Tip: Hold <span class="span_key">K</span> to see the text without Smart Kerning.`,
             content: {},
         },
         {

@@ -414,7 +414,7 @@
                                                 <br />
                                                 <br />
                                                 <figcaption tabindex="0" data-edit="true">
-                                                    As you can see here, the 'o' is moved 40 units to the right, which
+                                                    As you can see here, the 'o' is moved 37 units to the right, which
                                                     evens out the spacing between itself, 'm' and 'i'. This same process
                                                     is applied to all letters.
                                                 </figcaption>
@@ -664,10 +664,16 @@
                                     <br />
                                     <div class="docs_container" id="faq_container_docs">
                                         <details>
-                                            <summary>
-                                                Why does the font not include more ligatures? Why does the font not
-                                                include more ligatures?
-                                            </summary>
+                                            <summary>Why does the font not include more ligatures?</summary>
+                                            <p>
+                                                The ligatures already in Commit Mono are added because they provide
+                                                additional functionality (i.e. != becomes ≠), but they are off by
+                                                default. Commit Mono won't be updated with ligatures that purely serve
+                                                aesthetic purposes (i.e. $> becomes connected).
+                                            </p>
+                                        </details>
+                                        <details>
+                                            <summary>The ligatures are not showing up, why is that?</summary>
                                             <p>
                                                 The ligatures already in Commit Mono are added because they provide
                                                 additional functionality (i.e. != becomes ≠), but they are off by
@@ -820,7 +826,7 @@
             <div tabindex="0" id="block_tab_end"></div>
         </div>
         <script>
-            const versionOfCommitMono = "V123"
+            const versionOfCommitMono = "V124"
             let fontsLoaded = false
             const commitMono = new FontFace("CommitMono", `url(/src/fonts/CommitMono${versionOfCommitMono}-VF.woff2)`, {
                 style: "normal",

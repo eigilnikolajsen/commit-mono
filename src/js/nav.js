@@ -173,6 +173,10 @@ function keyDown(e) {
             updateCode(null, codeForm)
             websiteData.invert = !websiteData.invert
         }
+
+        if (e.code == "KeyK") {
+            document.querySelector("body").style.fontFeatureSettings = "'ss01', 'ss03', 'ss04', 'ss05' 0"
+        }
     } else if (e.code == "Escape" && insideTextField) {
         console.log(insideTextField)
         document.querySelector(".key_code_Escape")?.classList.add("pressed_key")
@@ -190,6 +194,10 @@ function keyUp(e) {
         console.log("active nav section then tab")
         const checkedMenuInput = document.querySelector("#nav_form input:checked")
         checkedMenuInput.focus()
+    }
+
+    if (e.code == "KeyK") {
+        document.querySelector("body").style.fontFeatureSettings = "'ss01', 'ss03', 'ss04', 'ss05'"
     }
 }
 document.addEventListener("keydown", keyDown)
@@ -406,8 +414,8 @@ function checkTutorialKeys(e) {
             tutorialFinished = true
             const tutorialContainer = document.querySelector("#tutorial_complete")
             tutorialContainer.innerHTML = `<p>Tutorial complete! Your present is the variable version of Commit Mono:</p>
-<p><a href="/src/fonts/CommitMonoV122-VF.ttf">Download CommitMono-VF.ttf</a></p>
-<p><a href="/src/fonts/CommitMonoV122-VF.woff2">Download CommitMono-VF.woff2</a></p>
+<p><a href="/src/fonts/CommitMonoV124-VF.ttf">Download CommitMono-VF.ttf</a></p>
+<p><a href="/src/fonts/CommitMonoV124-VF.woff2">Download CommitMono-VF.woff2</a></p>
 <br />`
         }
     }
