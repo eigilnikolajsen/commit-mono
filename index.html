@@ -494,6 +494,9 @@
                                     <div id="examples_container">
                                         <p tabindex="0" data-edit="true" id="code_example"></p>
                                     </div>
+                                    <br />
+                                    <br />
+                                    <h2>Customize your Commit Mono download below</h2>
                                     <form id="weight_form" onchange="updateWeight(event, this)">
                                         <br />
                                         <legend><h2>Weight</h2></legend>
@@ -521,9 +524,9 @@
                                                     <p>
                                                         <button
                                                             class="download_button"
-                                                            onclick="keyDown({code:'Digit7'})"
+                                                            onclick="downloadFont(this, true)"
                                                         >
-                                                            Download custom version
+                                                            Download default version
                                                         </button>
                                                     </p>
                                                 </li>
@@ -531,9 +534,9 @@
                                                     <p>
                                                         <button
                                                             class="download_button"
-                                                            onclick="downloadFont(this, true)"
+                                                            onclick="keyDown({code:'Digit7'})"
                                                         >
-                                                            Download default version
+                                                            Download custom version
                                                         </button>
                                                     </p>
                                                 </li>
@@ -800,6 +803,12 @@
                                             for generating fonts on the web.
                                         </li>
                                         <li>
+                                            <a href="https://gildas-lormeau.github.io/zip.js/" target="_blank"
+                                                >zip.js</a
+                                            >
+                                            for zipping files on the web.
+                                        </li>
+                                        <li>
                                             <a href="https://opentypecookbook.com/" target="_blank"
                                                 >OpenType Cookbook</a
                                             >
@@ -819,6 +828,59 @@
                                                 >this one from Real Python</a
                                             >
                                             for opinions on code fonts.
+                                        </li>
+                                    </ul>
+                                    <br />
+                                    <h2>Programming font ressources</h2>
+                                    <ul>
+                                        <li>
+                                            <a href="https://www.programmingfonts.org/" target="_blank"
+                                                >ProgrammingFonts.org</a
+                                            >: Test drive a huge variety of programming fonts.
+                                        </li>
+                                        <li>
+                                            <a href="https://www.codingfont.com/" target="_blank">CodingFont.com</a>:
+                                            Tournament style test of programming font preference.
+                                        </li>
+                                        <li>
+                                            Other great programming fonts:
+                                            <ul>
+                                                <li>
+                                                    <a href="https://github.com/tonsky/FiraCode" target="_blank"
+                                                        >Fira Code</a
+                                                    >
+                                                </li>
+                                                <li>
+                                                    <a href="https://www.jetbrains.com/lp/mono/" target="_blank"
+                                                        >JetBrains Mono</a
+                                                    >
+                                                </li>
+                                                <li>
+                                                    <a href="https://www.nerdfonts.com/" target="_blank">Nerd Fonts</a>
+                                                </li>
+                                                <li>
+                                                    <a href="https://github.com/microsoft/cascadia-code" target="_blank"
+                                                        >Cascadia Mono</a
+                                                    >
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        href="https://fonts.google.com/specimen/Source+Code+Pro"
+                                                        target="_blank"
+                                                        >Source Code Pro</a
+                                                    >
+                                                </li>
+                                                <li>
+                                                    <a href="https://developer.apple.com/fonts/" target="_blank"
+                                                        >SF Mono</a
+                                                    >
+                                                </li>
+                                                <li>
+                                                    <a href="https://github.com/IBM/plex" target="_blank"
+                                                        >IBM Plex Mono</a
+                                                    >
+                                                </li>
+                                            </ul>
                                         </li>
                                     </ul>
                                     <br />

@@ -133,7 +133,23 @@ function updateFont(event, form) {
     for (const entry of data) {
         output = `${entry[1]}`
     }
-    codeExample.style.fontFamily = output
+
+    let fontInDocument = false
+    document.fonts.forEach((font) => (font.family == output ? (fontInDocument = true) : null))
+
+    if (!fontInDocument) {
+        const outputFont = new FontFace(output, `url(/src/fonts/other/${output}.woff2)`, {
+            style: "normal",
+            weight: "450",
+        })
+        document.fonts.add(outputFont)
+        outputFont.load()
+        document.fonts.ready.then(() => {
+            codeExample.style.fontFamily = output
+        })
+    } else {
+        codeExample.style.fontFamily = output
+    }
 
     if (event) event.preventDefault()
 }

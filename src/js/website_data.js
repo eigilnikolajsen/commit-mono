@@ -271,32 +271,37 @@ Tip: Press <span class="span_key">R</span> to reset to default settings.`,
                     {
                         name: "Commit Mono",
                         cssName: "CommitMono",
-                        file: "CommitMonoV102-VF.woff2",
                         id: "commit_mono",
                     },
                     {
                         name: "Fira Code",
                         cssName: "FiraCode",
-                        file: "FiraCode.woff2",
                         id: "fira_code",
                     },
                     {
                         name: "JetBrains Mono",
                         cssName: "JetBrainsMono",
-                        file: "JetBrainsMono.woff2",
                         id: "jetbrains_mono",
                     },
                     {
                         name: "Source Code Pro",
                         cssName: "SourceCodePro",
-                        file: "SourceCodePro.woff2",
                         id: "source_code_pro",
+                    },
+                    {
+                        name: "Cascadia Code",
+                        cssName: "CascadiaCode",
+                        id: "cascadia_code",
                     },
                     {
                         name: "Consolas",
                         cssName: "Consolas",
-                        file: "Consolas.woff2",
                         id: "consolas",
+                    },
+                    {
+                        name: "Menlo/Meslo",
+                        cssName: "Menlo",
+                        id: "menlo",
                     },
                 ],
                 weights: [
@@ -854,11 +859,12 @@ end program capitalize
 `,
                     },
                     {
-                        languageName: "Code Font Test",
+                        languageName: "Code Tests",
                         codeExample: `Focus, then press ENTER to edit
 
 Hello world           print("Hello, World!")
 Pangram               The quick brown fox jumps over a lazy dog
+                      THE QUICK BROWN FOX JUMPS OVER A LAZY DOG
 Confusable chars      ,. ;: |! Il1 2Z 5S 38B 0OQD
 Vertical alignment    H=H x=x += -= <= >= ~= *= ^= |= %= &= ->
 ASCII                  !"#$%&'()*+,-./
@@ -867,8 +873,12 @@ ASCII                  !"#$%&'()*+,-./
                       PQRSTUVWXYZ[\\]^_
                       ${"`"}abcdefghijklmno
                       pqrstuvwxyz{|}~
-
-
+Code symbols          ,. "" '' ${"``"}
+                      :;| \\/ [] () {}
+                      * - + <>
+Distinction test      o0O s5S 9gq z2Z !|l1Iij {([|])} .,;: ${"``"}''""
+                      a@#* vVuUwW <>;^°=-~ öÖüÜäÄßµ \/\/ -- == __
+                      0123456789 &-+@ for (int i=0; i<=j; ++i) {}
 
 
 

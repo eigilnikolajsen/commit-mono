@@ -36,7 +36,6 @@ p#code_example {
     min-width: 102ch;
     padding-left: 5ch;
     position: relative;
-    font-variant-ligatures: none;
 }
 p#code_example::before {
     content: attr(data-before);
