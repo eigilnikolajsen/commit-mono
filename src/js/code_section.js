@@ -3,7 +3,7 @@ const codeFieldset = document.querySelector("#code_form fieldset")
 const codeDescription = document.querySelector("#code_description")
 
 function buildCode() {
-    console.log("buildCode")
+    consol.log("buildCode")
     websiteData.sections.forEach((section) => {
         if (section.name == "code") {
             section.content.characters.forEach((character, index) => {
@@ -37,7 +37,7 @@ function buildCode() {
 }
 
 function updateCode(event, form) {
-    console.log("updateCode")
+    consol.log("updateCode")
     const data = new FormData(form)
     let output = ""
     for (const entry of data) {

@@ -32,7 +32,7 @@ let faviconCounter = 0
 // }
 
 function changeFavicon(hasFocus) {
-    console.log("changeFavicon")
+    consol.log("changeFavicon")
     const link = document.createElement("link"),
         oldLink = document.getElementById("dynamic-favicon")
 

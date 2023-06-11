@@ -15,10 +15,11 @@ This is taken from https://commitmono.com/install
 4. Restart your editor/IDE.
 5. Settings/Preferences → Editor → Font:
    Pick CommitMono from the list. If you're using VS Code, simply put 
-   "editor.fontFamily": "CommitMono", in the settings.json file.
+   ["editor.fontFamily": "CommitMono"], in the settings.json file.
 
-If you have enabled one or more features/ligatures in your download, these are 
-available through the 'calt' OpenType Feature. In VS Code this feature is on by 
-default and you don't have to do anything to enable it. For a comprehensive guide 
-on how to enable in your specific editor/IDE, refer to: Fira Code wiki 
+If you have enabled one or more features/ligatures in your download, these are
+available through the 'calt' OpenType Feature. In VS Code this feature can be
+enabled using by putting ["editor.fontLigatures": true,] in the settings.json
+file. For a comprehensive guide on how to enable in your specific editor/IDE,
+refer to Fira Code Wiki:
 https://github.com/tonsky/FiraCode/wiki#enabling-ligatures

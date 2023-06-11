@@ -586,17 +586,18 @@
                                         <li>
                                             <p>
                                                 Settings/Preferences → Editor → Font: <br />Pick CommitMono from the
-                                                list. If you're using VS Code, simply put "editor.fontFamily":
-                                                "CommitMono", in the settings.json file.
+                                                list. If you're using VS Code, simply put ["editor.fontFamily":
+                                                "CommitMono",] in the settings.json file.
                                             </p>
                                         </li>
                                     </ol>
                                     <br />
                                     <p tabindex="0">
                                         If you have enabled one or more features/ligatures in your download, these are
-                                        available through the 'calt' OpenType Feature. In VS Code this feature is on by
-                                        default and you don't have to do anything to enable it. For a comprehensive
-                                        guide on how to enable in your specific editor/IDE, refer to:
+                                        available through the 'calt' OpenType Feature. In VS Code this feature can be
+                                        enabled using by putting ["editor.fontLigatures": true,] in the settings.json
+                                        file. For a comprehensive guide on how to enable in your specific editor/IDE,
+                                        refer to:
                                         <a
                                             href="https://github.com/tonsky/FiraCode/wiki#enabling-ligatures"
                                             target="_blank"
@@ -732,13 +733,23 @@
                                         </details>
                                     </div>
                                     <div class="docs_container" id="features_container_docs">
+                                        <p>
+                                            All features/ligatures are baked into the 'calt' OpenType Feature, which can
+                                            be turned on by 'enabling font ligatures'. In VS Code you simply put
+                                            ["editor.fontLigatures": true,] in the settings.json file.
+                                        </p>
                                         <br />
-                                        <p>Use <span class="span_key">O</span> to switch between ON and OFF</p>
+                                        <p>Hold <span class="span_key">O</span> to view feature ON</p>
                                         <br />
                                     </div>
                                     <div class="docs_container" id="alternates_container_docs">
+                                        <p>
+                                            The custom alternates that you choose are baked into the font and work out
+                                            of the box. That way, you don't have to enable them through OpenType
+                                            Features.
+                                        </p>
                                         <br />
-                                        <p>Use <span class="span_key">O</span> to switch between ON and OFF</p>
+                                        <p>Hold <span class="span_key">O</span> to view alternate ON</p>
                                         <br />
                                     </div>
                                     <div class="docs_container" id="charset_container_docs">
@@ -826,7 +837,7 @@
             <div tabindex="0" id="block_tab_end"></div>
         </div>
         <script>
-            const versionOfCommitMono = "V124"
+            const versionOfCommitMono = "V126"
             let fontsLoaded = false
             const commitMono = new FontFace("CommitMono", `url(/src/fonts/CommitMono${versionOfCommitMono}-VF.woff2)`, {
                 style: "normal",
@@ -840,7 +851,7 @@
 
             // Wait until the fonts are all loaded
             document.fonts.ready.then(() => {
-                console.log("all fonts loaded")
+                // consol.log("all fonts loaded")
                 fontsLoaded = true
                 if (typeof startAll === "function") startAll()
             })

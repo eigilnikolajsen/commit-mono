@@ -1,0 +1,24 @@
+feature ss06 {
+    # Coding Feature 00-99
+    # Smart kerning
+    
+    # feature
+    
+    lookup nr {
+        sub @normal_letter @origin' @narrow_letter by @rightS;
+        sub @larger_letter @origin' @narrow_letter by @rightS;
+    } nr;
+    
+    lookup rl {
+        sub @narrow_letter @origin' @normal_letter by @leftS;
+        sub @narrow_letter @origin' @larger_letter by @leftS;
+    } rl;
+    
+    lookup lw {
+        sub @larger_letter @origin' @widest_letter by @leftS;
+        sub @widest_letter @origin' @larger_letter by @rightS;
+    } lw;
+
+    
+    
+} ss06;

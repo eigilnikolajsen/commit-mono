@@ -5,15 +5,14 @@ feature ss05 {
     # feature
     sub @narrow_letter @origin' @widest_letter by @leftL;
     sub @widest_letter @origin' @narrow_letter by @rightL;
-    sub @narrow_letter @origin' @larger_letter by @leftM;
-    sub @larger_letter @origin' @narrow_letter by @rightM;
-    sub @narrow_letter @origin' @normal_letter by @leftS;
-    sub @normal_letter @origin' @narrow_letter by @rightS;
     sub @normal_letter @origin' @widest_letter by @leftM;
+    sub @larger_letter @origin' @widest_letter by @leftM;
     sub @widest_letter @origin' @normal_letter by @rightM;
-    sub @normal_letter @origin' @larger_letter by @leftS;
-    sub @larger_letter @origin' @normal_letter by @rightS;
-    sub @larger_letter @origin' @widest_letter by @leftS;
-    sub @widest_letter @origin' @larger_letter by @rightS;
+    sub @widest_letter @origin' @larger_letter by @rightM;
+    sub @narrow_letter @origin' @normal_letter by @leftS;
+    sub @narrow_letter @origin' @larger_letter by @leftS;
+    sub @normal_letter @origin' @narrow_letter by @rightS;
+    sub @larger_letter @origin' @narrow_letter by @rightS;
+    
     
 } ss05;

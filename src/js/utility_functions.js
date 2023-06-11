@@ -11,7 +11,7 @@ const setCssVar = ([property, value]) => document.documentElement.style.setPrope
 
 const isMobileTest = () => {
     if (window.matchMedia("(pointer: coarse) and (max-width: 1000px").matches) {
-        console.log("(pointer: coarse) and (max-width: 1000px)")
+        consol.log("(pointer: coarse) and (max-width: 1000px)")
         return true
     } else return false
 }
@@ -32,7 +32,7 @@ function wait(milliseconds) {
 
 let checkCssLoadIntervalIDs = []
 function appendStyleSheets() {
-    console.log("appendStyleSheets")
+    consol.log("appendStyleSheets")
     const stylesheetIndexes = [
         "style",
         "mobile",
@@ -57,12 +57,12 @@ function appendStyleSheets() {
         checkCssLoadIntervalIDs[index] = setInterval(() => {
             const cssLoaded = Boolean(link.sheet)
             if (cssLoaded) {
-                console.log(`${stylesheet} CSS loaded`)
+                consol.log(`${stylesheet} CSS loaded`)
                 clearInterval(checkCssLoadIntervalIDs[index])
                 checkCssLoadIntervalIDs[index] = null
                 if (index == 3) {
                     allCssLoaded = true
-                    console.log("ALL CSS LOADED")
+                    consol.log("ALL CSS LOADED")
                 }
             }
         }, 100)
@@ -85,4 +85,10 @@ function showHideChangeSettings(text, ms, dim) {
             document.querySelector("#main_scale").classList.remove("faded")
         }
     }, ms ?? 500)
+}
+
+const consol = {
+    log: function (message) {
+        // console.log(message)
+    },
 }

@@ -1,7 +1,7 @@
 const familiarContainer = document.querySelector("#familiar_container")
 
 function buildFamiliar() {
-    console.log("buildFamiliar")
+    consol.log("buildFamiliar")
     websiteData.sections.forEach((section) => {
         if (section.name == "familiar") {
             familiarContainer.innerHTML = ""
@@ -30,7 +30,7 @@ function buildFamiliar() {
 }
 
 function updateFamiliar(event, form) {
-    console.log("updateFamiliar")
+    consol.log("updateFamiliar")
     buildFamiliar()
     const data = new FormData(form)
     let output = ""

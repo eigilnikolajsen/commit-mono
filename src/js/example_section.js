@@ -8,7 +8,7 @@ const alternatesContainer = document.querySelector("#alternates_container")
 const featuresContainer = document.querySelector("#features_container")
 
 function buildExample() {
-    console.log("buildExample")
+    consol.log("buildExample")
     websiteData.sections.forEach((section) => {
         if (section.name == "customize") {
             fontsFieldset.innerHTML = ""
@@ -104,7 +104,7 @@ function buildExample() {
 
 const codeExample = document.querySelector("#code_example")
 function updateExamples(event, form) {
-    console.log("updateExamples")
+    consol.log("updateExamples")
     const data = new FormData(form)
     let output = ""
     for (const entry of data) {
@@ -127,7 +127,7 @@ function updateExamples(event, form) {
 }
 
 function updateFont(event, form) {
-    console.log("updateFont")
+    consol.log("updateFont")
     const data = new FormData(form)
     let output = ""
     for (const entry of data) {
@@ -139,7 +139,7 @@ function updateFont(event, form) {
 }
 
 function updateWeight(event, form) {
-    console.log("updateWeight")
+    consol.log("updateWeight")
     const data = new FormData(form)
     let output = ""
     for (const entry of data) {
@@ -155,13 +155,13 @@ function updateWeight(event, form) {
         ? "Download default CommitMono"
         : "Download custom CommitMono"
 
-    console.log(fontDownloadSettings)
+    consol.log(fontDownloadSettings)
 
     if (event) event.preventDefault()
 }
 
 function updateExampleSettings(event, form, isDefault) {
-    console.log("updateExampleSettings")
+    consol.log("updateExampleSettings")
     const data = new FormData(form)
     let output = ""
     function updateDownloadSettings(type, feature) {
@@ -178,7 +178,7 @@ function updateExampleSettings(event, form, isDefault) {
         const label = document.querySelector(`#alt_${entry[0]}`)
         if (label) label.style.fontFeatureSettings = entry[1]
     }
-    console.log(fontDownloadSettings)
+    consol.log(fontDownloadSettings)
     const codeExample = document.querySelector("#code_example")
     codeExample.style.fontFeatureSettings = output.slice(0, -2)
 

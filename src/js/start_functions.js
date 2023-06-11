@@ -1,7 +1,7 @@
 let waitingForLoadIntervalID = null
 let allCssLoaded = false
 function startAll() {
-    console.log("startAll")
+    consol.log("startAll")
 
     appendStyleSheets()
 
@@ -44,6 +44,6 @@ function startAll() {
 }
 
 if (fontsLoaded) {
-    console.log("fontsLoaded startAll()")
+    consol.log("fontsLoaded startAll()")
     startAll()
 }

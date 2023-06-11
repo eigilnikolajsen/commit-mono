@@ -1,5 +1,5 @@
 const updateOptions = (event, form) => {
-    console.log("updateOptions")
+    consol.log("updateOptions")
     const data = new FormData(form)
     let output = ""
     for (const entry of data) {
@@ -13,7 +13,7 @@ let fontDownloadSettings = { weight: 450, italic: false, alternates: {}, feature
 let fontDownloadSettingsDefault = { weight: 450, italic: false, alternates: {}, features: {} }
 
 async function updateCodeFont() {
-    console.log("updateCodeFont")
+    consol.log("updateCodeFont")
     opentype
         .load(
             `/src/fonts/CommitMono${versionOfCommitMono}-${websiteData.weight}${
@@ -21,31 +21,32 @@ async function updateCodeFont() {
             }.otf`
         )
         .then((font) => {
-            // console.log(font)
+            // consol.log(font)
             commitMonoFont = font
             updateCode(null, codeForm)
         })
-        .catch((err) => console.log(err))
+        .catch((err) => consol.log(err))
 
     // opentype
-    //    .load("src/fonts/CommitMonoV117-BoldItalic.otf")
-    //    .then((font) => {
-    //       console.log(font)
-    //       // font.download()
-    //    })
-    //    .catch((err) => console.log(err))
+    //     .load("src/fonts/CommitMonoV126-test1Regular.otf")
+    //     // .load("src/fonts/CommitMono-1.otf")
+    //     .then((font) => {
+    //         consol.log(font.tables.gsub.lookups)
+    //         // font.download()
+    //     })
+    //     .catch((err) => consol.log(err))
     // opentype
     //    .load("src/fonts/CommitMonoV117-Light.otf")
     //    .then((font) => {
-    //       console.log(font)
+    //       consol.log(font)
     //       // font.download()
     //    })
-    //    .catch((err) => console.log(err))
+    //    .catch((err) => consol.log(err))
 }
 
 let downloadStarted = false
 async function downloadFont(button, isDefault) {
-    console.log("downloadFont")
+    consol.log("downloadFont")
     if (!downloadStarted) {
         downloadStarted = true
         button.classList.remove("loaded")
@@ -90,14 +91,14 @@ async function downloadFont(button, isDefault) {
                 downloadStarted = false
                 button.classList.remove("loading")
                 button.classList.add("error")
-                console.log(err)
+                consol.log(err)
             })
     }
 }
 
 const fontFileBlobs = { regular: null, italic: null, bold: null, bolditalic: null }
 function getFontBlob(settings) {
-    console.log("getFontBlob")
+    consol.log("getFontBlob")
 
     const fontFilePath = `/src/fonts/CommitMono${versionOfCommitMono}-${settings.weight}${
         settings.italic ? "Italic" : "Regular"
@@ -115,22 +116,22 @@ function getFontBlob(settings) {
                 //
                 // filter for only the active ones
                 if (!active) return
-                // console.log("alternate", alternate, "active", active)
+                // consol.log("alternate", alternate, "active", active)
 
                 // look at all the fonts features
                 font.tables.gsub.features.forEach((feature) => {
                     //
                     // if the feature matches the alternate we're currently on
                     if (feature.tag == alternate) {
-                        // console.log("feature", feature)
+                        // consol.log("feature", feature)
 
                         // then loop through the list of lookup indexes of that feature
                         feature.feature.lookupListIndexes.forEach((lookupIndex) => {
-                            // console.log("lookupIndex", lookupIndex)
+                            // consol.log("lookupIndex", lookupIndex)
 
                             // loop through the subtable of each lookup at the lookup index
                             font.tables.gsub.lookups[lookupIndex].subtables.forEach((subtable) => {
-                                // console.log("subtable", subtable)
+                                // consol.log("subtable", subtable)
 
                                 // loop through the glyphs of the subtable
                                 subtable.coverage.glyphs.forEach((glyphIndexOriginal, index) => {
@@ -138,7 +139,7 @@ function getFontBlob(settings) {
                                     // glyphIndexOriginal is the index of the original glyph
                                     // glyphIndexSubstitute is the index of the glyph to substitute the original with
                                     const glyphIndexSubstitute = subtable.substitute[index]
-                                    // console.log(
+                                    // consol.log(
                                     //    "glyphIndexOriginal",
                                     //    glyphIndexOriginal,
                                     //    "glyphIndexSubstitute",
@@ -179,14 +180,14 @@ function getFontBlob(settings) {
                 //
                 // filter for only the active ones
                 if (!active) return
-                // console.log("alternate", alternate, "active", active)
+                // consol.log("alternate", alternate, "active", active)
 
                 // then loop through all features
                 font.tables.gsub.features.forEach((feature) => {
                     //
                     // and find the ones that match the active tags
                     if (feature.tag == alternate) {
-                        // console.log("feature", feature)
+                        // consol.log("feature", feature)
 
                         // push the lookup indexes into the empty caltLookupIndexes variable
                         feature.feature.lookupListIndexes.forEach((lookupIndex) => caltLookupIndexes.push(lookupIndex))
@@ -201,13 +202,13 @@ function getFontBlob(settings) {
                         //
                         // set its lookup indexes to the variable
                         feature.feature.lookupListIndexes = caltLookupIndexes
-                        // console.log("caltLookupIndexes", caltLookupIndexes)
+                        // consol.log("caltLookupIndexes", caltLookupIndexes)
                     }
                 })
             })
 
             // remove unsupported lookup type
-            font.tables.gsub.lookups = font.tables.gsub.lookups.filter((l) => l.lookupType != 7)
+            // font.tables.gsub.lookups = font.tables.gsub.lookups.filter((l) => l.lookupType != 7)
 
             //
             // #3 change the names
@@ -233,11 +234,11 @@ function getFontBlob(settings) {
             // set the correct weight
             font.tables.os2.usWeightClass = settings.weight
 
-            console.log(font)
+            consol.log(font)
             const fontAB = font.toArrayBuffer()
             const fontBlob = new Blob([fontAB], { type: "font/otf" })
 
-            console.log(fontBlob)
+            consol.log(fontBlob)
 
             return fontBlob
         })
@@ -247,7 +248,7 @@ function getFontBlob(settings) {
 }
 
 async function getZipFileBlob() {
-    console.log(fontFileBlobs)
+    consol.log(fontFileBlobs)
     const { BlobWriter, BlobReader, HttpReader, TextReader, ZipWriter } = zip
     const installationTextURL = "/src/txt/installation.txt"
     const zipWriter = new ZipWriter(new BlobWriter("application/zip"))
@@ -264,7 +265,8 @@ async function getZipFileBlob() {
 
 function downloadFile(blob) {
     const a = document.createElement("a")
-    a.download = `CommitMono-${Date.now()}.zip`
+    // a.download = `CommitMono-${Date.now()}.zip`
+    a.download = `CommitMono.zip`
     a.href = URL.createObjectURL(blob)
     a.click()
 }

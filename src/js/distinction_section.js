@@ -7,7 +7,7 @@ websiteData.sections.forEach((section) => {
 })
 
 function updateWaterfall() {
-    console.log("updateWaterfall")
+    consol.log("updateWaterfall")
     const waterfallContainer = document.querySelector("#waterfall")
     waterfallContainer.innerHTML = ""
     waterfall.sizes.forEach((size) => {
@@ -39,7 +39,7 @@ const gtcForm = document.querySelector("#gtc_form")
 const gtcFieldset = document.querySelector("#gtc_form fieldset")
 
 function buildDistinction() {
-    console.log("buildDistinction")
+    consol.log("buildDistinction")
     websiteData.sections.forEach((section) => {
         if (section.name == "distinction") {
             section.content.gtcDifficulties.forEach((difficulty, index) => {
@@ -64,7 +64,7 @@ function buildDistinction() {
 }
 
 function updateGTC(event, form) {
-    console.log("updateGTC")
+    consol.log("updateGTC")
     const data = new FormData(form)
     let output = ""
     for (const entry of data) {
@@ -88,7 +88,7 @@ let score = -1
 let currentQuestion = -1
 let firstButtons = []
 function buildGTC() {
-    console.log("buildGTC")
+    consol.log("buildGTC")
     const gtcContainer = document.querySelector("#gtc_questions_container")
     gtcContainer.innerHTML = ""
     answers = []
@@ -142,7 +142,7 @@ function buildGTC() {
 }
 
 function nextQuestion(correct, answer, wrongAnswer, pointerType) {
-    console.log(pointerType)
+    consol.log(pointerType)
     const scoreTally = document.querySelector("#score_tally")
     const allQuestions = document.querySelectorAll(".question_container")
     let answerFeedback

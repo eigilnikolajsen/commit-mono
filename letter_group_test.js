@@ -44,7 +44,7 @@ const dataGroup = [
     ...data.map((letter) => `RSB${findGroup(letter.rsb, letter.rsbType)}`),
 ]
 
-// console.log(dataGroup)
+// consol.log(dataGroup)
 
 const words = [
     "Abbreviation",
@@ -2903,10 +2903,10 @@ names.forEach((_, i) => {
         })
     })
 })
-// console.log(combinations)
+// consol.log(combinations)
 for (let i = 0; i < 50; i++) {
     const randomWord = words[Math.floor(words.length * Math.random())]
-    console.log(
+    consol.log(
         randomWord
             .split("")
             // .map((l, i) => (i == 6 ? l.toUpperCase() : l))

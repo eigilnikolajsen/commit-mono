@@ -1,5 +1,5 @@
 function buildTable() {
-    console.log("buildTable")
+    consol.log("buildTable")
     const table = document.querySelector("#section_2 .content_container table")
 
     for (let i = 0; i <= 6; i++) {
@@ -49,7 +49,7 @@ const createBinaryString = (number, length) => parseInt(number, 10).toString(2).
 
 let previousOutput = [33, 49, 65, 81, 97, 113]
 function updateTable(event, form) {
-    console.log("updateTable")
+    consol.log("updateTable")
     const data = new FormData(form)
     let output = []
     for (const entry of data) output.push(+entry[1])
