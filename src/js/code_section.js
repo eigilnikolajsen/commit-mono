@@ -36,6 +36,39 @@ function buildCode() {
     })
 }
 
+let commitMonoFont
+async function updateCodeFont() {
+    consol.log("updateCodeFont")
+    opentype
+        .load(
+            `/src/fonts/CommitMono${versionOfCommitMono}-${websiteData.weight}${
+                websiteData.italic ? "Italic" : "Regular"
+            }.otf`
+        )
+        .then((font) => {
+            // consol.log(font)
+            commitMonoFont = font
+            updateCode(null, codeForm)
+        })
+        .catch((err) => consol.log(err))
+
+    // opentype
+    //     .load("src/fonts/CommitMonoV127-test3Regular.otf")
+    //     // .load("src/fonts/CommitMono-1.otf")
+    //     .then((font) => {
+    //         consol.log(font.tables.gsub.lookups)
+    //         // font.download()
+    //     })
+    //     .catch((err) => consol.log(err))
+    // opentype
+    //    .load("src/fonts/CommitMonoV117-Light.otf")
+    //    .then((font) => {
+    //       consol.log(font)
+    //       // font.download()
+    //    })
+    //    .catch((err) => consol.log(err))
+}
+
 function updateCode(event, form) {
     consol.log("updateCode")
     const data = new FormData(form)

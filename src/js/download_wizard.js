@@ -8,41 +8,8 @@ const updateOptions = (event, form) => {
     event.preventDefault()
 }
 
-let commitMonoFont
 let fontDownloadSettings = { weight: 450, italic: false, alternates: {}, features: {} }
 let fontDownloadSettingsDefault = { weight: 450, italic: false, alternates: {}, features: {} }
-
-async function updateCodeFont() {
-    consol.log("updateCodeFont")
-    opentype
-        .load(
-            `/src/fonts/CommitMono${versionOfCommitMono}-${websiteData.weight}${
-                websiteData.italic ? "Italic" : "Regular"
-            }.otf`
-        )
-        .then((font) => {
-            // consol.log(font)
-            commitMonoFont = font
-            updateCode(null, codeForm)
-        })
-        .catch((err) => consol.log(err))
-
-    // opentype
-    //     .load("src/fonts/CommitMonoV127-test3Regular.otf")
-    //     // .load("src/fonts/CommitMono-1.otf")
-    //     .then((font) => {
-    //         consol.log(font.tables.gsub.lookups)
-    //         // font.download()
-    //     })
-    //     .catch((err) => consol.log(err))
-    // opentype
-    //    .load("src/fonts/CommitMonoV117-Light.otf")
-    //    .then((font) => {
-    //       consol.log(font)
-    //       // font.download()
-    //    })
-    //    .catch((err) => consol.log(err))
-}
 
 let downloadStarted = false
 async function downloadFont(button, isDefault) {
@@ -249,23 +216,24 @@ function getFontBlob(settings) {
 
 async function getZipFileBlob() {
     consol.log(fontFileBlobs)
-    const { BlobWriter, BlobReader, HttpReader, TextReader, ZipWriter } = zip
+
+    const { BlobWriter, BlobReader, HttpReader, ZipWriter } = zip
     const installationTextURL = "/src/txt/installation.txt"
     const zipWriter = new ZipWriter(new BlobWriter("application/zip"))
     const { regular, italic, bold, bolditalic } = fontFileBlobs
+
     await Promise.all([
-        zipWriter.add("installation.txt", new HttpReader(installationTextURL)),
         zipWriter.add("CommitMono-Regular.otf", new BlobReader(regular)),
         zipWriter.add("CommitMono-Italic.otf", new BlobReader(italic)),
         zipWriter.add("CommitMono-Bold.otf", new BlobReader(bold)),
         zipWriter.add("CommitMono-BoldItalic.otf", new BlobReader(bolditalic)),
+        zipWriter.add("installation.txt", new HttpReader(installationTextURL)),
     ])
     return zipWriter.close()
 }
 
 function downloadFile(blob) {
     const a = document.createElement("a")
-    // a.download = `CommitMono-${Date.now()}.zip`
     a.download = `CommitMono.zip`
     a.href = URL.createObjectURL(blob)
     a.click()

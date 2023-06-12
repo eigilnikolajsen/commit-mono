@@ -415,7 +415,7 @@ Tip: Press <span class="span_key">R</span> to reset to default settings.`,
                         feature: "ss01",
                         on: false,
                         description:
-                            "No arrows |OFF| or common arrow combination into connected arrows |ON|. Doesn't make arrows with ~.",
+                            "No arrows |OFF| or common arrow combination into connected arrows |ON|. Doesn’t make arrows with ~.",
                         docsExample: "-> => <==< >--> <==> <->",
                     },
                     {

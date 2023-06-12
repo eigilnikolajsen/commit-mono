@@ -28,7 +28,7 @@
         <script src="src/js/intelligent_section.js" defer></script>
         <script src="src/js/opentype.min.js" defer></script>
         <script src="src/js/zip.min.js" defer></script>
-        <script src="src/js/opentype_test.js" defer></script>
+        <script src="src/js/download_wizard.js" defer></script>
         <script src="src/js/code_section.js" defer></script>
         <script src="src/js/distinction_section.js" defer></script>
         <script src="src/js/example_section.js" defer></script>
@@ -205,18 +205,26 @@
                                         </p>
                                         <ul>
                                             <li>
+                                                Safari → Settings → Advanced → Check the option: "Press Tab to highlight
+                                                each item on a web page"
+                                            </li>
+                                            <li>
                                                 Use <span class="span_key">Option</span>+<span class="span_key"
                                                     >Tab</span
                                                 >
                                                 instead of <span class="span_key">Tab</span>.
                                             </li>
-                                            <li>
-                                                Safari → Settings → Advanced → Check the option: "Press Tab to highlight
-                                                each item on a web page"
-                                            </li>
                                         </ul>
-                                        <a href="#">You know it's working if can use Tab focus here.</a>
-                                        <p id="safari_not_working" tabindex="0">It's not working.</p>
+                                        <br />
+                                        <button href="#">
+                                            You know it’s working if your next <span class="span_key">Tab</span> focuses
+                                            here.
+                                        </button>
+                                        <br />
+                                        <br />
+                                        <p id="safari_not_working" tabindex="0">
+                                            You tabbed through; it’s not working. Try one of the options above.
+                                        </p>
                                     </div>
                                 </div>
                             </section>
@@ -414,8 +422,8 @@
                                                 <br />
                                                 <br />
                                                 <figcaption tabindex="0" data-edit="true">
-                                                    As you can see here, the 'o' is moved 37 units to the right, which
-                                                    evens out the spacing between itself, 'm' and 'i'. This same process
+                                                    As you can see here, the ‘o’ is moved 37 units to the right, which
+                                                    evens out the spacing between itself, ‘m’ and ‘i’. This same process
                                                     is applied to all letters.
                                                 </figcaption>
                                             </figure>
@@ -455,7 +463,7 @@
                                     <br />
                                     <div id="gtc">
                                         <br />
-                                        <h2 tabindex="0" data-edit="true">Let's play 'Guess the Character'</h2>
+                                        <h2 tabindex="0" data-edit="true">Let’s play ‘Guess the Character’</h2>
                                         <p>Correctly spot 10 commonly confused characters</p>
                                         <br />
                                         <h2>Select difficulty</h2>
@@ -496,7 +504,13 @@
                                     </div>
                                     <br />
                                     <br />
-                                    <h2>Customize your Commit Mono download below</h2>
+                                    <p>
+                                        Customize your Commit Mono download below. <br />
+                                        Recommended weight: 450 for dark mode, 475 for light mode. <br />
+                                        Features are baked into the ‘calt’ OpenType Feature (see 08 Install). <br />
+                                        Alternates are baked into the characters themselves – you don’t have to enable
+                                        them.
+                                    </p>
                                     <form id="weight_form" onchange="updateWeight(event, this)">
                                         <br />
                                         <legend><h2>Weight</h2></legend>
@@ -543,7 +557,7 @@
                                             </ul>
                                         </li>
                                         <li>
-                                            <p>Unzip the fonts. You get 4 font files that make up the 'Style Group':</p>
+                                            <p>Unzip the fonts. You get 4 font files that make up the ‘Style Group’:</p>
                                             <ul>
                                                 <li>
                                                     <p>
@@ -589,7 +603,7 @@
                                         <li>
                                             <p>
                                                 Settings/Preferences → Editor → Font: <br />Pick CommitMono from the
-                                                list. If you're using VS Code, simply put ["editor.fontFamily":
+                                                list. If you’re using VS Code, simply put ["editor.fontFamily":
                                                 "CommitMono",] in the settings.json file.
                                             </p>
                                         </li>
@@ -597,7 +611,7 @@
                                     <br />
                                     <p tabindex="0">
                                         If you have enabled one or more features/ligatures in your download, these are
-                                        available through the 'calt' OpenType Feature. In VS Code this feature can be
+                                        available through the ‘calt’ OpenType Feature. In VS Code this feature can be
                                         enabled using by putting ["editor.fontLigatures": true,] in the settings.json
                                         file. For a comprehensive guide on how to enable in your specific editor/IDE,
                                         refer to:
@@ -672,17 +686,22 @@
                                             <p>
                                                 The ligatures already in Commit Mono are added because they provide
                                                 additional functionality (i.e. != becomes ≠), but they are off by
-                                                default. Commit Mono won't be updated with ligatures that purely serve
+                                                default. Commit Mono won’t be updated with ligatures that purely serve
                                                 aesthetic purposes (i.e. $> becomes connected).
                                             </p>
                                         </details>
                                         <details>
                                             <summary>The ligatures are not showing up, why is that?</summary>
                                             <p>
-                                                The ligatures already in Commit Mono are added because they provide
-                                                additional functionality (i.e. != becomes ≠), but they are off by
-                                                default. Commit Mono won't be updated with ligatures that purely serve
-                                                aesthetic purposes (i.e. $> becomes connected).
+                                                You need to check if your editor/IDE/terminal supports ligatures. If it
+                                                does you should be able to enable them through ‘enabling font
+                                                ligatures’. If you’re still having trouble, have a look at
+                                                <a
+                                                    href="https://github.com/tonsky/FiraCode/wiki#enabling-ligatures"
+                                                    target="_blank"
+                                                >
+                                                    Fira Code wiki </a
+                                                >.
                                             </p>
                                         </details>
                                         <details>
@@ -737,7 +756,7 @@
                                             </p>
                                         </details>
                                         <details>
-                                            <summary>My .zip file won't work, what to do?</summary>
+                                            <summary>My .zip file won’t work, what to do?</summary>
                                             <p>
                                                 There have been some problems with downloading .zip files from Safari.
                                                 The download is tested to work in Chrome and FireFox.
@@ -746,8 +765,8 @@
                                     </div>
                                     <div class="docs_container" id="features_container_docs">
                                         <p>
-                                            All features/ligatures are baked into the 'calt' OpenType Feature, which can
-                                            be turned on by 'enabling font ligatures'. In VS Code you simply put
+                                            All features/ligatures are baked into the ‘calt’ OpenType Feature, which can
+                                            be turned on by ‘enabling font ligatures’. In VS Code you simply put
                                             ["editor.fontLigatures": true,] in the settings.json file.
                                         </p>
                                         <br />
@@ -757,7 +776,7 @@
                                     <div class="docs_container" id="alternates_container_docs">
                                         <p>
                                             The custom alternates that you choose are baked into the font and work out
-                                            of the box. That way, you don't have to enable them through OpenType
+                                            of the box. That way, you don’t have to enable them through OpenType
                                             Features.
                                         </p>
                                         <br />

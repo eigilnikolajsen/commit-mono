@@ -3,16 +3,24 @@ feature ss05 {
     # Smart kerning
     
     # feature
-    sub @narrow_letter @origin' @widest_letter by @leftL;
-    sub @widest_letter @origin' @narrow_letter by @rightL;
-    sub @normal_letter @origin' @widest_letter by @leftM;
-    sub @larger_letter @origin' @widest_letter by @leftM;
-    sub @widest_letter @origin' @normal_letter by @rightM;
-    sub @widest_letter @origin' @larger_letter by @rightM;
-    sub @narrow_letter @origin' @normal_letter by @leftS;
-    sub @narrow_letter @origin' @larger_letter by @leftS;
-    sub @normal_letter @origin' @narrow_letter by @rightS;
-    sub @larger_letter @origin' @narrow_letter by @rightS;
+    # lookup sk_left {
+        sub @narrow_letter @origin' @widest_letter by @leftL;
+        sub @narrow_letter @origin' @larger_letter by @leftM;
+        sub @normal_letter @origin' @widest_letter by @leftM;
+        sub @narrow_letter @origin' @normal_letter by @leftS;
+        sub @normal_letter @origin' @larger_letter by @leftS;
+        # sub @larger_letter @origin' @widest_letter by @leftS;
+    # } sk_left;
+
+    # lookup sk_right {
+        sub @widest_letter @origin' @narrow_letter by @rightL;
+        sub @larger_letter @origin' @narrow_letter by @rightM;
+        sub @normal_letter @origin' @narrow_letter by @rightS;
+        sub @widest_letter @origin' @normal_letter by @rightM;
+        sub @larger_letter @origin' @normal_letter by @rightS;
+        # sub @widest_letter @origin' @larger_letter by @rightS;
+    # } sk_right;
+
     
     
 } ss05;

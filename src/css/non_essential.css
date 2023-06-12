@@ -115,8 +115,8 @@ a:focus {
     opacity: 1;
 }
 
-#safari:focus a,
-#safari a:focus {
+#safari:focus button,
+#safari button:focus {
     opacity: 1;
 }
 
@@ -134,7 +134,7 @@ a:focus {
     opacity: 0;
 }
 
-#safari a:focus + #safari_not_working {
+#safari button:focus + #safari_not_working {
     visibility: hidden;
 }
 
