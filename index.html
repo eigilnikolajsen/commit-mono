@@ -9,7 +9,7 @@
         <!-- favicon -->
         <link rel="icon" href="src/favicon/icon.svg" type="image/svg+xml" id="dynamic-favicon" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.webmanifest" />
 
         <!-- title -->
@@ -26,6 +26,8 @@
         <script src="src/js/table_section.js" defer></script>
         <script src="src/js/familiar_section.js" defer></script>
         <script src="src/js/intelligent_section.js" defer></script>
+        <script src="src/js/opentype.min.js" defer></script>
+        <script src="src/js/zip.min.js" defer></script>
         <script src="src/js/opentype_test.js" defer></script>
         <script src="src/js/code_section.js" defer></script>
         <script src="src/js/distinction_section.js" defer></script>
@@ -33,8 +35,6 @@
         <script src="src/js/docs_section.js" defer></script>
         <script src="src/js/dynamic_favicon.js" defer></script>
         <script src="src/js/start_functions.js" defer></script>
-        <script src="src/js/opentype.min.js" defer></script>
-        <script src="src/js/zip.min.js" defer></script>
     </head>
     <body>
         <div id="app_root">
@@ -686,15 +686,6 @@
                                             </p>
                                         </details>
                                         <details>
-                                            <summary>What is the licensing on Commit Mono?</summary>
-                                            <p>
-                                                Commit Mono is available under the SIL Open Font License 1.1 license. It
-                                                can therefore be used freely for both commercial and non-commercial
-                                                purposes. Only if you decide to make your own font based of Commit Mono,
-                                                do you need to give credit, but it is always appreciated.
-                                            </p>
-                                        </details>
-                                        <details>
                                             <summary>
                                                 I have downloaded a new verison, but the old version is still displayed.
                                             </summary>
@@ -703,6 +694,24 @@
                                                 <li>Install the new version.</li>
                                                 <li>Restart you IDE. The new version should show up.</li>
                                             </ol>
+                                        </details>
+                                        <details>
+                                            <summary>Is there a .woff2 version of the font available?</summary>
+                                            <p>
+                                                No, but you can use an online conversion tool like
+                                                <a href="https://www.fontsquirrel.com/tools/webfont-generator"
+                                                    >this one from Font Squirrel</a
+                                                >.
+                                            </p>
+                                        </details>
+                                        <details>
+                                            <summary>What is the licensing on Commit Mono?</summary>
+                                            <p>
+                                                Commit Mono is available under the SIL Open Font License 1.1 license. It
+                                                can therefore be used freely for both commercial and non-commercial
+                                                purposes. Only if you decide to make your own font based of Commit Mono,
+                                                do you need to give credit, but it is always appreciated.
+                                            </p>
                                         </details>
                                         <details>
                                             <summary>

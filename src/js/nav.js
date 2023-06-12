@@ -163,15 +163,7 @@ function keyDown(e) {
         }
 
         if (e.code == "KeyM") {
-            if (websiteData.invert) {
-                setCssVar(["--bg", "#aaa"])
-                setCssVar(["--text", "#111"])
-            } else {
-                setCssVar(["--bg", "#111"])
-                setCssVar(["--text", "#aaa"])
-            }
-            updateCode(null, codeForm)
-            websiteData.invert = !websiteData.invert
+            changeMode({ matches: !websiteData.invert })
         }
 
         if (e.code == "KeyK") {

@@ -232,8 +232,9 @@ Tip: Hold <span class="span_key">K</span> to see the text without Smart Kerning.
         },
         {
             name: "distinction",
-            description:
-                "With simple letter constructions and confident choices Commit Mono emphasises character distinction without compromising style consistency.",
+            description: `With simple letter constructions and confident choices Commit Mono emphasises character distinction without compromising style consistency.
+
+Tip: Press <span class="span_key">M</span> to switch between light and dark mode.`,
             content: {
                 waterfall: {
                     sizes: [2.5, 1.5, 1, 0.875, 0.75, 0.625, 0.5625, 0.5],

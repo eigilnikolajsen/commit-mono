@@ -3,6 +3,8 @@ let allCssLoaded = false
 function startAll() {
     consol.log("startAll")
 
+    // websiteData.invert = isDarkMode
+
     appendStyleSheets()
 
     waitingForLoadIntervalID = setInterval(() => {

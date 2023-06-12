@@ -184,6 +184,7 @@ ol li {
     line-height: 1rem;
     margin-left: 2ch;
     max-width: 54ch;
+    width: fit-content;
 }
 
 ul {

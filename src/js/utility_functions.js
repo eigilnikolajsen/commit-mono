@@ -17,12 +17,30 @@ const isMobileTest = () => {
 }
 
 const mobileMediaQuery = "(pointer: coarse) and (max-width: 1000px)"
-const mql = window.matchMedia(mobileMediaQuery)
-let isMobile = mql.matches
-mql.addEventListener("change", (e) => {
+const mqlMobile = window.matchMedia(mobileMediaQuery)
+let isMobile = mqlMobile.matches
+mqlMobile.addEventListener("change", (e) => {
     isMobile = e.matches
     changedFocus(true)
 })
+
+// const darkModeMediaQuery = "(prefers-color-scheme: dark)"
+// const mqlDarkMode = window.matchMedia(darkModeMediaQuery)
+// let isDarkMode = mqlDarkMode.matches
+// mqlDarkMode.addEventListener("change", changeMode)
+function changeMode(e) {
+    consol.log("CHANGE THEME")
+    isDarkMode = e.matches
+    websiteData.invert = isDarkMode
+    if (isDarkMode) {
+        setCssVar(["--bg", "#111"])
+        setCssVar(["--text", "#aaa"])
+    } else {
+        setCssVar(["--bg", "#aaa"])
+        setCssVar(["--text", "#111"])
+    }
+    updateCode(null, codeForm)
+}
 
 function wait(milliseconds) {
     return new Promise((resolve) => {
