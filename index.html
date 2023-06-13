@@ -52,17 +52,12 @@
                     </nav>
                     <div id="keyboard_section">
                         <div id="keyboard_container">
-                            <div class="key_group" id="tab">
-                                <div class="keys">
-                                    <p data-key-code="Tab" data-key="Tab" class="key" data-noclick="true">TAB</p>
-                                    <p data-key-code="ShiftTab" data-key="ShiftTab" class="key" data-noclick="true">
-                                        ⇧+TAB
-                                    </p>
-                                </div>
-                                <p>Navigate ↓↑</p>
-                            </div>
                             <div class="key_group" id="navigate">
                                 <div class="keys">
+                                    <p data-key-code="ArrowUp" data-key="ArrowUp" class="key" data-noclick="true">↑</p>
+                                    <p data-key-code="ArrowDown" data-key="ArrowDown" class="key" data-noclick="true">
+                                        ↓
+                                    </p>
                                     <p data-key-code="ArrowLeft" data-key="ArrowLeft" class="key" data-noclick="true">
                                         ←
                                     </p>
@@ -70,7 +65,7 @@
                                         →
                                     </p>
                                 </div>
-                                <p>Navigate ←→</p>
+                                <p>Navigate</p>
                             </div>
                             <div class="key_group" id="go_to_section">
                                 <div class="keys">
@@ -152,17 +147,11 @@
                                     <button id="focus_check" title="FocusCheckButton"></button>
                                     <ul id="tutorial" tabindex="0" data-edit="true">
                                         <li>
-                                            <span class="span_key key_code_Tab tutorial_key">TAB</span> &
-                                            <span class="span_key key_code_ShiftTab1 tutorial_key">SHIFT</span>+<span
-                                                class="span_key key_code_ShiftTab2 tutorial_key"
-                                                >TAB</span
-                                            >
-                                            navigate up/down
-                                        </li>
-                                        <li>
+                                            <span class="span_key key_code_ArrowUp tutorial_key">↑</span>
+                                            <span class="span_key key_code_ArrowDown tutorial_key">↓</span>
                                             <span class="span_key key_code_ArrowLeft tutorial_key">←</span>
-                                            <span class="span_key key_code_ArrowRight tutorial_key">→</span> navigate
-                                            left/right
+                                            <span class="span_key key_code_ArrowRight tutorial_key">→</span>
+                                            navigate
                                         </li>
                                         <li>
                                             <span class="span_key key_code_Digit1 tutorial_key">1</span>
@@ -194,7 +183,7 @@
                                             To use all features, visit website on desktop.
                                         </p>
                                     </div>
-                                    <br />
+                                    <!-- <br />
                                     <br />
                                     <br />
                                     <br />
@@ -225,7 +214,7 @@
                                         <p id="safari_not_working" tabindex="0">
                                             You tabbed through; it’s not working. Try one of the options above.
                                         </p>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </section>
                             <section id="section_2">
@@ -494,45 +483,54 @@
                                         onclick="downloadFont(this)"
                                         data-type="staticCurrent"
                                         id="download"
+                                        tabindex="0"
                                     >
                                         Download default CommitMono
                                     </button>
                                     <form id="fonts_form" onchange="updateFont(event, this)">
                                         <br />
-                                        <legend><h2>Font</h2></legend>
+                                        <legend><h2>Compare different fonts</h2></legend>
                                         <fieldset></fieldset>
                                     </form>
                                     <form id="examples_form" onchange="updateExamples(event, this)">
                                         <br />
-                                        <legend><h2>Language</h2></legend>
+                                        <legend><h2>Programming language example</h2></legend>
                                         <fieldset></fieldset>
                                     </form>
                                     <br />
                                     <div id="examples_container">
                                         <p tabindex="0" data-edit="true" id="code_example"></p>
                                     </div>
+                                    <form id="weight_form" onchange="updateWeight(event, this)">
+                                        <br />
+                                        <legend><h2>Choose font weight</h2></legend>
+                                        <fieldset></fieldset>
+                                    </form>
+                                    <form id="examplesettings_form" onchange="updateExampleSettings(event, this)">
+                                        <br />
+                                        <h2>Choose features</h2>
+                                        <div id="features_container"></div>
+                                        <br />
+                                        <h2>Choose alternate characters</h2>
+                                        <div id="alternates_container"></div>
+                                    </form>
                                     <br />
+                                    <button
+                                        class="download_button"
+                                        onclick="downloadFont(this)"
+                                        data-type="staticCurrent"
+                                        tabindex="0"
+                                    >
+                                        Download your custom Commit Mono
+                                    </button>
                                     <br />
-                                    <p>
-                                        Customize your Commit Mono download below. <br />
+                                    <p tabindex="0" data-edit="true">
+                                        Customize your Commit Mono settings. <br />
                                         Recommended weight: 450 for dark mode, 475 for light mode. <br />
                                         Features are baked into the ‘calt’ OpenType Feature (see 08 Install). <br />
                                         Alternates are baked into the characters themselves – you don’t have to enable
                                         them.
                                     </p>
-                                    <form id="weight_form" onchange="updateWeight(event, this)">
-                                        <br />
-                                        <legend><h2>Weight</h2></legend>
-                                        <fieldset></fieldset>
-                                    </form>
-                                    <form id="examplesettings_form" onchange="updateExampleSettings(event, this)">
-                                        <br />
-                                        <h2>Features</h2>
-                                        <div id="features_container"></div>
-                                        <br />
-                                        <h2>Alternates</h2>
-                                        <div id="alternates_container"></div>
-                                    </form>
                                 </div>
                             </section>
                             <section id="section_8">
@@ -548,6 +546,7 @@
                                                         <button
                                                             class="download_button"
                                                             onclick="downloadFont(this, true)"
+                                                            tabindex="0"
                                                         >
                                                             Download default version
                                                         </button>
@@ -558,6 +557,7 @@
                                                         <button
                                                             class="download_button"
                                                             onclick="keyDown({code:'Digit7'})"
+                                                            tabindex="0"
                                                         >
                                                             Download custom version
                                                         </button>
@@ -627,6 +627,7 @@
                                         <a
                                             href="https://github.com/tonsky/FiraCode/wiki#enabling-ligatures"
                                             target="_blank"
+                                            tabindex="0"
                                         >
                                             Fira Code wiki
                                         </a>
@@ -696,7 +697,9 @@
                                     <br />
                                     <div class="docs_container" id="faq_container_docs">
                                         <details>
-                                            <summary>Why does the font not include more ligatures?</summary>
+                                            <summary tabindex="0">
+                                                Why does the font not include more ligatures?
+                                            </summary>
                                             <p>
                                                 The ligatures already in Commit Mono are added because they provide
                                                 additional functionality (i.e. != becomes ≠), but they are off by
@@ -705,7 +708,9 @@
                                             </p>
                                         </details>
                                         <details>
-                                            <summary>The ligatures are not showing up, why is that?</summary>
+                                            <summary tabindex="0">
+                                                The ligatures are not showing up, why is that?
+                                            </summary>
                                             <p>
                                                 You need to check if your editor/IDE/terminal supports ligatures. If it
                                                 does you should be able to enable them through ‘enabling font
@@ -713,13 +718,12 @@
                                                 <a
                                                     href="https://github.com/tonsky/FiraCode/wiki#enabling-ligatures"
                                                     target="_blank"
-                                                >
-                                                    Fira Code wiki </a
+                                                    >Fira Code wiki</a
                                                 >.
                                             </p>
                                         </details>
                                         <details>
-                                            <summary>
+                                            <summary tabindex="0">
                                                 I have downloaded a new verison, but the old version is still displayed.
                                             </summary>
                                             <ol>
@@ -729,16 +733,20 @@
                                             </ol>
                                         </details>
                                         <details>
-                                            <summary>Is there a .woff2 version of the font available?</summary>
+                                            <summary tabindex="0">
+                                                Is there a .woff2 version of the font available?
+                                            </summary>
                                             <p>
                                                 No, but you can use an online conversion tool like
-                                                <a href="https://www.fontsquirrel.com/tools/webfont-generator"
+                                                <a
+                                                    href="https://www.fontsquirrel.com/tools/webfont-generator"
+                                                    target="_blank"
                                                     >this one from Font Squirrel</a
                                                 >.
                                             </p>
                                         </details>
                                         <details>
-                                            <summary>What is the licensing on Commit Mono?</summary>
+                                            <summary tabindex="0">What is the licensing on Commit Mono?</summary>
                                             <p>
                                                 Commit Mono is available under the SIL Open Font License 1.1 license. It
                                                 can therefore be used freely for both commercial and non-commercial
@@ -747,30 +755,32 @@
                                             </p>
                                         </details>
                                         <details>
-                                            <summary>
+                                            <summary tabindex="0">
                                                 May I install and use Commit Mono in any editor or terminal?
                                             </summary>
                                             <p>Yes.</p>
                                         </details>
                                         <details>
-                                            <summary>Is Commit Mono free to use in a logo or print design?</summary>
+                                            <summary tabindex="0">
+                                                Is Commit Mono free to use in a logo or print design?
+                                            </summary>
                                             <p>Yes.</p>
                                         </details>
                                         <details>
-                                            <summary>
+                                            <summary tabindex="0">
                                                 Is Commit Mono free to use on a website, in software or an app?
                                             </summary>
                                             <p>Yes.</p>
                                         </details>
                                         <details>
-                                            <summary>May I use Commit Mono to design my own font?</summary>
+                                            <summary tabindex="0">May I use Commit Mono to design my own font?</summary>
                                             <p>
                                                 Yes, but you need to give credit and indicate that it is based on Commit
                                                 Mono.
                                             </p>
                                         </details>
                                         <details>
-                                            <summary>My .zip file won’t work, what to do?</summary>
+                                            <summary tabindex="0">My .zip file won’t work, what to do?</summary>
                                             <p>
                                                 There have been some problems with downloading .zip files from Safari.
                                                 The download is tested to work in Chrome and FireFox.
@@ -831,42 +841,54 @@
                                     <h2>Inspiration</h2>
                                     <ul>
                                         <li>
-                                            <a href="https://klim.co.nz/collections/untitled/" target="_blank"
+                                            <a
+                                                href="https://klim.co.nz/collections/untitled/"
+                                                target="_blank"
+                                                tabindex="0"
                                                 >Untitled Collection</a
                                             >
                                             by Klim Type Foundry for so much inspiration.
                                         </li>
                                         <li>
-                                            <a href="https://sampleprograms.io/" target="_blank">sampleprograms.io</a>
+                                            <a href="https://sampleprograms.io/" target="_blank" tabindex="0"
+                                                >sampleprograms.io</a
+                                            >
                                             for code examples.
                                         </li>
                                         <li>
-                                            <a href="https://opentype.js.org/" target="_blank">opentype.js</a>
+                                            <a href="https://opentype.js.org/" target="_blank" tabindex="0"
+                                                >opentype.js</a
+                                            >
                                             for generating fonts on the web.
                                         </li>
                                         <li>
-                                            <a href="https://gildas-lormeau.github.io/zip.js/" target="_blank"
+                                            <a
+                                                href="https://gildas-lormeau.github.io/zip.js/"
+                                                target="_blank"
+                                                tabindex="0"
                                                 >zip.js</a
                                             >
                                             for zipping files on the web.
                                         </li>
                                         <li>
-                                            <a href="https://opentypecookbook.com/" target="_blank"
+                                            <a href="https://opentypecookbook.com/" target="_blank" tabindex="0"
                                                 >OpenType Cookbook</a
                                             >
                                             for all things OpenType Features.
                                         </li>
                                         <li>
-                                            <a href="https://github.com/tonsky/FiraCode/" target="_blank">Fira Code</a>
+                                            <a href="https://github.com/tonsky/FiraCode/" target="_blank" tabindex="0"
+                                                >Fira Code</a
+                                            >
                                             and
-                                            <a href="https://www.jetbrains.com/lp/mono/" target="_blank"
+                                            <a href="https://www.jetbrains.com/lp/mono/" target="_blank" tabindex="0"
                                                 >JetBrains Mono</a
                                             >
                                             for being a huge inspiration and go-to for best practices.
                                         </li>
                                         <li>
                                             Articles like
-                                            <a href="https://realpython.com/coding-font/" target="_blank"
+                                            <a href="https://realpython.com/coding-font/" target="_blank" tabindex="0"
                                                 >this one from Real Python</a
                                             >
                                             for opinions on code fonts.
@@ -876,32 +898,44 @@
                                     <h2>Programming font ressources</h2>
                                     <ul>
                                         <li>
-                                            <a href="https://www.programmingfonts.org/" target="_blank"
+                                            <a href="https://www.programmingfonts.org/" target="_blank" tabindex="0"
                                                 >ProgrammingFonts.org</a
                                             >: Test drive a huge variety of programming fonts.
                                         </li>
                                         <li>
-                                            <a href="https://www.codingfont.com/" target="_blank">CodingFont.com</a>:
-                                            Tournament style test of programming font preference.
+                                            <a href="https://www.codingfont.com/" target="_blank" tabindex="0"
+                                                >CodingFont.com</a
+                                            >: Tournament style test of programming font preference.
                                         </li>
                                         <li>
                                             Other great programming fonts:
                                             <ul>
                                                 <li>
-                                                    <a href="https://github.com/tonsky/FiraCode" target="_blank"
+                                                    <a
+                                                        href="https://github.com/tonsky/FiraCode"
+                                                        target="_blank"
+                                                        tabindex="0"
                                                         >Fira Code</a
                                                     >
                                                 </li>
                                                 <li>
-                                                    <a href="https://www.jetbrains.com/lp/mono/" target="_blank"
+                                                    <a
+                                                        href="https://www.jetbrains.com/lp/mono/"
+                                                        target="_blank"
+                                                        tabindex="0"
                                                         >JetBrains Mono</a
                                                     >
                                                 </li>
                                                 <li>
-                                                    <a href="https://www.nerdfonts.com/" target="_blank">Nerd Fonts</a>
+                                                    <a href="https://www.nerdfonts.com/" target="_blank" tabindex="0"
+                                                        >Nerd Fonts</a
+                                                    >
                                                 </li>
                                                 <li>
-                                                    <a href="https://github.com/microsoft/cascadia-code" target="_blank"
+                                                    <a
+                                                        href="https://github.com/microsoft/cascadia-code"
+                                                        target="_blank"
+                                                        tabindex="0"
                                                         >Cascadia Mono</a
                                                     >
                                                 </li>
@@ -909,16 +943,20 @@
                                                     <a
                                                         href="https://fonts.google.com/specimen/Source+Code+Pro"
                                                         target="_blank"
+                                                        tabindex="0"
                                                         >Source Code Pro</a
                                                     >
                                                 </li>
                                                 <li>
-                                                    <a href="https://developer.apple.com/fonts/" target="_blank"
+                                                    <a
+                                                        href="https://developer.apple.com/fonts/"
+                                                        target="_blank"
+                                                        tabindex="0"
                                                         >SF Mono</a
                                                     >
                                                 </li>
                                                 <li>
-                                                    <a href="https://github.com/IBM/plex" target="_blank"
+                                                    <a href="https://github.com/IBM/plex" target="_blank" tabindex="0"
                                                         >IBM Plex Mono</a
                                                     >
                                                 </li>

@@ -9,8 +9,8 @@ const websiteData = {
     italic: false,
     invert: false,
     tutorial: [
-        "Tab",
-        "ShiftTab",
+        "ArrowUp",
+        "ArrowDown",
         "ArrowLeft",
         "ArrowRight",
         "Digit1",
@@ -264,7 +264,7 @@ Tip: Press <span class="span_key">M</span> to switch between light and dark mode
             name: "customize",
             description: `So, how does Commit Mono look in code?
 
-Change settings below the code example and download when you're satisfied. Alternate characters will be baked and features merged, resulting in a single static font that is compatible in all environments.
+Change settings below the code example and download your custom version. Alternate characters will be baked and features merged, resulting in a single static font that is compatible in all environments.
 
 Tip: Press <span class="span_key">R</span> to reset to default settings.`,
             content: {
@@ -421,7 +421,7 @@ Tip: Press <span class="span_key">R</span> to reset to default settings.`,
                     {
                         type: "feature",
                         name: "less_equal",
-                        label: "Ligatures <= != ===",
+                        label: "Ligatures <= != === ",
                         feature: "ss02",
                         on: false,
                         description:

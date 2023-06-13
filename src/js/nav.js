@@ -106,7 +106,26 @@ let changeSettingTimeoutID
 let focusUsingTab = false
 function keyDown(e) {
     focusUsingTab = true
-    if (e.code == "Enter" && document.activeElement.dataset.edit == "true" && !insideTextField) enterTextField()
+    if (active.nodeName == "INPUT") {
+        active.parentNode.querySelector("input + label").classList.remove("shake")
+    } else {
+        active.classList.remove("shake")
+    }
+    if (e.code == "Enter") {
+        if (active.dataset.edit == "true" && !insideTextField) {
+            enterTextField()
+        } else {
+            // setTimeout(() => active.classList.add("shake"), 0)
+            // active.classList.add("shake")
+            if (active.nodeName == "INPUT") {
+                setTimeout(() => active.parentNode.querySelector("input + label").classList.add("shake"), 0)
+            } else if (active.nodeName != "SUMMARY" && !active.className.includes("download_button")) {
+                setTimeout(() => active.classList.add("shake"), 0)
+            }
+
+            console.log(active)
+        }
+    }
 
     if (!insideTextField || e.code == "Enter") {
         const activeKey = !e.shiftKey
@@ -208,8 +227,9 @@ document.addEventListener("keyup", keyUp)
 
 function simulateTab(keyCode) {
     const allTabbable = document.querySelectorAll(
-        "#nav_form input:checked, section.visible input:checked, section.visible [tabindex='0'], section.visible a, section.visible button"
+        "#nav_form input:checked, section.visible input:checked, section.visible [tabindex='0']"
     )
+    // console.log(allTabbable)
     let indexOfActive = 0
     allTabbable.forEach((element, i) => (active === element ? (indexOfActive = i) : null))
     let nextElement = null
@@ -224,16 +244,22 @@ function simulateTab(keyCode) {
             if (keyCode === "ArrowUp") nextElement = allTabbable[indexOfActive - i]
             if (keyCode === "ArrowDown") nextElement = allTabbable[indexOfActive + i]
         }
-        console.log("FOCUSING ON", nextElement)
         if (nextElement) {
+            console.log(nextElement.offsetHeight)
             nextElement.focus()
         } else {
-            active.blur()
-            setTimeout(() => active.focus(), 10)
+            if (active.nodeName == "INPUT") {
+                setTimeout(() => active.parentNode.querySelector("input + label").classList.add("shake"), 0)
+            } else {
+                setTimeout(() => active.classList.add("shake"), 0)
+            }
         }
     } else {
-        active.blur()
-        setTimeout(() => active.focus(), 10)
+        if (active.nodeName == "INPUT") {
+            setTimeout(() => active.parentNode.querySelector("input + label").classList.add("shake"), 0)
+        } else {
+            setTimeout(() => active.classList.add("shake"), 0)
+        }
     }
 }
 const elementExists = (element) =>
@@ -325,26 +351,25 @@ function onFocusIn(e) {
     // save current focused element
     active = document.activeElement
 
-    if (focusUsingTab) {
-        console.log(active.id)
-        if (prevActive?.id == "navigate_description" && active.id == "tutorial" && isSafari == 0) {
-            consol.log("safari")
-            isSafari = 1
-            document.querySelector("#safari").classList.add("safari_visible")
-        }
+    // if (focusUsingTab) {
+    //     if (prevActive?.id == "navigate_description" && active.id == "tutorial" && isSafari == 0) {
+    //         consol.log("safari")
+    //         isSafari = 1
+    //         document.querySelector("#safari").classList.add("safari_visible")
+    //     }
 
-        if (active.id == "focus_check") {
-            consol.log("not safari")
-            isSafari = -1
-            if (prevActive.id == "navigate_description") {
-                document.querySelector("#tutorial").focus()
-            }
-            if (prevActive.id == "tutorial") {
-                document.querySelector("#navigate_description").focus()
-            }
-            document.querySelector("#focus_check")?.remove()
-        }
-    }
+    //     if (active.id == "focus_check") {
+    //         consol.log("not safari")
+    //         isSafari = -1
+    //         if (prevActive.id == "navigate_description") {
+    //             document.querySelector("#tutorial").focus()
+    //         }
+    //         if (prevActive.id == "tutorial") {
+    //             document.querySelector("#navigate_description").focus()
+    //         }
+    //         document.querySelector("#focus_check")?.remove()
+    //     }
+    // }
     // // when current focused element is blurred, start a timer of 100ms.
     // active.addEventListener("blur", onBlurIn)
 
@@ -413,6 +438,8 @@ function onBlurIn(e) {
     // remove event listener from so they don't stack
     e.target.removeEventListener("blur", onBlurIn)
 
+    document.querySelectorAll(".shake").forEach((e) => e.classList.remove("shake"))
+
     // if this timer runs out before a new element is focused, refocus same element
     if (!isMobile) focusTimeOutID = setTimeout(() => active.focus(), 100)
 }
@@ -421,13 +448,8 @@ let tutorialFinished = false
 function checkTutorialKeys(e) {
     if (!tutorialFinished) {
         websiteData.tutorial.forEach((key) => {
-            if (e.code == key && e.code != "Tab") {
-                if (e.code.includes("Arrow")) {
-                    if (document.activeElement.nodeName == "INPUT") {
-                        const keyNode = document.querySelector(`.key_code_${key}`)
-                        keyNode?.classList.add("pressed_key")
-                    }
-                } else if (e.code == "Enter") {
+            if (e.code == key) {
+                if (e.code == "Enter") {
                     if (document.activeElement.dataset.edit == "true") {
                         document.querySelector(".key_code_Enter")?.classList.add("pressed_key")
                     }
@@ -435,13 +457,6 @@ function checkTutorialKeys(e) {
                     const keyNode = document.querySelector(`.key_code_${key}`)
                     keyNode?.classList.add("pressed_key")
                 }
-            }
-            if (e.code == "Tab" && !e.shiftKey) {
-                document.querySelector(".key_code_Tab").classList.add("pressed_key")
-            }
-            if (key == "ShiftTab" && e.code == "Tab" && e.shiftKey) {
-                document.querySelector(".key_code_ShiftTab1").classList.add("pressed_key")
-                document.querySelector(".key_code_ShiftTab2").classList.add("pressed_key")
             }
         })
         const numnerOfTutorialKeys = document.querySelectorAll(".tutorial_key").length

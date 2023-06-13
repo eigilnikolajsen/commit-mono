@@ -162,7 +162,9 @@ function nextQuestion(correct, answer, wrongAnswer, pointerType) {
             )
             correct ? rightButton.classList.add("button_choice") : wrongButton.classList.add("button_choice")
             rightButton.classList.add("right_button")
+            rightButton.tabIndex = -1
             wrongButton.classList.add("wrong_button")
+            wrongButton.tabIndex = -1
 
             answerFeedback = question.querySelector(".answer_feedback")
             answerFeedback.textContent = correct ? "✓" : "✕"

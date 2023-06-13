@@ -250,3 +250,27 @@ ul li:focus::before {
 #section_container section.visible {
     display: block;
 }
+
+.shake:focus,
+.shake,
+input:focus + .shake {
+    animation: 200ms steps(1, jump-start) shake;
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(0.25rem);
+    }
+    50% {
+        transform: translateX(0);
+    }
+    75% {
+        transform: translateX(0.25rem);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}

@@ -87,6 +87,7 @@
 .question_button:hover {
     background: var(--bg50);
     color: var(--bg);
+    cursor: pointer;
 }
 .question_button.right_button::before {
     content: "<-";
@@ -121,6 +122,14 @@
     left: 0;
 }
 
+.question_container {
+    pointer-events: none;
+}
+
+.question_container.active_question:has(.active_question) {
+    pointer-events: none;
+}
+
 .question_container.active_question ~ .question_container.active_question {
     pointer-events: auto;
     display: flex;
@@ -128,9 +137,5 @@
 
 .question_container.active_question ~ .question_container {
     pointer-events: none;
-    display: none;
-}
-
-.question_container.active_question ~ br {
     display: none;
 }
