@@ -20,6 +20,8 @@ function buildExample() {
                 input.id = font.id
                 input.classList.add("example_font")
                 input.value = font.cssName
+                input.dataset.forform = "fonts_form"
+                // input.tabIndex = 0
                 if (index == 0) {
                     input.setAttribute("checked", "true")
                 }
@@ -39,6 +41,8 @@ function buildExample() {
                 input.id = language.languageName
                 input.classList.add("example_language")
                 input.value = language.languageName
+                input.dataset.forform = "examples_form"
+                // input.tabIndex = 0
                 if (index == 0) {
                     input.setAttribute("checked", "true")
                 }
@@ -58,6 +62,8 @@ function buildExample() {
                 input.id = `weight_${weight}`
                 input.classList.add("example_weight")
                 input.value = weight
+                input.dataset.forform = "weight_form"
+                // input.tabIndex = 0
                 if (index == 6) {
                     input.setAttribute("checked", "true")
                 }
@@ -84,6 +90,8 @@ function buildExample() {
                     input.name = feature.name
                     input.id = `${feature.name}${index}`
                     input.value = `'${feature.feature}' ${index == 0 ? "off" : "on"}`
+                    input.dataset.forform = "examplesettings_form"
+                    // input.tabIndex = 0
                     if (!feature.on && index == 0) input.setAttribute("checked", "true")
                     if (feature.on && index == 1) input.setAttribute("checked", "true")
                     const label = document.createElement("label")

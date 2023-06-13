@@ -14,6 +14,8 @@ function buildCode() {
                 input.id = character.name
                 input.classList.add("code_character")
                 input.value = character.name
+                input.dataset.forform = "code_form"
+                // input.tabIndex = 0
                 if (index == 0) {
                     input.setAttribute("checked", "true")
                 }

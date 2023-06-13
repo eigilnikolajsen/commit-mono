@@ -50,6 +50,8 @@ function buildDistinction() {
                 input.id = `difficulty_${difficulty.name}`
                 input.classList.add("gtc_difficulty")
                 input.value = difficulty.name
+                input.dataset.forform = "gtc_form"
+                // input.tabIndex = 0
                 if (index == 0) {
                     input.setAttribute("checked", "true")
                 }

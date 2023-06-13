@@ -243,3 +243,10 @@ ul li:focus::before {
 #footer_hint_mobile {
     display: none;
 }
+
+#section_container section {
+    display: none;
+}
+#section_container section.visible {
+    display: block;
+}

@@ -18,11 +18,12 @@ function buildNav() {
         const div = document.createElement("div")
         const input = document.createElement("input")
         input.type = "radio"
-        input.name = "nav"
+        input.name = "nav_form"
         input.id = section.name
         input.classList.add("nav_section_input")
         input.value = `section_${index + 1}`
-        input.tabIndex = 0
+        input.dataset.forform = "nav_form"
+        // input.tabIndex = 0
         if (index == 0) {
             input.setAttribute("checked", "true")
         }
@@ -169,6 +170,12 @@ function keyDown(e) {
         if (e.code == "KeyK") {
             document.querySelector("body").style.fontFeatureSettings = "'ss01', 'ss03', 'ss04', 'ss05' 0"
         }
+
+        if (e.code == "ArrowUp" || e.code == "ArrowDown") {
+            console.log(e.code)
+            e.preventDefault()
+            simulateTab(e.code)
+        }
     } else if (e.code == "Escape" && insideTextField) {
         consol.log(insideTextField)
         document.querySelector(".key_code_Escape")?.classList.add("pressed_key")
@@ -198,6 +205,39 @@ function keyUp(e) {
 }
 document.addEventListener("keydown", keyDown)
 document.addEventListener("keyup", keyUp)
+
+function simulateTab(keyCode) {
+    const allTabbable = document.querySelectorAll(
+        "#nav_form input:checked, section.visible input:checked, section.visible [tabindex='0'], section.visible a, section.visible button"
+    )
+    let indexOfActive = 0
+    allTabbable.forEach((element, i) => (active === element ? (indexOfActive = i) : null))
+    let nextElement = null
+    if (keyCode === "ArrowUp") nextElement = allTabbable[indexOfActive - 1]
+    if (keyCode === "ArrowDown") nextElement = allTabbable[indexOfActive + 1]
+
+    // focus next element
+    if (nextElement) {
+        let i = 0
+        while (elementExists(nextElement)) {
+            i++
+            if (keyCode === "ArrowUp") nextElement = allTabbable[indexOfActive - i]
+            if (keyCode === "ArrowDown") nextElement = allTabbable[indexOfActive + i]
+        }
+        console.log("FOCUSING ON", nextElement)
+        if (nextElement) {
+            nextElement.focus()
+        } else {
+            active.blur()
+            setTimeout(() => active.focus(), 10)
+        }
+    } else {
+        active.blur()
+        setTimeout(() => active.focus(), 10)
+    }
+}
+const elementExists = (element) =>
+    element && element.offsetHeight === 0 && element.offsetWidth === 0 && element.nodeName !== "INPUT"
 
 function pushPage(keyCode) {
     consol.log("push page", keyCode)
@@ -275,7 +315,7 @@ let isSafari = 0
 let active // saves what DOM element is currently active
 let focusTimeOutID // to be able to use clearTimeout()
 function onFocusIn(e) {
-    // consol.log("focusin", document.activeElement)
+    // consol.log("FOCUSIN", document.activeElement)
 
     // new focus: exit text field
     if (document.activeElement != active) exitTextField()
@@ -286,6 +326,7 @@ function onFocusIn(e) {
     active = document.activeElement
 
     if (focusUsingTab) {
+        console.log(active.id)
         if (prevActive?.id == "navigate_description" && active.id == "tutorial" && isSafari == 0) {
             consol.log("safari")
             isSafari = 1
@@ -431,10 +472,9 @@ function sectionNavigation(sectionIndex) {
 
     websiteData.sections.forEach((section, index) => {
         const sectionContainer = document.querySelector(`#section_${index + 1}`)
+        sectionContainer.classList.remove("visible")
         if (index == sectionIndex) {
-            sectionContainer.style.display = "block"
-        } else {
-            sectionContainer.style.display = "none"
+            sectionContainer.classList.add("visible")
         }
     })
     main.style.transform = `translate(0)`
