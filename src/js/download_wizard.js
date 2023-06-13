@@ -1,13 +1,3 @@
-const updateOptions = (event, form) => {
-    consol.log("updateOptions")
-    const data = new FormData(form)
-    let output = ""
-    for (const entry of data) {
-        output = `${output}${entry[0]}=${entry[1]}\n`
-    }
-    event.preventDefault()
-}
-
 let fontDownloadSettings = { weight: 450, italic: false, alternates: {}, features: {} }
 let fontDownloadSettingsDefault = { weight: 450, italic: false, alternates: {}, features: {} }
 
@@ -186,7 +176,7 @@ function getFontBlob(settings) {
             font.names.postScriptName.en = `CommitMono-${settings.style.split(" ").join("")}`
             delete font.names.preferredFamily
             delete font.names.preferredSubfamily
-            font.names.uniqueID.en = `Version 0.900;;CommitMono-${settings.style.split(" ").join("")};2023;FL801`
+            font.names.uniqueID.en = `Version 1.001;;CommitMono-${settings.style.split(" ").join("")};2023;FL801`
 
             font.tables.cff.topDict.familyName = font.names.fontFamily.en
             font.tables.cff.topDict.fullName = font.names.fullName.en

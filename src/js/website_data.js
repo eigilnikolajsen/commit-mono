@@ -238,7 +238,7 @@ Tip: Press <span class="span_key">M</span> to switch between light and dark mode
             content: {
                 waterfall: {
                     sizes: [2.5, 1.5, 1, 0.875, 0.75, 0.625, 0.5625, 0.5],
-                    texts: ["tl1I|!i", "O0QDØ38B", `:;.,${"`"}‘'`, "2Z5S7T6b"],
+                    texts: ["tl1I|!ij", "O0QDØ38B", `:;.,${"`"}‘'"`, "2Z5S7T6b"],
                 },
                 gtcDifficulties: [
                     { name: "Easy", size: 6 },
