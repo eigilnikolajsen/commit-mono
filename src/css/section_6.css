@@ -126,7 +126,11 @@
     pointer-events: none;
 }
 
-.question_container.active_question:has(.active_question) {
+.question_container.active_question {
+    pointer-events: auto;
+}
+
+.question_container.active_question:has(+ .active_question) {
     pointer-events: none;
 }
 
