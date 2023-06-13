@@ -39,21 +39,20 @@
     content: "Narrow letter";
 }
 
-/* #smart_kerning p:nth-child(2)::before {
-    content: "o";
-    position: absolute;
-    transform: translateX(calc(24rem / 1000 * 37));
-    color: var(--middle);
-    z-index: -1;
-} */
 #smart_kerning p:nth-child(2) {
-    /* content: "o"; */
-    /* position: absolute; */
     transform: translateX(calc(24rem / 1000 * 37));
-    /* color: var(--middle); */
     border-right: 0.0625rem solid transparent;
     border-left: 0.0625rem solid transparent;
-    z-index: -1;
+}
+
+#intelligent_container figure > div:focus p {
+    border-right: 0.0625rem solid var(--bg);
+    border-left: 0.0625rem solid var(--bg);
+}
+
+#intelligent_container figure > div:focus p:nth-child(2) {
+    border-right: 0.0625rem solid transparent;
+    border-left: 0.0625rem solid transparent;
 }
 
 #before p,

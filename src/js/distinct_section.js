@@ -1,6 +1,6 @@
 let waterfall, gtc
 websiteData.sections.forEach((section) => {
-    if (section.name == "distinction") {
+    if (section.name == "distinct") {
         waterfall = section.content.waterfall
         gtc = section.content.gtc
     }
@@ -41,7 +41,7 @@ const gtcFieldset = document.querySelector("#gtc_form fieldset")
 function buildDistinction() {
     consol.log("buildDistinction")
     websiteData.sections.forEach((section) => {
-        if (section.name == "distinction") {
+        if (section.name == "distinct") {
             section.content.gtcDifficulties.forEach((difficulty, index) => {
                 const div = document.createElement("div")
                 const input = document.createElement("input")
@@ -73,7 +73,7 @@ function updateGTC(event, form) {
         output = `${entry[1]}`
     }
     websiteData.sections.forEach((section) => {
-        if (section.name == "distinction") {
+        if (section.name == "distinct") {
             section.content.gtcDifficulties.forEach((difficulty) => {
                 if (difficulty.name == output) {
                     setCssVar(["--question-character-size", `${difficulty.size}rem`])

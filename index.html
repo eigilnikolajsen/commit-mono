@@ -30,7 +30,7 @@
         <script src="src/js/zip.min.js" defer></script>
         <script src="src/js/download_wizard.js" defer></script>
         <script src="src/js/code_section.js" defer></script>
-        <script src="src/js/distinction_section.js" defer></script>
+        <script src="src/js/distinct_section.js" defer></script>
         <script src="src/js/example_section.js" defer></script>
         <script src="src/js/docs_section.js" defer></script>
         <script src="src/js/dynamic_favicon.js" defer></script>
@@ -183,38 +183,9 @@
                                             To use all features, visit website on desktop.
                                         </p>
                                     </div>
-                                    <!-- <br />
-                                    <br />
-                                    <br />
-                                    <br />
-                                    <div id="safari" tabindex="0" data-edit="true">
-                                        <p>Using Safari?</p>
-                                        <p id="safari_explanation">
-                                            Tabbing is unfortunately disabled by default in Safari. Solve by either:
-                                        </p>
-                                        <ul>
-                                            <li>
-                                                Safari → Settings → Advanced → Check the option: "Press Tab to highlight
-                                                each item on a web page"
-                                            </li>
-                                            <li>
-                                                Use <span class="span_key">Option</span>+<span class="span_key"
-                                                    >Tab</span
-                                                >
-                                                instead of <span class="span_key">Tab</span>.
-                                            </li>
-                                        </ul>
-                                        <br />
-                                        <button href="#">
-                                            You know it’s working if your next <span class="span_key">Tab</span> focuses
-                                            here.
-                                        </button>
-                                        <br />
-                                        <br />
-                                        <p id="safari_not_working" tabindex="0">
-                                            You tabbed through; it’s not working. Try one of the options above.
-                                        </p>
-                                    </div> -->
+                                    <button class="download_button" onclick="keyDown({code:'Digit2'})" tabindex="0">
+                                        Next section →
+                                    </button>
                                 </div>
                             </section>
                             <section id="section_2">
@@ -229,6 +200,10 @@
                                         backbone of every coding font. They have been sculpted with particularly great
                                         precision and attention to detail.
                                     </p>
+                                    <br />
+                                    <button class="download_button" onclick="keyDown({code:'Digit3'})" tabindex="0">
+                                        Next section →
+                                    </button>
                                 </div>
                             </section>
                             <section id="section_3">
@@ -236,27 +211,6 @@
                                 <br />
                                 <br />
                                 <div class="content_container">
-                                    <figure tabindex="0" data-edit="true">
-                                        <blockquote cite="https://jaspermorrison.com/publications/essays/super-normal">
-                                            <p>
-                                                There are better ways to design than putting a big effort into making
-                                                something look special. Special is generally less useful than normal,
-                                                and less rewarding in the long term. Special things demand attention for
-                                                the wrong reasons, interrupting potentially good atmosphere with their
-                                                awkward presence.
-                                            </p>
-                                        </blockquote>
-                                        <p><br /></p>
-                                        <figcaption>
-                                            <p>
-                                                — Jasper Morrison,
-                                                <cite>Super Normal Manifesto</cite>
-                                            </p>
-                                        </figcaption>
-                                    </figure>
-                                    <br />
-                                    <br />
-                                    <br />
                                     <form id="familiar_form" onchange="updateFamiliar(event, this)">
                                         <fieldset>
                                             <div>
@@ -315,6 +269,30 @@
                                     <br />
                                     <br />
                                     <div id="familiar_container"></div>
+                                    <br />
+                                    <br />
+                                    <figure tabindex="0" data-edit="true">
+                                        <blockquote cite="https://jaspermorrison.com/publications/essays/super-normal">
+                                            <p>
+                                                There are better ways to design than putting a big effort into making
+                                                something look special. Special is generally less useful than normal,
+                                                and less rewarding in the long term. Special things demand attention for
+                                                the wrong reasons, interrupting potentially good atmosphere with their
+                                                awkward presence.
+                                            </p>
+                                        </blockquote>
+                                        <p><br /></p>
+                                        <figcaption>
+                                            <p>
+                                                — Jasper Morrison,
+                                                <cite>Super Normal Manifesto</cite>
+                                            </p>
+                                        </figcaption>
+                                    </figure>
+                                    <br />
+                                    <button class="download_button" onclick="keyDown({code:'Digit4'})" tabindex="0">
+                                        Next section →
+                                    </button>
                                 </div>
                             </section>
                             <section id="section_4">
@@ -427,6 +405,10 @@
                                             </figure>
                                         </div>
                                     </div>
+                                    <br />
+                                    <button class="download_button" onclick="keyDown({code:'Digit5'})" tabindex="0">
+                                        Next section →
+                                    </button>
                                 </div>
                             </section>
                             <section id="section_5">
@@ -448,6 +430,10 @@
                                     <div id="canvas_container">
                                         <canvas id="canvas"></canvas>
                                     </div>
+                                    <br />
+                                    <button class="download_button" onclick="keyDown({code:'Digit6'})" tabindex="0">
+                                        Next section →
+                                    </button>
                                 </div>
                             </section>
                             <section id="section_6">
@@ -472,21 +458,15 @@
                                         <br />
                                         <p id="score_tally" tabindex="-1" data-edit="true"></p>
                                     </div>
+                                    <br />
+                                    <button class="download_button" onclick="keyDown({code:'Digit7'})" tabindex="0">
+                                        Next section →
+                                    </button>
                                 </div>
                             </section>
                             <section id="section_7">
                                 <div class="top_container"></div>
                                 <div class="content_container">
-                                    <br />
-                                    <button
-                                        class="download_button"
-                                        onclick="downloadFont(this)"
-                                        data-type="staticCurrent"
-                                        id="download"
-                                        tabindex="0"
-                                    >
-                                        Download default CommitMono
-                                    </button>
                                     <form id="fonts_form" onchange="updateFont(event, this)">
                                         <br />
                                         <legend><h2>Compare different fonts</h2></legend>
@@ -503,34 +483,46 @@
                                     </div>
                                     <form id="weight_form" onchange="updateWeight(event, this)">
                                         <br />
-                                        <legend><h2>Choose font weight</h2></legend>
+                                        <legend><h2>Choose download weight</h2></legend>
                                         <fieldset></fieldset>
                                     </form>
                                     <form id="examplesettings_form" onchange="updateExampleSettings(event, this)">
                                         <br />
-                                        <h2>Choose features</h2>
+                                        <h2>Choose download features</h2>
                                         <div id="features_container"></div>
                                         <br />
-                                        <h2>Choose alternate characters</h2>
+                                        <h2>Choose download alternate characters</h2>
                                         <div id="alternates_container"></div>
                                     </form>
                                     <br />
+                                    <br />
                                     <button
+                                        id="download"
                                         class="download_button"
                                         onclick="downloadFont(this)"
                                         data-type="staticCurrent"
                                         tabindex="0"
                                     >
-                                        Download your custom Commit Mono
+                                        Download Commit Mono (default settings)
                                     </button>
                                     <br />
+                                    <br />
                                     <p tabindex="0" data-edit="true">
-                                        Customize your Commit Mono settings. <br />
-                                        Recommended weight: 450 for dark mode, 475 for light mode. <br />
-                                        Features are baked into the ‘calt’ OpenType Feature (see 08 Install). <br />
-                                        Alternates are baked into the characters themselves – you don’t have to enable
-                                        them.
+                                        Changing the settings above changes the download. Recommended weight: 450 for
+                                        dark mode, 475 for light mode. Alternate characters will be baked and features
+                                        merged, resulting in a single static font file that is compatible in all
+                                        environments. For an installation guide, see
+                                        <button class="download_button" tabindex="0" onclick="keyDown({code:'Digit8'})">
+                                            08 Install</button
+                                        >.
+                                        <br />
+                                        <br />
+                                        Tip: Press <span class="span_key">R</span> to reset to default settings.
                                     </p>
+                                    <br />
+                                    <button class="download_button" onclick="keyDown({code:'Digit8'})" tabindex="0">
+                                        Next section →
+                                    </button>
                                 </div>
                             </section>
                             <section id="section_8">
@@ -633,6 +625,10 @@
                                         </a>
                                     </p>
                                 </div>
+                                <br />
+                                <button class="download_button" onclick="keyDown({code:'Digit9'})" tabindex="0">
+                                    Next section →
+                                </button>
                             </section>
                             <section id="section_9">
                                 <div class="top_container"></div>
@@ -821,6 +817,10 @@
                                         <br />
                                         <div id="language_support" tabindex="0" data-edit="true"></div>
                                     </div>
+                                    <br />
+                                    <button class="download_button" onclick="keyDown({code:'Digit0'})" tabindex="0">
+                                        Next section →
+                                    </button>
                                 </div>
                             </section>
                             <section id="section_10">
@@ -971,6 +971,10 @@
                                         <li tabindex="0">Visual Studio Code for development environment.</li>
                                     </ul>
                                 </div>
+                                <br />
+                                <button class="download_button" onclick="keyDown({code:'Digit1'})" tabindex="0">
+                                    ← First section
+                                </button>
                             </section>
                         </div>
                     </main>

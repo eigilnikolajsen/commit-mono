@@ -114,7 +114,7 @@ Tip: Press <span class="span_key">I</span> to switch between italic and regular.
             name: "intelligent",
             description: `Commit Mono uses an innovative technique to improve kerning. Kerning is crucial for effecient reading, but it’s not possible if you want a monospaced font. ‘Smart Kerning’ combats this by sliding letters to better spacing positions – all while preserving monospacing. This gives Commit Mono a superior reading experience compared to other monospaced fonts.
 
-Tip: Hold <span class="span_key">K</span> to see the text without Smart Kerning.`,
+Tip: Press <span class="span_key">+</span> and <span class="span_key">-</span> to zoom in and out.`,
             content: {},
         },
         {
@@ -231,7 +231,7 @@ Tip: Hold <span class="span_key">K</span> to see the text without Smart Kerning.
             },
         },
         {
-            name: "distinction",
+            name: "distinct",
             description: `With simple letter constructions and confident choices Commit Mono emphasises character distinction without compromising style consistency.
 
 Tip: Press <span class="span_key">M</span> to switch between light and dark mode.`,
@@ -262,11 +262,7 @@ Tip: Press <span class="span_key">M</span> to switch between light and dark mode
         },
         {
             name: "customize",
-            description: `So, how does Commit Mono look in code?
-
-Change settings below the code example and download your custom version. Alternate characters will be baked and features merged, resulting in a single static font that is compatible in all environments.
-
-Tip: Press <span class="span_key">R</span> to reset to default settings.`,
+            description: `Customize Commit Mono to your liking before you download.`,
             content: {
                 fonts: [
                     {

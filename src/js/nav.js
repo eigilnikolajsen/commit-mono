@@ -115,15 +115,11 @@ function keyDown(e) {
         if (active.dataset.edit == "true" && !insideTextField) {
             enterTextField()
         } else {
-            // setTimeout(() => active.classList.add("shake"), 0)
-            // active.classList.add("shake")
             if (active.nodeName == "INPUT") {
                 setTimeout(() => active.parentNode.querySelector("input + label").classList.add("shake"), 0)
             } else if (active.nodeName != "SUMMARY" && !active.className.includes("download_button")) {
                 setTimeout(() => active.classList.add("shake"), 0)
             }
-
-            console.log(active)
         }
     }
 
@@ -191,7 +187,6 @@ function keyDown(e) {
         }
 
         if (e.code == "ArrowUp" || e.code == "ArrowDown") {
-            console.log(e.code)
             e.preventDefault()
             simulateTab(e.code)
         }
@@ -239,13 +234,12 @@ function simulateTab(keyCode) {
     // focus next element
     if (nextElement) {
         let i = 0
-        while (elementExists(nextElement)) {
+        while (elementDoesNotExist(nextElement)) {
             i++
             if (keyCode === "ArrowUp") nextElement = allTabbable[indexOfActive - i]
             if (keyCode === "ArrowDown") nextElement = allTabbable[indexOfActive + i]
         }
         if (nextElement) {
-            console.log(nextElement.offsetHeight)
             nextElement.focus()
         } else {
             if (active.nodeName == "INPUT") {
@@ -262,7 +256,7 @@ function simulateTab(keyCode) {
         }
     }
 }
-const elementExists = (element) =>
+const elementDoesNotExist = (element) =>
     element && element.offsetHeight === 0 && element.offsetWidth === 0 && element.nodeName !== "INPUT"
 
 function pushPage(keyCode) {
@@ -371,7 +365,7 @@ function onFocusIn(e) {
     //     }
     // }
     // // when current focused element is blurred, start a timer of 100ms.
-    // active.addEventListener("blur", onBlurIn)
+    active.addEventListener("blur", onBlurIn)
 
     // // clear timeout when a new element is focused
     // clearTimeout(focusTimeOutID)
@@ -435,13 +429,13 @@ function changedFocus(hasFocus) {
 }
 
 function onBlurIn(e) {
+    document.querySelectorAll(".shake").forEach((e) => e.classList.remove("shake"))
+
     // remove event listener from so they don't stack
     e.target.removeEventListener("blur", onBlurIn)
 
-    document.querySelectorAll(".shake").forEach((e) => e.classList.remove("shake"))
-
     // if this timer runs out before a new element is focused, refocus same element
-    if (!isMobile) focusTimeOutID = setTimeout(() => active.focus(), 100)
+    // if (!isMobile) focusTimeOutID = setTimeout(() => active.focus(), 100)
 }
 
 let tutorialFinished = false

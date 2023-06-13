@@ -53,7 +53,7 @@ button:focus a {
 }
 
 .download_button {
-    display: block;
+    /* display: block; */
     width: max-content;
     position: relative;
 }

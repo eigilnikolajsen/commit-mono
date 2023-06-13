@@ -274,3 +274,10 @@ input:focus + .shake {
         transform: translateX(0);
     }
 }
+
+.nav_button {
+    text-decoration: underline;
+}
+.nav_button:focus {
+    text-decoration: none;
+}

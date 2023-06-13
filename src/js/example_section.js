@@ -179,8 +179,8 @@ function updateWeight(event, form) {
         websiteData.italic ? "1" : "0"
     }`
     downloadButton.textContent = areObjectsIdentical(fontDownloadSettings, fontDownloadSettingsDefault)
-        ? "Download default CommitMono"
-        : "Download custom CommitMono"
+        ? "Download Commit Mono (default settings)"
+        : "Download Commit Mono (custom settings)"
 
     consol.log(fontDownloadSettings)
 
@@ -210,8 +210,8 @@ function updateExampleSettings(event, form, isDefault) {
     codeExample.style.fontFeatureSettings = output.slice(0, -2)
 
     downloadButton.textContent = areObjectsIdentical(fontDownloadSettings, fontDownloadSettingsDefault)
-        ? "Download default CommitMono"
-        : "Download custom CommitMono"
+        ? "Download Commit Mono (default settings)"
+        : "Download Commit Mono (custom settings)"
 
     if (event) event.preventDefault()
 }
