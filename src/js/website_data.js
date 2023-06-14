@@ -1002,7 +1002,8 @@ Distinction test      o0O s5S 9gq z2Z !|l1Iij {([|])} .,;: ${"``"}''""
             name: "about",
             description: `Commit Mono is a project by Eigil Nikolajsen. Eigil is a creative developer and designer from Denmark with a particular interest in type design. He holds a bachelor degree in Interactive Design from the Danish School of Media and Journalism in 2023.
 
-            Any issues? Contact: <a href="mailto:hello@commitmono.com" tabindex="0">hello@commitmono.com</a>`,
+Do you have issues or suggestions? 
+<a href="mailto:hello@commitmono.com" tabindex="0">hello@commitmono.com</a>`,
             content: {},
         },
     ],

@@ -40,6 +40,7 @@ const gtcFieldset = document.querySelector("#gtc_form fieldset")
 
 function buildDistinction() {
     consol.log("buildDistinction")
+    gtcFieldset.innerHTML = ""
     websiteData.sections.forEach((section) => {
         if (section.name == "distinct") {
             section.content.gtcDifficulties.forEach((difficulty, index) => {
@@ -94,6 +95,8 @@ function buildGTC() {
     const gtcContainer = document.querySelector("#gtc_questions_container")
     gtcContainer.innerHTML = ""
     answers = []
+    score = -1
+    currentQuestion = -1
     firstButtons = []
     gtc.forEach((question, index) => {
         const div = document.createElement("div")
@@ -136,10 +139,6 @@ function buildGTC() {
         div.append(answerFeedback, p, buttonContainer, pWrong)
         gtcContainer.append(div)
     })
-    const scorePoints = document.createElement("p")
-    scorePoints.id = "score_points"
-    scorePoints.textContent = `You scored ${score} out of ${gtc.length}`
-    gtcContainer.append(scorePoints)
     nextQuestion(true, 0, 1)
 }
 
@@ -161,6 +160,7 @@ function nextQuestion(correct, answer, wrongAnswer, pointerType) {
                 `.button_container .question_button:nth-child(${wrongAnswer + 1})`
             )
             correct ? rightButton.classList.add("button_choice") : wrongButton.classList.add("button_choice")
+            !correct ? rightButton.classList.add("button_choicent") : wrongButton.classList.add("button_choicent")
             rightButton.classList.add("right_button")
             rightButton.tabIndex = -1
             wrongButton.classList.add("wrong_button")
@@ -193,4 +193,15 @@ function nextQuestion(correct, answer, wrongAnswer, pointerType) {
         scoreTally.tabIndex = 0
         setTimeout(() => scoreTally.focus(), 10)
     }
+}
+
+function onPlayAgain(button) {
+    button.classList.remove("shake")
+    const gtc = document.querySelector("#gtc")
+    gtc.style.opacity = 0
+    buildGTC()
+    setTimeout(() => {
+        document.querySelector("#gtc_form input:checked").focus()
+        gtc.style.opacity = 1
+    }, 100)
 }

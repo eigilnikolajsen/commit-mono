@@ -88,6 +88,7 @@
     background: var(--bg50);
     color: var(--bg);
     cursor: pointer;
+    text-decoration: none;
 }
 .question_button.right_button::before {
     content: "<-";
@@ -106,10 +107,15 @@
 .question_button.button_choice {
     background: var(--bg25);
     color: var(--text);
+    text-decoration: none;
 }
 .question_button.button_choice:focus {
     background: var(--bg75);
     color: var(--bg);
+    text-decoration: none;
+}
+.question_button.button_choicent {
+    text-decoration: none;
 }
 
 .answer_feedback {
@@ -144,4 +150,13 @@
 .question_container.active_question ~ .question_container {
     pointer-events: none;
     display: none;
+}
+
+#play_again {
+    opacity: 0;
+}
+
+#score_tally:focus + #play_again,
+#play_again:focus {
+    opacity: 1;
 }

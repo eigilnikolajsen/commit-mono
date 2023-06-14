@@ -454,7 +454,7 @@
                                     <div id="gtc">
                                         <br />
                                         <h2 tabindex="0" data-edit="true">Let’s play ‘Guess the Character’</h2>
-                                        <p>Correctly spot 10 commonly confused characters</p>
+                                        <p>Correctly spot 10 commonly confused characters.</p>
                                         <br />
                                         <p>Select difficulty</p>
                                         <form id="gtc_form" onchange="updateGTC(event, this)">
@@ -463,6 +463,14 @@
                                         <div id="gtc_questions_container"></div>
                                         <br />
                                         <p id="score_tally" tabindex="-1" data-edit="true"></p>
+                                        <button
+                                            id="play_again"
+                                            class="download_button"
+                                            tabindex="0"
+                                            onclick="onPlayAgain(this)"
+                                        >
+                                            Play again?
+                                        </button>
                                     </div>
                                     <br />
                                     <br />
@@ -816,17 +824,14 @@
                                         <br />
                                     </div>
                                     <div class="docs_container" id="charset_container_docs">
-                                        <h2 tabindex="0" data-edit="true">
-                                            Full characterset without alternates. Support for Greek and Cyrillic coming
-                                            soon.
-                                        </h2>
+                                        <h2 tabindex="0" data-edit="true">Full characterset without alternates</h2>
+                                        <p tabindex="0" data-edit="true">Support for Greek and Cyrillic coming soon.</p>
                                         <br />
                                         <div id="charset" tabindex="0" data-edit="true"></div>
                                         <p tabindex="0" data-edit="true">End of transmission.</p>
                                     </div>
                                     <div class="docs_container" id="language_container_docs">
-                                        <h2 tabindex="0" data-edit="true">Currently supported languages.</h2>
-                                        <br />
+                                        <h2 tabindex="0" data-edit="true">Currently supported languages</h2>
                                         <div id="language_support" tabindex="0" data-edit="true"></div>
                                     </div>
                                     <br />

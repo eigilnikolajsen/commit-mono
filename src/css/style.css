@@ -126,7 +126,8 @@ button {
 }
 
 a,
-.download_button {
+.download_button,
+button {
     text-decoration: underline;
     text-decoration-skip-ink: none;
     text-underline-offset: 0.24ch;
