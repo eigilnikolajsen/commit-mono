@@ -38,7 +38,7 @@ function changeFavicon(hasFocus) {
 
     link.id = "dynamic-favicon"
     link.rel = "icon"
-    link.href = hasFocus ? "src/favicon/icon-off.svg" : "src/favicon/icon.svg"
+    link.href = hasFocus ? "src/favicon/icon-512.svg" : "src/favicon/icon-512.svg"
     if (oldLink) {
         document.head.removeChild(oldLink)
     }

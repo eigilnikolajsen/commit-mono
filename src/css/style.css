@@ -104,11 +104,9 @@ header nav::-webkit-scrollbar {
 #nav_form input:focus:checked + label::before {
     background-color: var(--text);
 }
-
 #nav_form input:focus:checked + label {
     color: var(--bg);
 }
-
 #section_container {
     inset: 1rem 2rem;
 }
