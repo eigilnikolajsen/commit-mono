@@ -40,7 +40,7 @@
 }
 
 #smart_kerning p:nth-child(2) {
-    transform: translateX(calc(24rem / 1000 * 37));
+    transform: translateX(calc(24rem / 1000 * 44));
     border-right: 0.0625rem solid transparent;
     border-left: 0.0625rem solid transparent;
 }

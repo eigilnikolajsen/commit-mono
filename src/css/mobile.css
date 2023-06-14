@@ -6,8 +6,7 @@
     main {
         position: relative;
     }
-    header #keyboard_section,
-    #safari {
+    header #keyboard_section {
         visibility: hidden;
     }
     #footer_hint {

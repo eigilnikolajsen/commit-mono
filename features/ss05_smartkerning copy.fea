@@ -9,7 +9,7 @@ feature ss05 {
         sub @normal_letter @origin' @widest_letter by @leftM;
         sub @narrow_letter @origin' @normal_letter by @leftS;
         sub @normal_letter @origin' @larger_letter by @leftS;
-        # sub @larger_letter @origin' @widest_letter by @leftS;
+        sub @larger_letter @origin' @widest_letter by @leftS;
     # } sk_left;
 
     # lookup sk_right {
@@ -18,7 +18,7 @@ feature ss05 {
         sub @normal_letter @origin' @narrow_letter by @rightS;
         sub @widest_letter @origin' @normal_letter by @rightM;
         sub @larger_letter @origin' @normal_letter by @rightS;
-        # sub @widest_letter @origin' @larger_letter by @rightS;
+        sub @widest_letter @origin' @larger_letter by @rightS;
     # } sk_right;
 
     

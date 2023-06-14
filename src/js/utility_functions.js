@@ -102,7 +102,7 @@ function showHideChangeSettings(text, ms, dim) {
             document.querySelector("#nav_form").classList.remove("faded")
             document.querySelector("#main_scale").classList.remove("faded")
         }
-    }, ms ?? 500)
+    }, ms ?? 1000)
 }
 
 const consol = {

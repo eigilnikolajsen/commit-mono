@@ -42,21 +42,6 @@
     margin-top: 0.1rem;
 }
 
-#safari p,
-#safari ul {
-    background-color: var(--bg);
-    color: var(--text);
-    opacity: 0;
-}
-
-#safari button {
-    opacity: 0;
-}
-
-#safari p:first-of-type {
-    opacity: 1;
-}
-
 #tutorial li {
     margin-top: 0.3rem;
 }
@@ -71,13 +56,4 @@
 *:focus .span_key {
     border: 0.0625rem solid var(--bg);
     border-bottom: 0.125rem solid var(--bg);
-}
-
-#safari:focus .span_key {
-    border: 0.0625rem solid var(--text);
-    border-bottom: 0.125rem solid var(--text);
-}
-
-#safari button:focus ~ p {
-    display: none;
 }

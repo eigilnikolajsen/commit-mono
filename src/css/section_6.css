@@ -114,12 +114,14 @@
 
 .answer_feedback {
     position: relative;
-    font-size: 0.75rem;
+    font-size: 1.5rem;
     top: calc(var(--question-character-size) * 0.5);
     top: 40%;
     width: 0;
-    margin-left: -2ch;
+    margin-left: -1.5ch;
+    margin-right: 0.5ch;
     left: 0;
+    font-variation-settings: "wght" 350;
 }
 
 .question_container {

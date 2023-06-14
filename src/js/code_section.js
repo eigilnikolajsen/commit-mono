@@ -55,20 +55,12 @@ async function updateCodeFont() {
         .catch((err) => consol.log(err))
 
     // opentype
-    //     .load("src/fonts/CommitMonoV127-test3Regular.otf")
-    //     // .load("src/fonts/CommitMono-1.otf")
+    //     .load("src/fonts/CommitMonoV128-450Regular.otf")
     //     .then((font) => {
-    //         consol.log(font.tables.gsub.lookups)
+    //         console.log(font.tables.gsub.lookups)
     //         // font.download()
     //     })
     //     .catch((err) => consol.log(err))
-    // opentype
-    //    .load("src/fonts/CommitMonoV117-Light.otf")
-    //    .then((font) => {
-    //       consol.log(font)
-    //       // font.download()
-    //    })
-    //    .catch((err) => consol.log(err))
 }
 
 function updateCode(event, form) {

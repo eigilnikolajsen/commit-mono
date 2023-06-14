@@ -65,6 +65,7 @@ h2 {
     line-height: 1rem;
     font-weight: normal;
     width: fit-content;
+    font-variation-settings: "wght" 700;
 }
 
 a,
@@ -89,53 +90,6 @@ a:focus {
     place-content: center;
     visibility: hidden;
     pointer-events: none;
-}
-
-#safari {
-    display: none;
-}
-
-#safari.safari_visible {
-    display: block;
-}
-
-#safari:focus p:first-of-type {
-    background-color: var(--text);
-    color: var(--bg);
-}
-
-#safari {
-    background-color: var(--bg);
-    color: var(--text);
-    width: max-content;
-}
-
-#safari:focus p,
-#safari:focus ul {
-    opacity: 1;
-}
-
-#safari:focus button,
-#safari button:focus {
-    opacity: 1;
-}
-
-#safari:has(*:focus) * {
-    opacity: 1;
-}
-
-#safari #safari_not_working:focus {
-    background-color: var(--text);
-    color: var(--bg);
-    opacity: 1;
-}
-
-#safari #safari_not_working {
-    opacity: 0;
-}
-
-#safari button:focus + #safari_not_working {
-    visibility: hidden;
 }
 
 .span_key.pressed_key {

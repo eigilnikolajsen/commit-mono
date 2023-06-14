@@ -70,6 +70,11 @@ figure {
 }
 
 blockquote,
+cite {
+    font-variation-settings: "ital" 1;
+}
+
+blockquote,
 blockquote ~ * {
     font-size: 0.75rem;
     padding-left: 2ch;

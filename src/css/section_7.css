@@ -27,7 +27,7 @@ fieldset.alternates > div {
     scrollbar-width: none; /* Firefox */
 }
 #examples_container::-webkit-scrollbar {
-    display: none; /* Safari and Chrome */
+    display: none;
 }
 
 p#code_example {

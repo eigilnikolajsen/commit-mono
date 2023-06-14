@@ -65,7 +65,7 @@ header nav {
 }
 header #keyboard_section::-webkit-scrollbar,
 header nav::-webkit-scrollbar {
-    display: none; /* Safari and Chrome */
+    display: none;
 }
 
 #keyboard_section.hidden {

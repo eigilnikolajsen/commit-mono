@@ -76,8 +76,8 @@ function exitTextField() {
 }
 
 let timesClicked = 0
-function onClick(e) {
-    if (e.pointerType !== "" && !isMobile) {
+function onMouseDown(e) {
+    if (!isMobile) {
         focusUsingTab = false
         timesClicked++
         if (timesClicked == 10) {
@@ -86,7 +86,7 @@ function onClick(e) {
         }
     }
 }
-document.addEventListener("click", onClick)
+document.addEventListener("mousedown", onMouseDown)
 
 const keys = document.querySelectorAll(".key")
 keys.forEach((key) => {
@@ -331,7 +331,6 @@ function pushPage(keyCode) {
     }
 }
 
-let isSafari = 0
 let active // saves what DOM element is currently active
 let focusTimeOutID // to be able to use clearTimeout()
 function onFocusIn(e) {
@@ -345,25 +344,6 @@ function onFocusIn(e) {
     // save current focused element
     active = document.activeElement
 
-    // if (focusUsingTab) {
-    //     if (prevActive?.id == "navigate_description" && active.id == "tutorial" && isSafari == 0) {
-    //         consol.log("safari")
-    //         isSafari = 1
-    //         document.querySelector("#safari").classList.add("safari_visible")
-    //     }
-
-    //     if (active.id == "focus_check") {
-    //         consol.log("not safari")
-    //         isSafari = -1
-    //         if (prevActive.id == "navigate_description") {
-    //             document.querySelector("#tutorial").focus()
-    //         }
-    //         if (prevActive.id == "tutorial") {
-    //             document.querySelector("#navigate_description").focus()
-    //         }
-    //         document.querySelector("#focus_check")?.remove()
-    //     }
-    // }
     // // when current focused element is blurred, start a timer of 100ms.
     active.addEventListener("blur", onBlurIn)
 
@@ -461,8 +441,8 @@ function checkTutorialKeys(e) {
             tutorialFinished = true
             const tutorialContainer = document.querySelector("#tutorial_complete")
             tutorialContainer.innerHTML = `<p>Tutorial complete! Your present is the variable version of Commit Mono:</p>
-<p><a href="/src/fonts/CommitMonoV127-VF.ttf" tabindex="0">Download CommitMono-VF.ttf</a></p>
-<p><a href="/src/fonts/CommitMonoV127-VF.woff2" tabindex="0">Download CommitMono-VF.woff2</a></p>
+<p><a href="/src/fonts/CommitMonoV128-VF.ttf" tabindex="0">Download CommitMono-VF.ttf</a></p>
+<p><a href="/src/fonts/CommitMonoV128-VF.woff2" tabindex="0">Download CommitMono-VF.woff2</a></p>
 <br />`
         }
     }

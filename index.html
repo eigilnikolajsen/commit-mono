@@ -183,6 +183,8 @@
                                             To use all features, visit website on desktop.
                                         </p>
                                     </div>
+                                    <br />
+                                    <br />
                                     <button class="download_button" onclick="keyDown({code:'Digit2'})" tabindex="0">
                                         Next section →
                                     </button>
@@ -200,6 +202,7 @@
                                         backbone of every coding font. They have been sculpted with particularly great
                                         precision and attention to detail.
                                     </p>
+                                    <br />
                                     <br />
                                     <button class="download_button" onclick="keyDown({code:'Digit3'})" tabindex="0">
                                         Next section →
@@ -289,6 +292,7 @@
                                             </p>
                                         </figcaption>
                                     </figure>
+                                    <br />
                                     <br />
                                     <button class="download_button" onclick="keyDown({code:'Digit4'})" tabindex="0">
                                         Next section →
@@ -398,13 +402,14 @@
                                                 <br />
                                                 <br />
                                                 <figcaption tabindex="0" data-edit="true">
-                                                    As you can see here, the ‘o’ is moved 37 units to the right, which
+                                                    As you can see here, the ‘o’ is moved 44 units to the right, which
                                                     evens out the spacing between itself, ‘m’ and ‘i’. This same process
                                                     is applied to all letters.
                                                 </figcaption>
                                             </figure>
                                         </div>
                                     </div>
+                                    <br />
                                     <br />
                                     <button class="download_button" onclick="keyDown({code:'Digit5'})" tabindex="0">
                                         Next section →
@@ -431,6 +436,7 @@
                                         <canvas id="canvas"></canvas>
                                     </div>
                                     <br />
+                                    <br />
                                     <button class="download_button" onclick="keyDown({code:'Digit6'})" tabindex="0">
                                         Next section →
                                     </button>
@@ -450,7 +456,7 @@
                                         <h2 tabindex="0" data-edit="true">Let’s play ‘Guess the Character’</h2>
                                         <p>Correctly spot 10 commonly confused characters</p>
                                         <br />
-                                        <h2>Select difficulty</h2>
+                                        <p>Select difficulty</p>
                                         <form id="gtc_form" onchange="updateGTC(event, this)">
                                             <fieldset></fieldset>
                                         </form>
@@ -458,6 +464,7 @@
                                         <br />
                                         <p id="score_tally" tabindex="-1" data-edit="true"></p>
                                     </div>
+                                    <br />
                                     <br />
                                     <button class="download_button" onclick="keyDown({code:'Digit7'})" tabindex="0">
                                         Next section →
@@ -474,7 +481,7 @@
                                     </form>
                                     <form id="examples_form" onchange="updateExamples(event, this)">
                                         <br />
-                                        <legend><h2>Programming language example</h2></legend>
+                                        <legend><h2>Programming language examples</h2></legend>
                                         <fieldset></fieldset>
                                     </form>
                                     <br />
@@ -520,6 +527,7 @@
                                         Tip: Press <span class="span_key">R</span> to reset to default settings.
                                     </p>
                                     <br />
+                                    <br />
                                     <button class="download_button" onclick="keyDown({code:'Digit8'})" tabindex="0">
                                         Next section →
                                     </button>
@@ -540,7 +548,7 @@
                                                             onclick="downloadFont(this, true)"
                                                             tabindex="0"
                                                         >
-                                                            Download default version
+                                                            Download (default settings)
                                                         </button>
                                                     </p>
                                                 </li>
@@ -551,14 +559,17 @@
                                                             onclick="keyDown({code:'Digit7'})"
                                                             tabindex="0"
                                                         >
-                                                            Download custom version
+                                                            Customize download
                                                         </button>
                                                     </p>
                                                 </li>
                                             </ul>
                                         </li>
                                         <li>
-                                            <p>Unzip the fonts. You get 4 font files that make up the ‘Style Group’:</p>
+                                            <p>
+                                                Unzip the fonts. You get 4 font files that make up the Commit Mono
+                                                ‘Style Group’:
+                                            </p>
                                             <ul>
                                                 <li>
                                                     <p>
@@ -610,7 +621,7 @@
                                         </li>
                                     </ol>
                                     <br />
-                                    <p tabindex="0">
+                                    <p tabindex="0" data-edit="true">
                                         If you have enabled one or more features/ligatures in your download, these are
                                         available through the ‘calt’ OpenType Feature. In VS Code this feature can be
                                         enabled using by putting ["editor.fontLigatures": true,] in the settings.json
@@ -625,6 +636,7 @@
                                         </a>
                                     </p>
                                 </div>
+                                <br />
                                 <br />
                                 <button class="download_button" onclick="keyDown({code:'Digit9'})" tabindex="0">
                                     Next section →
@@ -818,6 +830,7 @@
                                         <div id="language_support" tabindex="0" data-edit="true"></div>
                                     </div>
                                     <br />
+                                    <br />
                                     <button class="download_button" onclick="keyDown({code:'Digit0'})" tabindex="0">
                                         Next section →
                                     </button>
@@ -972,6 +985,7 @@
                                     </ul>
                                 </div>
                                 <br />
+                                <br />
                                 <button class="download_button" onclick="keyDown({code:'Digit1'})" tabindex="0">
                                     ← First section
                                 </button>
@@ -983,7 +997,7 @@
             <div tabindex="0" id="block_tab_end"></div>
         </div>
         <script>
-            const versionOfCommitMono = "V127"
+            const versionOfCommitMono = "V128"
             let fontsLoaded = false
             const commitMono = new FontFace("CommitMono", `url(/src/fonts/CommitMono${versionOfCommitMono}-VF.woff2)`, {
                 style: "normal",
