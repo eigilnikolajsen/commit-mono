@@ -4,10 +4,27 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content="Website for Commit Mono - a neutral programming typeface." />
+        <meta
+            name="description"
+            content="Commit Mono is a monospaced coding font focused on creating a better reading experience."
+        />
+        <meta property="og:title" content="Commit Mono. Neutral programming typeface." />
+        <meta
+            property="og:description"
+            content="Commit Mono is a monospaced coding font focused on creating a better reading experience."
+        />
+        <meta property="og:url" content="https://commitmono.com/" />
+        <meta property="og:image" content="/src/img/commitmono.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Commit Mono. Neutral programming typeface." />
+        <meta property="og:site_name" content="Commit Mono. Neutral programming typeface." />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:type" content="website" />
 
         <!-- favicon -->
-        <link rel="icon" href="src/favicon/icon.svg" type="image/svg+xml" id="dynamic-favicon" />
+        <link rel="icon" href="src/favicon/icon-512.svg" type="image/svg+xml" id="dynamic-favicon" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.webmanifest" />
@@ -135,15 +152,20 @@
                                     <br />
                                     <br />
                                     <br />
-                                    <br />
                                     <h1 tabindex="0" data-edit="true">
                                         Commit Mono. <br />Neutral programming typeface.
                                     </h1>
                                     <br />
-                                    <br />
-                                    <p id="navigate_description" tabindex="0" data-edit="true">
-                                        Use keyboard to control website:
+                                    <p tabindex="0" data-edit="true">
+                                        Commit Mono is a monospaced coding font focused on creating a better reading
+                                        experience.
                                     </p>
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <h2 id="navigate_description" tabindex="0" data-edit="true">
+                                        Use keyboard to control website
+                                    </h2>
                                     <button id="focus_check" title="FocusCheckButton"></button>
                                     <ul id="tutorial" tabindex="0" data-edit="true">
                                         <li>
@@ -177,13 +199,13 @@
                                     </ul>
                                     <br />
                                     <br />
+                                    <br />
                                     <div id="tutorial_complete">
                                         <p tabindex="0" data-edit="true" id="footer_hint">All controls in footer.</p>
                                         <p tabindex="0" data-edit="true" id="footer_hint_mobile">
                                             To use all features, visit website on desktop.
                                         </p>
                                     </div>
-                                    <br />
                                     <br />
                                     <button class="download_button" onclick="keyDown({code:'Digit2'})" tabindex="0">
                                         Next section →
@@ -435,6 +457,7 @@
                                     <div id="canvas_container">
                                         <canvas id="canvas"></canvas>
                                     </div>
+                                    <br />
                                     <br />
                                     <br />
                                     <button class="download_button" onclick="keyDown({code:'Digit6'})" tabindex="0">
