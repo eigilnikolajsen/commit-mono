@@ -27,14 +27,14 @@ function buildDocs() {
         const featureDescriptionWithSpan = feature.description
             .split("|")
             .map((l) =>
-                l == "OFF"
+                l == "OFF" || l == "DEF"
                     ? `<span class="span_off${
                           !feature.on ? " active_feature" : ""
-                      }" onclick="changeFeatureDocs('disable')">[OFF]</span>`
-                    : l == "ON"
+                      }" onclick="changeFeatureDocs('disable')">[${l}]</span>`
+                    : l == "ON" || l == "ALT"
                     ? `<span class="span_on${
                           feature.on ? " active_feature" : ""
-                      }" onclick="changeFeatureDocs('enable')">[ON]</span>`
+                      }" onclick="changeFeatureDocs('enable')">[${l}]</span>`
                     : l
             )
             .join("")

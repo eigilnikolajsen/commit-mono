@@ -95,7 +95,8 @@ function buildExample() {
                     if (!feature.on && index == 0) input.setAttribute("checked", "true")
                     if (feature.on && index == 1) input.setAttribute("checked", "true")
                     const label = document.createElement("label")
-                    label.textContent = index == 0 ? "OFF" : "ON"
+                    if (feature.type == "feature") label.textContent = index == 0 ? "OFF" : "ON"
+                    if (feature.type == "alternate") label.textContent = index == 0 ? "DEF" : "ALT"
                     label.setAttribute("for", `${feature.name}${index}`)
                     div.append(input, label)
                     fieldset.append(div)

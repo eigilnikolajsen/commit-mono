@@ -441,8 +441,8 @@ function checkTutorialKeys(e) {
             tutorialFinished = true
             const tutorialContainer = document.querySelector("#tutorial_complete")
             tutorialContainer.innerHTML = `<p>Tutorial complete! Your present is the variable version of Commit Mono:</p>
-<p><a href="/src/fonts/CommitMonoV128-VF.ttf" tabindex="0">Download CommitMono-VF.ttf</a></p>
-<p><a href="/src/fonts/CommitMonoV128-VF.woff2" tabindex="0">Download CommitMono-VF.woff2</a></p>
+<p><a href="/src/fonts/CommitMonoV129-VF.ttf" tabindex="0">Download CommitMono-VF.ttf</a></p>
+<p><a href="/src/fonts/CommitMonoV129-VF.woff2" tabindex="0">Download CommitMono-VF.woff2</a></p>
 <br />`
         }
     }

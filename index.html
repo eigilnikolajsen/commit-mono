@@ -645,9 +645,9 @@
                                         <li><p>Restart your editor/IDE.</p></li>
                                         <li>
                                             <p>
-                                                Settings/Preferences → Editor → Font: <br />Pick CommitMono from the
-                                                list. If you’re using VS Code, simply put ["editor.fontFamily":
-                                                "CommitMono",] in the settings.json file.
+                                                Settings/Preferences → Editor → Font: <br />Pick ‘CommitMono’ from the
+                                                list (notice: there is no space). If you’re using VS Code, simply put
+                                                ["editor.fontFamily": "CommitMono",] in the settings.json file.
                                             </p>
                                         </li>
                                     </ol>
@@ -735,6 +735,16 @@
                                     </form>
                                     <br />
                                     <div class="docs_container" id="faq_container_docs">
+                                        <details>
+                                            <summary tabindex="0">
+                                                How can I be sure that I’m looking at Commit Mono?
+                                            </summary>
+                                            <p>
+                                                The most noticable characters in Commit Mono are ‘agrQ£@’. If you’re not
+                                                used to looking at fonts, they can be difficult to tell apart, but if
+                                                those characters match what you see here, you’re looking at Commit Mono.
+                                            </p>
+                                        </details>
                                         <details>
                                             <summary tabindex="0">
                                                 Why does the font not include more ligatures?
@@ -843,7 +853,7 @@
                                             Features.
                                         </p>
                                         <br />
-                                        <p>Hold <span class="span_key">O</span> to view alternate ON</p>
+                                        <p>Hold <span class="span_key">O</span> to view ALT</p>
                                         <br />
                                     </div>
                                     <div class="docs_container" id="charset_container_docs">
@@ -1025,7 +1035,7 @@
             <div tabindex="0" id="block_tab_end"></div>
         </div>
         <script>
-            const versionOfCommitMono = "V128"
+            const versionOfCommitMono = "V129"
             let fontsLoaded = false
             const commitMono = new FontFace("CommitMono", `url(/src/fonts/CommitMono${versionOfCommitMono}-VF.woff2)`, {
                 style: "normal",

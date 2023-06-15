@@ -327,7 +327,7 @@ Tip: Press <span class="span_key">M</span> to switch between light and dark mode
                         label: "Alt. 'a'",
                         feature: "cv01",
                         on: false,
-                        description: "Double |OFF| or single storey |ON| lowercase 'a'.",
+                        description: "Double |DEF| or single storey |ALT| lowercase 'a'.",
                         docsExample: "aáä",
                     },
                     {
@@ -336,7 +336,7 @@ Tip: Press <span class="span_key">M</span> to switch between light and dark mode
                         label: "Alt. 'g'",
                         feature: "cv02",
                         on: false,
-                        description: "Triple |OFF| or double storey |ON| lowercase 'g'.",
+                        description: "Triple |DEF| or double storey |ALT| lowercase 'g'.",
                         docsExample: "gğĝ",
                     },
                     {
@@ -345,7 +345,7 @@ Tip: Press <span class="span_key">M</span> to switch between light and dark mode
                         label: "Square dots .:ij",
                         feature: "cv03",
                         on: false,
-                        description: "Round |OFF| or square |ON| dots in places of dots.",
+                        description: "Round |DEF| or square |ALT| dots in places of dots.",
                         docsExample: ".:!?iä",
                     },
                     {
@@ -354,7 +354,7 @@ Tip: Press <span class="span_key">M</span> to switch between light and dark mode
                         label: "Lifted *",
                         feature: "cv04",
                         on: false,
-                        description: "Math/code asterisk |OFF| or small asterisk |ON|.",
+                        description: "Math/code asterisk |DEF| or small asterisk |ALT|.",
                         docsExample: "2*2",
                     },
                     {
@@ -363,7 +363,7 @@ Tip: Press <span class="span_key">M</span> to switch between light and dark mode
                         label: "Standard @",
                         feature: "cv05",
                         on: false,
-                        description: "Simplified |OFF| or traditional |ON| at.",
+                        description: "Simplified |DEF| or traditional |ALT| at.",
                         docsExample: "@",
                     },
                     {
@@ -372,7 +372,7 @@ Tip: Press <span class="span_key">M</span> to switch between light and dark mode
                         label: "Alt. '6', '9'",
                         feature: "cv06",
                         on: false,
-                        description: "Closed |OFF| or open |ON| terminal of 6 and 9.",
+                        description: "Closed |DEF| or open |ALT| terminal of 6 and 9.",
                         docsExample: "69",
                     },
                     {
@@ -381,7 +381,7 @@ Tip: Press <span class="span_key">M</span> to switch between light and dark mode
                         label: "Dotted 0",
                         feature: "cv07",
                         on: false,
-                        description: "Slashed |OFF| or dotted |ON| zero.",
+                        description: "Slashed |DEF| or dotted |ALT| zero.",
                         docsExample: "0",
                     },
                     {
@@ -391,7 +391,7 @@ Tip: Press <span class="span_key">M</span> to switch between light and dark mode
                         feature: "cv08",
                         on: false,
                         description:
-                            "Italic version |OFF| or slanted version |ON| of 'ag' in italic. Press I to view difference.",
+                            "Italic version |DEF| or slanted version |ALT| of 'ag' in italic. Press I to view difference.",
                         docsExample: "ag",
                     },
                     {
@@ -401,7 +401,7 @@ Tip: Press <span class="span_key">M</span> to switch between light and dark mode
                         feature: "cv09",
                         on: false,
                         description:
-                            "slanted version |OFF| or italic version |ON| of 'efy' in italic. Press I to view difference.",
+                            "slanted version |DEF| or italic version |ALT| of 'efy' in italic. Press I to view difference.",
                         docsExample: "efy",
                     },
                     {
@@ -896,7 +896,9 @@ Distinction test      o0O s5S 9gq z2Z !|l1Iij {([|])} .,;: ${"``"}''""
         },
         {
             name: "docs",
-            description: `Discover the docs of Commit Mono.`,
+            description: `Discover the docs of Commit Mono.
+
+If you can’t find an answer to your questions here or you have some suggestions/wishes, contact at: <a href="mailto:hello@commitmono.com" tabindex="0" target="_blank">hello@commitmono.com</a>`,
             content: {
                 charset: ` !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_${"`"}abcdefghijklmnopqrstuvwxyz{|}~ ¡¢£¤¥¦§¨©ª«¬®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿĀāĂăĄąĆćĈĉĊċČčĎďĐđĒēĔĕĖėĘęĚěĜĝĞğĠġĢģĤĥĦħĨĩĪīĬĭĮįİıĲĳĴĵĶķĸĹĺĻļĽľĿŀŁłŃńŅņŇňŉŊŋŌōŎŏŐőŒœŔŕŖŗŘřŚśŜŝŞşŠšŢţŤťŦŧŨũŪūŬŭŮůŰűŲųŴŵŶŷŸŹźŻżŽžſƒǺǻǼǽǾǿȘșȚțȷˆˇˉ˘˙˚˛˜˝̦̀́̈̊ΔΩμπẀẁẂẃẄẅỲỳ‐‑‒–—―‖‗‘’‚‛“”„†‡•…‰′″‹›‼‾⁄⁊⁰⁴⁵⁶⁷⁸⁹⁺⁻⁼⁽⁾ⁿ₀₁₂₃₄₅₆₇₈₉₊₋₍₎₣₤₧€℅ℓ№™Ω℮⅓⅔⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞⅟↊↋←↑→↓↔↕↨↹⇞⇟⇤⇥⇧⇨⇪∀∂∃∄∅∆∇∈∉∊∋∌∍∎∏∑−∕∗∙√∞∟∧∨∩∪∫∴∵∶∷≁≂≃≄≅≆≇≈≉≊≋≠≡≢≤≥⊂⊃⊄⊅⊆⊇⊈⊉⊊⊋⋅⋮⋯⋱⌂⌘⌠⌡⌤⌥⌦⌨⌫⎇⎋⎛⎜⎝⎞⎟⎠⎡⎢⎣⎤⎥⎦⎧⎨⎩⎪⎫⎬⎭⏎⏻⏼⏽⏾␀␁␂␃␄␅␆␇␈␉␊␋␌␍␎␏␐␑␒␓␔␕␖␗␘␙␚␛␜␝␞␟␠␡␢␣␤␥␦─━│┃┄┅┆┇┈┉┊┋┌┍┎┏┐┑┒┓└┕┖┗┘┙┚┛├┝┞┟┠┡┢┣┤┥┦┧┨┩┪┫┬┭┮┯┰┱┲┳┴┵┶┷┸┹┺┻┼┽┾┿╀╁╂╃╄╅╆╇╈╉╊╋╌╍╎╏═║╒╓╔╕╖╗╘╙╚╛╜╝╞╟╠╡╢╣╤╥╦╧╨╩╪╫╬╭╮╯╰╱╲╳╴╵╶╷╸╹╺╻╼╽╾╿▁▂▃▅▆▇█▉▊▋▌▍▎▏▐░▒▓▔▕▖▗▘▙▚▛▜▝▞▟■□▣▤▥▦▧▨▩▪▫▬▭▮▯▶◀◄◆◇◉◊○◎●◐◑◒◓◕◖◗◙◚◛◜◝◞◟◠◡◧◨◩◪◫◯◴◵◶◷✓✕⭘ﬁﬂ﻿�`,
                 supportedLanguages: [
@@ -1000,10 +1002,7 @@ Distinction test      o0O s5S 9gq z2Z !|l1Iij {([|])} .,;: ${"``"}''""
         },
         {
             name: "about",
-            description: `Commit Mono is a project by Eigil Nikolajsen. Eigil is a creative developer and designer from Denmark with a particular interest in type design. He holds a bachelor degree in Interactive Design from the Danish School of Media and Journalism in 2023.
-
-Do you have issues or suggestions? 
-<a href="mailto:hello@commitmono.com" tabindex="0">hello@commitmono.com</a>`,
+            description: `Commit Mono is a project by Eigil Nikolajsen. Eigil is a creative developer and designer from Denmark with a particular interest in type design. He holds a bachelor degree in Interactive Design from the Danish School of Media and Journalism in 2023.`,
             content: {},
         },
     ],
