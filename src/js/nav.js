@@ -115,10 +115,14 @@ function keyDown(e) {
         if (active.dataset.edit == "true" && !insideTextField) {
             enterTextField()
         } else {
+            let node = active
+            if (node.nodeName == "INPUT") node = active.parentNode.querySelector("input + label")
             if (active.nodeName == "INPUT") {
-                setTimeout(() => active.parentNode.querySelector("input + label").classList.add("shake"), 0)
-            } else if (active.nodeName != "SUMMARY" && !active.className.includes("download_button")) {
-                setTimeout(() => active.classList.add("shake"), 0)
+                void node.offsetHeight
+                node.classList.add("shake")
+            } else if (active.nodeName != "SUMMARY" && active.nodeName != "BUTTON") {
+                void node.offsetHeight
+                node.classList.add("shake")
             }
         }
     }
@@ -186,9 +190,8 @@ function keyDown(e) {
             document.querySelector("body").style.fontFeatureSettings = "'ss01', 'ss03', 'ss04', 'ss05' 0"
         }
 
-        if (e.code == "ArrowUp" || e.code == "ArrowDown") {
-            e.preventDefault()
-            simulateTab(e.code)
+        if (e.code.includes("Arrow")) {
+            simulateTab(e)
         }
     } else if (e.code == "Escape" && insideTextField) {
         consol.log(insideTextField)
@@ -220,39 +223,60 @@ function keyUp(e) {
 document.addEventListener("keydown", keyDown)
 document.addEventListener("keyup", keyUp)
 
-function simulateTab(keyCode) {
+function simulateTab(e) {
+    if (active.nodeName != "INPUT") e.preventDefault()
+    if (e.code == "ArrowUp" || e.code == "ArrowDown") e.preventDefault()
+    document
+        .querySelectorAll(".shake, .shake_left, .shake_right, .shake_up, .shake_down")
+        .forEach((el) => el.classList.remove("shake", "shake_left", "shake_right", "shake_up", "shake_down"))
+
     const allTabbable = document.querySelectorAll(
         "#nav_form input:checked, section.visible input:checked, section.visible [tabindex='0']"
     )
-    // console.log(allTabbable)
+    let addShake = false
     let indexOfActive = 0
     allTabbable.forEach((element, i) => (active === element ? (indexOfActive = i) : null))
     let nextElement = null
-    if (keyCode === "ArrowUp") nextElement = allTabbable[indexOfActive - 1]
-    if (keyCode === "ArrowDown") nextElement = allTabbable[indexOfActive + 1]
+    if (e.code === "ArrowUp") nextElement = allTabbable[indexOfActive - 1]
+    if (e.code === "ArrowDown") nextElement = allTabbable[indexOfActive + 1]
 
+    // console.log(e.code, nextElement)
     // focus next element
     if (nextElement) {
         let i = 0
         while (elementDoesNotExist(nextElement)) {
             i++
-            if (keyCode === "ArrowUp") nextElement = allTabbable[indexOfActive - i]
-            if (keyCode === "ArrowDown") nextElement = allTabbable[indexOfActive + i]
+            if (e.code === "ArrowUp") nextElement = allTabbable[indexOfActive - i]
+            if (e.code === "ArrowDown") nextElement = allTabbable[indexOfActive + i]
         }
         if (nextElement) {
             nextElement.focus()
         } else {
-            if (active.nodeName == "INPUT") {
-                setTimeout(() => active.parentNode.querySelector("input + label").classList.add("shake"), 0)
-            } else {
-                setTimeout(() => active.classList.add("shake"), 0)
-            }
+            addShake = true
         }
-    } else {
-        if (active.nodeName == "INPUT") {
-            setTimeout(() => active.parentNode.querySelector("input + label").classList.add("shake"), 0)
-        } else {
-            setTimeout(() => active.classList.add("shake"), 0)
+    } else if (!(active.nodeName == "INPUT" && (e.code == "ArrowLeft" || e.code == "ArrowRight"))) {
+        addShake = true
+    }
+    if (addShake) {
+        let node = active
+        if (active.nodeName == "INPUT") node = active.parentNode.querySelector("input + label")
+        void node.offsetHeight
+        switch (e.code) {
+            case "ArrowLeft":
+                node.classList.add("shake_left")
+                break
+            case "ArrowRight":
+                node.classList.add("shake_right")
+                break
+            case "ArrowUp":
+                node.classList.add("shake_up")
+                break
+            case "ArrowDown":
+                node.classList.add("shake_down")
+                break
+            default:
+                node.classList.add("shake")
+                break
         }
     }
 }
@@ -409,8 +433,6 @@ function changedFocus(hasFocus) {
 }
 
 function onBlurIn(e) {
-    document.querySelectorAll(".shake").forEach((e) => e.classList.remove("shake"))
-
     // remove event listener from so they don't stack
     e.target.removeEventListener("blur", onBlurIn)
 

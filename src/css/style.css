@@ -255,22 +255,83 @@ ul li:focus::before {
 input:focus + .shake {
     animation: 200ms steps(1, jump-start) shake;
 }
+.shake_left:focus,
+.shake_left,
+input:focus + .shake_left {
+    animation: 100ms steps(1, jump-start) shake_left;
+}
+.shake_right:focus,
+.shake_right,
+input:focus + .shake_right {
+    animation: 100ms steps(1, jump-start) shake_right;
+}
+.shake_up:focus,
+.shake_up,
+input:focus + .shake_up {
+    animation: 100ms steps(1, jump-start) shake_up;
+}
+.shake_down:focus,
+.shake_down,
+input:focus + .shake_down {
+    animation: 100ms steps(1, jump-start) shake_down;
+}
 
 @keyframes shake {
     0% {
-        transform: translateX(0);
+        transform: translate(0);
     }
-    25% {
-        transform: translateX(0.25rem);
+    33% {
+        transform: translate(0.125rem, 0.125rem);
+    }
+    67% {
+        transform: translate(-0.125rem, -0.125rem);
+    }
+    100% {
+        transform: translate(0);
+    }
+}
+@keyframes shake_left {
+    0% {
+        transform: translateX(0);
     }
     50% {
+        transform: translateX(-0.25rem);
+    }
+    100% {
         transform: translateX(0);
     }
-    75% {
+}
+@keyframes shake_right {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
         transform: translateX(0.25rem);
     }
     100% {
         transform: translateX(0);
+    }
+}
+@keyframes shake_up {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-0.25rem);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+@keyframes shake_down {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(0.25rem);
+    }
+    100% {
+        transform: translateY(0);
     }
 }
 
