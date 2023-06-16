@@ -534,7 +534,13 @@
                                     </form>
                                     <br />
                                     <br />
-                                    <form id="download_button_form" onsubmit="updateDownloadForm(event, this)" netlify>
+                                    <form
+                                        id="download_button_form"
+                                        name="Download (custom)"
+                                        method="POST"
+                                        onsubmit="updateDownloadForm(event, this)"
+                                        netlify
+                                    >
                                         <input type="radio" name="download_type" value="custom" checked />
                                         <button
                                             type="submit"
@@ -582,6 +588,8 @@
                                                     <form
                                                         id="download_button_form_install_default"
                                                         onsubmit="updateDownloadForm(event, this)"
+                                                        name="Download (default)"
+                                                        method="POST"
                                                         netlify
                                                     >
                                                         <input
