@@ -534,15 +534,19 @@
                                     </form>
                                     <br />
                                     <br />
-                                    <button
-                                        id="download"
-                                        class="download_button"
-                                        onclick="downloadFont(this)"
-                                        data-type="staticCurrent"
-                                        tabindex="0"
-                                    >
-                                        Download Commit Mono (default settings)
-                                    </button>
+                                    <form id="download_button_form" onsubmit="updateDownloadForm(event, this)" netlify>
+                                        <input type="radio" name="download_type" value="custom" checked />
+                                        <button
+                                            type="submit"
+                                            id="download"
+                                            class="download_button"
+                                            onclick="downloadFont(this)"
+                                            data-type="staticCurrent"
+                                            tabindex="0"
+                                        >
+                                            Download Commit Mono (default settings)
+                                        </button>
+                                    </form>
                                     <br />
                                     <br />
                                     <p tabindex="0" data-edit="true">
@@ -573,15 +577,37 @@
                                             <p>Download CommitMono.zip:</p>
                                             <ul>
                                                 <li>
-                                                    <p>
+                                                    <!-- <p> -->
+
+                                                    <form
+                                                        id="download_button_form_install_default"
+                                                        onsubmit="updateDownloadForm(event, this)"
+                                                        netlify
+                                                    >
+                                                        <input
+                                                            type="radio"
+                                                            name="download_type"
+                                                            value="default"
+                                                            checked
+                                                        />
                                                         <button
+                                                            type="submit"
+                                                            class="download_button"
+                                                            onclick="downloadFont(this, true)"
+                                                            data-type="staticCurrent"
+                                                            tabindex="0"
+                                                        >
+                                                            Download (default settings)
+                                                        </button>
+                                                    </form>
+                                                    <!-- <button
                                                             class="download_button"
                                                             onclick="downloadFont(this, true)"
                                                             tabindex="0"
                                                         >
                                                             Download (default settings)
-                                                        </button>
-                                                    </p>
+                                                        </button> -->
+                                                    <!-- </p> -->
                                                 </li>
                                                 <li>
                                                     <p>

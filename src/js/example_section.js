@@ -135,6 +135,17 @@ function updateExamples(event, form) {
     if (event) event.preventDefault()
 }
 
+function updateDownloadForm(event, form) {
+    if (event) event.preventDefault()
+    consol.log("updateDownloadForm")
+    const data = new FormData(form)
+    let output = ""
+    for (const entry of data) {
+        output += `${entry[0]}: ${entry[1]}`
+    }
+    consol.log(output)
+}
+
 function updateFont(event, form) {
     consol.log("updateFont")
     const data = new FormData(form)

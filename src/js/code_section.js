@@ -57,7 +57,7 @@ async function updateCodeFont() {
     // opentype
     //     .load("src/fonts/CommitMonoV129-450Regular.otf")
     //     .then((font) => {
-    //         console.log(font.tables.gsub.lookups)
+    //         consol.log(font.tables.gsub.lookups)
     //         // font.download()
     //     })
     //     .catch((err) => consol.log(err))

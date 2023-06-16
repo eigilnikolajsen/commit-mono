@@ -240,7 +240,7 @@ function simulateTab(e) {
     if (e.code === "ArrowUp") nextElement = allTabbable[indexOfActive - 1]
     if (e.code === "ArrowDown") nextElement = allTabbable[indexOfActive + 1]
 
-    // console.log(e.code, nextElement)
+    // consol.log(e.code, nextElement)
     // focus next element
     if (nextElement) {
         let i = 0
