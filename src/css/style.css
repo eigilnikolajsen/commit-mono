@@ -258,22 +258,22 @@ input:focus + .shake {
 .shake_left:focus,
 .shake_left,
 input:focus + .shake_left {
-    animation: 100ms steps(1, jump-start) shake_left;
+    animation: 125ms steps(1, jump-start) shake_left;
 }
 .shake_right:focus,
 .shake_right,
 input:focus + .shake_right {
-    animation: 100ms steps(1, jump-start) shake_right;
+    animation: 125ms steps(1, jump-start) shake_right;
 }
 .shake_up:focus,
 .shake_up,
 input:focus + .shake_up {
-    animation: 100ms steps(1, jump-start) shake_up;
+    animation: 125ms steps(1, jump-start) shake_up;
 }
 .shake_down:focus,
 .shake_down,
 input:focus + .shake_down {
-    animation: 100ms steps(1, jump-start) shake_down;
+    animation: 125ms steps(1, jump-start) shake_down;
 }
 
 @keyframes shake {
