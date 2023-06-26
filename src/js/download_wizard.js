@@ -218,6 +218,7 @@ async function getZipFileBlob() {
         zipWriter.add("CommitMono-Bold.otf", new BlobReader(bold)),
         zipWriter.add("CommitMono-BoldItalic.otf", new BlobReader(bolditalic)),
         zipWriter.add("installation.txt", new HttpReader(installationTextURL)),
+        zipWriter.add("license.txt", new HttpReader(installationTextURL)),
     ])
     return zipWriter.close()
 }

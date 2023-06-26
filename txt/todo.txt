@@ -1,0 +1,26 @@
+High priority
+[ ] Make instances available
+[ ] Make variable font available
+[x] Include license in download
+[x] Add links to Mads Brodt
+[x] Bold & space out FAQ
+[x] Fix != ligature
+[ ] Fix download in Safari
+[x] Update 08 Install to include "editor.fontLigatures": true, somewhere
+
+Medium priority
+[ ] Make open source and add good README.md file
+[ ] Improve drawing quality of italic version
+[ ] ?? Delete other features in code version
+[ ] Make Cyrillic and Greek characterset
+[ ] Update 08 Install with bold text
+[ ] Spread the word
+[ ] Submit website to FWA and Awwwards
+
+Low priority
+[ ] Make changes made in 07 Customize site wide
+[ ] Update GTC with more games
+[ ] ?? distinquish code version from web version
+[ ] Add support to type your own character in code section
+[ ] Write article to publish in some typography magazine
+[ ] Make Commit Sans

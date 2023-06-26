@@ -13,7 +13,7 @@ ol > li {
     position: relative;
 }
 
-ol > li p::before {
+ol > li > *:first-child:before {
     content: "#" counter(install) " ";
     position: absolute;
     left: -3ch;
@@ -42,8 +42,16 @@ details > summary {
     list-style: none;
     width: fit-content;
     max-width: calc(var(--max-width) - 4ch);
-    margin-left: 4ch;
     position: relative;
+    margin: 1rem 0 0 4ch;
+}
+details[open] > summary {
+    background: var(--bg25);
+    color: var(--text);
+}
+details > summary:focus {
+    background: var(--text);
+    color: var(--bg);
 }
 details > p {
     max-width: calc(var(--max-width) - 4ch);
