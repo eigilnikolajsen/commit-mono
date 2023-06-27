@@ -8,7 +8,7 @@ const alternatesContainer = document.querySelector("#alternates_container")
 const featuresContainer = document.querySelector("#features_container")
 
 function buildExample() {
-    consol.log("buildExample")
+    console.log("buildExample")
     websiteData.sections.forEach((section) => {
         if (section.name == "customize") {
             fontsFieldset.innerHTML = ""
@@ -113,7 +113,7 @@ function buildExample() {
 
 const codeExample = document.querySelector("#code_example")
 function updateExamples(event, form) {
-    consol.log("updateExamples")
+    console.log("updateExamples")
     const data = new FormData(form)
     let output = ""
     for (const entry of data) {
@@ -137,17 +137,17 @@ function updateExamples(event, form) {
 
 // function updateDownloadForm(event, form) {
 //     // if (event) event.preventDefault()
-//     consol.log("updateDownloadForm")
+//     console.log("updateDownloadForm")
 //     const data = new FormData(form)
 //     let output = ""
 //     for (const entry of data) {
 //         output += `${entry[0]}: ${entry[1]}`
 //     }
-//     consol.log(output)
+//     console.log(output)
 // }
 
 function updateFont(event, form) {
-    consol.log("updateFont")
+    console.log("updateFont")
     const data = new FormData(form)
     let output = ""
     for (const entry of data) {
@@ -178,36 +178,33 @@ function updateFont(event, form) {
 }
 
 function updateWeight(event, form) {
-    consol.log("updateWeight")
+    console.log("updateWeight")
     const data = new FormData(form)
     let output = ""
     for (const entry of data) {
         output = +entry[1]
     }
 
-    fontDownloadSettings.weight = output
+    downloadSettingsCustom.weight = output
     websiteData.weight = output
     document.querySelector("body").style.fontVariationSettings = `"wght" ${websiteData.weight}, "ital" ${
         websiteData.italic ? "1" : "0"
     }`
-    downloadButton.textContent = areObjectsIdentical(fontDownloadSettings, fontDownloadSettingsDefault)
-        ? "Download Commit Mono (default settings)"
-        : "Download Commit Mono (custom settings)"
 
-    consol.log(fontDownloadSettings)
+    console.log(downloadSettingsCustom)
 
     if (event) event.preventDefault()
 }
 
 function updateExampleSettings(event, form, isDefault) {
-    consol.log("updateExampleSettings")
+    console.log("updateExampleSettings")
     const data = new FormData(form)
     let output = ""
     function updateDownloadSettings(type, feature) {
         const key = feature.split("' ")[0].slice(1)
         const value = feature.split("' ")[1] == "on"
-        fontDownloadSettings[type][key] = value
-        if (isDefault) fontDownloadSettingsDefault[type][key] = value
+        downloadSettingsCustom[type][key] = value
+        if (isDefault) downloadSettingsDefault[type][key] = value
     }
     for (const entry of data) {
         output += `${entry[1]}, `
@@ -217,13 +214,9 @@ function updateExampleSettings(event, form, isDefault) {
         const label = document.querySelector(`#alt_${entry[0]}`)
         if (label) label.style.fontFeatureSettings = entry[1]
     }
-    consol.log(fontDownloadSettings)
+    console.log(downloadSettingsCustom)
     const codeExample = document.querySelector("#code_example")
     codeExample.style.fontFeatureSettings = output.slice(0, -2)
-
-    downloadButton.textContent = areObjectsIdentical(fontDownloadSettings, fontDownloadSettingsDefault)
-        ? "Download Commit Mono (default settings)"
-        : "Download Commit Mono (custom settings)"
 
     if (event) event.preventDefault()
 }
