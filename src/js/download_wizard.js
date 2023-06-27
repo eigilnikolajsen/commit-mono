@@ -1,94 +1,121 @@
-let fontDownloadSettings = { weight: 450, italic: false, alternates: {}, features: {} }
-let fontDownloadSettingsDefault = { weight: 450, italic: false, alternates: {}, features: {} }
+const downloadSettingsCustom = { weight: 450, italic: false, alternates: {}, features: {} }
+const downloadSettingsDefault = { weight: 450, italic: false, alternates: {}, features: {} }
+const fontFileBlobs = { regular: null, italic: null, bold: null, bolditalic: null }
 
 let downloadStarted = false
-async function downloadFont(button, isDefault) {
-    consol.log("downloadFont")
+async function downloadFont(kindOfDownload, button) {
+    // console.log("downloadFont")
     if (!downloadStarted) {
         downloadStarted = true
-        button.classList.remove("loaded")
-        button.classList.remove("error")
+        button.classList.remove("loaded", "error")
         button.classList.add("loading")
 
-        const allSettings = !isDefault
-            ? {
-                  regular: { ...fontDownloadSettings, style: "Regular" },
-                  italic: { ...fontDownloadSettings, style: "Italic", italic: true },
-                  bold: { ...fontDownloadSettings, style: "Bold", weight: 700 },
-                  bolditalic: { ...fontDownloadSettings, style: "Bold Italic", italic: true, weight: 700 },
-              }
-            : {
-                  regular: { ...fontDownloadSettingsDefault, style: "Regular" },
-                  italic: { ...fontDownloadSettingsDefault, style: "Italic", italic: true },
-                  bold: { ...fontDownloadSettingsDefault, style: "Bold", weight: 700 },
-                  bolditalic: { ...fontDownloadSettingsDefault, style: "Bold Italic", italic: true, weight: 700 },
-              }
+        let allSettings = {}
+        if (kindOfDownload === "dev") {
+            allSettings.regular = { ...downloadSettingsCustom, style: "Regular" }
+            allSettings.italic = {
+                ...downloadSettingsCustom,
+                style: "Italic",
+                italic: true,
+            }
+            allSettings.bold = { ...downloadSettingsCustom, style: "Bold", weight: 700 }
+            allSettings.bolditalic = {
+                ...downloadSettingsCustom,
+                style: "Bold Italic",
+                italic: true,
+                weight: 700,
+            }
+        }
+        if (kindOfDownload === "default") {
+            allSettings.regular = { ...downloadSettingsDefault, style: "Regular" }
+            allSettings.italic = {
+                ...downloadSettingsDefault,
+                style: "Italic",
+                italic: true,
+            }
+            allSettings.bold = { ...downloadSettingsDefault, style: "Bold", weight: 700 }
+            allSettings.bolditalic = {
+                ...downloadSettingsDefault,
+                style: "Bold Italic",
+                italic: true,
+                weight: 700,
+            }
+        }
+        if (kindOfDownload === "design") {
+            for (let weight = 300; weight <= 700; weight += 25) {
+                allSettings[weight + "Regular"] = {
+                    ...downloadSettingsCustom,
+                    style: weight + "Regular",
+                    weight,
+                    italic: false,
+                }
+                allSettings[weight + "Italic"] = {
+                    ...downloadSettingsCustom,
+                    style: weight + "Italic",
+                    weight,
+                    italic: true,
+                }
+            }
+        }
 
-        Promise.all([
-            getFontBlob(allSettings.regular),
-            getFontBlob(allSettings.italic),
-            getFontBlob(allSettings.bold),
-            getFontBlob(allSettings.bolditalic),
-        ])
-            .then((resolve) => {
-                const [regular, italic, bold, bolditalic] = resolve
-                fontFileBlobs.regular = regular
-                fontFileBlobs.italic = italic
-                fontFileBlobs.bold = bold
-                fontFileBlobs.bolditalic = bolditalic
-                return getZipFileBlob()
-            })
-            .then((resolve) => {
-                downloadStarted = false
-                button.classList.remove("loading")
-                button.classList.add("loaded")
-                downloadFile(resolve)
-            })
-            .catch((err) => {
-                downloadStarted = false
-                button.classList.remove("loading")
-                button.classList.add("error")
-                consol.log(err)
-            })
+        Promise.all(Object.values(allSettings).map((settings) => makeCustomFont(settings)))
+            .then((resolve) => getZipFileBlob(kindOfDownload, resolve))
+            .then((resolve) => initializeDownload(button, resolve))
+            .catch((error) => catchError(button, error))
     }
 }
 
-const fontFileBlobs = { regular: null, italic: null, bold: null, bolditalic: null }
-function getFontBlob(settings) {
-    consol.log("getFontBlob")
+function initializeDownload(button, blob) {
+    downloadStarted = false
+    button.classList.remove("loading")
+    button.classList.add("loaded")
+    // downloadFile(blob)
+    saveFile(blob, "CommitMono.zip")
+}
+function catchError(button, error) {
+    downloadStarted = false
+    button.classList.remove("loading")
+    button.classList.add("error")
+    // console.log(error)
+}
 
-    const fontFilePath = `/src/fonts/CommitMono${versionOfCommitMono}-${settings.weight}${
-        settings.italic ? "Italic" : "Regular"
-    }.otf`
+function makeCustomFont(settings) {
+    // console.log("makeCustomFont")
+
+    const fontBaseURL = "/src/fonts/"
+    const fontName = "CommitMono" + versionOfCommitMono
+    const fontWeight = settings.weight
+    const fontItalic = settings.italic ? "Italic" : "Regular"
+    const fontFilePath = `${fontBaseURL}${fontName}-${fontWeight}${fontItalic}.otf`
+    // "/src/fonts/CommitMonoV130-450Italic.otf"
 
     return opentype
         .load(fontFilePath)
         .then((font) => {
-            //
+            // ######################
             // #1 change alternates by switching their paths
             // the below loop does this
-
             // loop through the alternate settings
             Object.entries(settings.alternates).forEach(([alternate, active]) => {
                 //
                 // filter for only the active ones
                 if (!active) return
-                // consol.log("alternate", alternate, "active", active)
+                // // console.log("alternate", alternate, "active", active)
 
                 // look at all the fonts features
                 font.tables.gsub.features.forEach((feature) => {
                     //
                     // if the feature matches the alternate we're currently on
                     if (feature.tag == alternate) {
-                        // consol.log("feature", feature)
+                        // // console.log("feature", feature)
 
                         // then loop through the list of lookup indexes of that feature
                         feature.feature.lookupListIndexes.forEach((lookupIndex) => {
-                            // consol.log("lookupIndex", lookupIndex)
+                            // // console.log("lookupIndex", lookupIndex)
 
                             // loop through the subtable of each lookup at the lookup index
                             font.tables.gsub.lookups[lookupIndex].subtables.forEach((subtable) => {
-                                // consol.log("subtable", subtable)
+                                // // console.log("subtable", subtable)
 
                                 // loop through the glyphs of the subtable
                                 subtable.coverage.glyphs.forEach((glyphIndexOriginal, index) => {
@@ -96,7 +123,7 @@ function getFontBlob(settings) {
                                     // glyphIndexOriginal is the index of the original glyph
                                     // glyphIndexSubstitute is the index of the glyph to substitute the original with
                                     const glyphIndexSubstitute = subtable.substitute[index]
-                                    // consol.log(
+                                    // // console.log(
                                     //    "glyphIndexOriginal",
                                     //    glyphIndexOriginal,
                                     //    "glyphIndexSubstitute",
@@ -117,17 +144,11 @@ function getFontBlob(settings) {
                 })
             })
 
-            //
-            // "2 put active features into calt
+            // ######################
+            // #2 put active features into calt
             // create empty "calt" feature to store the feature
             const emptyCalt = { tag: "calt", feature: { featureParams: 0, lookupListIndexes: [] } }
             font.tables.gsub.features.push(emptyCalt)
-
-            // garbage code that adds a single number to a specific array in the gsub table
-            // like this [0, 1, 2, 3, 4] => [0, 1, 2, 3, 4, 5]
-            font.tables.gsub.scripts.forEach((script) =>
-                script.script.defaultLangSys.featureIndexes.push(script.script.defaultLangSys.featureIndexes.length)
-            )
 
             // create the empty array that is to be the lookup indexes for the calt feature
             const caltLookupIndexes = []
@@ -137,14 +158,14 @@ function getFontBlob(settings) {
                 //
                 // filter for only the active ones
                 if (!active) return
-                // consol.log("alternate", alternate, "active", active)
+                // // console.log("alternate", alternate, "active", active)
 
                 // then loop through all features
                 font.tables.gsub.features.forEach((feature) => {
                     //
                     // and find the ones that match the active tags
                     if (feature.tag == alternate) {
-                        // consol.log("feature", feature)
+                        // // console.log("feature", feature)
 
                         // push the lookup indexes into the empty caltLookupIndexes variable
                         feature.feature.lookupListIndexes.forEach((lookupIndex) => caltLookupIndexes.push(lookupIndex))
@@ -159,15 +180,21 @@ function getFontBlob(settings) {
                         //
                         // set its lookup indexes to the variable
                         feature.feature.lookupListIndexes = caltLookupIndexes
-                        // consol.log("caltLookupIndexes", caltLookupIndexes)
+                        // // console.log("caltLookupIndexes", caltLookupIndexes)
                     }
                 })
             })
 
+            // garbage code that adds a single number to a specific array in the gsub table
+            // like this [0, 1, 2, 3, 4] => [0, 1, 2, 3, 4, 5]
+            font.tables.gsub.scripts.forEach((script) =>
+                script.script.defaultLangSys.featureIndexes.push(script.script.defaultLangSys.featureIndexes.length)
+            )
+
             // remove unsupported lookup type
             // font.tables.gsub.lookups = font.tables.gsub.lookups.filter((l) => l.lookupType != 7)
 
-            //
+            // ######################
             // #3 change the names
             // give custom names to each member of the style group
             font.names.fontFamily.en = "CommitMono"
@@ -191,36 +218,42 @@ function getFontBlob(settings) {
             // set the correct weight
             font.tables.os2.usWeightClass = settings.weight
 
-            consol.log(font)
+            // console.log(font)
+
             const fontAB = font.toArrayBuffer()
             const fontBlob = new Blob([fontAB], { type: "font/otf" })
 
-            consol.log(fontBlob)
-
-            return fontBlob
+            return { weight: settings.weight, style: fontItalic, blob: fontBlob }
         })
         .catch((err) => {
             return err
         })
 }
 
-async function getZipFileBlob() {
-    consol.log(fontFileBlobs)
+async function getZipFileBlob(kindOfDownload, fonts) {
+    // console.log(fontFileBlobs, fonts)
 
     const { BlobWriter, BlobReader, HttpReader, ZipWriter } = zip
-    const installationTextURL = "/src/txt/installation.txt"
-    const zipWriter = new ZipWriter(new BlobWriter("application/zip"))
-    const { regular, italic, bold, bolditalic } = fontFileBlobs
+    const zipFileWriter = new BlobWriter()
+    const zipWriter = new ZipWriter(zipFileWriter)
 
     await Promise.all([
-        zipWriter.add("CommitMono-Regular.otf", new BlobReader(regular)),
-        zipWriter.add("CommitMono-Italic.otf", new BlobReader(italic)),
-        zipWriter.add("CommitMono-Bold.otf", new BlobReader(bold)),
-        zipWriter.add("CommitMono-BoldItalic.otf", new BlobReader(bolditalic)),
-        zipWriter.add("installation.txt", new HttpReader(installationTextURL)),
-        zipWriter.add("license.txt", new HttpReader(installationTextURL)),
+        ...fonts.map((font) => zipWriter.add(`CommitMono-${font.weight}-${font.style}.otf`, new BlobReader(font.blob))),
+        kindOfDownload === "design" &&
+            zipWriter.add(
+                "CommitMono VariableFont.ttf",
+                new HttpReader(`/src/fonts/CommitMono${versionOfCommitMono}-VF.ttf`)
+            ),
+        kindOfDownload === "design" &&
+            zipWriter.add(
+                "CommitMono VariableFont.woff2",
+                new HttpReader(`/src/fonts/CommitMono${versionOfCommitMono}-VF.woff2`)
+            ),
+        zipWriter.add("installation.txt", new HttpReader("/src/txt/installation.txt")),
+        zipWriter.add("license.txt", new HttpReader("/src/txt/license.txt")),
     ])
-    return zipWriter.close()
+    const zipFileBlob = await zipWriter.close()
+    return zipFileBlob
 }
 
 function downloadFile(blob) {
@@ -228,4 +261,20 @@ function downloadFile(blob) {
     a.download = `CommitMono.zip`
     a.href = URL.createObjectURL(blob)
     a.click()
+}
+function saveFile(blob, filename) {
+    if (window.navigator.msSaveOrOpenBlob) {
+        window.navigator.msSaveOrOpenBlob(blob, filename)
+    } else {
+        const a = document.createElement("a")
+        document.body.appendChild(a)
+        const url = window.URL.createObjectURL(blob)
+        a.href = url
+        a.download = filename
+        a.click()
+        setTimeout(() => {
+            window.URL.revokeObjectURL(url)
+            document.body.removeChild(a)
+        }, 0)
+    }
 }

@@ -65,6 +65,7 @@
 
 #before p {
     font-feature-settings: "ss05" 0;
+    font-variant-ligatures: none;
 }
 
 #after p {

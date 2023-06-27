@@ -534,14 +534,22 @@
                                     </form>
                                     <br />
                                     <br />
-                                    <button
-                                        id="download"
-                                        class="download_button"
-                                        onclick="downloadFont(this)"
-                                        tabindex="0"
-                                    >
-                                        Download Commit Mono (default settings)
+                                    <button class="download_button" onclick="downloadFont('dev', this)" tabindex="0">
+                                        Download custom for dev
                                     </button>
+                                    <br />
+                                    <p>
+                                        Recommended download of style group with your custom settings for development.
+                                    </p>
+                                    <br />
+                                    <button class="download_button" onclick="downloadFont('design', this)" tabindex="0">
+                                        Download custom for design
+                                    </button>
+                                    <br />
+                                    <p>
+                                        Download source variable fonts (.tff + .woff2) + all 34 cuts with your custom
+                                        settings for design.
+                                    </p>
                                     <br />
                                     <br />
                                     <p tabindex="0" data-edit="true">
@@ -567,7 +575,7 @@
                                 <div class="top_container"></div>
                                 <div class="content_container">
                                     <br />
-                                    <ol tabindex="0" data-edit="true">
+                                    <ol>
                                         <li>
                                             <h2>Download CommitMono.zip:</h2>
                                             <ul>
@@ -575,7 +583,7 @@
                                                     <p>
                                                         <button
                                                             class="download_button"
-                                                            onclick="downloadFont(this, true)"
+                                                            onclick="downloadFont('default', this)"
                                                             tabindex="0"
                                                         >
                                                             Download (default settings)
@@ -597,24 +605,26 @@
                                         </li>
                                         <li>
                                             <h2>
-                                                Unzip the fonts. You get 4 font files that make up the Commit Mono
-                                                ‘Style Group’:
+                                                Unzip the fonts. If you downloaded default or dev version, you get 4
+                                                font files that make up the Commit Mono ‘Style Group’:
                                             </h2>
                                             <ul>
                                                 <li>
                                                     <p>
-                                                        CommitMono-Regular: Base version with settings and weight of
+                                                        CommitMono-450-Regular: Base version with settings and weight of
                                                         your choice.
                                                     </p>
                                                 </li>
                                                 <li>
-                                                    <p>CommitMono-Italic: Italic version, same weight as regular.</p>
+                                                    <p>
+                                                        CommitMono-450-Italic: Italic version, same weight as regular.
+                                                    </p>
                                                 </li>
                                                 <li>
-                                                    <p>CommitMono-Bold: Bold version, weight 700.</p>
+                                                    <p>CommitMono-700-Regular: Bold version, weight 700.</p>
                                                 </li>
                                                 <li>
-                                                    <p>CommitMono-BoldItalic: Bold & italic version, weight 700.</p>
+                                                    <p>CommitMono-700-Italic: Bold Italic version, weight 700.</p>
                                                 </li>
                                             </ul>
                                         </li>
@@ -623,20 +633,20 @@
                                             <ul>
                                                 <li>
                                                     <p>
-                                                        Windows: Right click the font in the folder and click "Install".
+                                                        Windows: Right click the fonts in the folder and click
+                                                        "Install".
                                                     </p>
                                                 </li>
                                                 <li>
                                                     <p>
-                                                        Mac: Open fonts with Font Book from the folder and click
+                                                        Mac: Open the fonts with Font Book from the folder and click
                                                         "Install".
                                                     </p>
                                                 </li>
                                                 <li>
                                                     <p>
                                                         Linux: Unpack fonts to ~/.local/share/fonts (or /usr/share/fonts
-                                                        to install fonts system-wide) then
-                                                        <span data-edit="true">fc-cache -f -v</span>
+                                                        to install fonts system-wide) then fc-cache -f -v
                                                     </p>
                                                 </li>
                                             </ul>
@@ -1034,7 +1044,7 @@
             <div tabindex="0" id="block_tab_end"></div>
         </div>
         <script>
-            const versionOfCommitMono = "V129"
+            const versionOfCommitMono = "V130"
             let fontsLoaded = false
             const commitMono = new FontFace("CommitMono", `url(/src/fonts/CommitMono${versionOfCommitMono}-VF.woff2)`, {
                 style: "normal",
@@ -1048,7 +1058,7 @@
 
             // Wait until the fonts are all loaded
             document.fonts.ready.then(() => {
-                // consol.log("all fonts loaded")
+                // // console.log("all fonts loaded")
                 fontsLoaded = true
                 if (typeof startAll === "function") startAll()
             })

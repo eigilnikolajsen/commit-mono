@@ -1,5 +1,5 @@
 function fillSectionData() {
-    consol.log("fillSectionData")
+    // console.log("fillSectionData")
     websiteData.sections.forEach((section, index) => {
         const topContainer = document.querySelector(`#section_${index + 1} .top_container`)
         if (topContainer) {

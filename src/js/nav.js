@@ -10,10 +10,8 @@ const mainScale = document.querySelector("#main_scale")
 const keySection = document.querySelector("#keyboard_section")
 let rem = +document.documentElement.style.fontSize.split("px")[0]
 
-const downloadButton = document.querySelector("#download")
-
 function buildNav() {
-    consol.log("buildNav")
+    // console.log("buildNav")
     websiteData.sections.forEach((section, index) => {
         const div = document.createElement("div")
         const input = document.createElement("input")
@@ -39,7 +37,7 @@ function buildNav() {
 }
 
 function updateNav(event, form) {
-    consol.log("updateNav")
+    // console.log("updateNav")
     const data = new FormData(form)
     let output = ""
     for (const entry of data) {
@@ -51,7 +49,7 @@ function updateNav(event, form) {
 }
 
 function pageAnimation() {
-    consol.log("pageAnimation")
+    // console.log("pageAnimation")
     const element = document.querySelector("#page_animation")
     element.classList.remove("page_animation")
     setTimeout(() => element.classList.add("page_animation"), 10)
@@ -60,7 +58,7 @@ function pageAnimation() {
 let currentSection = 1
 let insideTextField = false
 function enterTextField() {
-    consol.log("enterTextField")
+    // console.log("enterTextField")
     active = document.activeElement
     setTimeout(() => {
         active.setAttribute("contenteditable", "true")
@@ -70,7 +68,7 @@ function enterTextField() {
     insideTextField = true
 }
 function exitTextField() {
-    consol.log("exitTextField")
+    // console.log("exitTextField")
     document.activeElement.setAttribute("contenteditable", "false")
     insideTextField = false
 }
@@ -194,7 +192,7 @@ function keyDown(e) {
             simulateTab(e)
         }
     } else if (e.code == "Escape" && insideTextField) {
-        consol.log(insideTextField)
+        // console.log(insideTextField)
         document.querySelector(".key_code_Escape")?.classList.add("pressed_key")
     }
 
@@ -207,7 +205,7 @@ function keyUp(e) {
     activeKey?.forEach((key) => key.classList.remove("active_key"))
 
     if (e.code == "Tab" && document.activeElement.id.includes("block_tab")) {
-        consol.log("active nav section then tab")
+        // console.log("active nav section then tab")
         const checkedMenuInput = document.querySelector("#nav_form input:checked")
         checkedMenuInput.focus()
     }
@@ -240,7 +238,7 @@ function simulateTab(e) {
     if (e.code === "ArrowUp") nextElement = allTabbable[indexOfActive - 1]
     if (e.code === "ArrowDown") nextElement = allTabbable[indexOfActive + 1]
 
-    // consol.log(e.code, nextElement)
+    // // console.log(e.code, nextElement)
     // focus next element
     if (nextElement) {
         let i = 0
@@ -284,7 +282,7 @@ const elementDoesNotExist = (element) =>
     element && element.offsetHeight === 0 && element.offsetWidth === 0 && element.nodeName !== "INPUT"
 
 function pushPage(keyCode) {
-    consol.log("push page", keyCode)
+    // console.log("push page", keyCode)
     const x = websiteData.pushPage.coordinates.x
     const y = websiteData.pushPage.coordinates.y
     const scale = websiteData.pushPage.scale
@@ -343,9 +341,6 @@ function pushPage(keyCode) {
         document.documentElement.style.fontSize = "16px"
         websiteData.weight = 450
         document.querySelector("body").style.fontVariationSettings = `"wght" 450`
-        document.querySelector(
-            "#download"
-        ).textContent = `Download CommitMono-${websiteData.weight} with current settings`
         document.forms["weight_form"][`weight_${websiteData.weight}`].checked = true
         codeExample.style.fontFamily = "CommitMono"
         if (typeof updateCodeFont === "function") updateCodeFont()
@@ -358,7 +353,7 @@ function pushPage(keyCode) {
 let active // saves what DOM element is currently active
 let focusTimeOutID // to be able to use clearTimeout()
 function onFocusIn(e) {
-    // consol.log("FOCUSIN", document.activeElement)
+    // // console.log("FOCUSIN", document.activeElement)
 
     // new focus: exit text field
     if (document.activeElement != active) exitTextField()
@@ -376,7 +371,7 @@ function onFocusIn(e) {
     // focusTimeOutID = null
 
     if (active.id.includes("block_tab")) {
-        consol.log("BLOCK TAB")
+        // console.log("BLOCK TAB")
         if (prevActive.className.includes("question_button")) {
             prevActive.parentElement.querySelector(".question_button").focus()
         } else {
@@ -404,7 +399,7 @@ function onFocusIn(e) {
                 const numberOfMoves = Math.ceil(
                     Math.abs(bounds.top - paddingOffsetTop - 32) / websiteData.pushPage.distance
                 )
-                consol.log("num of moves:", numberOfMoves, "bounds.top:", bounds.top)
+                // console.log("num of moves:", numberOfMoves, "bounds.top:", bounds.top)
                 for (let i = 0; i < numberOfMoves; i++) {
                     pushPage("KeyW")
                 }
@@ -459,12 +454,12 @@ function checkTutorialKeys(e) {
         const numberOfPressedKeys = document.querySelectorAll(".tutorial_key.pressed_key").length
 
         if (numnerOfTutorialKeys === numberOfPressedKeys) {
-            consol.log("TUTORIAL FINISHED!!")
+            // console.log("TUTORIAL FINISHED!!")
             tutorialFinished = true
             const tutorialContainer = document.querySelector("#tutorial_complete")
             tutorialContainer.innerHTML = `<p>Tutorial complete! Your present is the variable version of Commit Mono:</p>
-<p><a href="/src/fonts/CommitMonoV129-VF.ttf" tabindex="0">Download CommitMono-VF.ttf</a></p>
-<p><a href="/src/fonts/CommitMonoV129-VF.woff2" tabindex="0">Download CommitMono-VF.woff2</a></p>
+<p><a href="/src/fonts/CommitMonoV130-VF.ttf" tabindex="0">Download CommitMono-VF.ttf</a></p>
+<p><a href="/src/fonts/CommitMonoV130-VF.woff2" tabindex="0">Download CommitMono-VF.woff2</a></p>
 <br />`
         }
     }

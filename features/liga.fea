@@ -1,0 +1,106 @@
+feature liga {
+# Standard Ligatures
+
+    # feature
+    lookup CloseUp_1_ {
+        ignore sub @case_default' @lowercase_actor;
+        ignore sub @case_default' @case_default @lowercase_actor;
+        ignore sub @case_default @case_default' @lowercase_actor;
+        ignore sub @case_default' @case_default @case_default @lowercase_actor;
+        ignore sub @case_default @case_default' @case_default @lowercase_actor;
+        ignore sub @case_default @case_default @case_default' @lowercase_actor;
+        ignore sub @case_default' @case_default @case_default @case_default @lowercase_actor;
+        ignore sub @case_default @case_default' @case_default @case_default @lowercase_actor;
+        ignore sub @case_default @case_default @case_default' @case_default @lowercase_actor;
+        ignore sub @case_default @case_default @case_default @case_default' @lowercase_actor;
+        ignore sub @case_default' @case_default @case_default @case_default @case_default @lowercase_actor;
+        ignore sub @case_default @case_default' @case_default @case_default @case_default @lowercase_actor;
+        ignore sub @case_default @case_default @case_default' @case_default @case_default @lowercase_actor;
+        ignore sub @case_default @case_default @case_default @case_default' @case_default @lowercase_actor;
+        ignore sub @case_default @case_default @case_default @case_default @case_default' @lowercase_actor;
+        sub @uppercase_actor @case_default' by @case_top;
+    } CloseUp_1_;
+
+    lookup CloseUp_2_ {
+        ignore sub @lowercase_actor @case_default';
+        ignore sub @lowercase_actor @case_default @case_default';
+        ignore sub @lowercase_actor @case_default @case_default @case_default';
+        ignore sub @lowercase_actor @case_default @case_default @case_default @case_default';
+        ignore sub @lowercase_actor @case_default @case_default @case_default @case_default @case_default';
+        sub @case_default' @uppercase_actor by @case_top;
+        sub @case_default' @case_default @uppercase_actor by @case_top;
+        sub @case_default' @case_default @case_default @uppercase_actor by @case_top;
+        sub @case_default' @case_default @case_default @case_default @uppercase_actor by @case_top;
+        sub @case_default' @case_default @case_default @case_default @case_default @uppercase_actor by @case_top;
+    } CloseUp_2_;
+    
+    lookup StartEndSpace_ {
+        sub @uppercase_actor @space_actor @case_default' @space_actor @uppercase_actor by @case_top;
+        sub @uppercase_actor @space_actor @case_default' @case_default @space_actor @uppercase_actor by @case_top;
+        sub @uppercase_actor @space_actor @case_default' @case_default @case_default @space_actor @uppercase_actor by @case_top;
+        sub @uppercase_actor @space_actor @case_default' @case_default @case_default @case_default @space_actor @uppercase_actor by @case_top;
+        sub @uppercase_actor @space_actor @case_default' @case_default @case_default @case_default @case_default @space_actor @uppercase_actor by @case_top;
+    } StartEndSpace_;
+    
+    lookup InBetween_ {
+        sub @case_top @case_default' by @case_top;
+    } InBetween_;
+    
+    lookup Fix_ {
+        sub @case_default @case_top' by @case_default;
+    } Fix_;
+
+
+
+    # classes
+    
+    @dflt = [exclam exclam.square period period.square slash slash.case colon colon.square colon.case colon.case.square semicolon semicolon.square question question.square backslash backslash.case bar bar.case less less.case greater greater.case];
+    @c2_1 = [exclam.c2_1 exclam.square.c2_1 period.c2_1 period.square.c2_1 slash.c2_1 slash.case.c2_1 colon.c2_1 colon.square.c2_1 colon.case.c2_1 colon.case.square.c2_1 semicolon.c2_1 semicolon.square.c2_1 question.c2_1 question.square.c2_1 backslash.c2_1 backslash.case.c2_1 bar.c2_1 bar.case.c2_1 less.c2_1 less.case.c2_1 greater.c2_1 greater.case.c2_1];
+    @c2_2 = [exclam.c2_2 exclam.square.c2_2 period.c2_2 period.square.c2_2 slash.c2_2 slash.case.c2_2 colon.c2_2 colon.square.c2_2 colon.case.c2_2 colon.case.square.c2_2 semicolon.c2_2 semicolon.square.c2_2 question.c2_2 question.square.c2_2 backslash.c2_2 backslash.case.c2_2 bar.c2_2 bar.case.c2_2 less.c2_2 less.case.c2_2 greater.c2_2 greater.case.c2_2];
+    @c3_1 = [exclam.c3_1 exclam.square.c3_1 period.c3_1 period.square.c3_1 slash.c3_1 slash.case.c3_1 colon.c3_1 colon.square.c3_1 colon.case.c3_1 colon.case.square.c3_1 semicolon.c3_1 semicolon.square.c3_1 question.c3_1 question.square.c3_1 backslash.c3_1 backslash.case.c3_1 bar.c3_1 bar.case.c3_1 less.c3_1 less.case.c3_1 greater.c3_1 greater.case.c3_1];
+    @c3_3 = [exclam.c3_3 exclam.square.c3_3 period.c3_3 period.square.c3_3 slash.c3_3 slash.case.c3_3 colon.c3_3 colon.square.c3_3 colon.case.c3_3 colon.case.square.c3_3 semicolon.c3_3 semicolon.square.c3_3 question.c3_3 question.square.c3_3 backslash.c3_3 backslash.case.c3_3 bar.c3_3 bar.case.c3_3 less.c3_3 less.case.c3_3 greater.c3_3 greater.case.c3_3];
+    @exceptions = [numbersign];
+
+    # exceptions
+    ignore sub @exceptions @dflt';
+    ignore sub @exceptions @dflt @dflt';
+    ignore sub @dflt' @exceptions;
+    ignore sub @dflt' @dflt @exceptions;
+
+    ignore sub @greater' @less @slash;
+    ignore sub @colon' @slash @slash;
+    ignore sub @colon @slash' @slash;
+
+    # feature 
+    ignore sub @dflt' @dflt @dflt @dflt;
+    ignore sub @dflt @dflt' @dflt @dflt;
+    ignore sub @dflt @dflt @dflt' @dflt;
+    ignore sub @dflt @dflt @dflt @dflt';
+
+    sub @dflt' @dflt @dflt by @c3_1;
+    sub @c3_1 @dflt @dflt' by @c3_3;
+
+    ignore sub @c3_1 @dflt' @dflt;
+
+    sub @dflt' @dflt by @c2_1;
+    sub @c2_1 @dflt' by @c2_2;
+
+
+
+    # feature
+    sub @narrow_letter @origin' @widest_letter by @leftL;
+    sub @narrow_letter @origin' @larger_letter by @leftM;
+    sub @normal_letter @origin' @widest_letter by @leftM;
+    sub @narrow_letter @origin' @normal_letter by @leftS;
+    sub @normal_letter @origin' @larger_letter by @leftS;
+    sub @larger_letter @origin' @widest_letter by @leftS;
+
+    sub @widest_letter @origin' @narrow_letter by @rightL;
+    sub @larger_letter @origin' @narrow_letter by @rightM;
+    sub @normal_letter @origin' @narrow_letter by @rightS;
+    sub @widest_letter @origin' @normal_letter by @rightM;
+    sub @larger_letter @origin' @normal_letter by @rightS;
+    sub @widest_letter @origin' @larger_letter by @rightS;
+
+} liga;
+
