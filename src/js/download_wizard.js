@@ -4,7 +4,7 @@ const fontFileBlobs = { regular: null, italic: null, bold: null, bolditalic: nul
 
 let downloadStarted = false
 async function downloadFont(kindOfDownload, button) {
-    console.log("downloadFont")
+    // console.log("downloadFont")
     if (!downloadStarted) {
         downloadStarted = true
         button.classList.remove("loaded", "error")
@@ -76,18 +76,18 @@ function catchError(button, error) {
     downloadStarted = false
     button.classList.remove("loading")
     button.classList.add("error")
-    console.log(error)
+    // console.log(error)
 }
 
 function makeCustomFont(settings) {
-    console.log("makeCustomFont")
+    // console.log("makeCustomFont")
 
     const fontBaseURL = "/src/fonts/"
     const fontName = "CommitMono" + versionOfCommitMono
     const fontWeight = settings.weight
     const fontItalic = settings.italic ? "Italic" : "Regular"
     const fontFilePath = `${fontBaseURL}${fontName}-${fontWeight}${fontItalic}.otf`
-    // "/src/fonts/CommitMonoV129-450Italic.otf"
+    // "/src/fonts/CommitMonoV130-450Italic.otf"
 
     return opentype
         .load(fontFilePath)
@@ -100,22 +100,22 @@ function makeCustomFont(settings) {
                 //
                 // filter for only the active ones
                 if (!active) return
-                // console.log("alternate", alternate, "active", active)
+                // // console.log("alternate", alternate, "active", active)
 
                 // look at all the fonts features
                 font.tables.gsub.features.forEach((feature) => {
                     //
                     // if the feature matches the alternate we're currently on
                     if (feature.tag == alternate) {
-                        // console.log("feature", feature)
+                        // // console.log("feature", feature)
 
                         // then loop through the list of lookup indexes of that feature
                         feature.feature.lookupListIndexes.forEach((lookupIndex) => {
-                            // console.log("lookupIndex", lookupIndex)
+                            // // console.log("lookupIndex", lookupIndex)
 
                             // loop through the subtable of each lookup at the lookup index
                             font.tables.gsub.lookups[lookupIndex].subtables.forEach((subtable) => {
-                                // console.log("subtable", subtable)
+                                // // console.log("subtable", subtable)
 
                                 // loop through the glyphs of the subtable
                                 subtable.coverage.glyphs.forEach((glyphIndexOriginal, index) => {
@@ -123,7 +123,7 @@ function makeCustomFont(settings) {
                                     // glyphIndexOriginal is the index of the original glyph
                                     // glyphIndexSubstitute is the index of the glyph to substitute the original with
                                     const glyphIndexSubstitute = subtable.substitute[index]
-                                    // console.log(
+                                    // // console.log(
                                     //    "glyphIndexOriginal",
                                     //    glyphIndexOriginal,
                                     //    "glyphIndexSubstitute",
@@ -158,14 +158,14 @@ function makeCustomFont(settings) {
                 //
                 // filter for only the active ones
                 if (!active) return
-                // console.log("alternate", alternate, "active", active)
+                // // console.log("alternate", alternate, "active", active)
 
                 // then loop through all features
                 font.tables.gsub.features.forEach((feature) => {
                     //
                     // and find the ones that match the active tags
                     if (feature.tag == alternate) {
-                        // console.log("feature", feature)
+                        // // console.log("feature", feature)
 
                         // push the lookup indexes into the empty caltLookupIndexes variable
                         feature.feature.lookupListIndexes.forEach((lookupIndex) => caltLookupIndexes.push(lookupIndex))
@@ -180,7 +180,7 @@ function makeCustomFont(settings) {
                         //
                         // set its lookup indexes to the variable
                         feature.feature.lookupListIndexes = caltLookupIndexes
-                        // console.log("caltLookupIndexes", caltLookupIndexes)
+                        // // console.log("caltLookupIndexes", caltLookupIndexes)
                     }
                 })
             })
@@ -218,7 +218,7 @@ function makeCustomFont(settings) {
             // set the correct weight
             font.tables.os2.usWeightClass = settings.weight
 
-            console.log(font)
+            // console.log(font)
 
             const fontAB = font.toArrayBuffer()
             const fontBlob = new Blob([fontAB], { type: "font/otf" })
@@ -231,7 +231,7 @@ function makeCustomFont(settings) {
 }
 
 async function getZipFileBlob(kindOfDownload, fonts) {
-    console.log(fontFileBlobs, fonts)
+    // console.log(fontFileBlobs, fonts)
 
     const { BlobWriter, BlobReader, HttpReader, ZipWriter } = zip
     const zipFileWriter = new BlobWriter()

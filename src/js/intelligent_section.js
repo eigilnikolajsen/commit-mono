@@ -1,5 +1,5 @@
 function updateIntelligent(event, form) {
-    console.log("updateIntelligent")
+    // console.log("updateIntelligent")
     const data = new FormData(form)
     let output = ""
     for (const entry of data) {

@@ -1,7 +1,7 @@
 let waitingForLoadIntervalID = null
 let allCssLoaded = false
 function startAll() {
-    console.log("startAll")
+    // console.log("startAll")
 
     // websiteData.invert = isDarkMode
 
@@ -46,6 +46,6 @@ function startAll() {
 }
 
 if (fontsLoaded) {
-    console.log("fontsLoaded startAll()")
+    // console.log("fontsLoaded startAll()")
     startAll()
 }

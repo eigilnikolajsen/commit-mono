@@ -11,7 +11,7 @@ const setCssVar = ([property, value]) => document.documentElement.style.setPrope
 
 const isMobileTest = () => {
     if (window.matchMedia("(pointer: coarse) and (max-width: 1000px").matches) {
-        console.log("(pointer: coarse) and (max-width: 1000px)")
+        // console.log("(pointer: coarse) and (max-width: 1000px)")
         return true
     } else return false
 }
@@ -29,7 +29,7 @@ mqlMobile.addEventListener("change", (e) => {
 // let isDarkMode = mqlDarkMode.matches
 // mqlDarkMode.addEventListener("change", changeMode)
 function changeMode(e) {
-    console.log("CHANGE THEME")
+    // console.log("CHANGE THEME")
     isDarkMode = e.matches
     websiteData.invert = isDarkMode
     if (isDarkMode) {
@@ -50,7 +50,7 @@ function wait(milliseconds) {
 
 let checkCssLoadIntervalIDs = []
 function appendStyleSheets() {
-    console.log("appendStyleSheets")
+    // console.log("appendStyleSheets")
     const stylesheetIndexes = [
         "style",
         "mobile",
@@ -75,12 +75,12 @@ function appendStyleSheets() {
         checkCssLoadIntervalIDs[index] = setInterval(() => {
             const cssLoaded = Boolean(link.sheet)
             if (cssLoaded) {
-                console.log(`${stylesheet} CSS loaded`)
+                // console.log(`${stylesheet} CSS loaded`)
                 clearInterval(checkCssLoadIntervalIDs[index])
                 checkCssLoadIntervalIDs[index] = null
                 if (index == 3) {
                     allCssLoaded = true
-                    console.log("ALL CSS LOADED")
+                    // console.log("ALL CSS LOADED")
                 }
             }
         }, 100)
@@ -107,6 +107,6 @@ function showHideChangeSettings(text, ms, dim) {
 
 const consol = {
     log: function (message) {
-        console.log(message)
+        // console.log(message)
     },
 }

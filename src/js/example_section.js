@@ -8,7 +8,7 @@ const alternatesContainer = document.querySelector("#alternates_container")
 const featuresContainer = document.querySelector("#features_container")
 
 function buildExample() {
-    console.log("buildExample")
+    // console.log("buildExample")
     websiteData.sections.forEach((section) => {
         if (section.name == "customize") {
             fontsFieldset.innerHTML = ""
@@ -113,7 +113,7 @@ function buildExample() {
 
 const codeExample = document.querySelector("#code_example")
 function updateExamples(event, form) {
-    console.log("updateExamples")
+    // console.log("updateExamples")
     const data = new FormData(form)
     let output = ""
     for (const entry of data) {
@@ -137,17 +137,17 @@ function updateExamples(event, form) {
 
 // function updateDownloadForm(event, form) {
 //     // if (event) event.preventDefault()
-//     console.log("updateDownloadForm")
+//     // console.log("updateDownloadForm")
 //     const data = new FormData(form)
 //     let output = ""
 //     for (const entry of data) {
 //         output += `${entry[0]}: ${entry[1]}`
 //     }
-//     console.log(output)
+//     // console.log(output)
 // }
 
 function updateFont(event, form) {
-    console.log("updateFont")
+    // console.log("updateFont")
     const data = new FormData(form)
     let output = ""
     for (const entry of data) {
@@ -178,7 +178,7 @@ function updateFont(event, form) {
 }
 
 function updateWeight(event, form) {
-    console.log("updateWeight")
+    // console.log("updateWeight")
     const data = new FormData(form)
     let output = ""
     for (const entry of data) {
@@ -191,13 +191,13 @@ function updateWeight(event, form) {
         websiteData.italic ? "1" : "0"
     }`
 
-    console.log(downloadSettingsCustom)
+    // console.log(downloadSettingsCustom)
 
     if (event) event.preventDefault()
 }
 
 function updateExampleSettings(event, form, isDefault) {
-    console.log("updateExampleSettings")
+    // console.log("updateExampleSettings")
     const data = new FormData(form)
     let output = ""
     function updateDownloadSettings(type, feature) {
@@ -214,7 +214,7 @@ function updateExampleSettings(event, form, isDefault) {
         const label = document.querySelector(`#alt_${entry[0]}`)
         if (label) label.style.fontFeatureSettings = entry[1]
     }
-    console.log(downloadSettingsCustom)
+    // console.log(downloadSettingsCustom)
     const codeExample = document.querySelector("#code_example")
     codeExample.style.fontFeatureSettings = output.slice(0, -2)
 

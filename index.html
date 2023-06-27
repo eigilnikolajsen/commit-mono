@@ -1044,7 +1044,7 @@
             <div tabindex="0" id="block_tab_end"></div>
         </div>
         <script>
-            const versionOfCommitMono = "V129"
+            const versionOfCommitMono = "V130"
             let fontsLoaded = false
             const commitMono = new FontFace("CommitMono", `url(/src/fonts/CommitMono${versionOfCommitMono}-VF.woff2)`, {
                 style: "normal",
@@ -1058,7 +1058,7 @@
 
             // Wait until the fonts are all loaded
             document.fonts.ready.then(() => {
-                // console.log("all fonts loaded")
+                // // console.log("all fonts loaded")
                 fontsLoaded = true
                 if (typeof startAll === "function") startAll()
             })

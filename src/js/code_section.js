@@ -3,7 +3,7 @@ const codeFieldset = document.querySelector("#code_form fieldset")
 const codeDescription = document.querySelector("#code_description")
 
 function buildCode() {
-    console.log("buildCode")
+    // console.log("buildCode")
     websiteData.sections.forEach((section) => {
         if (section.name == "code") {
             section.content.characters.forEach((character, index) => {
@@ -40,7 +40,7 @@ function buildCode() {
 
 let commitMonoFont
 async function updateCodeFont() {
-    console.log("updateCodeFont")
+    // console.log("updateCodeFont")
     opentype
         .load(
             `/src/fonts/CommitMono${versionOfCommitMono}-${websiteData.weight}${
@@ -48,23 +48,23 @@ async function updateCodeFont() {
             }.otf`
         )
         .then((font) => {
-            // console.log(font)
+            // // console.log(font)
             commitMonoFont = font
             updateCode(null, codeForm)
         })
-        .catch((err) => console.log(err))
+        .catch((err) => // console.log(err))
 
     opentype
-        .load("src/fonts/CommitMonoV129-450Regular.otf")
+        .load("src/fonts/CommitMonoV130-450Regular.otf")
         .then((font) => {
-            console.log(font)
+            // console.log(font)
             // font.download()
         })
-        .catch((err) => console.log(err))
+        .catch((err) => // console.log(err))
 }
 
 function updateCode(event, form) {
-    console.log("updateCode")
+    // console.log("updateCode")
     const data = new FormData(form)
     let output = ""
     for (const entry of data) {

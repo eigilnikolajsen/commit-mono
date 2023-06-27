@@ -13,7 +13,7 @@ websiteData.sections.forEach((section) => {
 })
 
 function buildDocs() {
-    console.log("buildDocs")
+    // console.log("buildDocs")
     customizeContent.features.forEach((feature) => {
         const sizes = [
             [3, 4],
@@ -79,7 +79,7 @@ function buildDocs() {
 }
 
 function changeFeatureDocs(enable) {
-    console.log("changeFeatureDocs")
+    // console.log("changeFeatureDocs")
     if (enable == "enable") {
         websiteData.enableFeaturesInDocs = true
     } else if (enable == "disable") {
@@ -104,7 +104,7 @@ function changeFeatureDocs(enable) {
 }
 
 function updateDocs(event, form) {
-    console.log("updateDocs")
+    // console.log("updateDocs")
     const data = new FormData(form)
     let output = ""
     for (const entry of data) {
@@ -112,7 +112,7 @@ function updateDocs(event, form) {
     }
     const docsContainers = document.querySelectorAll(".docs_container")
     docsContainers.forEach((topic) => {
-        console.log(topic.id)
+        // console.log(topic.id)
         topic.style.display = "none"
         if (`${output}_container_docs` == topic.id) {
             topic.style.display = "block"
