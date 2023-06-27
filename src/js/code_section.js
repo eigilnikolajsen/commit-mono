@@ -52,7 +52,7 @@ async function updateCodeFont() {
             commitMonoFont = font
             updateCode(null, codeForm)
         })
-        .catch((err) => // console.log(err))
+        .catch((err) => console.log(err))
 
     opentype
         .load("src/fonts/CommitMonoV130-450Regular.otf")
@@ -60,7 +60,7 @@ async function updateCodeFont() {
             // console.log(font)
             // font.download()
         })
-        .catch((err) => // console.log(err))
+        .catch((err) => console.log(err))
 }
 
 function updateCode(event, form) {
