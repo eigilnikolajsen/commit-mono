@@ -1,3 +1,0 @@
- space nbspace quotedbl quotesingle grave acute quoteleft quoteright quotesinglbase quotedblleft quotedblright quotedblbase comma period period.square periodcentered.case periodcentered.case.square periodcentered.square quotedblbase.square quotedblleft.square quotedblright.square quoteleft.square quoteright.square quotesinglbase.square hyphen
-
- "300"=300, "325"=325, "350"=350, "375"=375, "400"=400, "425"=425, "450"=450, "475"=475, "500"=500, "525"=525, "550"=550, "575"=575, "600"=600, "625"=625, "650"=650, "675"=675, "700"=700

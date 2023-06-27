@@ -1,6 +1,6 @@
 High priority
-[ ] Make instances available
-[ ] Make variable font available
+[x] Make instances available
+[x] Make variable font available
 [x] Include license in download
 [x] Add links to Mads Brodt
 [x] Bold & space out FAQ
