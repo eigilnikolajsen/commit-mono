@@ -51,7 +51,7 @@
 }
 
 :root {
-    --question-character-size: 6rem;
+    --question-character-size: 2rem;
 }
 
 .question_character {

@@ -2,7 +2,7 @@ let waterfall, gtc
 websiteData.sections.forEach((section) => {
     if (section.name == "distinct") {
         waterfall = section.content.waterfall
-        gtc = section.content.gtc
+        gtc = section.content.gtc.Easy
     }
 })
 
@@ -77,7 +77,9 @@ function updateGTC(event, form) {
         if (section.name == "distinct") {
             section.content.gtcDifficulties.forEach((difficulty) => {
                 if (difficulty.name == output) {
+                    gtc = section.content.gtc[output]
                     setCssVar(["--question-character-size", `${difficulty.size}rem`])
+                    buildGTC()
                 }
             })
         }
