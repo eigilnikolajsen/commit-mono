@@ -7,3 +7,5 @@ Commit Mono is an anonymous and neutral programming typeface focused on creating
 [**Download latest default version**](https://github.com/eigilnikolajsen/commit-mono/releases/latest/)
 
 <br>
+
+If you wish to support this project directly [**buy me a coffee**](https://www.buymeacoffee.com/eigilnikolajsen).
