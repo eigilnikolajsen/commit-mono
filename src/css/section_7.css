@@ -84,6 +84,13 @@ button:focus a {
     content: "✕";
     animation: none;
 }
+.download_button.safari::after {
+    content: "Safari download not working. Try Chrome or Firefox.";
+    font-variation-settings: "ital" 1;
+    right: auto;
+    left: calc(100% + 1ch);
+    animation: none;
+}
 
 @keyframes loading {
     0% {
