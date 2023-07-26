@@ -78,9 +78,9 @@ function onMouseDown(e) {
     if (!isMobile) {
         focusUsingTab = false
         timesClicked++
-        if (timesClicked == 10) {
+        if (timesClicked == 20) {
             document.querySelector("#keyboard_container").classList.add("use_keyboard_animation")
-            showHideChangeSettings("Use keyboard to navigate!", 2400, true)
+            showHideChangeSettings("Try using the keyboard to navigate!", 2400, true)
         }
     }
 }
@@ -103,13 +103,14 @@ keys.forEach((key) => {
 let changeSettingTimeoutID
 let focusUsingTab = false
 function keyDown(e) {
+    console.log(e.key)
     focusUsingTab = true
     if (active.nodeName == "INPUT") {
         active.parentNode.querySelector("input + label").classList.remove("shake")
     } else {
         active.classList.remove("shake")
     }
-    if (e.code == "Enter") {
+    if (e.key == "Enter") {
         if (active.dataset.edit == "true" && !insideTextField) {
             enterTextField()
         } else {
@@ -125,43 +126,42 @@ function keyDown(e) {
         }
     }
 
-    if (!insideTextField || e.code == "Enter") {
+    if (!insideTextField || e.key == "Enter") {
         const activeKey = !e.shiftKey
-            ? document.querySelector(`.key[data-key-code="${e.code}"]`)
-            : document.querySelector(`.key[data-key-code="Shift${e.code}"]`)
+            ? document.querySelector(`.key[data-key-code="${e.key}"]`)
+            : document.querySelector(`.key[data-key-code="Shift${e.key}"]`)
         activeKey?.classList.add("active_key")
 
         if (e.code.includes("Digit")) {
-            const digitNumber = e.code.split("Digit")[1] - 1
-            sectionNavigation(digitNumber == -1 ? 9 : digitNumber)
+            sectionNavigation(e.key == 0 ? 9 : e.key - 1)
         }
 
-        if (e.code == "KeyO") {
+        if (e.key == "o") {
             changeFeatureDocs("enable")
         }
 
         // push page
         if (
-            (e.code == "KeyW" ||
-                e.code == "KeyA" ||
-                e.code == "KeyS" ||
-                e.code == "KeyD" ||
-                e.code == "KeyR" ||
-                e.code == "Minus" ||
-                e.code == "Slash") &&
+            (e.key == "w" ||
+                e.key == "a" ||
+                e.key == "s" ||
+                e.key == "d" ||
+                e.key == "r" ||
+                e.key == "+" ||
+                e.key == "-") &&
             !e.ctrlKey &&
             !e.metaKey
         ) {
-            pushPage(e.code)
+            pushPage(e.key)
         }
 
-        if (e.code == "KeyH") {
+        if (e.key == "h") {
             document.querySelector("#keyboard_section").classList.toggle("hidden")
         }
 
-        if (e.code == "KeyB" || e.code == "KeyL") {
-            if (e.code == "KeyB") websiteData.weight = websiteData.weight == 700 ? 700 : websiteData.weight + 25
-            if (e.code == "KeyL") websiteData.weight = websiteData.weight == 300 ? 300 : websiteData.weight - 25
+        if (e.key == "b" || e.key == "l") {
+            if (e.key == "b") websiteData.weight = websiteData.weight == 700 ? 700 : websiteData.weight + 25
+            if (e.key == "l") websiteData.weight = websiteData.weight == 300 ? 300 : websiteData.weight - 25
             updateCodeFont()
             document.querySelector("body").style.fontVariationSettings = `"wght" ${websiteData.weight}, "ital" ${
                 websiteData.italic ? "1" : "0"
@@ -171,7 +171,7 @@ function keyDown(e) {
             updateWeight(null, weightForm)
         }
 
-        if (e.code == "KeyI") {
+        if (e.key == "i") {
             websiteData.italic = !websiteData.italic
             updateCodeFont()
             document.querySelector("body").style.fontVariationSettings = `"wght" ${websiteData.weight}, "ital" ${
@@ -180,23 +180,27 @@ function keyDown(e) {
             showHideChangeSettings(`Italic: ${websiteData.italic}.`)
         }
 
-        if (e.code == "KeyM") {
-            changeMode({ matches: !websiteData.invert })
+        if (e.key == "m") {
+            changeMode(!websiteData.invert, websiteData.highContrast)
         }
 
-        if (e.code == "KeyK") {
+        if (e.key == "c") {
+            changeMode(websiteData.invert, !websiteData.highContrast)
+        }
+
+        if (e.key == "k") {
             document.querySelector("body").style.fontFeatureSettings = "'ss01', 'ss03', 'ss04', 'ss05' 0"
         }
 
-        if (e.code.includes("Arrow")) {
+        if (e.key.includes("Arrow")) {
             simulateTab(e)
         }
-    } else if (e.code == "Escape" && insideTextField) {
+    } else if (e.key == "Escape" && insideTextField) {
         // console.log(insideTextField)
         document.querySelector(".key_code_Escape")?.classList.add("pressed_key")
     }
 
-    if (e.code == "Escape") exitTextField()
+    if (e.key == "Escape") exitTextField()
 
     checkTutorialKeys(e)
 }
@@ -204,17 +208,17 @@ function keyUp(e) {
     const activeKey = document.querySelectorAll(".active_key")
     activeKey?.forEach((key) => key.classList.remove("active_key"))
 
-    if (e.code == "Tab" && document.activeElement.id.includes("block_tab")) {
+    if (e.key == "Tab" && document.activeElement.id.includes("block_tab")) {
         // console.log("active nav section then tab")
         const checkedMenuInput = document.querySelector("#nav_form input:checked")
         checkedMenuInput.focus()
     }
 
-    if (e.code == "KeyO") {
+    if (e.key == "o") {
         changeFeatureDocs("disable")
     }
 
-    if (e.code == "KeyK") {
+    if (e.key == "k") {
         document.querySelector("body").style.fontFeatureSettings = "'ss01', 'ss03', 'ss04', 'ss05'"
     }
 }
@@ -223,7 +227,7 @@ document.addEventListener("keyup", keyUp)
 
 function simulateTab(e) {
     if (active.nodeName != "INPUT") e.preventDefault()
-    if (e.code == "ArrowUp" || e.code == "ArrowDown") e.preventDefault()
+    if (e.key == "ArrowUp" || e.key == "ArrowDown") e.preventDefault()
     document
         .querySelectorAll(".shake, .shake_left, .shake_right, .shake_up, .shake_down")
         .forEach((el) => el.classList.remove("shake", "shake_left", "shake_right", "shake_up", "shake_down"))
@@ -235,31 +239,31 @@ function simulateTab(e) {
     let indexOfActive = 0
     allTabbable.forEach((element, i) => (active === element ? (indexOfActive = i) : null))
     let nextElement = null
-    if (e.code === "ArrowUp") nextElement = allTabbable[indexOfActive - 1]
-    if (e.code === "ArrowDown") nextElement = allTabbable[indexOfActive + 1]
+    if (e.key === "ArrowUp") nextElement = allTabbable[indexOfActive - 1]
+    if (e.key === "ArrowDown") nextElement = allTabbable[indexOfActive + 1]
 
-    // // console.log(e.code, nextElement)
+    // // console.log(e.key, nextElement)
     // focus next element
     if (nextElement) {
         let i = 0
         while (elementDoesNotExist(nextElement)) {
             i++
-            if (e.code === "ArrowUp") nextElement = allTabbable[indexOfActive - i]
-            if (e.code === "ArrowDown") nextElement = allTabbable[indexOfActive + i]
+            if (e.key === "ArrowUp") nextElement = allTabbable[indexOfActive - i]
+            if (e.key === "ArrowDown") nextElement = allTabbable[indexOfActive + i]
         }
         if (nextElement) {
             nextElement.focus()
         } else {
             addShake = true
         }
-    } else if (!(active.nodeName == "INPUT" && (e.code == "ArrowLeft" || e.code == "ArrowRight"))) {
+    } else if (!(active.nodeName == "INPUT" && (e.key == "ArrowLeft" || e.key == "ArrowRight"))) {
         addShake = true
     }
     if (addShake) {
         let node = active
         if (active.nodeName == "INPUT") node = active.parentNode.querySelector("input + label")
         void node.offsetHeight
-        switch (e.code) {
+        switch (e.key) {
             case "ArrowLeft":
                 node.classList.add("shake_left")
                 break
@@ -281,39 +285,39 @@ function simulateTab(e) {
 const elementDoesNotExist = (element) =>
     element && element.offsetHeight === 0 && element.offsetWidth === 0 && element.nodeName !== "INPUT"
 
-function pushPage(keyCode) {
-    // console.log("push page", keyCode)
+function pushPage(key) {
+    // console.log("push page", key)
     const x = websiteData.pushPage.coordinates.x
     const y = websiteData.pushPage.coordinates.y
     const scale = websiteData.pushPage.scale
     const dist = websiteData.pushPage.distance
 
     // move left
-    if (keyCode == "KeyW") {
+    if (key == "w") {
         main.style.transform = `translate(${x}px, ${y + dist}px)`
         websiteData.pushPage.coordinates.y += dist
     }
 
     // move left
-    else if (keyCode == "KeyA") {
+    else if (key == "a") {
         main.style.transform = `translate(${x + dist}px, ${y}px)`
         websiteData.pushPage.coordinates.x += dist
     }
 
     // move down
-    else if (keyCode == "KeyS") {
+    else if (key == "s") {
         main.style.transform = `translate(${x}px, ${y - dist}px)`
         websiteData.pushPage.coordinates.y -= dist
     }
 
     // move right
-    else if (keyCode == "KeyD") {
+    else if (key == "d") {
         main.style.transform = `translate(${x - dist}px, ${y}px)`
         websiteData.pushPage.coordinates.x -= dist
     }
 
-    // zoom in ("Minus" is the plus key, very confusing)
-    else if (keyCode == "Minus") {
+    // zoom in
+    else if (key == "+") {
         rem = (+rem * 0.75 + 1) / 0.75
         document.documentElement.style.fontSize = `${rem}px`
         updateWaterfall()
@@ -322,7 +326,7 @@ function pushPage(keyCode) {
     }
 
     // zoom out
-    else if (keyCode == "Slash") {
+    else if (key == "-") {
         rem = (+rem * 0.75 - 1) / 0.75
         document.documentElement.style.fontSize = `${rem}px`
         updateWaterfall()
@@ -331,7 +335,7 @@ function pushPage(keyCode) {
     }
 
     // reset transforms
-    else if (keyCode == "KeyR") {
+    else if (key == "r") {
         main.style.transform = `translate(0)`
         websiteData.pushPage.coordinates.x = 0
         websiteData.pushPage.coordinates.y = 0
@@ -420,10 +424,10 @@ function checkDocumentFocus() {
 }
 
 function changedFocus(hasFocus) {
-    if (hasFocus && active) active.focus()
-    changeFavicon(hasFocus)
-    hasFocus ? contentRoot.classList.remove("faded") : contentRoot.classList.add("faded")
-    clickFocus.style.visibility = hasFocus ? "hidden" : "visible"
+    // if (hasFocus && active) active.focus()
+    // changeFavicon(hasFocus)
+    // hasFocus ? contentRoot.classList.remove("faded") : contentRoot.classList.add("faded")
+    // clickFocus.style.visibility = hasFocus ? "hidden" : "visible"
     // updateCode(null, codeForm)
 }
 
@@ -439,12 +443,12 @@ let tutorialFinished = false
 function checkTutorialKeys(e) {
     if (!tutorialFinished) {
         websiteData.tutorial.forEach((key) => {
-            if (e.code == key) {
-                if (e.code == "Enter") {
+            if (e.key == key) {
+                if (e.key == "Enter") {
                     if (document.activeElement.dataset.edit == "true") {
                         document.querySelector(".key_code_Enter")?.classList.add("pressed_key")
                     }
-                } else if (e.code != "Escape") {
+                } else if (e.key != "Escape") {
                     const keyNode = document.querySelector(`.key_code_${key}`)
                     keyNode?.classList.add("pressed_key")
                 }
@@ -458,8 +462,8 @@ function checkTutorialKeys(e) {
             tutorialFinished = true
             const tutorialContainer = document.querySelector("#tutorial_complete")
             tutorialContainer.innerHTML = `<p>Tutorial complete! Your present is the variable version of Commit Mono:</p>
-<p><a href="/src/fonts/CommitMonoV130-VF.ttf" tabindex="0">Download CommitMono-VF.ttf</a></p>
-<p><a href="/src/fonts/CommitMonoV130-VF.woff2" tabindex="0">Download CommitMono-VF.woff2</a></p>
+<p><a href="/src/fonts/CommitMonoV132-VF.ttf" tabindex="0">Download CommitMono-VF.ttf</a></p>
+<p><a href="/src/fonts/CommitMonoV132-VF.woff2" tabindex="0">Download CommitMono-VF.woff2</a></p>
 <br />`
         }
     }
@@ -503,3 +507,6 @@ function onScroll(e) {
         mainScale.scrollBy(-x, -y)
     }
 }
+
+// edit text directly when clicked on
+document.addEventListener("click", (e) => e.target.dataset.edit == "true" && enterTextField())

@@ -8,6 +8,7 @@ const websiteData = {
     weight: 450,
     italic: false,
     invert: false,
+    highContrast: false,
     tutorial: [
         "ArrowUp",
         "ArrowDown",

@@ -17,9 +17,7 @@ function buildDocs() {
     customizeContent.features.forEach((feature) => {
         const sizes = [
             [3, 4],
-            [2, 2.5],
-            [1, 1.5],
-            [0.75, 1],
+            [1.5, 2],
             [0.5, 1],
         ]
         const container = document.createElement("div")
@@ -42,7 +40,7 @@ function buildDocs() {
         h2.tabIndex = 0
         h2.dataset.edit = "true"
         const p = document.createElement("p")
-        p.textContent = `Default: ${feature.on ? "ON" : "OFF"}`
+        p.textContent = `Default: ${feature.on ? "ON" : "OFF"}. Feature in variable font: "${feature.feature}".`
         container.append(h2, p)
         sizes.forEach((size) => {
             const exampleText = document.createElement("p")

@@ -8,12 +8,13 @@ function pbcopy(data) {
 }
 
 async function featuresToCalt() {
-    const features = ["ss01_arrows", "ss02_less_equal", "ss03_case", "ss04_ellipsis", "ss05_smartkerning"]
+    // const features = ["ss01_arrows", "ss02_less_equal", "ss03_case", "ss04_ellipsis", "ss05_smartkerning"]
+    const features = ["ss03_case", "ss04_ellipsis", "ss05_smartkerning"]
 
     let calt = []
 
     for await (const feature of features) {
-        const fileStream = fs.createReadStream(`features/${feature}.fea`)
+        const fileStream = fs.createReadStream(`../features/${feature}.fea`)
 
         const rl = readline.createInterface({
             input: fileStream,

@@ -28,16 +28,26 @@ mqlMobile.addEventListener("change", (e) => {
 // const mqlDarkMode = window.matchMedia(darkModeMediaQuery)
 // let isDarkMode = mqlDarkMode.matches
 // mqlDarkMode.addEventListener("change", changeMode)
-function changeMode(e) {
+function changeMode(isDarkMode, isHighContrast) {
     // console.log("CHANGE THEME")
-    isDarkMode = e.matches
     websiteData.invert = isDarkMode
-    if (isDarkMode) {
-        setCssVar(["--bg", "#111"])
-        setCssVar(["--text", "#aaa"])
+    websiteData.highContrast = isHighContrast
+    if (isHighContrast) {
+        if (websiteData.invert) {
+            setCssVar(["--bg", "#000"])
+            setCssVar(["--text", "#fff"])
+        } else {
+            setCssVar(["--bg", "#fff"])
+            setCssVar(["--text", "#000"])
+        }
     } else {
-        setCssVar(["--bg", "#aaa"])
-        setCssVar(["--text", "#111"])
+        if (websiteData.invert) {
+            setCssVar(["--bg", "#111"])
+            setCssVar(["--text", "#aaa"])
+        } else {
+            setCssVar(["--bg", "#aaa"])
+            setCssVar(["--text", "#111"])
+        }
     }
     updateCode(null, codeForm)
 }

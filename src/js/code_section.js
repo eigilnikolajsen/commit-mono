@@ -55,9 +55,9 @@ async function updateCodeFont() {
         .catch((err) => console.log(err))
 
     opentype
-        .load("src/fonts/CommitMonoV130-450Regular.otf")
+        .load("src/fonts/CommitMonoV132-450Regular.otf")
         .then((font) => {
-            // console.log(font)
+            console.log(font)
             // font.download()
         })
         .catch((err) => console.log(err))
