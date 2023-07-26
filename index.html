@@ -135,6 +135,12 @@
                                 </div>
                                 <p>Light/dark</p>
                             </div>
+                            <div class="key_group" id="change_weight">
+                                <div class="keys">
+                                    <p data-key-code="KeyC" data-key="c" class="key">C</p>
+                                </div>
+                                <p>High contrast</p>
+                            </div>
                             <div class="key_group" id="show_hide_keys">
                                 <div class="keys">
                                     <p data-key-code="KeyH" data-key="h" class="key">H</p>
@@ -546,7 +552,8 @@
                                     <br />
                                     <p>
                                         Download all 34 cuts with your custom settings + source variable fonts (.tff &
-                                        .woff2) for design.
+                                        .woff2) for design. Variable fonts don’t contain custom settings. Use OpenType
+                                        features to expose, see exact features in docs.
                                     </p>
                                     <br />
                                     <br />
@@ -800,12 +807,24 @@
                                                 Is there a .woff2 version of the font available?
                                             </summary>
                                             <p>
-                                                No, but you can use an online conversion tool like
-                                                <a
-                                                    href="https://www.fontsquirrel.com/tools/webfont-generator"
-                                                    target="_blank"
-                                                    >this one from Font Squirrel</a
-                                                >.
+                                                There is a variable .woff2 version included if you "Download custom for
+                                                design" in
+                                                <button
+                                                    class="download_button"
+                                                    tabindex="0"
+                                                    onclick="keyDown({code:'Digit7'})"
+                                                >
+                                                    07 Customize</button
+                                                >. However, that variable font does not contain custom settings. You
+                                                have to manually enable features and alternates that are OFF by default.
+                                                To see the OpenType feature codes for each feature and alternate, go to
+                                                <button
+                                                    class="download_button"
+                                                    tabindex="0"
+                                                    onclick="keyDown({code:'Digit9'})"
+                                                >
+                                                    09 Docs
+                                                </button>
                                             </p>
                                         </details>
                                         <details>
@@ -1042,7 +1061,7 @@
             <div tabindex="0" id="block_tab_end"></div>
         </div>
         <script>
-            const versionOfCommitMono = "V130"
+            const versionOfCommitMono = "V132"
             let fontsLoaded = false
             const commitMono = new FontFace("CommitMono", `url(/src/fonts/CommitMono${versionOfCommitMono}-VF.woff2)`, {
                 style: "normal",

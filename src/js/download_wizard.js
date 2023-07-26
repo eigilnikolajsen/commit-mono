@@ -87,7 +87,7 @@ function makeCustomFont(settings) {
     const fontWeight = settings.weight
     const fontItalic = settings.italic ? "Italic" : "Regular"
     const fontFilePath = `${fontBaseURL}${fontName}-${fontWeight}${fontItalic}.otf`
-    // "/src/fonts/CommitMonoV130-450Italic.otf"
+    // "/src/fonts/CommitMonoV132-450Italic.otf"
 
     return opentype
         .load(fontFilePath)
@@ -203,7 +203,9 @@ function makeCustomFont(settings) {
             font.names.postScriptName.en = `CommitMono-${settings.style.split(" ").join("")}`
             delete font.names.preferredFamily
             delete font.names.preferredSubfamily
-            font.names.uniqueID.en = `Version 1.001;;CommitMono-${settings.style.split(" ").join("")};2023;FL801`
+            font.names.uniqueID.en = `${font.names.version.en};;CommitMono-${settings.style
+                .split(" ")
+                .join("")};2023;FL801`
 
             font.tables.cff.topDict.familyName = font.names.fontFamily.en
             font.tables.cff.topDict.fullName = font.names.fullName.en
