@@ -14,15 +14,15 @@ const websiteData = {
         "ArrowDown",
         "ArrowLeft",
         "ArrowRight",
-        "Digit1",
-        "Digit2",
-        "Digit3",
-        "KeyW",
-        "KeyA",
-        "KeyS",
-        "KeyD",
-        "Minus",
-        "Slash",
+        "1",
+        "2",
+        "3",
+        "w",
+        "a",
+        "s",
+        "d",
+        "+",
+        "-",
         "Enter",
         "Escape",
     ],
@@ -42,8 +42,9 @@ Tip: Press <span class="span_key">I</span> to switch between italic and regular.
         },
         {
             name: "familiar",
-            description:
-                "All research suggests the most familiar fonts are the ones you read fastest and most precisely. Commit Mono takes inspiration in fonts tested by time.",
+            description: `All research suggests the most familiar fonts are the ones you read fastest and most precisely. Commit Mono takes inspiration in fonts tested by time.
+
+Tip: Press <span class="span_key">C</span> to enable/disable high contrast mode.`,
             content: {
                 svgs: {
                     franklin_gothic: `<svg width="1000" height="200" viewBox="0 0 1000 200" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -346,7 +347,7 @@ Tip: Press <span class="span_key">M</span> to switch between light and dark mode
                         label: "Alt. 'a'",
                         feature: "cv01",
                         on: false,
-                        description: "Double |DEF| or single storey |ALT| lowercase 'a'.",
+                        description: "Double storey |DEF| or single storey |ALT| lowercase 'a'.",
                         docsExample: "aáä",
                     },
                     {
@@ -355,7 +356,7 @@ Tip: Press <span class="span_key">M</span> to switch between light and dark mode
                         label: "Alt. 'g'",
                         feature: "cv02",
                         on: false,
-                        description: "Triple |DEF| or double storey |ALT| lowercase 'g'.",
+                        description: "Double storey |DEF| or single storey |ALT| lowercase 'g'.",
                         docsExample: "gğĝ",
                     },
                     {
@@ -369,12 +370,12 @@ Tip: Press <span class="span_key">M</span> to switch between light and dark mode
                     },
                     {
                         type: "alternate",
-                        name: "asterisk",
-                        label: "Lifted *",
+                        name: "i",
+                        label: "Alt. 'i'",
                         feature: "cv04",
                         on: false,
-                        description: "Math/code asterisk |DEF| or small asterisk |ALT|.",
-                        docsExample: "2*2",
+                        description: "Serif |DEF| or sans serif |ALT| lowercase 'i'.",
+                        docsExample: "iíï",
                     },
                     {
                         type: "alternate",
@@ -406,42 +407,41 @@ Tip: Press <span class="span_key">M</span> to switch between light and dark mode
                     {
                         type: "alternate",
                         name: "slanted",
-                        label: "Slanted 'ag'",
+                        label: "Alt. italic 'aefgy'",
                         feature: "cv08",
                         on: false,
                         description:
-                            "Italic version |DEF| or slanted version |ALT| of 'ag' in italic. Press I to view difference.",
-                        docsExample: "ag",
+                            "Slanted version |DEF| or italic version |ALT| of 'aefgy' in italic. Press I to view difference.",
+                        docsExample: "aefgy",
                     },
                     {
                         type: "alternate",
-                        name: "italic",
-                        label: "Italic 'efy'",
+                        name: "asterisk",
+                        label: "Lifted *",
                         feature: "cv09",
                         on: false,
-                        description:
-                            "slanted version |DEF| or italic version |ALT| of 'efy' in italic. Press I to view difference.",
-                        docsExample: "efy",
-                    },
-                    {
-                        type: "feature",
-                        name: "arrows",
-                        label: "Arrows >-> =>",
-                        feature: "ss01",
-                        on: false,
-                        description:
-                            "No arrows |OFF| or common arrow combination into connected arrows |ON|. Doesn’t make arrows with ~.",
-                        docsExample: "-> => <==< >--> <==> <->",
+                        description: "Math/code asterisk |DEF| or small asterisk |ALT|.",
+                        docsExample: "2*2",
                     },
                     {
                         type: "feature",
                         name: "less_equal",
                         label: "Ligatures <= != === ",
-                        feature: "ss02",
+                        feature: "ss01",
                         on: false,
                         description:
                             "No ligatures |OFF| or common sequences into a single symbol |ON|. Below is all supported. Works only with spaces on either side.",
                         docsExample: "i <= j  i >= k  i == l  i === m  i != n  i !== o",
+                    },
+                    {
+                        type: "feature",
+                        name: "arrows",
+                        label: "Arrows >-> =>",
+                        feature: "ss02",
+                        on: false,
+                        description:
+                            "No arrows |OFF| or common arrow combination into connected arrows |ON|. Doesn’t make arrows with ~.",
+                        docsExample: "-> => <==< >--> <==> <->",
                     },
                     {
                         type: "feature",
@@ -466,7 +466,7 @@ Tip: Press <span class="span_key">M</span> to switch between light and dark mode
                     {
                         type: "feature",
                         name: "smartkerning",
-                        label: "Smart kerning immi",
+                        label: "Smart kerning (immi)",
                         feature: "ss05",
                         on: true,
                         description:

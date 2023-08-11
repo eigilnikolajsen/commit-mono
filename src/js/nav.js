@@ -103,7 +103,6 @@ keys.forEach((key) => {
 let changeSettingTimeoutID
 let focusUsingTab = false
 function keyDown(e) {
-    console.log(e.key)
     focusUsingTab = true
     if (active.nodeName == "INPUT") {
         active.parentNode.querySelector("input + label").classList.remove("shake")
@@ -132,9 +131,8 @@ function keyDown(e) {
             : document.querySelector(`.key[data-key-code="Shift${e.key}"]`)
         activeKey?.classList.add("active_key")
 
-        if (e.key.includes("Digit")) {
-            const num = +e.key.split("Digit")[1]
-            sectionNavigation(num == 0 ? 9 : num - 1)
+        if (e.code.includes("Digit")) {
+            sectionNavigation(+e.key == 0 ? 9 : +e.key - 1)
         }
 
         if (e.key == "o") {
@@ -450,7 +448,10 @@ function checkTutorialKeys(e) {
                         document.querySelector(".key_code_Enter")?.classList.add("pressed_key")
                     }
                 } else if (e.key != "Escape") {
-                    const keyNode = document.querySelector(`.key_code_${key}`)
+                    let keyNode
+                    if (key != "+") keyNode = document.querySelector(`.key_code_${key}`)
+                    if (key == "+") keyNode = document.querySelector(".key_code_plus")
+                    if (key == "-") keyNode = document.querySelector(".key_code_minus")
                     keyNode?.classList.add("pressed_key")
                 }
             }
@@ -463,8 +464,8 @@ function checkTutorialKeys(e) {
             tutorialFinished = true
             const tutorialContainer = document.querySelector("#tutorial_complete")
             tutorialContainer.innerHTML = `<p>Tutorial complete! Your present is the variable version of Commit Mono:</p>
-<p><a href="/src/fonts/CommitMonoV132-VF.ttf" tabindex="0">Download CommitMono-VF.ttf</a></p>
-<p><a href="/src/fonts/CommitMonoV132-VF.woff2" tabindex="0">Download CommitMono-VF.woff2</a></p>
+<p><a href="/src/fonts/CommitMonoV133-VF.ttf" tabindex="0">Download CommitMono-VF.ttf</a></p>
+<p><a href="/src/fonts/CommitMonoV133-VF.woff2" tabindex="0">Download CommitMono-VF.woff2</a></p>
 <br />`
         }
     }
