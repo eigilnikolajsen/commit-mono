@@ -214,9 +214,17 @@ function updateExampleSettings(event, form, isDefault) {
         const label = document.querySelector(`#alt_${entry[0]}`)
         if (label) label.style.fontFeatureSettings = entry[1]
     }
+    output = output.slice(0, -2)
     // console.log(downloadSettingsCustom)
     const codeExample = document.querySelector("#code_example")
-    codeExample.style.fontFeatureSettings = output.slice(0, -2)
+    codeExample.style.fontFeatureSettings = output
+
+    const customFeatureCode = document.querySelector("#custom_feature_code")
+    const shortFeatureCode = output
+        .split(", ")
+        .filter((f) => f.includes("on"))
+        .join(", ")
+    customFeatureCode.textContent = `"${shortFeatureCode}"`
 
     if (event) event.preventDefault()
 }

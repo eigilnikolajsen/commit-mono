@@ -228,8 +228,12 @@ function makeCustomFont(settings) {
             font.tables.cff.topDict.fullName = font.names.fullName.en
             font.tables.cff.topDict.weight = settings.weight == 700 ? "Bold" : "Regular"
 
+            // set correct mac style
             const macStyles = ["Regular", "Italic", "Bold", "Bold Italic"]
             font.tables.head.macStyle = macStyles.indexOf(settings.style)
+
+            // set correct numberOfHMetrics (3 is monospace)
+            font.tables.hhea.numberOfHMetrics = 3
 
             // make the font.tables.name equal to that of font.names
             font.tables.name = font.names
