@@ -55,7 +55,7 @@ async function updateCodeFont() {
         .catch((err) => console.log(err))
 
     // opentype
-    //     .load("src/fonts/CommitMonoV133-500Regular.ttf")
+    //     .load("src/fonts/CommitMonoV133-500Regular.otf")
     //     .then((font) => {
     //         console.log(font)
     //         console.log(font.toTables())
@@ -64,7 +64,7 @@ async function updateCodeFont() {
     //     .catch((err) => console.log(err))
 
     // opentype
-    //     .load("src/fonts/CommitMonoV133-500Regular.otf")
+    //     .load("src/fonts/other/DMMono-Regular.ttf")
     //     .then((font) => {
     //         console.log(font)
     //         console.log(font.toTables())

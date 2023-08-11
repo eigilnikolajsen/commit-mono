@@ -229,7 +229,7 @@ function makeCustomFont(settings) {
             font.tables.cff.topDict.weight = settings.weight == 700 ? "Bold" : "Regular"
 
             // set correct mac style
-            const macStyles = ["Regular", "Italic", "Bold", "Bold Italic"]
+            const macStyles = ["Regular", "Bold", "Italic", "Bold Italic"]
             font.tables.head.macStyle = macStyles.indexOf(settings.style)
 
             // set correct numberOfHMetrics (3 is monospace)
