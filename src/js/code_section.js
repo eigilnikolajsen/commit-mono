@@ -54,23 +54,14 @@ async function updateCodeFont() {
         })
         .catch((err) => console.log(err))
 
-    // opentype
-    //     .load("src/fonts/CommitMonoV134-500Regular.otf")
-    //     .then((font) => {
-    //         console.log(font)
-    //         console.log(font.toTables())
-    //         // font.download()
-    //     })
-    //     .catch((err) => console.log(err))
-
-    // opentype
-    //     .load("src/fonts/other/DMMono-Regular.ttf")
-    //     .then((font) => {
-    //         console.log(font)
-    //         console.log(font.toTables())
-    //         // font.download()
-    //     })
-    //     .catch((err) => console.log(err))
+    opentype
+        .load("src/fonts/CommitMonoV134-500Regular.otf")
+        .then((font) => {
+            console.log(font)
+            console.log(font.toTables())
+            // font.download()
+        })
+        .catch((err) => console.log(err))
 }
 
 function updateCode(event, form) {

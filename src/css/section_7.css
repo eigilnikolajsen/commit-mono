@@ -36,6 +36,7 @@ p#code_example {
     min-width: 102ch;
     padding-left: 5ch;
     position: relative;
+    line-height: 1;
 }
 p#code_example::before {
     content: attr(data-before);
@@ -103,4 +104,38 @@ button:focus a {
 
 input.loading_font + label {
     animation: flicker 200ms infinite;
+}
+
+input[type="text"] {
+    width: 10ch;
+    height: 1rem;
+    border: 1px solid var(--text);
+    background-color: var(--bg);
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    display: inline-block;
+}
+
+input[type="text"][contenteditable="true"] {
+    animation: none;
+}
+
+input[type="text"]:focus {
+    color: var(--text);
+}
+
+input[type="text"]:-webkit-autofill,
+input[type="text"]:-webkit-autofill:hover,
+input[type="text"]:-webkit-autofill:focus,
+input[type="text"]:auto-fill,
+input[type="text"]:auto-fill:hover,
+input[type="text"]:auto-fill:focus {
+    -webkit-text-fill-color: var(--text);
+    -webkit-box-shadow: 0 0 0px 40rem var(--bg) inset;
+}
+
+input[type="text"] + p {
+    display: inline-block;
+    margin-left: 0ch;
 }

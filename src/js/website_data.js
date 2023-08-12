@@ -6,6 +6,9 @@ const websiteData = {
         scaleOffset: 1.5,
     },
     weight: 450,
+    letterSpacing: 0,
+    lineHeight: 0,
+    fontName: "CommitMono",
     italic: false,
     invert: false,
     highContrast: false,
@@ -906,6 +909,18 @@ Distinction test      o0O s5S 9gq z2Z !|l1Iij {([|])} .,;: ${"``"}''""
 `,
                     },
                 ],
+                letterSpacings: {
+                    min: -10,
+                    max: 10,
+                    step: 1,
+                    value: 0,
+                },
+                lineHeights: {
+                    min: 0.9,
+                    max: 1.8,
+                    step: 0.05,
+                    value: 1,
+                },
             },
         },
         {
