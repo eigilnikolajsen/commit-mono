@@ -1,5 +1,19 @@
-const downloadSettingsCustom = { weight: 450, italic: false, alternates: {}, features: {} }
-const downloadSettingsDefault = { weight: 450, italic: false, alternates: {}, features: {} }
+const downloadSettingsCustom = {
+    weight: 450,
+    italic: false,
+    alternates: {},
+    features: {},
+    letterSpacing: 0,
+    lineHeight: 0,
+}
+const downloadSettingsDefault = {
+    weight: 450,
+    italic: false,
+    alternates: {},
+    features: {},
+    letterSpacing: 0,
+    lineHeight: 0,
+}
 const fontFileBlobs = { regular: null, italic: null, bold: null, bolditalic: null }
 
 let downloadStarted = false
@@ -87,13 +101,13 @@ function initializeDownload(button, blob) {
     button.classList.remove("loading")
     button.classList.add("loaded")
     // downloadFile(blob)
-    saveFile(blob, "CommitMono.zip")
+    saveFile(blob, `${websiteData.fontName}.zip`)
 }
 function catchError(button, error) {
     downloadStarted = false
     button.classList.remove("loading")
     button.classList.add("error")
-    // console.log(error)
+    console.log(error)
 }
 
 function makeCustomFont(settings) {
@@ -140,12 +154,6 @@ function makeCustomFont(settings) {
                                     // glyphIndexOriginal is the index of the original glyph
                                     // glyphIndexSubstitute is the index of the glyph to substitute the original with
                                     const glyphIndexSubstitute = subtable.substitute[index]
-                                    // // console.log(
-                                    //    "glyphIndexOriginal",
-                                    //    glyphIndexOriginal,
-                                    //    "glyphIndexSubstitute",
-                                    //    glyphIndexSubstitute
-                                    // )
 
                                     // get the paths for the original and the substitute glyph
                                     const glyphPathOriginal = font.glyphs.glyphs[glyphIndexOriginal].path
@@ -160,6 +168,49 @@ function makeCustomFont(settings) {
                     }
                 })
             })
+
+            // change width
+            const defaultWidth = 600
+            const newWidth = defaultWidth + websiteData.letterSpacing * 10
+            const newWidthDecrease = websiteData.letterSpacing * 10
+            const newWidthMoveAmount = websiteData.letterSpacing * 5
+            console.log(newWidth, newWidthDecrease, newWidthMoveAmount)
+            Object.values(font.glyphs.glyphs).forEach((glyph, index) => {
+                glyph.path.commands.forEach((command) => {
+                    if (command.type === "M" || command.type === "L") {
+                        command.x = command.x + newWidthMoveAmount
+                    }
+                    if (command.type === "C") {
+                        command.x = command.x + newWidthMoveAmount
+                        command.x1 = command.x1 + newWidthMoveAmount
+                        command.x2 = command.x2 + newWidthMoveAmount
+                    }
+                })
+                glyph.leftSideBearing = glyph.leftSideBearing + newWidthMoveAmount
+                glyph.advanceWidth = newWidth
+                if (index % 100 == 10) console.log(glyph)
+            })
+            font.defaultWidthX = newWidth
+            font.tables.cff.topDict._defaultWidthX = newWidth
+            font.tables.cff.topDict._privateDict.defaultWidthX = newWidth
+            font.tables.head.yMax = font.tables.head.yMax + newWidthMoveAmount
+            font.tables.head.yMin = font.tables.head.yMin + newWidthMoveAmount
+            font.tables.hhea.advanceWidthMax = newWidth
+            font.tables.hhea.minLeftSideBearing = font.tables.hhea.minLeftSideBearing + newWidthMoveAmount
+            font.tables.hhea.minRightSideBearing = font.tables.hhea.minRightSideBearing + newWidthMoveAmount
+            font.tables.hhea.xMaxExtent = font.tables.hhea.xMaxExtent + newWidthDecrease
+            font.tables.os2.xAvgCharWidth = newWidth
+
+            // change height
+            const newHeightOffset = websiteData.lineHeight * 500 - 500
+            font.ascender += newHeightOffset
+            font.descender -= newHeightOffset
+            font.tables.hhea.ascender += newHeightOffset
+            font.tables.hhea.descender -= newHeightOffset
+            font.tables.os2.sTypoAscender += newHeightOffset
+            font.tables.os2.sTypoDescender -= newHeightOffset
+            font.tables.os2.usWinAscent += newHeightOffset
+            font.tables.os2.usWinDescent += newHeightOffset // this is correct since this value is positive
 
             // ######################
             // #2 put active features into calt
@@ -214,15 +265,15 @@ function makeCustomFont(settings) {
             // ######################
             // #3 change the names
             // give custom names to each member of the style group
-            font.names.fontFamily.en = "CommitMono"
+            font.names.fontFamily.en = `${websiteData.fontName}`
             font.names.fontSubfamily.en = settings.style
-            font.names.fullName.en = `CommitMono ${settings.style}`
-            font.names.postScriptName.en = `CommitMono-${settings.style.split(" ").join("")}`
+            font.names.fullName.en = `${websiteData.fontName} ${settings.style}`
+            font.names.postScriptName.en = `${websiteData.fontName}-${settings.style.split(" ").join("")}`
             delete font.names.preferredFamily
             delete font.names.preferredSubfamily
-            font.names.uniqueID.en = `${font.names.version.en};;CommitMono-${settings.style
+            font.names.uniqueID.en = `${font.names.version.en};;${websiteData.fontName}-${settings.style
                 .split(" ")
-                .join("")};2023;FL801`
+                .join("")};2023;FL820`
 
             font.tables.cff.topDict.familyName = font.names.fontFamily.en
             font.tables.cff.topDict.fullName = font.names.fullName.en
@@ -261,7 +312,9 @@ async function getZipFileBlob(kindOfDownload, fonts) {
     const zipWriter = new ZipWriter(zipFileWriter)
 
     await Promise.all([
-        ...fonts.map((font) => zipWriter.add(`CommitMono-${font.weight}-${font.style}.otf`, new BlobReader(font.blob))),
+        ...fonts.map((font) =>
+            zipWriter.add(`${websiteData.fontName}-${font.weight}-${font.style}.otf`, new BlobReader(font.blob))
+        ),
         kindOfDownload === "design" &&
             zipWriter.add(
                 "CommitMono VariableFont.ttf",
@@ -281,7 +334,7 @@ async function getZipFileBlob(kindOfDownload, fonts) {
 
 function downloadFile(blob) {
     const a = document.createElement("a")
-    a.download = `CommitMono.zip`
+    a.download = `${websiteData.fontName}.zip`
     a.href = URL.createObjectURL(blob)
     a.click()
 }

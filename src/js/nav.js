@@ -64,8 +64,8 @@ function enterTextField() {
         active.setAttribute("contenteditable", "true")
         active.blur()
         active.focus()
+        insideTextField = true
     }, 40)
-    insideTextField = true
 }
 function exitTextField() {
     // console.log("exitTextField")
@@ -104,10 +104,13 @@ let changeSettingTimeoutID
 let focusUsingTab = false
 function keyDown(e) {
     focusUsingTab = true
-    if (active.nodeName == "INPUT") {
-        active.parentNode.querySelector("input + label").classList.remove("shake")
-    } else {
-        active.classList.remove("shake")
+    if (!insideTextField) {
+        if (active.nodeName == "INPUT") {
+            const shaker = active.parentNode.querySelector("input + label")
+            if (shaker) shaker.classList.remove("shake")
+        } else {
+            active.classList.remove("shake")
+        }
     }
     if (e.key == "Enter") {
         if (active.dataset.edit == "true" && !insideTextField) {
@@ -346,6 +349,10 @@ function pushPage(key) {
         document.querySelector("body").style.fontVariationSettings = `"wght" 450`
         document.forms["weight_form"][`weight_${websiteData.weight}`].checked = true
         codeExample.style.fontFamily = "CommitMono"
+        document.querySelector("#font_name").value = ""
+        document.querySelector("#font_name + p").textContent = ""
+        document.querySelector("#custom_name").textContent = "CommitMono-YourName"
+        websiteData.fontName = "CommitMono"
         if (typeof updateCodeFont === "function") updateCodeFont()
         if (typeof updateWaterfall === "function") updateWaterfall()
         if (typeof buildExample === "function") buildExample()
@@ -360,6 +367,7 @@ function onFocusIn(e) {
 
     // new focus: exit text field
     if (document.activeElement != active) exitTextField()
+    if (document.activeElement.id == "font_name") insideTextField = true
 
     const prevActive = active
 

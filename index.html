@@ -527,6 +527,18 @@
                                         <legend><h2>Choose download weight</h2></legend>
                                         <fieldset></fieldset>
                                     </form>
+                                    <form id="letter_spacing_form" onchange="updateLetterSpacing(event, this)">
+                                        <br />
+                                        <legend><h2>Choose download letter spacing</h2></legend>
+                                        <p>Does not change actual letter width, only tracking.</p>
+                                        <fieldset></fieldset>
+                                    </form>
+                                    <form id="line_height_form" onchange="updateLineHeight(event, this)">
+                                        <br />
+                                        <legend><h2>Choose download line height</h2></legend>
+                                        <p>Use with caution: Often handled by coding software.</p>
+                                        <fieldset></fieldset>
+                                    </form>
                                     <form id="examplesettings_form" onchange="updateExampleSettings(event, this)">
                                         <br />
                                         <h2>Choose download features</h2>
@@ -534,6 +546,17 @@
                                         <br />
                                         <h2>Choose download alternate characters</h2>
                                         <div id="alternates_container"></div>
+                                    </form>
+                                    <form id="font_name_form" oninput="updateFontName(event, this)">
+                                        <br />
+                                        <legend><h2>Choose download with custom name</h2></legend>
+                                        <p>
+                                            Change the name of the font to
+                                            <span id="custom_name">CommitMono-YourName</span>. Use to control versions
+                                            and have multiple versions installed simultaneously.
+                                        </p>
+                                        <input type="text" name="font_name" id="font_name" tabindex="0" />
+                                        <p></p>
                                     </form>
                                     <br />
                                     <br />

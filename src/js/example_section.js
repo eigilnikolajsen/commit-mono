@@ -1,9 +1,14 @@
 const exampleForm = document.querySelector("#examples_form")
 const exampleSettingsForm = document.querySelector("#examplesettings_form")
 const weightForm = document.querySelector("#weight_form")
+const letterSpacingForm = document.querySelector("#letter_spacing_form")
+const lineHeightForm = document.querySelector("#line_height_form")
+const fontNameForm = document.querySelector("#font_name_form")
 const exampleFieldset = document.querySelector("#examples_form fieldset")
 const fontsFieldset = document.querySelector("#fonts_form fieldset")
 const weightFieldset = document.querySelector("#weight_form fieldset")
+const letterSpacingFieldset = document.querySelector("#letter_spacing_form fieldset")
+const lineHeightFieldset = document.querySelector("#line_height_form fieldset")
 const alternatesContainer = document.querySelector("#alternates_container")
 const featuresContainer = document.querySelector("#features_container")
 
@@ -63,7 +68,6 @@ function buildExample() {
                 input.classList.add("example_weight")
                 input.value = weight
                 input.dataset.forform = "weight_form"
-                // input.tabIndex = 0
                 if (index == 6) {
                     input.setAttribute("checked", "true")
                 }
@@ -73,6 +77,45 @@ function buildExample() {
                 div.append(input, label)
                 weightFieldset.append(div)
             })
+
+            letterSpacingFieldset.innerHTML = ""
+            const ls = section.content.letterSpacings
+            for (let value = ls.min; value <= ls.max; value += ls.step) {
+                const div = document.createElement("div")
+                const input = document.createElement("input")
+                input.type = "radio"
+                input.name = "letterSpacing"
+                input.id = `letter_spacing_${value}`
+                input.classList.add("example_letter_spacing")
+                input.value = value
+                input.dataset.forform = "letter_spacing_form"
+                if (value == ls.value) input.setAttribute("checked", "true")
+                const label = document.createElement("label")
+                label.textContent = `${value}%`
+                label.setAttribute("for", `letter_spacing_${value}`)
+                div.append(input, label)
+                letterSpacingFieldset.append(div)
+            }
+
+            lineHeightFieldset.innerHTML = ""
+            const lh = section.content.lineHeights
+            for (let val = lh.min; val <= lh.max + 0.01; val += lh.step) {
+                const value = Math.round(val * 1000) / 1000
+                const div = document.createElement("div")
+                const input = document.createElement("input")
+                input.type = "radio"
+                input.name = "lineHeight"
+                input.id = `line_height_${value}`
+                input.classList.add("example_line_height")
+                input.value = value
+                input.dataset.forform = "line_height_form"
+                if (value == lh.value) input.setAttribute("checked", "true")
+                const label = document.createElement("label")
+                label.textContent = value
+                label.setAttribute("for", `line_height_${value}`)
+                div.append(input, label)
+                lineHeightFieldset.append(div)
+            }
 
             featuresContainer.innerHTML = ""
             alternatesContainer.innerHTML = ""
@@ -135,17 +178,6 @@ function updateExamples(event, form) {
     if (event) event.preventDefault()
 }
 
-// function updateDownloadForm(event, form) {
-//     // if (event) event.preventDefault()
-//     // console.log("updateDownloadForm")
-//     const data = new FormData(form)
-//     let output = ""
-//     for (const entry of data) {
-//         output += `${entry[0]}: ${entry[1]}`
-//     }
-//     // console.log(output)
-// }
-
 function updateFont(event, form) {
     // console.log("updateFont")
     const data = new FormData(form)
@@ -192,6 +224,60 @@ function updateWeight(event, form) {
     }`
 
     // console.log(downloadSettingsCustom)
+
+    if (event) event.preventDefault()
+}
+
+function updateLetterSpacing(event, form) {
+    // console.log("updateWeight")
+    const data = new FormData(form)
+    let output = ""
+    for (const entry of data) {
+        output = +entry[1]
+    }
+    downloadSettingsCustom.letterSpacing = output
+    websiteData.letterSpacing = output
+    codeExample.style.letterSpacing = `${output / 100}em`
+
+    if (event) event.preventDefault()
+}
+
+function updateLineHeight(event, form) {
+    // console.log("updateWeight")
+    const data = new FormData(form)
+    let output = ""
+    for (const entry of data) {
+        output = +entry[1]
+    }
+    downloadSettingsCustom.lineHeight = output
+    websiteData.lineHeight = output
+    codeExample.style.lineHeight = output
+
+    if (event) event.preventDefault()
+}
+
+function updateFontName(event, form) {
+    // console.log("updateWeight")
+    const data = new FormData(form)
+    let output = ""
+    for (const entry of data) {
+        output = entry[1]
+    }
+    const customName = document.querySelector("#custom_name")
+    const suffix = output ? `-${output}` : ""
+    const regex = /^[\w-_]*$/
+    const label = document.querySelector("#font_name + p")
+    if (output.match(regex)) {
+        downloadSettingsCustom.fontName = output
+        label.textContent = "✓ Valid name."
+        customName.textContent = `CommitMono${suffix}`
+        websiteData.fontName = `CommitMono${suffix}`
+    } else {
+        downloadSettingsCustom.fontName = ""
+        label.textContent = "✕ Invalid name, use: A-z 0-9 _ -"
+        customName.textContent = `CommitMono-YourName`
+        websiteData.fontName = `CommitMono`
+    }
 
     if (event) event.preventDefault()
 }
