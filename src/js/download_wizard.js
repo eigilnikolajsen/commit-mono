@@ -175,30 +175,29 @@ function makeCustomFont(settings) {
             const newWidthDecrease = websiteData.letterSpacing * 10
             const newWidthMoveAmount = websiteData.letterSpacing * 5
             console.log(newWidth, newWidthDecrease, newWidthMoveAmount)
-            Object.values(font.glyphs.glyphs).forEach((glyph, index) => {
+            Object.values(font.glyphs.glyphs).forEach((glyph) => {
                 glyph.path.commands.forEach((command) => {
                     if (command.type === "M" || command.type === "L") {
-                        command.x = command.x + newWidthMoveAmount
+                        command.x += newWidthMoveAmount
                     }
                     if (command.type === "C") {
-                        command.x = command.x + newWidthMoveAmount
-                        command.x1 = command.x1 + newWidthMoveAmount
-                        command.x2 = command.x2 + newWidthMoveAmount
+                        command.x += newWidthMoveAmount
+                        command.x1 += newWidthMoveAmount
+                        command.x2 += newWidthMoveAmount
                     }
                 })
-                glyph.leftSideBearing = glyph.leftSideBearing + newWidthMoveAmount
+                glyph.leftSideBearing += newWidthMoveAmount
                 glyph.advanceWidth = newWidth
-                if (index % 100 == 10) console.log(glyph)
             })
             font.defaultWidthX = newWidth
             font.tables.cff.topDict._defaultWidthX = newWidth
             font.tables.cff.topDict._privateDict.defaultWidthX = newWidth
-            font.tables.head.yMax = font.tables.head.yMax + newWidthMoveAmount
-            font.tables.head.yMin = font.tables.head.yMin + newWidthMoveAmount
+            font.tables.head.yMax += newWidthMoveAmount
+            font.tables.head.yMin += newWidthMoveAmount
             font.tables.hhea.advanceWidthMax = newWidth
-            font.tables.hhea.minLeftSideBearing = font.tables.hhea.minLeftSideBearing + newWidthMoveAmount
-            font.tables.hhea.minRightSideBearing = font.tables.hhea.minRightSideBearing + newWidthMoveAmount
-            font.tables.hhea.xMaxExtent = font.tables.hhea.xMaxExtent + newWidthDecrease
+            font.tables.hhea.minLeftSideBearing += newWidthMoveAmount
+            font.tables.hhea.minRightSideBearing += newWidthMoveAmount
+            font.tables.hhea.xMaxExtent += newWidthDecrease
             font.tables.os2.xAvgCharWidth = newWidth
 
             // change height
