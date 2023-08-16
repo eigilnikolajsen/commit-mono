@@ -7,7 +7,7 @@ const websiteData = {
     },
     weight: 450,
     letterSpacing: 0,
-    lineHeight: 0,
+    lineHeight: 1,
     fontName: "CommitMono",
     italic: false,
     invert: false,
