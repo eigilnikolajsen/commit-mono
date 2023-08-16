@@ -174,7 +174,6 @@ function makeCustomFont(settings) {
             const newWidth = defaultWidth + websiteData.letterSpacing * 10
             const newWidthDecrease = websiteData.letterSpacing * 10
             const newWidthMoveAmount = websiteData.letterSpacing * 5
-            console.log(newWidth, newWidthDecrease, newWidthMoveAmount)
             Object.values(font.glyphs.glyphs).forEach((glyph) => {
                 glyph.path.commands.forEach((command) => {
                     if (command.type === "M" || command.type === "L") {
