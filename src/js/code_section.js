@@ -41,18 +41,18 @@ function buildCode() {
 let commitMonoFont
 async function updateCodeFont() {
     // console.log("updateCodeFont")
-    // opentype
-    //     .load(
-    //         `/src/fonts/CommitMono${versionOfCommitMono}-${websiteData.weight}${
-    //             websiteData.italic ? "Italic" : "Regular"
-    //         }.otf`
-    //     )
-    //     .then((font) => {
-    //         // // console.log(font)
-    //         commitMonoFont = font
-    //         updateCode(null, codeForm)
-    //     })
-    //     .catch((err) => console.log(err))
+    opentype
+        .load(
+            `/src/fonts/CommitMono${versionOfCommitMono}-${websiteData.weight}${
+                websiteData.italic ? "Italic" : "Regular"
+            }.otf`
+        )
+        .then((font) => {
+            // // console.log(font)
+            commitMonoFont = font
+            updateCode(null, codeForm)
+        })
+        .catch((err) => console.log(err))
     // opentype
     //     .load("src/fonts/CommitMonoV134-500Regular.otf")
     //     .then((font) => {

@@ -932,9 +932,9 @@ Distinction test      o0O s5S 9gq z2Z !|l1Iij {([|])} .,;: ${"``"}''""
             name: "docs",
             description: `Discover the docs of Commit Mono.
 
-To file an issue or add improvements go to <a href="https://github.com/eigilnikolajsen/commit-mono/issues" tabindex="0" target="_blank">GitHub</a>.
-To ask a question or just say hi, contact me at: <a href="mailto:hello@commitmono.com" tabindex="0" target="_blank">hello@commitmono.com</a>.
-To support the project directly <a href="https://www.buymeacoffee.com/eigilnikolajsen" tabindex="0" target="_blank">buy me a coffee</a>.`,
+To file an issue or add improvements go to <a href="https://github.com/eigilnikolajsen/commit-mono/issues" tabindex="0" target="_blank" class="download_button">GitHub</a>.
+To ask a question or just say hi, contact me at: <a href="mailto:hello@commitmono.com" tabindex="0" target="_blank" class="download_button">hello@commitmono.com</a>.
+To support the project directly <a href="https://www.buymeacoffee.com/eigilnikolajsen" tabindex="0" target="_blank" class="download_button">buy me a coffee</a>.`,
             content: {
                 charset: ` !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_${"`"}abcdefghijklmnopqrstuvwxyz{|}~ ¡¢£¤¥¦§¨©ª«¬®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿĀāĂăĄąĆćĈĉĊċČčĎďĐđĒēĔĕĖėĘęĚěĜĝĞğĠġĢģĤĥĦħĨĩĪīĬĭĮįİıĲĳĴĵĶķĸĹĺĻļĽľĿŀŁłŃńŅņŇňŉŊŋŌōŎŏŐőŒœŔŕŖŗŘřŚśŜŝŞşŠšŢţŤťŦŧŨũŪūŬŭŮůŰűŲųŴŵŶŷŸŹźŻżŽžſƒǺǻǼǽǾǿȘșȚțȷˆˇˉ˘˙˚˛˜˝̦̀́̈̊ΔΩμπẀẁẂẃẄẅỲỳ‐‑‒–—―‖‗‘’‚‛“”„†‡•…‰′″‹›‼‾⁄⁊⁰⁴⁵⁶⁷⁸⁹⁺⁻⁼⁽⁾ⁿ₀₁₂₃₄₅₆₇₈₉₊₋₍₎₣₤₧€℅ℓ№™Ω℮⅓⅔⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞⅟↊↋←↑→↓↔↕↨↹⇞⇟⇤⇥⇧⇨⇪∀∂∃∄∅∆∇∈∉∊∋∌∍∎∏∑−∕∗∙√∞∟∧∨∩∪∫∴∵∶∷≁≂≃≄≅≆≇≈≉≊≋≠≡≢≤≥⊂⊃⊄⊅⊆⊇⊈⊉⊊⊋⋅⋮⋯⋱⌂⌘⌠⌡⌤⌥⌦⌨⌫⎇⎋⎛⎜⎝⎞⎟⎠⎡⎢⎣⎤⎥⎦⎧⎨⎩⎪⎫⎬⎭⏎⏻⏼⏽⏾␀␁␂␃␄␅␆␇␈␉␊␋␌␍␎␏␐␑␒␓␔␕␖␗␘␙␚␛␜␝␞␟␠␡␢␣␤␥␦─━│┃┄┅┆┇┈┉┊┋┌┍┎┏┐┑┒┓└┕┖┗┘┙┚┛├┝┞┟┠┡┢┣┤┥┦┧┨┩┪┫┬┭┮┯┰┱┲┳┴┵┶┷┸┹┺┻┼┽┾┿╀╁╂╃╄╅╆╇╈╉╊╋╌╍╎╏═║╒╓╔╕╖╗╘╙╚╛╜╝╞╟╠╡╢╣╤╥╦╧╨╩╪╫╬╭╮╯╰╱╲╳╴╵╶╷╸╹╺╻╼╽╾╿▁▂▃▅▆▇█▉▊▋▌▍▎▏▐░▒▓▔▕▖▗▘▙▚▛▜▝▞▟■□▣▤▥▦▧▨▩▪▫▬▭▮▯▶◀◄◆◇◉◊○◎●◐◑◒◓◕◖◗◙◚◛◜◝◞◟◠◡◧◨◩◪◫◯◴◵◶◷✓✕⭘ﬁﬂ﻿�`,
                 supportedLanguages: [
@@ -1039,7 +1039,7 @@ To support the project directly <a href="https://www.buymeacoffee.com/eigilnikol
         {
             name: "about",
             description: `Commit Mono is a project by Eigil Nikolajsen. Eigil is a creative developer and designer from Denmark with a particular interest in type design. He holds a bachelor degree in Interactive Design from the Danish School of Media and Journalism in 2023.
-<a href="https://www.buymeacoffee.com/eigilnikolajsen" tabindex="0" target="_blank">Support this project</a>`,
+<a href="https://www.buymeacoffee.com/eigilnikolajsen" tabindex="0" target="_blank" class="download_button">Support this project</a>`,
             content: {},
         },
     ],

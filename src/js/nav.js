@@ -194,7 +194,7 @@ function keyDown(e) {
             document.querySelector("body").style.fontFeatureSettings = "'ss01', 'ss03', 'ss04', 'ss05' 0"
         }
 
-        if (e.key.includes("Arrow")) {
+        if (e.key.toString().includes("Arrow")) {
             simulateTab(e)
         }
     } else if (e.key == "Escape" && insideTextField) {
