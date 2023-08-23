@@ -129,10 +129,27 @@ function keyDown(e) {
     }
 
     if (!insideTextField || e.key == "Enter") {
-        const activeKey = !e.shiftKey
-            ? document.querySelector(`.key[data-key-code="${e.key}"]`)
-            : document.querySelector(`.key[data-key-code="Shift${e.key}"]`)
-        activeKey?.classList.add("active_key")
+        let activeKey
+
+        if (e.shiftKey) {
+            activeKey = document.querySelector(`.key[data-key-code="Shift${e.key}"]`)
+        } else {
+            activeKey =
+                document.querySelector(`.key[data-key-code="Digit${e.key}"]`) ??
+                document.querySelector(`.key[data-key-code="${e.key}"]`)
+        }
+
+        if (e.key.includes("Digit")) {
+            const digitMatch = e.key.match(/\d+/)
+            if (digitMatch) {
+                const extractedNumber = Number(digitMatch[0])
+                sectionNavigation(extractedNumber - 1)
+                return true
+            }
+            return false
+        }
+
+        if (activeKey) activeKey.classList.add("active_key")
 
         if (e.code.includes("Digit")) {
             sectionNavigation(+e.key == 0 ? 9 : +e.key - 1)
