@@ -132,7 +132,7 @@ function keyDown(e) {
         const activeKey = !e.shiftKey
             ? document.querySelector(`.key[data-key-code="${e.key}"]`)
             : document.querySelector(`.key[data-key-code="Shift${e.key}"]`)
-        activeKey?.classList.add("active_key")
+        if (activeKey) activeKey.classList.add("active_key")
 
         if (e.code.includes("Digit")) {
             sectionNavigation(+e.key == 0 ? 9 : +e.key - 1)
