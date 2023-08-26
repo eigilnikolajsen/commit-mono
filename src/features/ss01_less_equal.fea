@@ -12,6 +12,8 @@ feature ss01 {
 
     sub @space_actor less' equal @space_actor by less_equal.liga;
     sub @space_actor less_equal.liga equal' @space_actor by space;
+    sub @space_actor [less.arrow_start_equal less.arrow_start_equal.case]' [equal.arrow equal.arrow.case] @space_actor by less_equal.liga;
+    sub @space_actor less_equal.liga [equal.arrow equal.arrow.case]' @space_actor by space;
 
     sub @space_actor greater' equal @space_actor by greater_equal.liga;
     sub @space_actor greater_equal.liga equal' @space_actor by space;

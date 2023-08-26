@@ -37,10 +37,34 @@ h2:focus .active_feature {
 
 #charset {
     width: var(--max-width);
+    width: 32ch;
     font-variant-ligatures: none;
     white-space: pre-wrap;
-    font-size: 3rem;
-    line-height: 4rem;
+    font-size: 5rem;
+    line-height: 5rem;
+    display: grid;
+    grid-template-columns: repeat(10, 1ch);
+    gap: 1ch;
+}
+
+#charset .charset_letter {
+    /* background-color: blue; */
+    font-size: inherit;
+    width: fit-content;
+    line-height: inherit;
+}
+
+.new_label {
+    position: relative;
+}
+
+.new_label::before {
+    content: "NEW";
+    font-size: 0.66rem;
+    background: var(--text);
+    color: var(--bg);
+    position: relative;
+    padding: 0 0.5ch;
 }
 
 #language_support {

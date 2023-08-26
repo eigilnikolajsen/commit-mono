@@ -63,7 +63,13 @@ function buildDocs() {
     })
     const charset = document.querySelector("#charset")
     const tunedCharset = docsContent.charset.split("").join(" ")
-    charset.textContent = tunedCharset
+    docsContent.charset.split("").forEach((char) => {
+        const span = document.createElement("p")
+        span.classList.add("charset_letter")
+        span.textContent = char
+        charset.append(span)
+    })
+    // charset.textContent = tunedCharset
 
     const languageSupport = document.querySelector("#language_support")
     docsContent.supportedLanguages.forEach((language) => {

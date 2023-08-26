@@ -127,47 +127,49 @@ function makeCustomFont(settings) {
             // #1 change alternates by switching their paths
             // the below loop does this
             // loop through the alternate settings
-            Object.entries(settings.alternates).forEach(([alternate, active]) => {
-                //
-                // filter for only the active ones
-                if (!active) return
-                // // console.log("alternate", alternate, "active", active)
-
-                // look at all the fonts features
-                font.tables.gsub.features.forEach((feature) => {
+            Object.entries(settings.alternates)
+                .toReversed() // to make the alt g override the italic g
+                .forEach(([alternate, active]) => {
                     //
-                    // if the feature matches the alternate we're currently on
-                    if (feature.tag == alternate) {
-                        // // console.log("feature", feature)
+                    // filter for only the active ones
+                    if (!active) return
+                    // // console.log("alternate", alternate, "active", active)
 
-                        // then loop through the list of lookup indexes of that feature
-                        feature.feature.lookupListIndexes.forEach((lookupIndex) => {
-                            // // console.log("lookupIndex", lookupIndex)
+                    // look at all the fonts features
+                    font.tables.gsub.features.forEach((feature) => {
+                        //
+                        // if the feature matches the alternate we're currently on
+                        if (feature.tag == alternate) {
+                            // // console.log("feature", feature)
 
-                            // loop through the subtable of each lookup at the lookup index
-                            font.tables.gsub.lookups[lookupIndex].subtables.forEach((subtable) => {
-                                // // console.log("subtable", subtable)
+                            // then loop through the list of lookup indexes of that feature
+                            feature.feature.lookupListIndexes.forEach((lookupIndex) => {
+                                // // console.log("lookupIndex", lookupIndex)
 
-                                // loop through the glyphs of the subtable
-                                subtable.coverage.glyphs.forEach((glyphIndexOriginal, index) => {
-                                    //
-                                    // glyphIndexOriginal is the index of the original glyph
-                                    // glyphIndexSubstitute is the index of the glyph to substitute the original with
-                                    const glyphIndexSubstitute = subtable.substitute[index]
+                                // loop through the subtable of each lookup at the lookup index
+                                font.tables.gsub.lookups[lookupIndex].subtables.forEach((subtable) => {
+                                    // // console.log("subtable", subtable)
 
-                                    // get the paths for the original and the substitute glyph
-                                    const glyphPathOriginal = font.glyphs.glyphs[glyphIndexOriginal].path
-                                    const glyphPathSubstitute = font.glyphs.glyphs[glyphIndexSubstitute].path
+                                    // loop through the glyphs of the subtable
+                                    subtable.coverage.glyphs.forEach((glyphIndexOriginal, index) => {
+                                        //
+                                        // glyphIndexOriginal is the index of the original glyph
+                                        // glyphIndexSubstitute is the index of the glyph to substitute the original with
+                                        const glyphIndexSubstitute = subtable.substitute[index]
 
-                                    // swap the paths, so the original glyph gets the path of the substitute and vice versa
-                                    font.glyphs.glyphs[glyphIndexOriginal].path = glyphPathSubstitute
-                                    font.glyphs.glyphs[glyphIndexSubstitute].path = glyphPathOriginal
+                                        // get the paths for the original and the substitute glyph
+                                        const glyphPathOriginal = font.glyphs.glyphs[glyphIndexOriginal].path
+                                        const glyphPathSubstitute = font.glyphs.glyphs[glyphIndexSubstitute].path
+
+                                        // swap the paths, so the original glyph gets the path of the substitute and vice versa
+                                        font.glyphs.glyphs[glyphIndexOriginal].path = glyphPathSubstitute
+                                        font.glyphs.glyphs[glyphIndexSubstitute].path = glyphPathOriginal
+                                    })
                                 })
                             })
-                        })
-                    }
+                        }
+                    })
                 })
-            })
 
             // change width
             const defaultWidth = 600

@@ -943,7 +943,10 @@
                                     </div>
                                     <div class="docs_container" id="charset_container_docs">
                                         <h2 tabindex="0" data-edit="true">Full characterset without alternates</h2>
-                                        <p tabindex="0" data-edit="true">Support for Greek and Cyrillic coming soon.</p>
+                                        <p tabindex="0" data-edit="true" class="new_label">
+                                            Added support for Greek. Καλώς ήρθες, απόλαυσε!
+                                        </p>
+                                        <p tabindex="0" data-edit="true">Support for Cyrillic coming soon.</p>
                                         <br />
                                         <div id="charset" tabindex="0" data-edit="true"></div>
                                         <p tabindex="0" data-edit="true">End of transmission.</p>
@@ -1181,7 +1184,7 @@
             <div tabindex="0" id="block_tab_end"></div>
         </div>
         <script>
-            const versionOfCommitMono = "V134"
+            const versionOfCommitMono = "V135"
             let fontsLoaded = false
             const commitMono = new FontFace("CommitMono", `url(/src/fonts/CommitMono${versionOfCommitMono}-VF.woff2)`, {
                 style: "normal",
