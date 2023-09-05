@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Braille Glyph Recipes</title>
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+            #app {
+                position: absolute;
+                inset: 0;
+                display: grid;
+                place-items: center;
+            }
+            #container {
+                width: 100%;
+                display: grid;
+                grid-template-columns: repeat(16, 1fr);
+                background-color: #eee;
+            }
+            #container > div {
+                aspect-ratio: 1 / 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-self: center;
+                background-color: #fff;
+                border-top: 1px solid #ddd;
+                border-left: 1px solid #ddd;
+            }
+            #container > div.clicked {
+                background-color: #eee;
+            }
+            #container > div > p:first-of-type {
+                font-family: monospace;
+                font-size: 0.5vw;
+                text-align: center;
+            }
+            #container > div > p:last-of-type {
+                font-family: monospace;
+                font-size: 3vw;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <div id="container"></div>
+        </div>
+        <script src="braille.js"></script>
+    </body>
+</html>

@@ -15,7 +15,11 @@ function brailleRecipes() {
         7: [0, "bd3"],
         8: ["bd1", "bd3"],
     }
+    const container = document.querySelector("#container")
 
+    const blank = document.createElement("div")
+    blank.innerHTML = `<p>brblank</p><p>${String.fromCharCode(10240)}</p>`
+    container.append(blank)
     for (let i = 1; i < 256; i++) {
         const name =
             "dots" +
@@ -41,8 +45,15 @@ function brailleRecipes() {
                 )
                 .join("+")
         // console.log(i.toString(2), dots, dotPositions)
-        console.log(name, recipe)
+        const div = document.createElement("div")
+        div.innerHTML = `<p>${name}</p><p>${String.fromCharCode(10240 + i)}</p>`
+        div.addEventListener("click", () => {
+            div.classList.toggle("clicked")
+            navigator.clipboard.writeText(recipe)
+        })
+        container.append(div)
+        // console.log(name, recipe)
     }
-    console.log(positions)
+    // console.log(positions)
 }
 brailleRecipes()
