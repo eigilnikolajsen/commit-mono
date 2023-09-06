@@ -19,6 +19,8 @@ feature ss03 {
         ignore sub @case_default @case_default @case_default' @case_default @case_default @lowercase_actor;
         ignore sub @case_default @case_default @case_default @case_default' @case_default @lowercase_actor;
         ignore sub @case_default @case_default @case_default @case_default @case_default' @lowercase_actor;
+        ignore sub @case_default @uppercase_actor @case_default';
+        ignore sub @case_default @case_default @uppercase_actor @case_default';
         sub @uppercase_actor @case_default' by @case_top;
     } CloseUp_1;
 
@@ -28,6 +30,8 @@ feature ss03 {
         ignore sub @lowercase_actor @case_default @case_default @case_default';
         ignore sub @lowercase_actor @case_default @case_default @case_default @case_default';
         ignore sub @lowercase_actor @case_default @case_default @case_default @case_default @case_default';
+        ignore sub @case_default' @uppercase_actor @case_default;
+        ignore sub @case_default' @uppercase_actor @case_default @case_default;
         sub @case_default' @uppercase_actor by @case_top;
         sub @case_default' @case_default @uppercase_actor by @case_top;
         sub @case_default' @case_default @case_default @uppercase_actor by @case_top;
