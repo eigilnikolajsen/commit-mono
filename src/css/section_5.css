@@ -18,7 +18,8 @@ form > div {
     position: relative;
 }
 
-form input {
+form input,
+input[type="file"] {
     -webkit-appearance: none;
     appearance: none;
     background-color: var(--text);

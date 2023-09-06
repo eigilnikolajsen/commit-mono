@@ -36,7 +36,7 @@
 main {
     min-width: 100vw;
     width: fit-content;
-    padding: 4rem 2ch 0 4ch;
+    padding: 4rem 4ch 0 4ch;
 }
 
 header nav {
@@ -55,6 +55,18 @@ header #keyboard_section {
     z-index: 100;
     position: fixed;
     bottom: 0;
+}
+
+@media (max-width: 1000px) {
+    main {
+        padding: 4rem 2ch 0 2ch;
+    }
+    header nav {
+        padding: 1rem 2ch 0 2ch;
+    }
+    header #keyboard_section {
+        padding: 0.25rem 2ch 1rem 2ch;
+    }
 }
 
 header #keyboard_section,
@@ -345,4 +357,11 @@ input:focus + .shake_down {
 }
 .nav_button:focus {
     text-decoration: none;
+}
+
+br {
+    line-height: 1rem;
+    height: 1rem;
+    display: block;
+    content: "";
 }

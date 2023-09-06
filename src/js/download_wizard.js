@@ -4,7 +4,7 @@ const downloadSettingsCustom = {
     alternates: {},
     features: {},
     letterSpacing: 0,
-    lineHeight: 0,
+    lineHeight: 1,
 }
 const downloadSettingsDefault = {
     weight: 450,
@@ -12,7 +12,7 @@ const downloadSettingsDefault = {
     alternates: {},
     features: {},
     letterSpacing: 0,
-    lineHeight: 0,
+    lineHeight: 1,
 }
 const fontFileBlobs = { regular: null, italic: null, bold: null, bolditalic: null }
 
@@ -307,7 +307,7 @@ function makeCustomFont(settings) {
 async function getZipFileBlob(kindOfDownload, fonts) {
     // console.log(fontFileBlobs, fonts)
 
-    const { BlobWriter, BlobReader, HttpReader, ZipWriter } = zip
+    const { BlobWriter, BlobReader, HttpReader, ZipWriter, TextReader } = zip
     const zipFileWriter = new BlobWriter()
     const zipWriter = new ZipWriter(zipFileWriter)
 
@@ -326,6 +326,7 @@ async function getZipFileBlob(kindOfDownload, fonts) {
                 new HttpReader(`/src/fonts/CommitMono${versionOfCommitMono}-VF.woff2`)
             ),
         zipWriter.add("installation.txt", new HttpReader("/src/txt/installation.txt")),
+        zipWriter.add("custom-settings.json", new TextReader(JSON.stringify(downloadSettingsCustom))),
         zipWriter.add("license.txt", new HttpReader("/src/txt/license.txt")),
     ])
     const zipFileBlob = await zipWriter.close()

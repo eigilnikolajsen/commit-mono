@@ -158,9 +158,8 @@
                                     <br />
                                     <br />
                                     <br />
-                                    <h1 tabindex="0" data-edit="true">
-                                        Commit Mono. <br />Neutral programming typeface.
-                                    </h1>
+                                    <h1 tabindex="0" data-edit="true">Commit Mono.</h1>
+                                    <h1 tabindex="0" data-edit="true">Neutral programming typeface.</h1>
                                     <br />
                                     <p tabindex="0" data-edit="true">
                                         Commit Mono is an anonymous and neutral coding font focused on creating a better
@@ -587,7 +586,6 @@
                                     <button class="download_button" onclick="downloadFont('dev', this)" tabindex="0">
                                         Download custom for dev
                                     </button>
-                                    <br />
                                     <p>
                                         Recommended download of style group with your custom settings for development.
                                     </p>
@@ -595,7 +593,6 @@
                                     <button class="download_button" onclick="downloadFont('design', this)" tabindex="0">
                                         Download custom for design
                                     </button>
-                                    <br />
                                     <p>
                                         Download all 34 cuts with your custom settings + source variable fonts (.tff &
                                         .woff2) for design. Variable fonts don’t contain custom settings. Use these
@@ -603,6 +600,22 @@
                                         <span id="custom_feature_code" tabindex="0" data-edit="true"></span>
                                     </p>
                                     <br />
+                                    <input
+                                        type="file"
+                                        name="font_settings_file"
+                                        id="font_settings_file"
+                                        accept=".json, application/json"
+                                        tabindex="0"
+                                        onchange="uploadCustomSettings(event, this)"
+                                    />
+                                    <label for="font_settings_file" class="download_button"
+                                        >Retrieve custom settings</label
+                                    >
+                                    <p>
+                                        Upload the ‘custom-settings.json’ file from a previous version to retrieve
+                                        custom settings from that download.
+                                    </p>
+                                    <p id="custom_settings_feedback"><br /></p>
                                     <br />
                                     <p tabindex="0" data-edit="true">
                                         Changing the settings above changes the download. Recommended weight: 450 for

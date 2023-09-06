@@ -123,7 +123,7 @@ function buildExample() {
                 const fieldset = document.createElement("fieldset")
                 const duo = [0, 0]
                 const p = document.createElement("p")
-                p.textContent = feature.label
+                p.textContent = `${feature.feature}: ${feature.label}`
                 p.id = `alt_${feature.name}`
                 fieldset.append(p)
                 duo.forEach((_, index) => {
@@ -131,16 +131,15 @@ function buildExample() {
                     const input = document.createElement("input")
                     input.type = "radio"
                     input.name = feature.name
-                    input.id = `${feature.name}${index}`
+                    input.id = `${feature.feature}_${!!index}`
                     input.value = `'${feature.feature}' ${index == 0 ? "off" : "on"}`
                     input.dataset.forform = "examplesettings_form"
-                    // input.tabIndex = 0
                     if (!feature.on && index == 0) input.setAttribute("checked", "true")
                     if (feature.on && index == 1) input.setAttribute("checked", "true")
                     const label = document.createElement("label")
                     if (feature.type == "feature") label.textContent = index == 0 ? "OFF" : "ON"
                     if (feature.type == "alternate") label.textContent = index == 0 ? "DEF" : "ALT"
-                    label.setAttribute("for", `${feature.name}${index}`)
+                    label.setAttribute("for", `${feature.feature}_${!!index}`)
                     div.append(input, label)
                     fieldset.append(div)
                 })
@@ -223,7 +222,7 @@ function updateWeight(event, form) {
         websiteData.italic ? "1" : "0"
     }`
 
-    // console.log(downloadSettingsCustom)
+    console.log(downloadSettingsCustom)
 
     if (event) event.preventDefault()
 }
@@ -317,4 +316,37 @@ function updateExampleSettings(event, form, isDefault) {
 
 function areObjectsIdentical(obj1, obj2) {
     return JSON.stringify(obj1) === JSON.stringify(obj2)
+}
+
+async function uploadCustomSettings(event, fileInput) {
+    event.stopPropagation()
+    event.preventDefault()
+
+    const file = fileInput.files[0]
+    const fileType = file.name.split(".").pop()
+
+    if (fileType == "json") {
+        const fileText = await file.text()
+        const uploadedSettings = JSON.parse(fileText)
+        console.log(uploadedSettings)
+
+        if (uploadedSettings.weight) {
+            document.forms["weight_form"][`weight_${uploadedSettings.weight}`].checked = true
+            updateWeight(null, weightForm)
+        }
+        if (uploadedSettings.letterSpacing) {
+            document.forms["letter_spacing_form"][`letter_spacing_${uploadedSettings.letterSpacing}`].checked = true
+            updateLetterSpacing(null, letterSpacingForm)
+        }
+        if (uploadedSettings.lineHeight) {
+            document.forms["line_height_form"][`line_height_${uploadedSettings.lineHeight}`].checked = true
+            updateLineHeight(null, lineHeightForm)
+        }
+        if (uploadedSettings.alternates) {
+            Object.entries(uploadedSettings.alternates).forEach(([feature, enabled]) => {
+                document.forms["examplesettings_form"][`${feature}_${enabled}`].checked = true
+            })
+            updateExampleSettings(null, exampleSettingsForm, false)
+        }
+    }
 }

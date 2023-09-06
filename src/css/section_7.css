@@ -1,7 +1,7 @@
 #section_7 #alternates_container fieldset,
 #section_7 #features_container fieldset {
     display: grid;
-    grid-template-columns: 21ch 3ch 3ch;
+    grid-template-columns: 28ch 3ch 3ch;
     gap: 2ch;
 }
 
@@ -138,4 +138,21 @@ input[type="text"]:auto-fill:focus {
 input[type="text"] + p {
     display: inline-block;
     margin-left: 0ch;
+}
+
+.file_label {
+    height: 1rem;
+    border: 1px solid var(--text);
+    background-color: var(--bg);
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    display: inline-block;
+    padding: 0 0.5ch;
+}
+
+input[type="file"]:focus + label {
+    background-color: var(--text);
+    color: var(--bg);
+    text-decoration: none;
 }
