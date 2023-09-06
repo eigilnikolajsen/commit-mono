@@ -27,8 +27,8 @@ function brailleRecipes() {
                 .toString(2)
                 .split("")
                 .reverse()
-                .map((n, i) => (n == 1 ? i + 1 : undefined))
-                .filter((n) => n)
+                .map((n, i) => (n == 1 ? i + 1 : null))
+                .filter(Boolean)
                 .join("")
         const recipe =
             "=" +
@@ -36,15 +36,11 @@ function brailleRecipes() {
                 .toString(2)
                 .split("")
                 .reverse()
-                .map((n, i) => (n == 1 ? i + 1 : undefined))
-                .filter((n) => n)
+                .map((n, i) => (n == 1 ? i + 1 : null))
+                .filter(Boolean)
                 .map((dotNumber) => positions[dotNumber])
-                .map(
-                    ([x, y]) =>
-                        `_bdot@${x ? `${"`"}origin+${x}${"`"}` : "origin"},${y ? `${"`"}origin-${y}${"`"}` : "origin"}`
-                )
+                .map(([x, y]) => `_bdot@${x ? "`origin+" + x + "`" : "origin"},${y ? "`origin-" + y + "`" : "origin"}`)
                 .join("+")
-        // console.log(i.toString(2), dots, dotPositions)
         const div = document.createElement("div")
         div.innerHTML = `<p>${name}</p><p>${String.fromCharCode(10240 + i)}</p>`
         div.addEventListener("click", () => {
