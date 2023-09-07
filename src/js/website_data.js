@@ -965,6 +965,7 @@ To support the project directly <a href="https://www.buymeacoffee.com/eigilnikol
                     "Galician",
                     "Ganda",
                     "German",
+                    "Greek",
                     "Gusii",
                     "Hungarian",
                     "Icelandic",
