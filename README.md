@@ -9,3 +9,5 @@ Commit Mono is an anonymous and neutral programming typeface focused on creating
 <br>
 
 If you wish to support this project directly [**buy me a coffee**](https://www.buymeacoffee.com/eigilnikolajsen).
+
+![Commit Mono concept image](/src/img/commitmono.png)
