@@ -43,7 +43,7 @@ async function updateCodeFont() {
     // console.log("updateCodeFont")
     opentype
         .load(
-            `/src/fonts/CommitMono${versionOfCommitMono}-${websiteData.weight}${
+            `/src/fonts/fontlab/CommitMono${versionOfCommitMono}-${websiteData.weight}${
                 websiteData.italic ? "Italic" : "Regular"
             }.otf`
         )
@@ -54,7 +54,7 @@ async function updateCodeFont() {
         })
         .catch((err) => console.log(err))
     // opentype
-    //     .load("src/fonts/CommitMonoV136-500Regular.otf")
+    //     .load("src/fonts/fontlab/CommitMonoV136-500Regular.otf")
     //     .then((font) => {
     //         console.log(font)
     //         console.log(font.toTables())

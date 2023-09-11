@@ -1199,10 +1199,14 @@
         <script>
             const versionOfCommitMono = "V136"
             let fontsLoaded = false
-            const commitMono = new FontFace("CommitMono", `url(/src/fonts/CommitMono${versionOfCommitMono}-VF.woff2)`, {
-                style: "normal",
-                weight: "450",
-            })
+            const commitMono = new FontFace(
+                "CommitMono",
+                `url(/src/fonts/fontlab/CommitMono${versionOfCommitMono}-VF.woff2)`,
+                {
+                    style: "normal",
+                    weight: "450",
+                }
+            )
             // Add to the document.fonts (FontFaceSet)
             document.fonts.add(commitMono)
 

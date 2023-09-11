@@ -113,12 +113,12 @@ function catchError(button, error) {
 function makeCustomFont(settings) {
     // console.log("makeCustomFont")
 
-    const fontBaseURL = "/src/fonts/"
+    const fontBaseURL = "/src/fonts/fontlab/"
     const fontName = "CommitMono" + versionOfCommitMono
     const fontWeight = settings.weight
     const fontItalic = settings.italic ? "Italic" : "Regular"
     const fontFilePath = `${fontBaseURL}${fontName}-${fontWeight}${fontItalic}.otf`
-    // "/src/fonts/CommitMonoV132-450Italic.otf"
+    // "/src/fonts/fontlab/CommitMonoV132-450Italic.otf"
 
     return opentype
         .load(fontFilePath)
@@ -318,12 +318,12 @@ async function getZipFileBlob(kindOfDownload, fonts) {
         kindOfDownload === "design" &&
             zipWriter.add(
                 "CommitMono VariableFont.ttf",
-                new HttpReader(`/src/fonts/CommitMono${versionOfCommitMono}-VF.ttf`)
+                new HttpReader(`/src/fonts/fontlab/CommitMono${versionOfCommitMono}-VF.ttf`)
             ),
         kindOfDownload === "design" &&
             zipWriter.add(
                 "CommitMono VariableFont.woff2",
-                new HttpReader(`/src/fonts/CommitMono${versionOfCommitMono}-VF.woff2`)
+                new HttpReader(`/src/fonts/fontlab/CommitMono${versionOfCommitMono}-VF.woff2`)
             ),
         zipWriter.add("installation.txt", new HttpReader("/src/txt/installation.txt")),
         zipWriter.add("custom-settings.json", new TextReader(JSON.stringify(downloadSettingsCustom))),

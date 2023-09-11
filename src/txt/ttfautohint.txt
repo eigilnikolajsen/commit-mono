@@ -1,0 +1,22 @@
+# step 1: empty src/fonts/export
+# step 2: drag contents of export on website to src/fonts/export
+# step 3: make sure fontforge and ttfautohint is installed
+# step 4: run this
+
+rm src/fonts/CommitMono.zip
+mkdir src/fonts/export/ttfautohint
+fontforge -lang ff -c 'Open("src/fonts/export/CommitMono-450-Regular.otf"); Generate("src/fonts/export/CommitMono-450-Regular-unhinted.ttf")'
+fontforge -lang ff -c 'Open("src/fonts/export/CommitMono-450-Italic.otf"); Generate("src/fonts/export/CommitMono-450-Italic-unhinted.ttf")'
+fontforge -lang ff -c 'Open("src/fonts/export/CommitMono-700-Regular.otf"); Generate("src/fonts/export/CommitMono-700-Regular-unhinted.ttf")'
+fontforge -lang ff -c 'Open("src/fonts/export/CommitMono-700-Italic.otf"); Generate("src/fonts/export/CommitMono-700-Italic-unhinted.ttf")'
+ttfautohint -R src/fonts/export/CommitMono-450-Regular-unhinted.ttf -a sss src/fonts/export/CommitMono-450-Regular-unhinted.ttf src/fonts/export/ttfautohint/CommitMono-450-Regular.ttf
+ttfautohint -R src/fonts/export/CommitMono-450-Regular-unhinted.ttf -a sss src/fonts/export/CommitMono-450-Italic-unhinted.ttf src/fonts/export/ttfautohint/CommitMono-450-Italic.ttf
+ttfautohint -R src/fonts/export/CommitMono-450-Regular-unhinted.ttf -a sss src/fonts/export/CommitMono-700-Regular-unhinted.ttf src/fonts/export/ttfautohint/CommitMono-700-Regular.ttf
+ttfautohint -R src/fonts/export/CommitMono-450-Regular-unhinted.ttf -a sss src/fonts/export/CommitMono-700-Italic-unhinted.ttf src/fonts/export/ttfautohint/CommitMono-700-Italic.ttf
+rm src/fonts/export/CommitMono-450-Regular-unhinted.ttf
+rm src/fonts/export/CommitMono-450-Italic-unhinted.ttf
+rm src/fonts/export/CommitMono-700-Regular-unhinted.ttf
+rm src/fonts/export/CommitMono-700-Italic-unhinted.ttf
+zip -r src/fonts/CommitMono.zip src/fonts/export
+
+# step 5: upload src/fonts/CommitMono.zip to GitHub
