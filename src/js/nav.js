@@ -163,12 +163,12 @@ function keyDown(e) {
 
         if (e.key == "b" || e.key == "l") {
             if (e.key == "b") websiteData.weight = websiteData.weight == 700 ? 700 : websiteData.weight + 25
-            if (e.key == "l") websiteData.weight = websiteData.weight == 300 ? 300 : websiteData.weight - 25
+            if (e.key == "l") websiteData.weight = websiteData.weight == 200 ? 200 : websiteData.weight - 25
             updateCodeFont()
             document.querySelector("body").style.fontVariationSettings = `"wght" ${websiteData.weight}, "ital" ${
                 websiteData.italic ? "1" : "0"
             }`
-            showHideChangeSettings(`Weight: ${websiteData.weight}. Def: 450, Min: 300, Max: 700.`)
+            showHideChangeSettings(`Weight: ${websiteData.weight}. Def: 400, Min: 200, Max: 700.`)
             document.forms["weight_form"][`weight_${websiteData.weight}`].checked = true
             updateWeight(null, weightForm)
         }
@@ -345,8 +345,8 @@ function pushPage(key) {
         document.querySelector("#canvas").style.transform = "scale(1)"
         rem = 16
         document.documentElement.style.fontSize = "16px"
-        websiteData.weight = 450
-        document.querySelector("body").style.fontVariationSettings = `"wght" 450`
+        websiteData.weight = 400
+        document.querySelector("body").style.fontVariationSettings = `"wght" 400`
         document.forms["weight_form"][`weight_${websiteData.weight}`].checked = true
         codeExample.style.fontFamily = "CommitMono"
         document.querySelector("#font_name").value = ""
@@ -472,8 +472,8 @@ function checkTutorialKeys(e) {
             tutorialFinished = true
             const tutorialContainer = document.querySelector("#tutorial_complete")
             tutorialContainer.innerHTML = `<p>Tutorial complete! Your present is the variable version of Commit Mono:</p>
-<p><a href="/src/fonts/fontlab/CommitMonoV136-VF.ttf" tabindex="0">Download CommitMono-VF.ttf</a></p>
-<p><a href="/src/fonts/fontlab/CommitMonoV136-VF.woff2" tabindex="0">Download CommitMono-VF.woff2</a></p>
+<p><a href="/src/fonts/fontlab/CommitMonoV137-VF.ttf" tabindex="0">Download CommitMono-VF.ttf</a></p>
+<p><a href="/src/fonts/fontlab/CommitMonoV137-VF.woff2" tabindex="0">Download CommitMono-VF.woff2</a></p>
 <br />`
         }
     }

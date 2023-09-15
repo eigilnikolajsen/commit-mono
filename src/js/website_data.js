@@ -5,7 +5,7 @@ const websiteData = {
         distance: 64,
         scaleOffset: 1.5,
     },
-    weight: 450,
+    weight: 400,
     letterSpacing: 0,
     lineHeight: 1,
     fontName: "CommitMono",
@@ -325,6 +325,10 @@ Tip: Press <span class="span_key">M</span> to switch between light and dark mode
                     },
                 ],
                 weights: [
+                    "200",
+                    "225",
+                    "250",
+                    "275",
                     "300",
                     "325",
                     "350",
@@ -547,7 +551,7 @@ fibonacci(num)
             @font-face {
                 font-family: "Commit Mono";
                 src: url("/fonts/CommitMono.woff2");
-                font-weight: 450;
+                font-weight: 400;
             }
             :root {
                 --grey: #aaa;
