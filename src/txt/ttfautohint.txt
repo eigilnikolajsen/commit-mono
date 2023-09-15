@@ -7,6 +7,7 @@ mkdir src/fonts/CommitMono-1.137
 mv src/fonts/website-export/CommitMono.zip src/fonts/CommitMono-1.137/CommitMono.zip
 cd src/fonts/CommitMono-1.137
 unzip CommitMono.zip
+rm CommitMono.zip
 mkdir ttfautohint
 fontforge -lang ff -c 'Open("CommitMono-400-Regular.otf"); Generate("CommitMono-400-Regular-unhinted.ttf")'
 fontforge -lang ff -c 'Open("CommitMono-400-Italic.otf"); Generate("CommitMono-400-Italic-unhinted.ttf")'
