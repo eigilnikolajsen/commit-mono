@@ -162,8 +162,8 @@ function keyDown(e) {
         }
 
         if (e.key == "b" || e.key == "l") {
-            if (e.key == "b") websiteData.weight = websiteData.weight == 700 ? 700 : websiteData.weight + 50
-            if (e.key == "l") websiteData.weight = websiteData.weight == 200 ? 200 : websiteData.weight - 50
+            if (e.key == "b") websiteData.weight = websiteData.weight == 700 ? 700 : websiteData.weight + 25
+            if (e.key == "l") websiteData.weight = websiteData.weight == 200 ? 200 : websiteData.weight - 25
             updateCodeFont()
             document.querySelector("body").style.fontVariationSettings = `"wght" ${websiteData.weight}, "ital" ${
                 websiteData.italic ? "1" : "0"

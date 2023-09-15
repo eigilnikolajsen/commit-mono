@@ -72,7 +72,7 @@ async function downloadFont(kindOfDownload, button) {
                 }
             }
             if (kindOfDownload === "design") {
-                for (let weight = 200; weight <= 700; weight += 50) {
+                for (let weight = 200; weight <= 700; weight += 25) {
                     allSettings[weight + "Regular"] = {
                         ...downloadSettingsCustom,
                         style: weight + "Regular",

@@ -68,7 +68,7 @@ function buildExample() {
                 input.classList.add("example_weight")
                 input.value = weight
                 input.dataset.forform = "weight_form"
-                if (index == 6) {
+                if (weight == 400) {
                     input.setAttribute("checked", "true")
                 }
                 const label = document.createElement("label")
