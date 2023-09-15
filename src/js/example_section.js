@@ -193,7 +193,7 @@ function updateFont(event, form) {
         input.classList.add("loading_font")
         const outputFont = new FontFace(output, `url(/src/fonts/other/${output}.woff2)`, {
             style: "normal",
-            weight: "450",
+            weight: "400",
         })
         document.fonts.add(outputFont)
         outputFont.load()

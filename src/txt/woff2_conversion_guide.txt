@@ -1,3 +1,4 @@
 #1 Place file in Downloads
 #2 Navigate to /Developer/woff2
-#3 ./woff2_compress ~/Downloads/CommitMonoV136-VF.ttf
+#3
+~/Developer/woff2/woff2_compress ~/Library/CloudStorage/Dropbox/Privat/Eigils\ ting/projects/typography/Font\ Projects/code-mono-font/commit-mono/export/CommitMonoV137/CommitMonoV137-VF.ttf

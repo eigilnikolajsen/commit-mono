@@ -618,8 +618,8 @@
                                     <p id="custom_settings_feedback"><br /></p>
                                     <br />
                                     <p tabindex="0" data-edit="true">
-                                        Changing the settings above changes the download. Recommended weight: 450 for
-                                        dark mode, 500 for light mode. Alternate characters will be baked and features
+                                        Changing the settings above changes the download. Recommended weight: 400 for
+                                        dark mode, 450 for light mode. Alternate characters will be baked and features
                                         merged, resulting in a single static font file that is compatible in all
                                         environments. For an installation guide, see
                                         <button
@@ -684,13 +684,13 @@
                                             <ul>
                                                 <li>
                                                     <p>
-                                                        CommitMono-450-Regular: Base version with settings and weight of
+                                                        CommitMono-400-Regular: Base version with settings and weight of
                                                         your choice.
                                                     </p>
                                                 </li>
                                                 <li>
                                                     <p>
-                                                        CommitMono-450-Italic: Italic version, same weight as regular.
+                                                        CommitMono-400-Italic: Italic version, same weight as regular.
                                                     </p>
                                                 </li>
                                                 <li>
@@ -1197,14 +1197,14 @@
             <div tabindex="0" id="block_tab_end"></div>
         </div>
         <script>
-            const versionOfCommitMono = "V136"
+            const versionOfCommitMono = "V137"
             let fontsLoaded = false
             const commitMono = new FontFace(
                 "CommitMono",
                 `url(/src/fonts/fontlab/CommitMono${versionOfCommitMono}-VF.woff2)`,
                 {
                     style: "normal",
-                    weight: "450",
+                    weight: "400",
                 }
             )
             // Add to the document.fonts (FontFaceSet)

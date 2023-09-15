@@ -5,7 +5,7 @@ const websiteData = {
         distance: 64,
         scaleOffset: 1.5,
     },
-    weight: 450,
+    weight: 400,
     letterSpacing: 0,
     lineHeight: 1,
     fontName: "CommitMono",
@@ -324,25 +324,7 @@ Tip: Press <span class="span_key">M</span> to switch between light and dark mode
                         id: "menlo",
                     },
                 ],
-                weights: [
-                    "300",
-                    "325",
-                    "350",
-                    "375",
-                    "400",
-                    "425",
-                    "450",
-                    "475",
-                    "500",
-                    "525",
-                    "550",
-                    "575",
-                    "600",
-                    "625",
-                    "650",
-                    "675",
-                    "700",
-                ],
+                weights: ["200", "250", "300", "350", "400", "450", "500", "550", "600", "650", "700"],
                 features: [
                     {
                         type: "alternate",
@@ -547,7 +529,7 @@ fibonacci(num)
             @font-face {
                 font-family: "Commit Mono";
                 src: url("/fonts/CommitMono.woff2");
-                font-weight: 450;
+                font-weight: 400;
             }
             :root {
                 --grey: #aaa;

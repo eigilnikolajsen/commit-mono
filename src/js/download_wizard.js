@@ -1,5 +1,5 @@
 const downloadSettingsCustom = {
-    weight: 450,
+    weight: 400,
     italic: false,
     alternates: {},
     features: {},
@@ -7,7 +7,7 @@ const downloadSettingsCustom = {
     lineHeight: 1,
 }
 const downloadSettingsDefault = {
-    weight: 450,
+    weight: 400,
     italic: false,
     alternates: {},
     features: {},
@@ -72,7 +72,7 @@ async function downloadFont(kindOfDownload, button) {
                 }
             }
             if (kindOfDownload === "design") {
-                for (let weight = 300; weight <= 700; weight += 25) {
+                for (let weight = 200; weight <= 700; weight += 50) {
                     allSettings[weight + "Regular"] = {
                         ...downloadSettingsCustom,
                         style: weight + "Regular",
@@ -118,7 +118,7 @@ function makeCustomFont(settings) {
     const fontWeight = settings.weight
     const fontItalic = settings.italic ? "Italic" : "Regular"
     const fontFilePath = `${fontBaseURL}${fontName}-${fontWeight}${fontItalic}.otf`
-    // "/src/fonts/fontlab/CommitMonoV132-450Italic.otf"
+    // "/src/fonts/fontlab/CommitMonoV132-400Italic.otf"
 
     return opentype
         .load(fontFilePath)
