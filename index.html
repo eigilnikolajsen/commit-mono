@@ -612,16 +612,20 @@
                                         >Retrieve custom settings</label
                                     >
                                     <p>
-                                        Upload the ‘custom-settings.json’ file from a previous version to retrieve
-                                        custom settings from that download.
+                                        By uploading the ‘custom-settings.json’ file from a previous version to retrieve
+                                        custom settings from that download. Alternatively, you can
                                         <span
                                             ><input
                                                 type="text"
                                                 name="custom-settings-input"
                                                 id="custom-settings-input"
-                                                placeholder="Or paste here...        "
+                                                placeholder="paste JSON here..."
                                                 tabindex="0"
                                         /></span>
+                                        or
+                                        <span tabindex="0" id="copy-custom-settings" class="download_button"
+                                            >copy current settings</span
+                                        >.
                                     </p>
                                     <p id="custom_settings_feedback"><br /></p>
                                     <br />

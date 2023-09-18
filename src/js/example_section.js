@@ -365,9 +365,20 @@ customSettingsInput.addEventListener("input", (e) => {
         const pastedText = JSON.parse(e.target.value)
         updateCustomSettings(pastedText)
         customSettingsInput.value = "[Import successful]"
+        setTimeout(() => (customSettingsInput.value = ""), 1500)
     } catch (error) {
         if (customSettingsInput.value.includes("[Invalid JSON")) customSettingsInput.value = ""
-        else if (!customSettingsInput.value.includes("[Import successful]"))
-            customSettingsInput.value = `[Invalid JSON]`
+        else if (!customSettingsInput.value.includes("[Import successful]")) {
+            customSettingsInput.value = "[Invalid JSON]"
+            setTimeout(() => (customSettingsInput.value = ""), 1500)
+        }
     }
+})
+
+const copyCustomSettings = document.querySelector("#copy-custom-settings")
+copyCustomSettings.addEventListener("click", () => {
+    if (navigator.clipboard) navigator.clipboard.writeText(JSON.stringify(downloadSettingsCustom))
+    const text = copyCustomSettings.textContent
+    copyCustomSettings.textContent = "[copy successful ✓]"
+    setTimeout(() => (copyCustomSettings.textContent = text), 1500)
 })
