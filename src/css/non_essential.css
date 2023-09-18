@@ -23,7 +23,7 @@ button:active {
 
 :focus,
 input:focus + label {
-    animation: flicker 60ms 2;
+    animation: flicker 40ms 2;
 }
 
 [contenteditable="true"]:focus {

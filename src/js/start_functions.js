@@ -40,7 +40,12 @@ function startAll() {
 
     changeFavicon(true)
 
-    sectionNavigation(0)
+    const sectionIndex = websiteData.sections
+        .map((section, index) => (window.location.pathname.includes(section.name) ? index : undefined))
+        .filter((index) => typeof index === "number")[0]
+    console.log(sectionIndex)
+
+    sectionNavigation(sectionIndex || 0)
 
     setInterval(checkDocumentFocus, 100)
 }

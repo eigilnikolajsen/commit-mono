@@ -65,7 +65,7 @@ function enterTextField() {
         active.blur()
         active.focus()
         insideTextField = true
-    }, 40)
+    }, 1)
 }
 function exitTextField() {
     // console.log("exitTextField")
@@ -479,6 +479,26 @@ function checkTutorialKeys(e) {
     }
 }
 
+window.addEventListener("popstate", (e) => {
+    console.log(window.history)
+    console.log(e.state.page)
+    websiteData.sections.forEach((section, index) => {
+        if (section.name == e.state.page) {
+            sectionNavigation(index)
+        }
+    })
+})
+window.addEventListener("onload", (e) => {
+    console.log("onload")
+    console.log(window.history)
+    console.log(e.state.page)
+    websiteData.sections.forEach((section, index) => {
+        if (section.name == e.state.page) {
+            sectionNavigation(index)
+        }
+    })
+})
+
 function sectionNavigation(sectionIndex) {
     const sectionName = websiteData.sections[sectionIndex]?.name
 
@@ -494,6 +514,7 @@ function sectionNavigation(sectionIndex) {
         const sectionContainer = document.querySelector(`#section_${index + 1}`)
         sectionContainer.classList.remove("visible")
         if (index == sectionIndex) {
+            history.pushState({ page: section.name }, section.name, section.name)
             sectionContainer.classList.add("visible")
         }
     })
