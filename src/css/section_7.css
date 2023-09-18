@@ -156,3 +156,21 @@ input[type="file"]:focus + label {
     color: var(--bg);
     text-decoration: none;
 }
+
+#custom-settings-input {
+    border: none;
+    width: max-content;
+    font-variation-settings: inherit;
+    opacity: 0.75;
+}
+
+/* #custom-settings-input, */
+#custom-settings-input::placeholder {
+    opacity: 0.5;
+    color: var(--text);
+    font-feature-settings: inherit;
+    font-variation-settings: inherit;
+}
+#custom-settings-input:focus::placeholder {
+    opacity: 0.75;
+}

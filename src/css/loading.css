@@ -19,13 +19,6 @@
     --max-width: 54ch;
     font-size: 16px;
 }
-/* @media (prefers-color-scheme: dark) {
-    :root {
-        --text: #aaa;
-        --middle: #555;
-        --bg: #111;
-    }
-} */
 body {
     background: var(--bg);
     color: var(--text);

@@ -323,30 +323,51 @@ async function uploadCustomSettings(event, fileInput) {
     event.preventDefault()
 
     const file = fileInput.files[0]
-    const fileType = file.name.split(".").pop()
+    const fileType = file?.name.split(".").pop()
 
     if (fileType == "json") {
         const fileText = await file.text()
         const uploadedSettings = JSON.parse(fileText)
-        console.log(uploadedSettings)
-
-        if (uploadedSettings.weight) {
-            document.forms["weight_form"][`weight_${uploadedSettings.weight}`].checked = true
-            updateWeight(null, weightForm)
-        }
-        if (uploadedSettings.letterSpacing) {
-            document.forms["letter_spacing_form"][`letter_spacing_${uploadedSettings.letterSpacing}`].checked = true
-            updateLetterSpacing(null, letterSpacingForm)
-        }
-        if (uploadedSettings.lineHeight) {
-            document.forms["line_height_form"][`line_height_${uploadedSettings.lineHeight}`].checked = true
-            updateLineHeight(null, lineHeightForm)
-        }
-        if (uploadedSettings.alternates) {
-            Object.entries(uploadedSettings.alternates).forEach(([feature, enabled]) => {
-                document.forms["examplesettings_form"][`${feature}_${enabled}`].checked = true
-            })
-            updateExampleSettings(null, exampleSettingsForm, false)
-        }
+        updateCustomSettings(uploadedSettings)
     }
 }
+
+function updateCustomSettings(settings) {
+    if (settings.weight) {
+        document.forms["weight_form"][`weight_${settings.weight}`].checked = true
+        updateWeight(null, weightForm)
+    }
+    if (settings.letterSpacing) {
+        document.forms["letter_spacing_form"][`letter_spacing_${settings.letterSpacing}`].checked = true
+        updateLetterSpacing(null, letterSpacingForm)
+    }
+    if (settings.lineHeight) {
+        document.forms["line_height_form"][`line_height_${settings.lineHeight}`].checked = true
+        updateLineHeight(null, lineHeightForm)
+    }
+    if (settings.alternates) {
+        Object.entries(settings.alternates).forEach(([feature, enabled]) => {
+            document.forms["examplesettings_form"][`${feature}_${enabled}`].checked = true
+        })
+        updateExampleSettings(null, exampleSettingsForm, false)
+    }
+}
+
+const customSettingsInput = document.querySelector("#custom-settings-input")
+customSettingsInput.addEventListener("click", () => {
+    enterTextField()
+    customSettingsInput.value = ""
+})
+customSettingsInput.addEventListener("blur", exitTextField)
+customSettingsInput.addEventListener("input", (e) => {
+    enterTextField()
+    try {
+        const pastedText = JSON.parse(e.target.value)
+        updateCustomSettings(pastedText)
+        customSettingsInput.value = "[Import successful]"
+    } catch (error) {
+        if (customSettingsInput.value.includes("[Invalid JSON")) customSettingsInput.value = ""
+        else if (!customSettingsInput.value.includes("[Import successful]"))
+            customSettingsInput.value = `[Invalid JSON]`
+    }
+})

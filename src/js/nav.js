@@ -119,11 +119,11 @@ function keyDown(e) {
             let node = active
             if (node.nodeName == "INPUT") node = active.parentNode.querySelector("input + label")
             if (active.nodeName == "INPUT") {
-                void node.offsetHeight
-                node.classList.add("shake")
+                void node?.offsetHeight
+                if (node) node.classList.add("shake")
             } else if (active.nodeName != "SUMMARY" && active.nodeName != "BUTTON") {
-                void node.offsetHeight
-                node.classList.add("shake")
+                void node?.offsetHeight
+                if (node) node.classList.add("shake")
             }
         }
     }
