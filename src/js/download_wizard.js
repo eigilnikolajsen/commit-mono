@@ -128,7 +128,7 @@ function makeCustomFont(settings) {
             // the below loop does this
             // loop through the alternate settings
             Object.entries(settings.alternates)
-                .toReversed() // to make the alt g override the italic g
+                .reverse() // to make the alt g override the italic g
                 .forEach(([alternate, active]) => {
                     //
                     // filter for only the active ones
@@ -305,7 +305,7 @@ function makeCustomFont(settings) {
 }
 
 async function getZipFileBlob(kindOfDownload, fonts) {
-    // console.log(fontFileBlobs, fonts)
+    console.log(fontFileBlobs, fonts)
 
     const { BlobWriter, BlobReader, HttpReader, ZipWriter, TextReader } = zip
     const zipFileWriter = new BlobWriter()

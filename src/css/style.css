@@ -359,9 +359,9 @@ input:focus + .shake_down {
     text-decoration: none;
 }
 
-br {
+/* br {
     line-height: 1rem;
     height: 1rem;
     display: block;
     content: "";
-}
+} */
