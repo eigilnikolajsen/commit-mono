@@ -159,7 +159,7 @@ input[type="file"]:focus + label {
 
 #custom-settings-input {
     border: none;
-    width: max-content;
+    width: 17ch;
     font-variation-settings: inherit;
     opacity: 0.75;
 }
