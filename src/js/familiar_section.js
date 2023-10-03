@@ -7,7 +7,7 @@ function buildFamiliar() {
             familiarContainer.innerHTML = ""
             section.content.timeline.forEach((example, index) => {
                 const div = document.createElement("div")
-                div.style.display = index != 0 ? "none" : "block"
+                div.style.display = example.name == "commit_mono_example" ? "block" : "none"
                 div.id = example.name
                 div.dataset.name = example.name
                 const svgContainer = document.createElement("div")

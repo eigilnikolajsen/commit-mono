@@ -32,6 +32,8 @@
     width: 0.375rem;
     height: 0.375rem;
 
+    opacity: 1;
+
     /* display: grid; */
     /* place-content: center; */
 }

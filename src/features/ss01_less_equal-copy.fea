@@ -1,0 +1,28 @@
+feature ss01 {
+    # Coding Feature 00-99
+    # less_equal, exclam_equal substitution
+
+    # feature
+    sub @space_actor equal' equal @space_actor by equal_equal.liga;
+    sub @space_actor equal_equal.liga equal' @space_actor by space;
+
+    sub @space_actor equal' equal equal @space_actor by equal_equal_equal.liga;
+    sub @space_actor equal_equal_equal.liga equal' equal @space_actor by space;
+    sub @space_actor equal_equal_equal.liga space equal' @space_actor by space;
+
+    sub @space_actor less' equal @space_actor by less_equal.liga;
+    sub @space_actor less_equal.liga equal' @space_actor by space;
+    sub @space_actor [less.arrow_start_equal less.arrow_start_equal.case]' [equal.arrow equal.arrow.case] @space_actor by less_equal.liga;
+    sub @space_actor less_equal.liga [equal.arrow equal.arrow.case]' @space_actor by space;
+
+    sub @space_actor greater' equal @space_actor by greater_equal.liga;
+    sub @space_actor greater_equal.liga equal' @space_actor by space;
+
+    sub @space_actor exclam' equal @space_actor by exclam_equal.liga;
+    sub @space_actor exclam_equal.liga equal' @space_actor by space;
+
+    sub @space_actor exclam' equal equal @space_actor by exclam_equal_equal.liga;
+    sub @space_actor exclam_equal_equal.liga equal' equal @space_actor by space;
+    sub @space_actor exclam_equal_equal.liga space equal' @space_actor by space;
+    
+} ss01;

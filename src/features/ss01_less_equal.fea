@@ -3,26 +3,38 @@ feature ss01 {
     # less_equal, exclam_equal substitution
 
     # feature
-    sub @space_actor equal' equal @space_actor by equal_equal.liga;
-    sub @space_actor equal_equal.liga equal' @space_actor by space;
+    ignore sub exclam' equal' equal' equal;
+    sub exclam' equal' equal' by exclam_equal_equal.liga;
+    sub exclam_equal_equal.liga by exclam_equal_equal.liga space space;
 
-    sub @space_actor equal' equal equal @space_actor by equal_equal_equal.liga;
-    sub @space_actor equal_equal_equal.liga equal' equal @space_actor by space;
-    sub @space_actor equal_equal_equal.liga space equal' @space_actor by space;
+    ignore sub exclam' equal' equal;
+    sub exclam' equal' by exclam_equal.liga;
+    sub exclam_equal.liga by exclam_equal.liga space;
 
-    sub @space_actor less' equal @space_actor by less_equal.liga;
-    sub @space_actor less_equal.liga equal' @space_actor by space;
-    sub @space_actor [less.arrow_start_equal less.arrow_start_equal.case]' [equal.arrow equal.arrow.case] @space_actor by less_equal.liga;
-    sub @space_actor less_equal.liga [equal.arrow equal.arrow.case]' @space_actor by space;
+    ignore sub less' equal' equal;
+    sub less' equal' by less_equal.liga;
+    sub less_equal.liga by less_equal.liga space;
 
-    sub @space_actor greater' equal @space_actor by greater_equal.liga;
-    sub @space_actor greater_equal.liga equal' @space_actor by space;
+    ignore sub greater' equal' equal;
+    sub greater' equal' by greater_equal.liga;
+    sub greater_equal.liga by greater_equal.liga space;
 
-    sub @space_actor exclam' equal @space_actor by exclam_equal.liga;
-    sub @space_actor exclam_equal.liga equal' @space_actor by space;
+    ignore sub less equal' equal' equal';
+    ignore sub greater equal' equal' equal';
+    ignore sub equal' equal' equal' less;
+    ignore sub equal' equal' equal' greater;
+    ignore sub equal' equal' equal' equal;
+    ignore sub equal equal' equal' equal';
+    sub equal' equal' equal' by equal_equal_equal.liga;
+    sub equal_equal_equal.liga by equal_equal_equal.liga space space;
 
-    sub @space_actor exclam' equal equal @space_actor by exclam_equal_equal.liga;
-    sub @space_actor exclam_equal_equal.liga equal' equal @space_actor by space;
-    sub @space_actor exclam_equal_equal.liga space equal' @space_actor by space;
+    ignore sub less equal' equal';
+    ignore sub greater equal' equal';
+    ignore sub equal' equal' less;
+    ignore sub equal' equal' greater;
+    ignore sub equal' equal' equal;
+    ignore sub equal equal' equal';
+    sub equal' equal' by equal_equal.liga;
+    sub equal_equal.liga by equal_equal.liga space;
     
 } ss01;

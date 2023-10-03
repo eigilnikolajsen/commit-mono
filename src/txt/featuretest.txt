@@ -7,7 +7,7 @@ FEATURES
 
 
 ALTERNATES
-a g . * @ 6 0
+a g . i @ 6 0 y *
 
 
 SMART KERNING
@@ -48,3 +48,8 @@ n-----n n------n
 H----- n H------ n
 n -----H n ------H
 
+
+LIGATURES
+x <= x >= x == x === x != x !== x
+x <= X >= x == X === x != X !== x
+X <= X >= X == X === X != X !== X

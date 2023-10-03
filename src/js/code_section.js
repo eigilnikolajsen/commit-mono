@@ -54,7 +54,7 @@ async function updateCodeFont() {
         })
         .catch((err) => console.log(err))
     // opentype
-    //     .load("src/fonts/fontlab/CommitMonoV138-500Regular.otf")
+    //     .load("src/fonts/fontlab/CommitMonoV139-500Regular.otf")
     //     .then((font) => {
     //         console.log(font)
     //         console.log(font.toTables())
