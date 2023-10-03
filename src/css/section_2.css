@@ -60,6 +60,7 @@ td > div > input + label {
     width: 0;
     height: 0;
     opacity: 0;
+    -webkit-user-modify: read-only;
 }
 
 #section_2 input:focus:checked + label {
