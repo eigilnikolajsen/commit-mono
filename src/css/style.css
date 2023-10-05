@@ -153,18 +153,42 @@ h1 {
     outline: none;
 }
 
-form input:hover + label {
-    text-decoration: none;
+form input[type="radio"],
+input[type="file"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: var(--text);
+    color: var(--text);
+    border: none;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    display: block;
+}
+form input[type="radio"] + label {
+    cursor: pointer;
+    display: inline-block;
+}
+form input[type="radio"]:focus:checked + label {
+    background-color: var(--text);
     color: var(--bg);
-    outline: none;
 }
-
-form input:hover + label::before {
-    background: var(--bg50);
+form input[type="radio"]:checked + label {
+    background: var(--bg25);
 }
-
-form input:checked:hover + label::before {
+form input[type="radio"]:hover + label,
+form input[type="radio"]:checked:hover + label {
     background: var(--bg75);
+    color: var(--bg);
+}
+form input[type="radio"]:focus:hover + label {
+    background: var(--text);
+}
+form input[type="radio"]:focus + label:active,
+form input[type="radio"]:checked + label:active,
+form input[type="radio"] + label:active {
+    background: var(--bg50);
+    color: var(--bg);
 }
 
 ul li,

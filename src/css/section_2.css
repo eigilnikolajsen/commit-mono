@@ -56,25 +56,20 @@ td > div > input + label {
     display: block;
 }
 
-#section_2 input {
+#section_2 input[type="radio"] {
     width: 0;
     height: 0;
     opacity: 0;
     -webkit-user-modify: read-only;
 }
-
-#section_2 input:focus:checked + label {
-    background-color: var(--text);
+#section_2 input[type="radio"]:focus:checked + label {
+    background: var(--text);
     color: var(--bg);
-    transform: scale(4);
+    scale: 4;
     z-index: 2;
 }
-
-#section_2 input:checked + label::before {
-    display: none;
-}
-
-#section_2 input:checked + label:hover::before {
-    display: block;
-    background: var(--bg50);
+#section_2 input[type="radio"]:checked + label {
+    scale: 1;
+    background: var(--bg);
+    color: var(--text);
 }

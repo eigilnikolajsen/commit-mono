@@ -65,7 +65,7 @@ function enterTextField() {
         active.blur()
         active.focus()
         insideTextField = true
-    }, 40)
+    }, 50)
 }
 function exitTextField() {
     // console.log("exitTextField")

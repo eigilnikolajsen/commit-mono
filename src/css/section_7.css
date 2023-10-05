@@ -58,6 +58,12 @@ button:focus a {
     position: relative;
 }
 .button_link:hover {
+    background: var(--bg75);
+    color: var(--bg);
+    text-decoration: none;
+}
+.button_link:focus:active,
+.button_link:active {
     background: var(--bg50);
     color: var(--bg);
     text-decoration: none;

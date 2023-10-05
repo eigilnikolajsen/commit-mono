@@ -18,54 +18,6 @@ form > div {
     position: relative;
 }
 
-form input,
-input[type="file"] {
-    -webkit-appearance: none;
-    appearance: none;
-    background-color: var(--text);
-    margin: 0;
-    padding: 0;
-    border: none;
-    color: var(--text);
-    width: 0;
-    height: 0;
-    position: relative;
-    opacity: 0;
-    display: block;
-}
-
-form input[type="radio"] + label {
-    position: relative;
-    z-index: 1;
-    cursor: pointer;
-    height: 100%;
-    display: inline-block;
-}
-
-form input[type="radio"] + label::before {
-    z-index: -1;
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background-color: var(--bg);
-}
-
-form input[type="radio"]:focus:checked + label::before {
-    background-color: var(--text);
-}
-
-form input[type="radio"]:focus:checked + label {
-    color: var(--bg);
-}
-
-form input[type="radio"]:checked + label::before {
-    background: var(--bg25);
-    background-position: 1px 0.5px;
-}
-
 #canvas {
     transform-origin: top left;
 }
