@@ -34,7 +34,7 @@ input[type="file"] {
     display: block;
 }
 
-form input + label {
+form input[type="radio"] + label {
     position: relative;
     z-index: 1;
     cursor: pointer;
@@ -42,7 +42,7 @@ form input + label {
     display: inline-block;
 }
 
-form input + label::before {
+form input[type="radio"] + label::before {
     z-index: -1;
     content: "";
     position: absolute;
@@ -53,15 +53,15 @@ form input + label::before {
     background-color: var(--bg);
 }
 
-form input:focus:checked + label::before {
+form input[type="radio"]:focus:checked + label::before {
     background-color: var(--text);
 }
 
-form input:focus:checked + label {
+form input[type="radio"]:focus:checked + label {
     color: var(--bg);
 }
 
-form input:checked + label::before {
+form input[type="radio"]:checked + label::before {
     background: var(--bg25);
     background-position: 1px 0.5px;
 }

@@ -53,39 +53,39 @@ button:focus a {
     text-decoration: none;
 }
 
-.download_button {
+.button_link {
     width: max-content;
     position: relative;
 }
-.download_button:hover {
+.button_link:hover {
     background: var(--bg50);
     color: var(--bg);
     text-decoration: none;
 }
-.download_button:focus {
+.button_link:focus {
     background-color: var(--text);
     color: var(--bg);
     text-decoration: none;
 }
-.download_button::after {
+.button_link::after {
     position: absolute;
     color: var(--text);
     right: -2ch;
     top: 0;
 }
-.download_button.loading::after {
+.button_link.loading::after {
     content: ".";
     animation: 800ms 0ms steps(4, jump-none) infinite loading;
 }
-.download_button.loaded::after {
+.button_link.loaded::after {
     content: "✓";
     animation: none;
 }
-.download_button.error::after {
+.button_link.error::after {
     content: "✕";
     animation: none;
 }
-.download_button.safari::after {
+.button_link.safari::after {
     content: "Safari download not working. Try Chrome or Firefox.";
     font-variation-settings: "ital" 1;
     right: auto;

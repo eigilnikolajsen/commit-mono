@@ -92,33 +92,6 @@ header nav::-webkit-scrollbar {
     width: max-content;
 }
 
-#nav_form input {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 0;
-    height: 0;
-    opacity: 0;
-}
-
-#nav_form input + label {
-    position: relative;
-    z-index: 1;
-}
-
-#nav_form input + label::before {
-    z-index: -1;
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-color: var(--bg);
-}
-
-#nav_form input:focus:checked + label::before {
-    background-color: var(--text);
-}
-#nav_form input:focus:checked + label {
-    color: var(--bg);
-}
 #section_container {
     inset: 1rem 2rem;
 }
@@ -136,7 +109,7 @@ button {
 }
 
 a,
-.download_button,
+.button_link,
 button {
     text-decoration: underline;
     text-decoration-skip-ink: none;
@@ -144,7 +117,7 @@ button {
     cursor: pointer;
 }
 a:focus,
-.download_button:focus {
+.button_link:focus {
     text-decoration: none;
 }
 
@@ -358,10 +331,3 @@ input:focus + .shake_down {
 .nav_button:focus {
     text-decoration: none;
 }
-
-/* br {
-    line-height: 1rem;
-    height: 1rem;
-    display: block;
-    content: "";
-} */
