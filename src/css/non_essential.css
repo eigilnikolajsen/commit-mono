@@ -23,11 +23,7 @@ button:active {
 
 :focus,
 input:focus + label {
-    animation: flicker 60ms 2;
-}
-
-[contenteditable="true"]:focus {
-    animation: flicker 200ms 2;
+    animation: flicker 50ms 2;
 }
 
 @keyframes flicker {
