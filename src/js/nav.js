@@ -348,6 +348,8 @@ function pushPage(key) {
         websiteData.weight = 400
         document.querySelector("body").style.fontVariationSettings = `"wght" 400`
         document.forms["weight_form"][`weight_${websiteData.weight}`].checked = true
+        document.forms["letter_spacing_form"][`letter_spacing_${websiteData.letterSpacing}`].checked = true
+        document.forms["line_height_form"][`line_height_${websiteData.lineHeight}`].checked = true
         codeExample.style.fontFamily = "CommitMono"
         document.querySelector("#font_name").value = ""
         document.querySelector("#font_name + p").textContent = ""
@@ -357,6 +359,8 @@ function pushPage(key) {
         if (typeof updateWaterfall === "function") updateWaterfall()
         if (typeof buildExample === "function") buildExample()
         if (typeof updateWeight === "function") updateWeight(null, weightForm)
+        if (typeof updateLetterSpacing === "function") updateLetterSpacing(null, letterSpacingForm)
+        if (typeof updateLineHeight === "function") updateLineHeight(null, lineHeightForm)
     }
 }
 
