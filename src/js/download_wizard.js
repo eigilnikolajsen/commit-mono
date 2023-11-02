@@ -111,8 +111,6 @@ function catchError(button, error) {
 }
 
 function makeCustomFont(settings) {
-    // console.log("makeCustomFont")
-
     const fontBaseURL = "/src/fonts/fontlab/"
     const fontName = "CommitMono" + versionOfCommitMono
     const fontWeight = settings.weight
@@ -120,8 +118,9 @@ function makeCustomFont(settings) {
     const fontFilePath = `${fontBaseURL}${fontName}-${fontWeight}${fontItalic}.otf`
     // "/src/fonts/fontlab/CommitMonoV132-400Italic.otf"
 
-    return opentype
-        .load(fontFilePath)
+    return fetch(fontFilePath)
+        .then(file=>file.arrayBuffer())
+        .then(font=>opentype.parse(font))
         .then((font) => {
             // ######################
             // #1 change alternates by switching their paths
@@ -265,18 +264,22 @@ function makeCustomFont(settings) {
             // ######################
             // #3 change the names
             // give custom names to each member of the style group
-            font.names.fontFamily.en = `${websiteData.fontName}`
-            font.names.fontSubfamily.en = settings.style
-            font.names.fullName.en = `${websiteData.fontName} ${settings.style}`
-            font.names.postScriptName.en = `${websiteData.fontName}-${settings.style.split(" ").join("")}`
-            delete font.names.preferredFamily
-            delete font.names.preferredSubfamily
-            font.names.uniqueID.en = `${font.names.version.en};;${websiteData.fontName}-${settings.style
+            font.names.macintosh.fontFamily.en = `${websiteData.fontName}`
+            font.names.macintosh.fontSubfamily.en = settings.style
+            font.names.macintosh.fullName.en = `${websiteData.fontName} ${settings.style}`
+            font.names.macintosh.postScriptName.en = `${websiteData.fontName}-${settings.style.split(" ").join("")}`
+        
+            font.names.windows.fontFamily.en = `${websiteData.fontName}`
+            font.names.windows.fontSubfamily.en = settings.style
+            font.names.windows.fullName.en = `${websiteData.fontName} ${settings.style}`
+            font.names.windows.postScriptName.en = `${websiteData.fontName}-${settings.style.split(" ").join("")}`
+            font.names.windows.uniqueID.en = `${font.names.windows.version.en};;${websiteData.fontName}-${settings.style
                 .split(" ")
                 .join("")};2023;FL820`
+            delete font.names.windows.preferredSubfamily
 
-            font.tables.cff.topDict.familyName = font.names.fontFamily.en
-            font.tables.cff.topDict.fullName = font.names.fullName.en
+            font.tables.cff.topDict.familyName =  `${websiteData.fontName}`;
+            font.tables.cff.topDict.fullName = `${websiteData.fontName} ${settings.style}`
             font.tables.cff.topDict.weight = settings.weight == 700 ? "Bold" : "Regular"
 
             // set correct mac style
@@ -291,8 +294,6 @@ function makeCustomFont(settings) {
 
             // set the correct weight
             font.tables.os2.usWeightClass = settings.weight
-
-            // console.log(font)
 
             const fontAB = font.toArrayBuffer()
             const fontBlob = new Blob([fontAB], { type: "font/otf" })
