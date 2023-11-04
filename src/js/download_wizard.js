@@ -264,22 +264,28 @@ function makeCustomFont(settings) {
             // ######################
             // #3 change the names
             // give custom names to each member of the style group
-            font.names.macintosh.fontFamily.en = `${websiteData.fontName}`
+            
+            const fontFamily = websiteData.fontName
+            const fullName = `${websiteData.fontName} ${settings.style}`
+            const postScriptName = `${websiteData.fontName}-${settings.style.split(" ").join("")}`
+
+            font.names.macintosh.fontFamily.en = fontFamily
             font.names.macintosh.fontSubfamily.en = settings.style
-            font.names.macintosh.fullName.en = `${websiteData.fontName} ${settings.style}`
-            font.names.macintosh.postScriptName.en = `${websiteData.fontName}-${settings.style.split(" ").join("")}`
+            font.names.macintosh.fullName.en = fullName
+            font.names.macintosh.postScriptName.en = postScriptName
+            font.names.macintosh.preferredSubfamily = font.names.windows.preferredSubfamily
         
-            font.names.windows.fontFamily.en = `${websiteData.fontName}`
+            font.names.windows.fontFamily.en = fontFamily
             font.names.windows.fontSubfamily.en = settings.style
-            font.names.windows.fullName.en = `${websiteData.fontName} ${settings.style}`
-            font.names.windows.postScriptName.en = `${websiteData.fontName}-${settings.style.split(" ").join("")}`
+            font.names.windows.fullName.en = fullName
+            font.names.windows.postScriptName.en = postScriptName
             font.names.windows.uniqueID.en = `${font.names.windows.version.en};;${websiteData.fontName}-${settings.style
                 .split(" ")
                 .join("")};2023;FL820`
-            delete font.names.windows.preferredSubfamily
+            delete font.names.windows.preferredFamily
 
-            font.tables.cff.topDict.familyName =  `${websiteData.fontName}`;
-            font.tables.cff.topDict.fullName = `${websiteData.fontName} ${settings.style}`
+            font.tables.cff.topDict.familyName =  fontFamily
+            font.tables.cff.topDict.fullName = fullName
             font.tables.cff.topDict.weight = settings.weight == 700 ? "Bold" : "Regular"
 
             // set correct mac style
