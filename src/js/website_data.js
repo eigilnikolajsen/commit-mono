@@ -431,6 +431,15 @@ Tip: Press <span class="span_key">M</span> to switch between light and dark mode
                         docsExample: "2*2",
                     },
                     {
+                        type: "alternate",
+                        name: "l",
+                        label: "Alt. l",
+                        feature: "cv10",
+                        on: false,
+                        description: "Rounded bottom |DEF| or serif bottom |ALT| lowercase 'l'.",
+                        docsExample: "lĺŀ",
+                    },
+                    {
                         type: "feature",
                         name: "less_equal",
                         label: "Ligatures <= != === ",

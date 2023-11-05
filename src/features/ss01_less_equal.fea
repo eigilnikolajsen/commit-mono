@@ -3,12 +3,12 @@ feature ss01 {
     # less_equal, exclam_equal substitution
 
     # feature
-    ignore sub exclam' equal' equal' equal;
-    sub exclam' equal' equal' by exclam_equal_equal.liga;
+    ignore sub [exclam exclam.square]' equal' equal' equal;
+    sub [exclam exclam.square]' equal' equal' by exclam_equal_equal.liga;
     sub exclam_equal_equal.liga by exclam_equal_equal.liga space space;
 
-    ignore sub exclam' equal' equal;
-    sub exclam' equal' by exclam_equal.liga;
+    ignore sub [exclam exclam.square]' equal' equal;
+    sub [exclam exclam.square]' equal' by exclam_equal.liga;
     sub exclam_equal.liga by exclam_equal.liga space;
 
     ignore sub less' equal' equal;
