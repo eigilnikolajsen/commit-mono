@@ -119,8 +119,8 @@ function makeCustomFont(settings) {
     // "/src/fonts/fontlab/CommitMonoV132-400Italic.otf"
 
     return fetch(fontFilePath)
-        .then(file=>file.arrayBuffer())
-        .then(font=>opentype.parse(font))
+        .then((file) => file.arrayBuffer())
+        .then((font) => opentype.parse(font))
         .then((font) => {
             // ######################
             // #1 change alternates by switching their paths
@@ -132,25 +132,45 @@ function makeCustomFont(settings) {
                     //
                     // filter for only the active ones
                     if (!active) return
-                    // // console.log("alternate", alternate, "active", active)
+                    // console.log("alternate", alternate, "active", active)
 
                     // look at all the fonts features
                     font.tables.gsub.features.forEach((feature) => {
                         //
                         // if the feature matches the alternate we're currently on
                         if (feature.tag == alternate) {
-                            // // console.log("feature", feature)
+                            // console.log("feature", feature)
 
                             // then loop through the list of lookup indexes of that feature
                             feature.feature.lookupListIndexes.forEach((lookupIndex) => {
-                                // // console.log("lookupIndex", lookupIndex)
+                                // console.log("lookupIndex", lookupIndex)
 
                                 // loop through the subtable of each lookup at the lookup index
                                 font.tables.gsub.lookups[lookupIndex].subtables.forEach((subtable) => {
-                                    // // console.log("subtable", subtable)
+                                    // console.log("subtable", subtable)
+
+                                    // find the base glyphs
+                                    let glyphs = []
+
+                                    // get glyphs from glyphs array
+                                    if (subtable.coverage.format == 1) {
+                                        glyphs = subtable.coverage.glyphs
+                                    }
+
+                                    // get glyphs from ranges
+                                    if (subtable.coverage.format == 2) {
+                                        // [{start: 0, end: 4}, {start: 8, end: 8}] => [0, 1, 2, 3, 4, 8]
+                                        glyphs = subtable.coverage.ranges
+                                            .map((range) =>
+                                                Array.from(Array(range.end - range.start + 1)).map(
+                                                    (_, index) => range.start + index
+                                                )
+                                            )
+                                            .flat()
+                                    }
 
                                     // loop through the glyphs of the subtable
-                                    subtable.coverage.glyphs.forEach((glyphIndexOriginal, index) => {
+                                    glyphs.forEach((glyphIndexOriginal, index) => {
                                         //
                                         // glyphIndexOriginal is the index of the original glyph
                                         // glyphIndexSubstitute is the index of the glyph to substitute the original with
@@ -264,7 +284,7 @@ function makeCustomFont(settings) {
             // ######################
             // #3 change the names
             // give custom names to each member of the style group
-            
+
             const fontFamily = websiteData.fontName
             const fullName = `${websiteData.fontName} ${settings.style}`
             const postScriptName = `${websiteData.fontName}-${settings.style.split(" ").join("")}`
@@ -274,7 +294,7 @@ function makeCustomFont(settings) {
             font.names.macintosh.fullName.en = fullName
             font.names.macintosh.postScriptName.en = postScriptName
             font.names.macintosh.preferredSubfamily = font.names.windows.preferredSubfamily
-        
+
             font.names.windows.fontFamily.en = fontFamily
             font.names.windows.fontSubfamily.en = settings.style
             font.names.windows.fullName.en = fullName
@@ -284,7 +304,7 @@ function makeCustomFont(settings) {
                 .join("")};2023;FL820`
             delete font.names.windows.preferredFamily
 
-            font.tables.cff.topDict.familyName =  fontFamily
+            font.tables.cff.topDict.familyName = fontFamily
             font.tables.cff.topDict.fullName = fullName
             font.tables.cff.topDict.weight = settings.weight == 700 ? "Bold" : "Regular"
 
@@ -312,7 +332,7 @@ function makeCustomFont(settings) {
 }
 
 async function getZipFileBlob(kindOfDownload, fonts) {
-    console.log(fontFileBlobs, fonts)
+    // console.log(fontFileBlobs, fonts)
 
     const { BlobWriter, BlobReader, HttpReader, ZipWriter, TextReader } = zip
     const zipFileWriter = new BlobWriter()

@@ -15,7 +15,7 @@ function lcs(arr1, arr2) {
             } else {
                 matrix[rowIndex][columnIndex] = Math.max(
                     matrix[rowIndex - 1][columnIndex],
-                    matrix[rowIndex][columnIndex - 1]
+                    matrix[rowIndex][columnIndex - 1],
                 )
             }
         }

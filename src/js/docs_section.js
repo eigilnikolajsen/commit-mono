@@ -33,7 +33,7 @@ function buildDocs() {
                     ? `<span class="span_on${
                           feature.on ? " active_feature" : ""
                       }" onclick="changeFeatureDocs('enable')">[${l}]</span>`
-                    : l
+                    : l,
             )
             .join("")
         h2.innerHTML = featureDescriptionWithSpan

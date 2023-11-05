@@ -1,4 +1,4 @@
-#1 Place file in Downloads
+#1 Rename variable font to "CommitMonoV141-VF.ttf"
 #2 Navigate to /Developer/woff2
 #3
-~/Developer/woff2/woff2_compress ~/Library/CloudStorage/Dropbox/Privat/Eigils\ ting/projects/typography/Font\ Projects/code-mono-font/commit-mono/export/CommitMonoV140/CommitMonoV140-VF.ttf
+~/Developer/woff2/woff2_compress ~/Library/CloudStorage/Dropbox/Privat/Eigils\ ting/projects/typography/Font\ Projects/code-mono-font/commit-mono/export/CommitMonoV141/CommitMonoV141-VF.ttf

@@ -159,7 +159,7 @@ function nextQuestion(correct, answer, wrongAnswer, pointerType) {
             question.classList.add("active_question")
             const rightButton = question.querySelector(`.button_container .question_button:nth-child(${answer + 1})`)
             const wrongButton = question.querySelector(
-                `.button_container .question_button:nth-child(${wrongAnswer + 1})`
+                `.button_container .question_button:nth-child(${wrongAnswer + 1})`,
             )
             correct ? rightButton.classList.add("button_choice") : wrongButton.classList.add("button_choice")
             !correct ? rightButton.classList.add("button_choicent") : wrongButton.classList.add("button_choicent")
