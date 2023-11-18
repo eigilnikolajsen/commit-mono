@@ -235,7 +235,7 @@ function simulateTab(e) {
         .forEach((el) => el.classList.remove("shake", "shake_left", "shake_right", "shake_up", "shake_down"))
 
     const allTabbable = document.querySelectorAll(
-        "#nav_form input:checked, section.visible input:checked, section.visible [tabindex='0']",
+        "#nav_form input:checked, section.visible input:checked, section.visible [tabindex='0']"
     )
     let addShake = false
     let indexOfActive = 0
@@ -402,7 +402,7 @@ function onFocusIn(e) {
         const paddingOffsetBottom = 200
         if (bounds.top > window.innerHeight - paddingOffsetBottom) {
             const numberOfMoves = Math.floor(
-                (bounds.top - (window.innerHeight - paddingOffsetBottom)) / websiteData.pushPage.distance,
+                (bounds.top - (window.innerHeight - paddingOffsetBottom)) / websiteData.pushPage.distance
             )
             for (let i = 0; i < numberOfMoves; i++) {
                 pushPage("KeyS")
@@ -412,7 +412,7 @@ function onFocusIn(e) {
         if (!document.activeElement.className.includes("nav")) {
             if (bounds.top < paddingOffsetTop) {
                 const numberOfMoves = Math.ceil(
-                    Math.abs(bounds.top - paddingOffsetTop - 32) / websiteData.pushPage.distance,
+                    Math.abs(bounds.top - paddingOffsetTop - 32) / websiteData.pushPage.distance
                 )
                 // console.log("num of moves:", numberOfMoves, "bounds.top:", bounds.top)
                 for (let i = 0; i < numberOfMoves; i++) {
@@ -476,8 +476,8 @@ function checkTutorialKeys(e) {
             tutorialFinished = true
             const tutorialContainer = document.querySelector("#tutorial_complete")
             tutorialContainer.innerHTML = `<p>Tutorial complete! Your present is the variable version of Commit Mono:</p>
-<p><a href="/src/fonts/fontlab/CommitMonoV141-VF.ttf" tabindex="0">Download CommitMono-VF.ttf</a></p>
-<p><a href="/src/fonts/fontlab/CommitMonoV141-VF.woff2" tabindex="0">Download CommitMono-VF.woff2</a></p>
+<p><a href="/src/fonts/fontlab/CommitMonoV142-VF.ttf" tabindex="0">Download CommitMono-VF.ttf</a></p>
+<p><a href="/src/fonts/fontlab/CommitMonoV142-VF.woff2" tabindex="0">Download CommitMono-VF.woff2</a></p>
 <br />`
         }
     }

@@ -100,8 +100,7 @@ function initializeDownload(button, blob) {
     downloadStarted = false
     button.classList.remove("loading")
     button.classList.add("loaded")
-    // downloadFile(blob)
-    saveFile(blob, `${websiteData.fontName}.zip`)
+    saveFile(blob, `${websiteData.fontName}${versionOfCommitMono}.zip`)
 }
 function catchError(button, error) {
     downloadStarted = false
@@ -110,7 +109,7 @@ function catchError(button, error) {
     console.log(error)
 }
 
-function makeCustomFont(settings) {
+async function makeCustomFont(settings) {
     const fontBaseURL = "/src/fonts/fontlab/"
     const fontName = "CommitMono" + versionOfCommitMono
     const fontWeight = settings.weight
@@ -302,7 +301,6 @@ function makeCustomFont(settings) {
             font.names.windows.uniqueID.en = `${font.names.windows.version.en};;${websiteData.fontName}-${settings.style
                 .split(" ")
                 .join("")};2023;FL820`
-            delete font.names.windows.preferredFamily
 
             font.tables.cff.topDict.familyName = fontFamily
             font.tables.cff.topDict.fullName = fullName
@@ -360,12 +358,6 @@ async function getZipFileBlob(kindOfDownload, fonts) {
     return zipFileBlob
 }
 
-function downloadFile(blob) {
-    const a = document.createElement("a")
-    a.download = `${websiteData.fontName}.zip`
-    a.href = URL.createObjectURL(blob)
-    a.click()
-}
 function saveFile(blob, filename) {
     if (window.navigator.msSaveOrOpenBlob) {
         window.navigator.msSaveOrOpenBlob(blob, filename)

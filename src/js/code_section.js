@@ -45,7 +45,7 @@ async function updateCodeFont() {
         .load(
             `/src/fonts/fontlab/CommitMono${versionOfCommitMono}-${websiteData.weight}${
                 websiteData.italic ? "Italic" : "Regular"
-            }.otf`,
+            }.otf`
         )
         .then((font) => {
             // // console.log(font)
@@ -54,7 +54,7 @@ async function updateCodeFont() {
         })
         .catch((err) => console.log(err))
     // opentype
-    //     .load("src/fonts/fontlab/CommitMonoV141-500Regular.otf")
+    //     .load("src/fonts/fontlab/CommitMonoV142-500Regular.otf")
     //     .then((font) => {
     //         console.log(font)
     //         console.log(font.toTables())
@@ -81,7 +81,7 @@ function updateCode(event, form) {
                     displayName = character.name
                     const ps = document.querySelectorAll(".code_char")
                     ps.forEach((p) =>
-                        p.dataset.char == character.name ? (p.style.display = "block") : (p.style.display = "none"),
+                        p.dataset.char == character.name ? (p.style.display = "block") : (p.style.display = "none")
                     )
                 }
             })
