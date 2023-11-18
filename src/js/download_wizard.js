@@ -292,12 +292,15 @@ async function makeCustomFont(settings) {
             font.names.macintosh.fontSubfamily.en = settings.style
             font.names.macintosh.fullName.en = fullName
             font.names.macintosh.postScriptName.en = postScriptName
-            font.names.macintosh.preferredSubfamily = font.names.windows.preferredSubfamily
+            font.names.macintosh.preferredFamily = fontFamily
+            font.names.macintosh.preferredSubfamily = settings.style
 
             font.names.windows.fontFamily.en = fontFamily
             font.names.windows.fontSubfamily.en = settings.style
             font.names.windows.fullName.en = fullName
             font.names.windows.postScriptName.en = postScriptName
+            font.names.windows.preferredFamily = font.names.macintosh.preferredFamily
+            font.names.windows.preferredSubfamily = font.names.macintosh.preferredSubfamily
             font.names.windows.uniqueID.en = `${font.names.windows.version.en};;${websiteData.fontName}-${settings.style
                 .split(" ")
                 .join("")};2023;FL820`
