@@ -3,9 +3,9 @@
 # step 3: run this from the root directory
 
 rm src/fonts/*.zip
-mkdir src/fonts/CommitMono-1.142
-mv src/fonts/website-export/CommitMono.zip src/fonts/CommitMono-1.142/CommitMono.zip
-cd src/fonts/CommitMono-1.142
+mkdir src/fonts/CommitMono-1.143
+mv src/fonts/website-export/CommitMono.zip src/fonts/CommitMono-1.143/CommitMono.zip
+cd src/fonts/CommitMono-1.143
 unzip CommitMono.zip
 rm CommitMono.zip
 mkdir ttfautohint
@@ -22,8 +22,8 @@ rm CommitMono-400-Italic-unhinted.ttf
 rm CommitMono-700-Regular-unhinted.ttf
 rm CommitMono-700-Italic-unhinted.ttf
 cd ..
-zip -vr CommitMono-1.142.zip CommitMono-1.142/ -x "*.DS_Store"
-rm -R CommitMono-1.142
+zip -vr CommitMono-1.143.zip CommitMono-1.143/ -x "*.DS_Store"
+rm -R CommitMono-1.143
 cd ..
 cd ..
 

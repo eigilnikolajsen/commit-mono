@@ -287,27 +287,32 @@ async function makeCustomFont(settings) {
             const fontFamily = websiteData.fontName
             const fullName = `${websiteData.fontName} ${settings.style}`
             const postScriptName = `${websiteData.fontName}-${settings.style.split(" ").join("")}`
+            const uniqueID = `${font.names.windows.version.en};;${websiteData.fontName}-${settings.style
+                .split(" ")
+                .join("")};2023;FL820`
 
-            font.names.macintosh.fontFamily.en = fontFamily
-            font.names.macintosh.fontSubfamily.en = settings.style
-            font.names.macintosh.fullName.en = fullName
-            font.names.macintosh.postScriptName.en = postScriptName
-            font.names.macintosh.preferredFamily = fontFamily
-            font.names.macintosh.preferredSubfamily = settings.style
+            // font.names.macintosh.fontFamily.en = fontFamily
+            // font.names.macintosh.fontSubfamily.en = settings.style
+            // font.names.macintosh.fullName.en = fullName
+            // font.names.macintosh.postScriptName.en = postScriptName
+            // font.names.macintosh.preferredFamily = fontFamily
+            // font.names.macintosh.preferredSubfamily = settings.style
+
+            delete font.names.unicode
+            delete font.names.macintosh
 
             font.names.windows.fontFamily.en = fontFamily
             font.names.windows.fontSubfamily.en = settings.style
             font.names.windows.fullName.en = fullName
             font.names.windows.postScriptName.en = postScriptName
-            font.names.windows.preferredFamily = font.names.macintosh.preferredFamily
-            font.names.windows.preferredSubfamily = font.names.macintosh.preferredSubfamily
-            font.names.windows.uniqueID.en = `${font.names.windows.version.en};;${websiteData.fontName}-${settings.style
-                .split(" ")
-                .join("")};2023;FL820`
+            // font.names.windows.preferredFamily = font.names.macintosh.preferredFamily
+            // font.names.windows.preferredSubfamily = font.names.macintosh.preferredSubfamily
+            font.names.windows.uniqueID.en = uniqueID
 
             font.tables.cff.topDict.familyName = fontFamily
             font.tables.cff.topDict.fullName = fullName
             font.tables.cff.topDict.weight = settings.weight == 700 ? "Bold" : "Regular"
+            font.tables.cff.topDict.uniqueId = uniqueID
 
             // set correct mac style
             const macStyles = ["Regular", "Bold", "Italic", "Bold Italic"]
@@ -316,11 +321,21 @@ async function makeCustomFont(settings) {
             // set correct numberOfHMetrics (3 is monospace)
             font.tables.hhea.numberOfHMetrics = 3
 
+            // set correct isFixedPitch in CFF and POST tables (1 is monospace)
+            font.tables.cff.topDict.isFixedPitch = 1
+            font.tables.post.isFixedPitch = 1
+
             // make the font.tables.name equal to that of font.names
             font.tables.name = font.names
 
             // set the correct weight
             font.tables.os2.usWeightClass = settings.weight
+
+            // set the weight and italic
+            let fsSelection = 0
+            fsSelection += settings.style.includes("Italic") ? Math.pow(2, 0) : 0
+            fsSelection += settings.style.includes("Bold") ? Math.pow(2, 5) : 0
+            font.tables.os2.fsSelection = fsSelection
 
             const fontAB = font.toArrayBuffer()
             const fontBlob = new Blob([fontAB], { type: "font/otf" })

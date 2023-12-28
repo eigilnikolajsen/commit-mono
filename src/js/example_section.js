@@ -256,14 +256,13 @@ function updateLineHeight(event, form) {
 }
 
 function updateFontName(event, form) {
-    // console.log("updateWeight")
     const data = new FormData(form)
     let output = ""
     for (const entry of data) {
         output = entry[1]
     }
     const customName = document.querySelector("#custom_name")
-    const suffix = output ? `-${output}` : ""
+    const suffix = output ? output : ""
     const regex = /^[\w-_]*$/
     const label = document.querySelector("#font_name + p")
     if (output.match(regex)) {
@@ -274,7 +273,7 @@ function updateFontName(event, form) {
     } else {
         downloadSettingsCustom.fontName = ""
         label.textContent = "✕ Invalid name, use: A-z 0-9 _ -"
-        customName.textContent = `CommitMono-YourName`
+        customName.textContent = `CommitMonoYourName`
         websiteData.fontName = `CommitMono`
     }
 
@@ -300,7 +299,6 @@ function updateExampleSettings(event, form, isDefault) {
         if (label) label.style.fontFeatureSettings = entry[1]
     }
     output = output.slice(0, -2)
-    // console.log(downloadSettingsCustom)
     const codeExample = document.querySelector("#code_example")
     codeExample.style.fontFeatureSettings = output
 
