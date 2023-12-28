@@ -440,6 +440,15 @@ Tip: Press <span class="span_key">M</span> to switch between light and dark mode
                         docsExample: "lĺŀ",
                     },
                     {
+                        type: "alternate",
+                        name: "one",
+                        label: "Alt. 1",
+                        feature: "cv11",
+                        on: false,
+                        description: "Straight top |DEF| or rounded top |ALT| '1'.",
+                        docsExample: "1",
+                    },
+                    {
                         type: "feature",
                         name: "less_equal",
                         label: "Ligatures <= != === ",

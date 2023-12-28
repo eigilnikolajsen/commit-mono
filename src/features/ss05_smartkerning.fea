@@ -3,6 +3,7 @@ feature ss05 {
     # Smart kerning
 
     # feature
+
     sub @narrow_letter @origin' @widest_letter by @leftL;
     sub @narrow_letter @origin' @larger_letter by @leftM;
     sub @normal_letter @origin' @widest_letter by @leftM;
@@ -16,5 +17,34 @@ feature ss05 {
     sub @widest_letter @origin' @normal_letter by @rightM;
     sub @larger_letter @origin' @normal_letter by @rightS;
     sub @widest_letter @origin' @larger_letter by @rightS;
+
+
+    ignore sub @narrow_letter @origin' @widest_letter;
+    ignore sub @narrow_letter @origin' @larger_letter;
+    ignore sub @narrow_letter @origin' @normal_letter;
+    ignore sub @narrow_letter @origin' @narrow_letter;
+
+    ignore sub @normal_letter @origin' @widest_letter;
+    ignore sub @normal_letter @origin' @larger_letter;
+    ignore sub @normal_letter @origin' @normal_letter;
+    ignore sub @normal_letter @origin' @narrow_letter;
+
+    ignore sub @larger_letter @origin' @widest_letter;
+    ignore sub @larger_letter @origin' @larger_letter;
+    ignore sub @larger_letter @origin' @normal_letter;
+    ignore sub @larger_letter @origin' @narrow_letter;
+
+    ignore sub @widest_letter @origin' @widest_letter;
+    ignore sub @widest_letter @origin' @larger_letter;
+    ignore sub @widest_letter @origin' @normal_letter;
+    ignore sub @widest_letter @origin' @narrow_letter;
+
+    sub @origin' @widest_letter by @leftL;
+    sub @origin' @larger_letter by @leftM;
+    sub @origin' @normal_letter by @leftS;
+
+    sub @widest_letter @origin' by @rightL;
+    sub @larger_letter @origin' by @rightM;
+    sub @normal_letter @origin' by @rightS;
 
 } ss05;
