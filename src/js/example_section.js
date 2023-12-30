@@ -185,7 +185,7 @@ function updateFont(event, form) {
         output = `${entry[1]}`
     }
 
-    if (output !== "CommitMono") codeExample.style.fontFeatureSettings = ""
+    if (output !== "CommitMono") codeExample.style.fontFeatureSettings = "normal"
     else codeExample.style.fontFeatureSettings = [...new FormData(exampleSettingsForm).values()].join(", ")
 
     let fontInDocument = false
@@ -305,7 +305,7 @@ function updateExampleSettings(event, form, isDefault) {
 
     const currentFont = [...new FormData(document.forms["fonts_form"]).values()][0]
     if (currentFont === "CommitMono") codeExample.style.fontFeatureSettings = output
-    else codeExample.style.fontFeatureSettings = ""
+    else codeExample.style.fontFeatureSettings = "normal"
 
     const customFeatureCode = document.querySelector("#custom_feature_code")
     const shortFeatureCode = output
