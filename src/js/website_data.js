@@ -1062,7 +1062,7 @@ To support the project directly <a href="https://www.buymeacoffee.com/eigilnikol
         {
             name: "about",
             description: `Commit Mono is a project by Eigil Nikolajsen. Eigil is a creative developer and designer from Denmark with a particular interest in type design. He holds a bachelor degree in Interactive Design from the Danish School of Media and Journalism in 2023.
-<a href="https://www.buymeacoffee.com/eigilnikolajsen" tabindex="0" target="_blank" class="download_button">Support this project</a>`,
+<a href="https://www.buymeacoffee.com/eigilnikolajsen" tabindex="0" target="_blank" class="button_link">Support Commit Mono directly</a>`,
             content: {},
         },
     ],
