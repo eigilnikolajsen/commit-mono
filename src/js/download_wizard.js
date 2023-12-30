@@ -284,39 +284,37 @@ async function makeCustomFont(settings) {
             // #3 change the names
             // give custom names to each member of the style group
 
-            const fontFamily = websiteData.fontName
-            const fullName = `${websiteData.fontName} ${settings.style}`
-            const postScriptName = `${websiteData.fontName}-${settings.style.split(" ").join("")}`
-            const uniqueID = `${font.names.windows.version.en};;${websiteData.fontName}-${settings.style
-                .split(" ")
-                .join("")};2023;FL820`
+            const { style, weight } = settings
+            const { fontName } = websiteData
+            const styleNoSpace = style.split(" ").join("")
+            const fontFamily = fontName
+            const fullName = `${fontName} ${style}`
+            const postScriptName = `${fontName}-${styleNoSpace}`
+            const uniqueID = `${font.names.windows.version.en};;${fontName}-${styleNoSpace};2023;FL820`
 
-            // font.names.macintosh.fontFamily.en = fontFamily
-            // font.names.macintosh.fontSubfamily.en = settings.style
-            // font.names.macintosh.fullName.en = fullName
-            // font.names.macintosh.postScriptName.en = postScriptName
-            // font.names.macintosh.preferredFamily = fontFamily
-            // font.names.macintosh.preferredSubfamily = settings.style
-
-            delete font.names.unicode
-            delete font.names.macintosh
+            font.names.macintosh.fontFamily.en = fontFamily
+            font.names.macintosh.fontSubfamily.en = style
+            font.names.macintosh.fullName.en = fullName
+            font.names.macintosh.postScriptName.en = postScriptName
+            font.names.macintosh.preferredFamily = fontFamily
+            font.names.macintosh.preferredSubfamily = style
 
             font.names.windows.fontFamily.en = fontFamily
-            font.names.windows.fontSubfamily.en = settings.style
+            font.names.windows.fontSubfamily.en = style
             font.names.windows.fullName.en = fullName
             font.names.windows.postScriptName.en = postScriptName
-            // font.names.windows.preferredFamily = font.names.macintosh.preferredFamily
-            // font.names.windows.preferredSubfamily = font.names.macintosh.preferredSubfamily
+            font.names.windows.preferredFamily = fontFamily
+            font.names.windows.preferredSubfamily = style
             font.names.windows.uniqueID.en = uniqueID
 
             font.tables.cff.topDict.familyName = fontFamily
             font.tables.cff.topDict.fullName = fullName
-            font.tables.cff.topDict.weight = settings.weight == 700 ? "Bold" : "Regular"
+            font.tables.cff.topDict.weight = weight == 700 ? "Bold" : "Regular"
             font.tables.cff.topDict.uniqueId = uniqueID
 
             // set correct mac style
             const macStyles = ["Regular", "Bold", "Italic", "Bold Italic"]
-            font.tables.head.macStyle = macStyles.indexOf(settings.style)
+            font.tables.head.macStyle = macStyles.indexOf(style)
 
             // set correct numberOfHMetrics (3 is monospace)
             font.tables.hhea.numberOfHMetrics = 3
@@ -329,22 +327,20 @@ async function makeCustomFont(settings) {
             font.tables.name = font.names
 
             // set the correct weight
-            font.tables.os2.usWeightClass = settings.weight
+            font.tables.os2.usWeightClass = weight
 
             // set the weight and italic
             let fsSelection = 0
-            fsSelection += settings.style.includes("Italic") ? Math.pow(2, 0) : 0
-            fsSelection += settings.style.includes("Bold") ? Math.pow(2, 5) : 0
+            fsSelection += style.includes("Italic") ? Math.pow(2, 0) : 0
+            fsSelection += style.includes("Bold") ? Math.pow(2, 5) : 0
             font.tables.os2.fsSelection = fsSelection
 
             const fontAB = font.toArrayBuffer()
-            const fontBlob = new Blob([fontAB], { type: "font/otf" })
+            const blob = new Blob([fontAB], { type: "font/otf" })
 
-            return { weight: settings.weight, style: fontItalic, blob: fontBlob }
+            return { weight, style: fontItalic, blob }
         })
-        .catch((err) => {
-            return err
-        })
+        .catch((err) => err)
 }
 
 async function getZipFileBlob(kindOfDownload, fonts) {
