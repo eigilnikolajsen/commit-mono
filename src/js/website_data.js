@@ -91,7 +91,7 @@ Tip: Press <span class="span_key">C</span> to enable/disable high contrast mode.
                         description: [
                             "Fira Mono, 2013.",
                             "Great letter distinction, but overly complex and unique.",
-                            "Inpiration was taken in the way Fira handles monospace symbols.",
+                            "Inspiration was taken in the way Fira handles monospace symbols.",
                         ],
                     },
                     {
@@ -109,7 +109,7 @@ Tip: Press <span class="span_key">C</span> to enable/disable high contrast mode.
                         description: [
                             "Commit Mono, 2023.",
                             "Neutral and functional, created and tested for code.",
-                            "Commit Mono takes the best of all the fonts before it and merges it into a clean pakage.",
+                            "Commit Mono takes the best of all the fonts before it and merges it into a clean package.",
                         ],
                     },
                 ],
@@ -117,7 +117,7 @@ Tip: Press <span class="span_key">C</span> to enable/disable high contrast mode.
         },
         {
             name: "intelligent",
-            description: `Commit Mono uses an innovative technique to improve kerning. Kerning is crucial for effecient reading, but it’s not possible if you want a monospaced font. ‘Smart Kerning’ combats this by sliding letters to better spacing positions – all while preserving monospacing. This gives Commit Mono a superior reading experience compared to other monospaced fonts.
+            description: `Commit Mono uses an innovative technique to improve kerning. Kerning is crucial for efficient reading, but it’s not possible if you want a monospaced font. ‘Smart Kerning’ combats this by sliding letters to better spacing positions – all while preserving monospacing. This gives Commit Mono a superior reading experience compared to other monospaced fonts.
 
 Tip: Press <span class="span_key">+</span> and <span class="span_key">-</span> to zoom in and out.`,
             content: {},
@@ -224,7 +224,7 @@ Tip: Press <span class="span_key">+</span> and <span class="span_key">-</span> t
                         value: "`",
                         name: "grave",
                         description:
-                            "` (grave): The backtick or accent grave is overly tilted to distingush it more from the single quote '.",
+                            "` (grave): The backtick or accent grave is overly tilted to distinguish it more from the single quote '.",
                     },
                     {
                         value: "<",
@@ -485,7 +485,7 @@ Tip: Press <span class="span_key">M</span> to switch between light and dark mode
                         feature: "ss04",
                         on: true,
                         description:
-                            "No change |OFF| or sqeeze 2 or 3 symbols closer together |ON|. Leaves 4 or more untouched. Only affects symbols: !?.:;/|<>",
+                            "No change |OFF| or squeeze 2 or 3 symbols closer together |ON|. Leaves 4 or more untouched. Only affects symbols: !?.:;/|<>",
                         docsExample: "... // <<< !?! /.. == ((( ....",
                     },
                     {
@@ -591,7 +591,7 @@ fibonacci(num)
                     {
                         languageName: "Rust",
                         codeExample: `// Requirement     https://sample-programs.therenegadecoder.com/projects/prime-number/
-// Accept a number on command line and print if it is Composite or Prime 
+// Accept a number on command line and print if it is Composite or Prime
 // Works till  39 digits, ...
 
 use std::env::args;
@@ -709,7 +709,7 @@ int main(int argc, char **argv)
                     },
                     {
                         languageName: "Kotlin",
-                        codeExample: `fun main(args: Array<String>) 
+                        codeExample: `fun main(args: Array<String>)
 {
     if (args.isNullOrEmpty() || args[0].isBlank() || args[0].toIntOrNull()?.takeIf { it >= 0 } == null) {
         println("Usage: please input a non-negative integer")
@@ -784,14 +784,14 @@ public class PrimeNumber {
                         codeExample: `ROMAN_VALUES = { "I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000 }
 
 def roman_valid?(roman_numbers)
-    return false if roman_numbers.any? { |roman_number| !ROMAN_VALUES.keys.include?(roman_number.to_sym) }    
+    return false if roman_numbers.any? { |roman_number| !ROMAN_VALUES.keys.include?(roman_number.to_sym) }
     return false if roman_numbers.join.include?('MMMM')
-    
+
     counter_numbers = roman_numbers.tally # Only on ruby 2.7+
     unless counter_numbers['M'].nil?
         return false if counter_numbers['M'] > 4
     end
-    
+
     counter_numbers.reject { |k| k == 'M' }.all? { |(_, counter)| counter <= 3 }
 end
 
@@ -807,7 +807,7 @@ def roman_to_decimal(full_roman_number)
     roman_numbers.each_with_index do |roman_number, index|
         current_value = ROMAN_VALUES[roman_number.to_sym]
         next_value = ROMAN_VALUES[roman_numbers[index+1]&.to_sym] || 0
-        
+
         if (current_value >= next_value)
             total += current_value
         else
@@ -866,9 +866,9 @@ exit(0);
                     },
                     {
                         languageName: "Fortran",
-                        codeExample: `! upcase and to_upper didn't work, 
+                        codeExample: `! upcase and to_upper didn't work,
 ! had to resort to check ASCII value of first letter & then
-! subtract 32 from it, ... 
+! subtract 32 from it, ...
 program capitalize
 character(len=100) :: cmd
 character(len=1) :: firstletter
@@ -891,7 +891,7 @@ endif
     if (iachar(firstletter)>= iachar("a") .and. iachar(firstletter)<=iachar("z") ) then
     ! Subtract 32 from ASCII Value, to convert it to respective capital letter
         firstletter = achar(iachar(firstletter)-32)
-! Overwrite the first letter 
+! Overwrite the first letter
         cmd(1:1) = firstletter
     end if
         printoutput = adjustl(trim(cmd))
