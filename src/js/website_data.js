@@ -166,7 +166,7 @@ Tip: Press <span class="span_key">+</span> and <span class="span_key">-</span> t
                         value: "%",
                         name: "percent",
                         description:
-                            "% (percent): The '%' is a quite wide symbol, so it will always look squashed in monospace. It fills all available space to more normal.",
+                            "% (percent): The '%' is a quite wide symbol, so it will always look squashed in monospace. It fills all available space to look more natural.",
                     },
                     {
                         value: "&",
@@ -184,7 +184,7 @@ Tip: Press <span class="span_key">+</span> and <span class="span_key">-</span> t
                         value: "-",
                         name: "hyphen",
                         description:
-                            "- Hyphen: The '-' is short but not too short. This is as it often works like a minus so it has to fit next to +.",
+                            "- Hyphen: The '-' is short but not too short. This is because it often works like a minus so it has to fit next to +.",
                     },
                     {
                         value: "(",
