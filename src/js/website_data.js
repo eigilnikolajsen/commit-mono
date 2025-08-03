@@ -323,6 +323,11 @@ Tip: Press <span class="span_key">M</span> to switch between light and dark mode
                         cssName: "Menlo",
                         id: "menlo",
                     },
+                    {
+                        name: "Google Sans Code",
+                        cssName: "GoogleSansCode",
+                        id: "google_sans_code",
+                    },
                 ],
                 weights: [
                     "200",
