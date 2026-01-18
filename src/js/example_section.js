@@ -348,6 +348,10 @@ function updateCustomSettings(settings) {
         document.forms["line_height_form"][`line_height_${settings.lineHeight}`].checked = true
         updateLineHeight(null, lineHeightForm)
     }
+    if (settings.fontName) {
+        document.forms["font_name_form"]["font_name"].value = settings.fontName
+        updateFontName(null, fontNameForm)
+    }
     if (settings.alternates) {
         Object.entries(settings.alternates).forEach(([feature, enabled]) => {
             document.forms["examplesettings_form"][`${feature}_${enabled}`].checked = true
